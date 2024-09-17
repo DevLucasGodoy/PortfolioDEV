@@ -9,8 +9,7 @@ export const DATA = {
   locationLink: "https://www.google.com/maps/place/novaandradina",
   description:
     "Desenvolvedor Front-end. Tenho como objetivo sempre me aprimorar e desenvolver novas aplicações e recursos.",
-  summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
+  summary: "Desde do meu primeiro contato com o desenvolvimento de novas aplicações eu me senti fascinado com esse novo mundo que me foi apresentado. A partir daí eu me empenhei muito, e ainda continuo, em estudar muito para entender tudo sobre o desenvolvimento de aplicações web. Cursar o ensino médio junto com o técnico me ajudou muito a me desenvolver. Desde então todo o meu foco tem sido me aprimorar cada vez mais.",
   avatarUrl: "/me.jpeg",
   skills: [
     "Javascript",
