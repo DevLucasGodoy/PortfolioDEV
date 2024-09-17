@@ -81,7 +81,7 @@ export const DATA = {
     {
       company: "Freelancer",
       badges: [],
-      // href: "https://shopify.com",
+      href: "",
       location: "Remote",
       title: "Freelancer de Projetos de Desenvolvimento WEB",
       logoUrl: "/freelancer.png",
