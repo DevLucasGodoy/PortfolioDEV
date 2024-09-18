@@ -57,6 +57,12 @@ export const DATA = {
         icon: Icons.youtube,
         navbar: false,
       },
+      Instagram: {
+        name: "Instagram",
+        url: "https://www.instagram.com/devlucasgodoy/",
+        icon: Icons.instagram,
+        navbar: true,
+      },
       email: {
         name: "Send Email",
         url: "#",
@@ -121,11 +127,10 @@ export const DATA = {
   projects: [
     {
       title: "First Class Dev",
-      href: "https://magicui.design",
+      href: "",
       dates: "Abr 2024 - Out 2024",
       active: true,
-      description:
-        "Designed, developed and sold animated UI components for developers.",
+      description: "Projeto desenvolvido para uma empresa de software house local com o foco em desenvolvimento de aplicações inovadoras.",
       technologies: [
         "React",
         "Next.js",
@@ -137,12 +142,12 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://magicui.design",
+          href: "",
           icon: <Icons.globe className="size-3" />,
         },
         {
-          type: "Source",
-          href: "https://github.com/magicuidesign/magicui",
+          type: "Código",
+          href: "",
           icon: <Icons.github className="size-3" />,
         },
       ],
@@ -154,8 +159,7 @@ export const DATA = {
       href: "https://welcomevistos.com.br",
       dates: "Jan 2023 - Fev 2024",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description: "Aplicação web desenvolvidade para uma empresa de assessoria especializada em vistos de turismo, negócios e estudos para 5 países.",
       technologies: [
         "Javascript",
         "HTML",
@@ -174,7 +178,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "llm.report",
+      title: "Portifólio de Desenvolvedor",
       href: "https://llm.report",
       dates: "April 2023 - September 2023",
       active: true,
@@ -194,17 +198,17 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://llm.report",
+          href: "",
           icon: <Icons.globe className="size-3" />,
         },
         {
-          type: "Source",
-          href: "https://github.com/dillionverma/llm.report",
+          type: "Código",
+          href: "https://github.com/DevLucasGodoy/PortfolioFullDev",
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
-      video: "https://cdn.llm.report/openai-demo.mp4",
+      image: "/vscode.png",
+      video: "",
     },
     {
       title: "Automatic Chat",
