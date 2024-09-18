@@ -195,7 +195,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "",
+          href: "https://devlucasgodoy-git-main-devlucasgodoy.vercel.app",
           icon: <Icons.globe className="size-3" />,
         },
         {
