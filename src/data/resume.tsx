@@ -161,7 +161,7 @@ export const DATA = {
       active: true,
       description: "Aplicação web desenvolvidade para uma empresa de assessoria especializada em vistos de turismo, negócios e estudos para 5 países.",
       technologies: [
-        "Javascript",
+        "JavaScript",
         "HTML",
         "CSS",
         "SCSS",
@@ -180,20 +180,17 @@ export const DATA = {
     {
       title: "Portifólio de Desenvolvedor",
       href: "https://llm.report",
-      dates: "April 2023 - September 2023",
+      dates: "Jav 2023 - Set 2023",
       active: true,
       description:
-        "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
+        "Desenvolvimento de aplicação web para um portfólio de desenvolvedor baseada na nossa IDE de código tão amada, o Visual Studio Code.",
       technologies: [
         "Next.js",
         "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Vercel",
       ],
       links: [
         {
@@ -210,35 +207,35 @@ export const DATA = {
       image: "/vscode.png",
       video: "",
     },
-    {
-      title: "Automatic Chat",
-      href: "https://automatic.chat",
-      dates: "April 2023 - March 2024",
-      active: true,
-      description:
-        "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://automatic.chat",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
-    },
+    // {
+    //   title: "Automatic Chat",
+    //   href: "https://automatic.chat",
+    //   dates: "April 2023 - March 2024",
+    //   active: true,
+    //   description:
+    //     "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
+    //   technologies: [
+    //     "Next.js",
+    //     "Typescript",
+    //     "PostgreSQL",
+    //     "Prisma",
+    //     "TailwindCSS",
+    //     "Shadcn UI",
+    //     "Magic UI",
+    //     "Stripe",
+    //     "Cloudflare Workers",
+    //   ],
+    //   links: [
+    //     {
+    //       type: "Website",
+    //       href: "https://automatic.chat",
+    //       icon: <Icons.globe className="size-3" />,
+    //     },
+    //   ],
+    //   image: "",
+    //   video:
+    //     "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
+    // },
   ],
   hackathons: [
     {
