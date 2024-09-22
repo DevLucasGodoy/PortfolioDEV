@@ -30,6 +30,7 @@ const BlurFade = ({
 }: BlurFadeProps) => {
   const ref = useRef(null);
   // Defina inViewMargin com um valor adequado
+  type MarginType = any;
   const inViewMargin: MarginType | undefined = '-50px'; // ou outro valor válido
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin});
   const isInView = !inView || inViewResult;
