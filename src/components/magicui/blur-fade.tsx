@@ -25,11 +25,13 @@ const BlurFade = ({
   delay = 0,
   yOffset = 6,
   inView = false,
-  inViewMargin = "-50px",
+  // inViewMargin = "-50px",
   blur = "6px",
 }: BlurFadeProps) => {
   const ref = useRef(null);
-  const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
+  // Supondo que MarginType possa ser uma string com valores específicos ou undefined
+  const inViewMargin: MarginType | undefined = '10px'; // Ou outro valor que corresponda a MarginType
+  const inViewResult = useInView(ref, { once: true, margin: inViewMargin as MarginType });
   const isInView = !inView || inViewResult;
   const defaultVariants: Variants = {
     hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
