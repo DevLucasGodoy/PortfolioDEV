@@ -4,13 +4,13 @@ import { HomeIcon, NotebookIcon } from "lucide-react";
 export const DATA = {
   name: "Lucas Godoy",
   initials: "LG",
-  url: "https://dillion.io",
+  url: "https://devlucasgodoy.vercel.app/",
   location: "Nova Andradina, MS",
   locationLink: "https://www.google.com/maps/place/novaandradina",
   description:
     "Desenvolvedor Front-end. Tenho como objetivo sempre me aprimorar e desenvolver novas aplicações e recursos.",
   summary: "Desde do meu primeiro contato com o desenvolvimento de novas aplicações eu me senti fascinado com esse novo mundo que me foi apresentado. A partir daí eu me empenhei muito, e ainda continuo, em estudar muito para entender tudo sobre o desenvolvimento de aplicações web. Cursar o ensino médio junto com o técnico me ajudou muito a me desenvolver. Desde então todo o meu foco tem sido me aprimorar cada vez mais.",
-  avatarUrl: "/me.jpeg",
+  avatarUrl: "/lucas.jpeg",
   skills: [
     "Javascript",
     "Typescript",
