@@ -111,7 +111,7 @@ export const DATA = {
       school: "Instituto Federal de Mato Grosso do Sul",
       href: "https://www.ifms.edu.br",
       degree: "Ensino Médio e Técnico em Análise e Desenvolvimento de Sistemas",
-      logoUrl: "/if.png",
+      logoUrl: "/IF.png",
       start: "Jul 2019",
       end: "Dez 2022",
     },
