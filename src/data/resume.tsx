@@ -8,7 +8,7 @@ export const DATA = {
   location: "Nova Andradina, MS",
   locationLink: "https://www.google.com/maps/place/novaandradina",
   description:
-    "Desenvolvedor Front-end. Tenho como objetivo sempre me aprimorar e desenvolver novas aplicações e recursos.",
+    "Analista de Sistemas e Desenvolvedor Front-end. Tenho como objetivo sempre me aprimorar e desenvolver novas aplicações e recursos.",
   summary: "Desde do meu primeiro contato com o desenvolvimento de novas aplicações eu me senti fascinado com esse novo mundo que me foi apresentado. A partir daí eu me empenhei muito, e ainda continuo, em estudar muito para entender tudo sobre o desenvolvimento de aplicações web. Cursar o ensino médio junto com o técnico me ajudou muito a me desenvolver. Desde então todo o meu foco tem sido me aprimorar cada vez mais.",
   avatarUrl: "/lucas_v2.jpeg",
   skills: [
@@ -18,6 +18,7 @@ export const DATA = {
     "React Native",
     "Next.js",
     "Node",
+    "JSON",
     "Postgres",
     "MySQL",
     "AWS",
@@ -83,19 +84,19 @@ export const DATA = {
       start: "Set 2022",
       end: "Hoje",
       description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+        "Como Analista de Suporte ERP, sou responsável por fornecer suporte técnico e funcional aos usuários, monitorar e otimizar o desempenho do sistema, realizar treinamentos, documentar soluções, e colaborar para a melhoria contínua do ERP. Minhas principais virtudes incluem atenção aos detalhes, habilidades comunicativas, proatividade, capacidade analítica, colaboração em equipe, e adaptabilidade às mudanças e novas tecnologias.",
     },
     {
       company: "Freelancer",
       badges: [],
       href: "",
-      location: "Remote",
+      location: "Remoto",
       title: "Freelancer de Projetos de Desenvolvimento WEB",
       logoUrl: "/freelancer.png",
       start: "Jun 2021",
       end: "Hoje",
       description:
-        "Implemented a custom Kubernetes controller in Go to automate the deployment of MySQL and ProxySQL custom resources in order to enable 2,000+ internal developers to instantly deploy their app databases to production. Wrote several scripts in Go to automate MySQL database failovers while maintaining master-slave replication topologies and keeping Zookeeper nodes consistent with changes.",
+        "Como Freelancer em Desenvolvimento Web com mais de dois anos de experiência, desenvolvo websites responsivos e funcionais utilizando tecnologias como HTML, CSS, JavaScript e frameworks como React e Angular. Minhas responsabilidades incluem garantir a compatibilidade cross-browser, otimizar para dispositivos móveis, realizar manutenção contínua, e colaborar estreitamente com clientes para compreender suas necessidades e transformar requisitos técnicos em soluções digitais. Minha abordagem focada no cliente e minha habilidade em gerenciar prazos e comunicação constante garantem a satisfação e o sucesso dos projetos.\n\nEntre minhas principais virtudes estão a autonomia, a criatividade e a comunicação eficaz. Possuo a capacidade de trabalhar de forma independente, gerenciar meu tempo eficientemente e desenvolver soluções inovadoras que excedem as expectativas dos clientes. Sou detalhista, assegurando a qualidade do código e a funcionalidade perfeita dos projetos, além de ser flexível e capaz de me adaptar rapidamente a novas tecnologias e mudanças nos requisitos dos projetos. Minha experiência em colaborar com equipes complementa minha habilidade em integrar diversas áreas do desenvolvimento web, alcançando resultados excepcionais.",
     },
   ],
   education: [
