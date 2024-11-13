@@ -126,35 +126,35 @@ export const DATA = {
     },
   ],
   projects: [
-    {
-      title: "First Class Dev",
-      href: "",
-      dates: "Abr 2024 - Out 2024",
-      active: true,
-      description: "Projeto desenvolvido para uma empresa de software house local com o foco em desenvolvimento de aplicações inovadoras.",
-      technologies: [
-        "React",
-        "Next.js",
-        "Typescript",
-        "Tailwind CSS",
-        "Magic UI",
-        "Framer Motion",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Código",
-          href: "",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/firstclassdev.png",
-      video: "",
-    },
+    // {
+    //   title: "First Class Dev",
+    //   href: "",
+    //   dates: "Abr 2024 - Out 2024",
+    //   active: true,
+    //   description: "Projeto desenvolvido para uma empresa de software house local com o foco em desenvolvimento de aplicações inovadoras.",
+    //   technologies: [
+    //     "React",
+    //     "Next.js",
+    //     "Typescript",
+    //     "Tailwind CSS",
+    //     "Magic UI",
+    //     "Framer Motion",
+    //   ],
+    //   links: [
+    //     {
+    //       type: "Website",
+    //       href: "",
+    //       icon: <Icons.globe className="size-3" />,
+    //     },
+    //     {
+    //       type: "Código",
+    //       href: "",
+    //       icon: <Icons.github className="size-3" />,
+    //     },
+    //   ],
+    //   image: "/firstclassdev.png",
+    //   video: "",
+    // },
     {
       title: "Welcome Vistos",
       href: "https://welcomevistos.com.br",
