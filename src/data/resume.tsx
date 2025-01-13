@@ -180,7 +180,7 @@ export const DATA = {
     },
     {
       title: "Portifólio de Desenvolvedor",
-      href: "https://llm.report",
+      href: "portifoliodesenvolvedor.vercel.app",
       dates: "Jav 2023 - Set 2023",
       active: true,
       description:
@@ -189,14 +189,12 @@ export const DATA = {
         "Next.js",
         "Typescript",
         "JavaScript",
-        "HTML",
-        "CSS",
         "Vercel",
       ],
       links: [
         {
           type: "Website",
-          href: "https://devlucasgodoy-git-main-devlucasgodoy.vercel.app",
+          href: "portifoliodesenvolvedor.vercel.app",
           icon: <Icons.globe className="size-3" />,
         },
         {
