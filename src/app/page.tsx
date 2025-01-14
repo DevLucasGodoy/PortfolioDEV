@@ -151,25 +151,30 @@ export default function Page() {
           </div>
         </div>
       </section>
-      {/* <section id="hackathons">
+      <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  Hackathons
+                  Contribuições e Trabalhos
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  I like building things
+                  Minhas Contribuições
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Durante meu tempo na faculdade e trabalhando como freelancer, participei de trabalhos e projetos. 
+                  Foi uma experiência única ver as infinitas possibilidades trazidas para avida por um grupo de 
+                  pessoas motivadas e apaixonadas por novas tecnologias.
+                </p>
+                {/* <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   During my time in university, I attended{" "}
                   {DATA.hackathons.length}+ hackathons. People from around the
                   country would come together and build incredible things in 2-3
                   days. It was eye-opening to see the endless possibilities
                   brought to life by a group of motivated and passionate
                   individuals.
-                </p>
+                </p> */}
               </div>
             </div>
           </BlurFade>
@@ -193,7 +198,7 @@ export default function Page() {
             </ul>
           </BlurFade>
         </div>
-      </section> */}
+      </section>
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
@@ -205,16 +210,17 @@ export default function Page() {
                 Entre em Contato
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Quer bater um papo? Basta me enviar uma DM e
+                Quer bater um papo? Basta me enviar uma mensagem
                 {" "}
                 <Link
-                  href={DATA.contact.social.Instagram.url}
+                  // href={DATA.contact.social.Instagram.url}
+                  href={"malito:lucas.moraes.godoy@gmail.com"}
                   className="text-blue-500 hover:underline"
                 >
-                  com uma pergunta direta no Instagram.
+                  com uma pergunta pelo meu e-mail.
                 </Link>
                 {" "}
-                Responderei sempre que puder. Ignorarei todas as solicitações😏
+                Responderei sempre que puder.
               </p>
             </div>
           </BlurFade>
