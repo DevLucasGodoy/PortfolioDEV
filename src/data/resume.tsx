@@ -42,7 +42,7 @@ export const DATA = {
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/lucas-godoy-84091021b",
+        url: "https://www.linkedin.com/in/devlucasgodoy/",
         icon: Icons.linkedin,
         navbar: true,
       },
