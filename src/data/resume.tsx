@@ -64,11 +64,11 @@ export const DATA = {
         icon: Icons.instagram,
         navbar: true,
       },
-      email: {
-        name: "Send Email",
-        url: "#",
+      Email: {
+        name: "E-mail",
+        url: "malito:lucas.moraes.godoy@gmail.com",
         icon: Icons.email,
-        navbar: false,
+        navbar: true,
       },
     },
   },
@@ -129,7 +129,7 @@ export const DATA = {
   projects: [
     {
       title: "First Class Dev",
-      href: "https://fcconverter.vercel.app",
+      href: "https://www.firstclassdev.com.br",
       dates: "Abr 2024 - Out 2024",
       active: true,
       description: "Projeto desenvolvido para uma empresa de software house local com o foco em desenvolvimento de aplicações inovadoras.",
@@ -144,7 +144,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://fcconverter.vercel.app",
+          href: "https://www.firstclassdev.com.br",
           icon: <Icons.globe className="size-3" />,
         },
         // {
