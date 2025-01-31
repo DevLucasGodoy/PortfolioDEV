@@ -98,6 +98,18 @@ export const DATA = {
       description:
         "Como freelancer em Desenvolvimento Web com mais de dois anos de experiência, desenvolvo websites responsivos e funcionais utilizando tecnologias como React, Typescript, Next,js, entre outras. Minhas responsabilidades incluem garantir a compatibilidade cross-browser, otimizar para dispositivos móveis, realizar manutenção contínua, e colaborar estreitamente com clientes para compreender suas necessidades e transformar requisitos técnicos em soluções digitais. Minha abordagem focada no cliente e minha habilidade em gerenciar prazos e comunicação constante garantem a satisfação e o sucesso dos projetos.\n\nEntre minhas principais virtudes estão a autonomia, a criatividade e a comunicação eficaz. Possuo a capacidade de trabalhar de forma independente, gerenciar meu tempo eficientemente e desenvolver soluções inovadoras que excedem as expectativas dos clientes. Sou detalhista, assegurando a qualidade do código e a funcionalidade perfeita dos projetos, além de ser flexível e capaz de me adaptar rapidamente a novas tecnologias e mudanças nos requisitos dos projetos. Minha experiência em colaborar com equipes complementa minha habilidade em integrar diversas áreas do desenvolvimento web, alcançando resultados excepcionais.",
     },
+    {
+      company: "Técnico em Informática",
+      badges: [],
+      href: "",
+      location: "Presencial",
+      title: "Freelancer de Projetos de Desenvolvimento WEB",
+      logoUrl: "/IF.png",
+      start: "Jun 2021",
+      end: "Hoje",
+      description:
+        "Como freelancer em Desenvolvimento Web com mais de dois anos de experiência, desenvolvo websites responsivos e funcionais utilizando tecnologias como React, Typescript, Next,js, entre outras. Minhas responsabilidades incluem garantir a compatibilidade cross-browser, otimizar para dispositivos móveis, realizar manutenção contínua, e colaborar estreitamente com clientes para compreender suas necessidades e transformar requisitos técnicos em soluções digitais. Minha abordagem focada no cliente e minha habilidade em gerenciar prazos e comunicação constante garantem a satisfação e o sucesso dos projetos.\n\nEntre minhas principais virtudes estão a autonomia, a criatividade e a comunicação eficaz. Possuo a capacidade de trabalhar de forma independente, gerenciar meu tempo eficientemente e desenvolver soluções inovadoras que excedem as expectativas dos clientes. Sou detalhista, assegurando a qualidade do código e a funcionalidade perfeita dos projetos, além de ser flexível e capaz de me adaptar rapidamente a novas tecnologias e mudanças nos requisitos dos projetos. Minha experiência em colaborar com equipes complementa minha habilidade em integrar diversas áreas do desenvolvimento web, alcançando resultados excepcionais.",
+    },
   ],
   education: [
     {
@@ -271,7 +283,7 @@ export const DATA = {
       dates: "Jameiro de 2025",
       location: "Nova Andradina, Mato Grosso do Sul.",
       description: "",
-      image: "",
+      image: "/nft.png",
       // mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
