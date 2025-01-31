@@ -291,7 +291,7 @@ export const DATA = {
       title: "First Class NFT",
       dates: "Jameiro de 2025",
       location: "Nova Andradina, Mato Grosso do Sul.",
-      description: "",
+      description: "Criar uma coleção de NFTs exclusiva e inovadora, explorando o universo da tecnologia e suas diversas manifestações. A coleção será composta por obras de arte digital únicas, geradas por algoritmos e inteligência artificial, representando conceitos como inteligência artificial, realidade virtual, internet das coisas, exploração espacial e outros temas futuristas.",
       image: "/nft.png",
       // mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
@@ -302,7 +302,6 @@ export const DATA = {
       location: "Nova Andradina, Mato Grosso do Sul.",
       description: "Campeões da FECINOVA! Nossa equipe arrasou na categoria Multidisciplinar do Nível Médio, com um projeto inovador que promove a inclusão social e a acessibilidade para diversas pessoas em um sistema EAD.",
       image: "/IF.png",
-      // mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
     {
@@ -311,7 +310,6 @@ export const DATA = {
       location: "Nova Andradina, Mato Grosso do Sul.",
       description: "Direto para a MOSTRATEC! Nosso projeto, vencedor da FECINOVA, representou nosso instituto na maior feira de ciências da América Latina. ",
       image: "/IF.png",
-      // mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
     {
