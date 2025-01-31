@@ -267,6 +267,15 @@ export const DATA = {
   ],
   hackathons: [
     {
+      title: "First Class NFT",
+      dates: "Jameiro de 2025",
+      location: "Nova Andradina, Mato Grosso do Sul.",
+      description: "",
+      image: "",
+      // mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
+      links: [],
+    },
+    {
       title: "FECINOVA | 1º Lugar na Área Multidisciplinar no Nível Médio",
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
