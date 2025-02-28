@@ -8,8 +8,8 @@ export const DATA = {
   location: "Nova Andradina, MS",
   locationLink: "https://www.google.com/maps/place/novaandradina",
   description:
-    "Analista de Sistemas e Desenvolvedor Front-end. Tenho como objetivo sempre me aprimorar e desenvolver novas aplicações e recursos.",
-  summary: "Desde do meu primeiro contato com o desenvolvimento de novas aplicações eu me senti fascinado com esse novo mundo que me foi apresentado. A partir daí eu me empenhei muito, e ainda continuo, em estudar muito para entender tudo sobre o desenvolvimento de aplicações web. Cursar o ensino médio junto com o técnico me ajudou muito a me desenvolver. Desde então todo o meu foco tem sido me aprimorar cada vez mais.",
+    "Desenvolvedor Full-Stack e Analista de Sistemas.",
+  summary: "Desde do meu primeiro contato com o desenvolvimento de novas aplicações eu me senti fascinado com esse novo mundo que me foi apresentado. A partir daí eu me empenhei muito, e ainda continuo, em estudar muito para entender tudo sobre o desenvolvimento de aplicações web. Cursar o ensino médio junto com o técnico me ajudou muito a me desenvolver. Desde então todo o meu foco tem sido me aprimorar cada vez mais. Tenho como objetivo sempre me aprimorar e desenvolver novas aplicações e recursos.",
   avatarUrl: "/lucas_v2.jpeg",
   skills: [
     "Javascript",
@@ -18,6 +18,14 @@ export const DATA = {
     "React Native",
     "Next.js",
     "Node.js",
+    "Express.js",
+    "Framer Motion",
+    "Vercel",
+    "Vite",
+    "Webpack",
+    "Babel",
+    "ESLint",
+    "Prettier",
     "Angular",
     "APIs",
     "Tailwind CSS",
@@ -40,7 +48,7 @@ export const DATA = {
     // { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "lucas.moraes.godoy@gmail.com",
+    email: "devlucasgodoy@proton.me",
     tel: "+55 19 99616-8818",
     social: {
       GitHub: {
@@ -75,7 +83,7 @@ export const DATA = {
       },
       Email: {
         name: "E-mail",
-        url: "malito:lucas.moraes.godoy@gmail.com",
+        url: "malito:devlucasgodoy@proton.me",
         icon: Icons.email,
         navbar: true,
       },
@@ -290,16 +298,32 @@ export const DATA = {
     {
       title: "First Class NFT",
       dates: "Jameiro de 2025",
+      funcao: "Desenvolvedor",
       location: "Nova Andradina, Mato Grosso do Sul.",
       description: "Criar uma coleção de NFTs exclusiva e inovadora, explorando o universo da tecnologia e suas diversas manifestações. A coleção será composta por obras de arte digital únicas, geradas por algoritmos e inteligência artificial, representando conceitos como inteligência artificial, realidade virtual, internet das coisas, exploração espacial e outros temas futuristas.",
       image: "/nft.png",
-      // mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
+    },
+    {
+      title: "First Class Dev",
+      dates: "Fevereiro de 2023",
+      funcao: "Fundador e CEO",
+      location: "Nova Andradina, Mato Grosso do Sul.",
+      description:"Software house com o foco em desenvolvimento de aplicações inovadoras.",
+      image: "/fcd-oficial.png",
+      links: [
+        {
+          title: "Website",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://www.firstclassdev.com.br",
+        },
+      ],
     },
     {
       title: "FECINOVA | 1º Lugar na Área Multidisciplinar no Nível Médio",
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
+      funcao: "",
       description: "Campeões da FECINOVA! Nossa equipe arrasou na categoria Multidisciplinar do Nível Médio, com um projeto inovador que promove a inclusão social e a acessibilidade para diversas pessoas em um sistema EAD.",
       image: "/IF.png",
       links: [],
@@ -308,6 +332,7 @@ export const DATA = {
       title: "FECINOVA | Credencial para MOSTRATEC",
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
+      funcao: "",
       description: "Direto para a MOSTRATEC! Nosso projeto, vencedor da FECINOVA, representou nosso instituto na maior feira de ciências da América Latina. ",
       image: "/IF.png",
       links: [],
@@ -316,6 +341,7 @@ export const DATA = {
       title: "FECINOVA | Melhor Trabalho Geral do Nível Médio",
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
+      funcao: "",
       description: "Campeões absolutos da FECINOVA! Nosso projeto foi eleito o melhor do nível médio. Que orgulho!",
       icon: "public",
       image: "/IF.png",
