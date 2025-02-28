@@ -168,7 +168,6 @@ export const DATA = {
         "Typescript",
         "Tailwind CSS",
         "Magic UI",
-        "Framer Motion",
       ],
       links: [
         {
@@ -176,14 +175,54 @@ export const DATA = {
           href: "https://www.firstclassdev.com.br",
           icon: <Icons.globe className="size-3" />,
         },
-        // {
-        //   type: "Código",
-        //   href: "",
-        //   icon: <Icons.github className="size-3" />,
-        // },
       ],
       image: "/firstclassdev.png",
       video: "",
+    },
+    {
+      title: "Best Choice",
+      href: "https://www.bestchoiceoficial.com.br/",
+      dates: "Dez 2024 - Jan 2025",
+      active: true,
+      description: "A Best Choice nasceu com um propósito claro: ajudar você a encontrar as melhores ofertas do mercado de forma simples e eficiente.",
+      technologies: [
+        "React",
+        "Next.js",
+        "Typescript",
+        "Tailwind CSS",
+        "Verrcel",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://www.bestchoiceoficial.com.br/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/bestchoice.png",
+      video: "",
+    },
+    {
+      title: "FC News",
+      href: "https://fcnews.vercel.app/",
+      dates: "Abr 2024 - Out 2024",
+      active: true,
+      description: "Sua fonte confiável para as últimas notícias, insights e análises de tecnologia. Trazemos a você uma cobertura detalhada dos desenvolvimentos mais importantes no mundo da tecnologia.",
+      technologies: [
+        "React",
+        "Next.js",
+        "Typescript",
+        "Tailwind CSS",
+        "Framer Motion",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://fcnews.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/fcnews.png",
     },
     {
       title: "FC Converter",
@@ -204,11 +243,6 @@ export const DATA = {
           href: "https://fcconverter.vercel.app",
           icon: <Icons.globe className="size-3" />,
         },
-        // {
-        //   type: "Código",
-        //   href: "",
-        //   icon: <Icons.github className="size-3" />,
-        // },
       ],
       image: "/fcconverter.png",
       video: "",
