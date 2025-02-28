@@ -5,6 +5,7 @@ import Link from "next/link";
 interface Props {
   title: string;
   description: string;
+  funcao: string;
   dates: string;
   location: string;
   image?: string;
@@ -18,6 +19,7 @@ interface Props {
 export function HackathonCard({
   title,
   description,
+  funcao,
   dates,
   location,
   image,
@@ -38,6 +40,9 @@ export function HackathonCard({
         <h2 className="font-semibold leading-none">{title}</h2>
         {location && (
           <p className="text-sm text-muted-foreground">{location}</p>
+        )}
+        {funcao && (
+        <p className="text-sm"><strong>{funcao}</strong></p>
         )}
         {description && (
           <span className="prose dark:prose-invert text-sm text-muted-foreground">
