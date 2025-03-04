@@ -177,7 +177,6 @@ export const DATA = {
         },
       ],
       image: "/firstclassdev.png",
-      video: "",
     },
     {
       title: "Best Choice",
@@ -200,7 +199,6 @@ export const DATA = {
         },
       ],
       image: "/bestchoice.png",
-      video: "",
     },
     {
       title: "FC News",
@@ -245,7 +243,6 @@ export const DATA = {
         },
       ],
       image: "/fcconverter.png",
-      video: "",
     },
     {
       title: "Welcome Vistos",
@@ -268,7 +265,6 @@ export const DATA = {
         },
       ],
       image: "/welcome.png",
-      video: "",
     },
     {
       title: "Portifólio de Desenvolvedor",
@@ -296,7 +292,6 @@ export const DATA = {
         },
       ],
       image: "/vscode.png",
-      video: "",
     },
     // {
     //   title: "Automatic Chat",
