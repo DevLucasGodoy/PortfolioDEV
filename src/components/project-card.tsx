@@ -19,7 +19,6 @@ interface Props {
   tags: readonly string[];
   link?: string;
   image?: string;
-  video?: string;
   links?: readonly {
     icon: React.ReactNode;
     type: string;
@@ -36,7 +35,6 @@ export function ProjectCard({
   tags,
   link,
   image,
-  video,
   links,
   className,
 }: Props) {
@@ -50,7 +48,7 @@ export function ProjectCard({
         href={href || "#"}
         className={cn("block cursor-pointer", className)}
       >
-        {video && (
+        {/* {video && (
           <video
             src={video}
             autoPlay
@@ -59,7 +57,7 @@ export function ProjectCard({
             playsInline
             className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
           />
-        )}
+        )} */}
         {image && (
           <Image
             src={image}
