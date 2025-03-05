@@ -124,7 +124,9 @@ export default function Page() {
                   Confira meus últimos trabalhos
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Trabalhei em diversos projetos, desde sites simples até aplicações web complexas. Aqui estão alguns dos meus favoritos.
+                  Trabalhei em diversos projetos, desde sites simples até
+                  aplicações web complexas. Aqui estão alguns dos meus
+                  favoritos.
                 </p>
               </div>
             </div>
@@ -163,9 +165,11 @@ export default function Page() {
                   Minhas Contribuições
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Durante meu tempo na faculdade e trabalhando como freelancer, participei de trabalhos e projetos. 
-                  Foi uma experiência única ver as infinitas possibilidades trazidas para avida por um grupo de 
-                  pessoas motivadas e apaixonadas por novas tecnologias.
+                  Durante meu tempo na faculdade e trabalhando como freelancer,
+                  participei de trabalhos e projetos. Foi uma experiência única
+                  ver as infinitas possibilidades trazidas para avida por um
+                  grupo de pessoas motivadas e apaixonadas por novas
+                  tecnologias.
                 </p>
                 {/* <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   During my time in university, I attended{" "}
@@ -211,16 +215,16 @@ export default function Page() {
                 Entre em Contato
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Quer bater um papo? Basta me enviar uma mensagem
-                {" "}
+                Quer bater um papo? Basta me enviar uma mensagem{" "}
                 <Link
                   // href={DATA.contact.social.Instagram.url}
-                  href={"malito:lucas.moraes.godoy@gmail.com"}
+                  href={
+                    "https://web.whatsapp.com/send?phone=55019996168818&text=Ol%C3%A1,%20meu%20nome%20%C3%A9"
+                  }
                   className="text-blue-500 hover:underline"
                 >
                   com uma pergunta pelo meu e-mail.
-                </Link>
-                {" "}
+                </Link>{" "}
                 Responderei sempre que puder.
               </p>
             </div>
