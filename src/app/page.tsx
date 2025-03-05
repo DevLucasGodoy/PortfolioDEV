@@ -219,7 +219,7 @@ export default function Page() {
                 <Link
                   // href={DATA.contact.social.Instagram.url}
                   href={
-                    "mailto:devlucasgodoy@proton.me?subject=Portfolio%20-%20"
+                    "mailto:devlucasgodoy@proton.me?subject=Portfolio%20-%20DevLucasGodoy"
                   }
                   target="_blank"
                   className="text-blue-500 hover:underline"
