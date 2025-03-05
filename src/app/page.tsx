@@ -219,8 +219,9 @@ export default function Page() {
                 <Link
                   // href={DATA.contact.social.Instagram.url}
                   href={
-                    "https://web.whatsapp.com/send?phone=55019996168818&text=Ol%C3%A1,%20meu%20nome%20%C3%A9"
+                    "mailto:devlucasgodoy@proton.me?subject=Portfolio%20-%20"
                   }
+                  target="_blank"
                   className="text-blue-500 hover:underline"
                 >
                   com uma pergunta pelo meu e-mail.
