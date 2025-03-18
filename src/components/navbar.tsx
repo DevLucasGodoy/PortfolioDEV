@@ -22,6 +22,9 @@ export default function Navbar() {
               <TooltipTrigger asChild>
                 <Link
                   href={item.href}
+                  target={
+                    item.href.startsWith("https://") ? "_blank" : undefined
+                  }
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "size-12"
@@ -44,7 +47,7 @@ export default function Navbar() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
-                    href="mailto:devlucasgodoy@proton.me?subject=Portfolio%20-%20DevLucasGodoy"
+                    href={social.url}
                     target="_blank"
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
