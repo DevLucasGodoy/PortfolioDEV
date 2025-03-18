@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon, Target } from "lucide-react";
 
 export const DATA = {
   name: "Lucas Godoy",
@@ -7,9 +7,9 @@ export const DATA = {
   url: "https://devlucasgodoy.vercel.app/",
   location: "Nova Andradina, MS",
   locationLink: "https://www.google.com/maps/place/novaandradina",
-  description:
-    "Desenvolvedor Full-Stack e Analista de Sistemas.",
-  summary: "Desde do meu primeiro contato com o desenvolvimento de novas aplicações eu me senti fascinado com esse novo mundo que me foi apresentado. A partir daí eu me empenhei muito, e ainda continuo, em estudar muito para entender tudo sobre o desenvolvimento de aplicações web. Cursar o ensino médio junto com o técnico me ajudou muito a me desenvolver. Desde então todo o meu foco tem sido me aprimorar cada vez mais. Tenho como objetivo sempre me aprimorar e desenvolver novas aplicações e recursos.",
+  description: "Desenvolvedor Full-Stack e Analista de Sistemas.",
+  summary:
+    "Desde do meu primeiro contato com o desenvolvimento de novas aplicações eu me senti fascinado com esse novo mundo que me foi apresentado. A partir daí eu me empenhei muito, e ainda continuo, em estudar muito para entender tudo sobre o desenvolvimento de aplicações web. Cursar o ensino médio junto com o técnico me ajudou muito a me desenvolver. Desde então todo o meu foco tem sido me aprimorar cada vez mais. Tenho como objetivo sempre me aprimorar e desenvolver novas aplicações e recursos.",
   avatarUrl: "/lucas_v2.jpeg",
   skills: [
     "Javascript",
@@ -45,7 +45,12 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    // { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    {
+      href: "https://fcnews.vercel.app",
+      icon: NotebookIcon,
+      label: "Blog",
+      target: "_blank",
+    },
   ],
   contact: {
     email: "devlucasgodoy@proton.me",
@@ -83,7 +88,7 @@ export const DATA = {
       },
       Email: {
         name: "E-mail",
-        url: "malito:devlucasgodoy@proton.me",
+        url: "mailto:devlucasgodoy@proton.me?subject=Portfolio%20-%20DevLucasGodoy",
         icon: Icons.email,
         navbar: true,
       },
@@ -161,7 +166,8 @@ export const DATA = {
       href: "https://www.firstclassdev.com.br",
       dates: "Abr 2024 - Out 2024",
       active: true,
-      description: "Projeto desenvolvido para uma empresa de software house local com o foco em desenvolvimento de aplicações inovadoras.",
+      description:
+        "Projeto desenvolvido para uma empresa de software house local com o foco em desenvolvimento de aplicações inovadoras.",
       technologies: [
         "React",
         "Next.js",
@@ -183,7 +189,8 @@ export const DATA = {
       href: "https://www.bestchoiceoficial.com.br/",
       dates: "Dez 2024 - Jan 2025",
       active: true,
-      description: "A Best Choice nasceu com um propósito claro: ajudar você a encontrar as melhores ofertas do mercado de forma simples e eficiente.",
+      description:
+        "A Best Choice nasceu com um propósito claro: ajudar você a encontrar as melhores ofertas do mercado de forma simples e eficiente.",
       technologies: [
         "React",
         "Next.js",
@@ -205,7 +212,8 @@ export const DATA = {
       href: "https://fcnews.vercel.app/",
       dates: "Abr 2024 - Out 2024",
       active: true,
-      description: "Sua fonte confiável para as últimas notícias, insights e análises de tecnologia. Trazemos a você uma cobertura detalhada dos desenvolvimentos mais importantes no mundo da tecnologia.",
+      description:
+        "Sua fonte confiável para as últimas notícias, insights e análises de tecnologia. Trazemos a você uma cobertura detalhada dos desenvolvimentos mais importantes no mundo da tecnologia.",
       technologies: [
         "React",
         "Next.js",
@@ -227,7 +235,8 @@ export const DATA = {
       href: "https://fcconverter.vercel.app",
       dates: "Dez 2024",
       active: true,
-      description: "Liberte a sua criatividade com FC Converter – a melhor ferramenta online para multimídia ilimitada e gratuita conversão. Transforme imagens, áudio e vídeos sem esforço e sem restrições.",
+      description:
+        "Liberte a sua criatividade com FC Converter – a melhor ferramenta online para multimídia ilimitada e gratuita conversão. Transforme imagens, áudio e vídeos sem esforço e sem restrições.",
       technologies: [
         "React",
         "Next.js",
@@ -249,14 +258,9 @@ export const DATA = {
       href: "https://welcomevistos.com.br",
       dates: "Jan 2023 - Fev 2024",
       active: true,
-      description: "Aplicação web desenvolvidade para uma empresa de assessoria especializada em vistos de turismo, negócios e estudos para 5 países.",
-      technologies: [
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "SCSS",
-        "PHP",
-      ],
+      description:
+        "Aplicação web desenvolvidade para uma empresa de assessoria especializada em vistos de turismo, negócios e estudos para 5 países.",
+      technologies: ["JavaScript", "HTML", "CSS", "SCSS", "PHP"],
       links: [
         {
           type: "Website",
@@ -273,12 +277,7 @@ export const DATA = {
       active: true,
       description:
         "Desenvolvimento de aplicação web para um portfólio de desenvolvedor baseada na nossa IDE de código tão amada, o Visual Studio Code.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "JavaScript",
-        "Vercel",
-      ],
+      technologies: ["Next.js", "Typescript", "JavaScript", "Vercel"],
       links: [
         {
           type: "Website",
@@ -329,7 +328,8 @@ export const DATA = {
       dates: "Jameiro de 2025",
       funcao: "Desenvolvedor",
       location: "Nova Andradina, Mato Grosso do Sul.",
-      description: "Criar uma coleção de NFTs exclusiva e inovadora, explorando o universo da tecnologia e suas diversas manifestações. A coleção será composta por obras de arte digital únicas, geradas por algoritmos e inteligência artificial, representando conceitos como inteligência artificial, realidade virtual, internet das coisas, exploração espacial e outros temas futuristas.",
+      description:
+        "Criar uma coleção de NFTs exclusiva e inovadora, explorando o universo da tecnologia e suas diversas manifestações. A coleção será composta por obras de arte digital únicas, geradas por algoritmos e inteligência artificial, representando conceitos como inteligência artificial, realidade virtual, internet das coisas, exploração espacial e outros temas futuristas.",
       image: "/nft.png",
       links: [],
     },
@@ -338,7 +338,8 @@ export const DATA = {
       dates: "Fevereiro de 2023",
       funcao: "Fundador e CEO",
       location: "Nova Andradina, Mato Grosso do Sul.",
-      description:"Software house com o foco em desenvolvimento de aplicações inovadoras.",
+      description:
+        "Software house com o foco em desenvolvimento de aplicações inovadoras.",
       image: "/fcd-oficial.png",
       links: [
         {
@@ -353,7 +354,8 @@ export const DATA = {
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
       funcao: "",
-      description: "Campeões da FECINOVA! Nossa equipe arrasou na categoria Multidisciplinar do Nível Médio, com um projeto inovador que promove a inclusão social e a acessibilidade para diversas pessoas em um sistema EAD.",
+      description:
+        "Campeões da FECINOVA! Nossa equipe arrasou na categoria Multidisciplinar do Nível Médio, com um projeto inovador que promove a inclusão social e a acessibilidade para diversas pessoas em um sistema EAD.",
       image: "/IF.png",
       links: [],
     },
@@ -362,7 +364,8 @@ export const DATA = {
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
       funcao: "",
-      description: "Direto para a MOSTRATEC! Nosso projeto, vencedor da FECINOVA, representou nosso instituto na maior feira de ciências da América Latina. ",
+      description:
+        "Direto para a MOSTRATEC! Nosso projeto, vencedor da FECINOVA, representou nosso instituto na maior feira de ciências da América Latina. ",
       image: "/IF.png",
       links: [],
     },
@@ -371,7 +374,8 @@ export const DATA = {
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
       funcao: "",
-      description: "Campeões absolutos da FECINOVA! Nosso projeto foi eleito o melhor do nível médio. Que orgulho!",
+      description:
+        "Campeões absolutos da FECINOVA! Nosso projeto foi eleito o melhor do nível médio. Que orgulho!",
       icon: "public",
       image: "/IF.png",
       links: [],
