@@ -19,7 +19,6 @@ export const DATA = {
     "Next.js",
     "Node.js",
     "Express.js",
-    "Framer Motion",
     "Vercel",
     "Vite",
     "Webpack",
