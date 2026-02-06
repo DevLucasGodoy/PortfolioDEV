@@ -387,7 +387,7 @@ export default function Page() {
                       className="font-semibold border-2 hover:bg-secondary transition-all duration-300 hover:scale-105 group"
                     >
                       <Link
-                        href="/Currículo Oficial (Lucas Godoy).pdf"
+                        href="/Lucas_Godoy(CurrIculo).pdf"
                         download="Lucas_Godoy_Curriculo.pdf"
                       >
                         <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
