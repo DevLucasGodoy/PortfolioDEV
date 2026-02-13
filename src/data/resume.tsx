@@ -7,9 +7,10 @@ export const DATA = {
   url: "https://devlucasgodoy.vercel.app/",
   location: "Nova Andradina, MS",
   locationLink: "https://www.google.com/maps/place/novaandradina",
-  description: "Analista de Sistemas | Desenvolvedor Full-Stack",
+  description:
+    "Analista de Sistemas Sênior | Coordenador de Implantação de ERP | Desenvolvedor Fullstack Pleno",
   summary:
-    "Desde do meu primeiro contato com o desenvolvimento de novas aplicações eu me senti fascinado com esse novo mundo que me foi apresentado. A partir daí eu me empenhei muito, e ainda continuo, em estudar muito para entender tudo sobre o desenvolvimento de aplicações web. Cursar o ensino médio junto com o técnico me ajudou muito a me desenvolver. Desde então todo o meu foco tem sido me aprimorar cada vez mais. Tenho como objetivo sempre me aprimorar e desenvolver novas aplicações e recursos.",
+    "Desenvolvedor Fullstack Pleno com experiência em tecnologias como React, Next.js, Node.js e Typescript. Atuo em projetos de desenvolvimento web e mobile, com foco em criar soluções eficientes e escaláveis.",
   avatarUrl: "/lucas_v2.jpeg",
   skills: [
     "Javascript",
