@@ -114,7 +114,7 @@ export default function Page() {
               <div className="space-y-6">
                 {DATA.work.map((work, id) => (
                   <BlurFade
-                    key={work.company}
+                    key={`${work.company}-${id}`}
                     delay={BLUR_FADE_DELAY * 6 + id * 0.05}
                   >
                     <div className="relative md:pl-8">
