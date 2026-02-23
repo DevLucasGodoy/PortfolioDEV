@@ -311,26 +311,6 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <ul className="mb-4 ml-4 divide-y divide-dashed border-l-2 border-primary/30">
-              {DATA.hackathons.map((project, id) => (
-                <BlurFade
-                  key={project.title + project.dates}
-                  delay={BLUR_FADE_DELAY * 15 + id * 0.05}
-                >
-                  <HackathonCard
-                    title={project.title}
-                    description={project.description}
-                    location={project.location}
-                    funcao={project.funcao}
-                    dates={project.dates}
-                    image={project.image}
-                    links={project.links}
-                  />
-                </BlurFade>
-              ))}
-            </ul>
-          </BlurFade>
         </div>
       </section>
 
@@ -373,7 +353,7 @@ export default function Page() {
                       className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
                     >
                       <Link
-                        href="mailto:devlucasgodoy@proton.me?subject=Portfolio%20-%20DevLucasGodoy"
+                        href="mailto:lucas.moraes.godoy@gmail.com?subject=Portfolio%20-%20DevLucasGodoy"
                         target="_blank"
                       >
                         <Mail className="mr-2 h-5 w-5" />
@@ -387,7 +367,7 @@ export default function Page() {
                       className="font-semibold border-2 hover:bg-secondary transition-all duration-300 hover:scale-105 group"
                     >
                       <Link
-                        href="/Lucas_Godoy(CurrIculo).pdf"
+                        href="/LucasGodoy(Curriculo_DEV).pdf"
                         download="Lucas_Godoy_Curriculo.pdf"
                       >
                         <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
