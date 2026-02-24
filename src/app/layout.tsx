@@ -138,12 +138,8 @@ export default function RootLayout({
 
             {/* Container principal */}
             <div className="relative">
-              {/* Navbar fixa no topo com glassmorphism */}
-              <div className="sticky top-0 z-50 w-full border-b border-border/50 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                  <Navbar />
-                </div>
-              </div>
+              {/* Navbar fixa no bottom */}
+              <Navbar />
 
               {/* Conteúdo principal com animação de entrada */}
               <div className="max-w-7xl mx-auto animate-fade-in">

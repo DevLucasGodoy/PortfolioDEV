@@ -47,14 +47,14 @@ export const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     {
-      href: "https://fcnews.vercel.app",
+      href: "https://editorafirstclass.vercel.app",
       icon: NotebookIcon,
       label: "Blog",
       target: "_blank",
     },
   ],
   contact: {
-    email: "devlucasgodoy@proton.me",
+    email: "lucas.moraes.godoy@gmail.com",
     tel: "+55 19 99616-8818",
     social: {
       GitHub: {
@@ -89,8 +89,14 @@ export const DATA = {
       },
       Email: {
         name: "E-mail",
-        url: "mailto:devlucasgodoy@proton.me?subject=Portfolio%20-%20DevLucasGodoy",
+        url: "mailto:lucas.moraes.godoy@gmail.com?subject=Portfolio%20-%20DevLucasGodoy",
         icon: Icons.email,
+        navbar: true,
+      },
+      Medium: {
+        name: "Medium",
+        url: "https://medium.com/@devlucasgodoy",
+        icon: Icons.medium,
         navbar: true,
       },
     },
