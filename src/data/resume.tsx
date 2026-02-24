@@ -384,7 +384,7 @@ export const DATA = {
       title: "FECINOVA | 1º Lugar na Área Multidisciplinar no Nível Médio",
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
-      funcao: "",
+      funcao: "Líder de Projeto",
       description:
         "Campeões da FECINOVA! Nossa equipe arrasou na categoria Multidisciplinar do Nível Médio, com um projeto inovador que promove a inclusão social e a acessibilidade para diversas pessoas em um sistema EAD.",
       image: "/IF.png",
@@ -394,7 +394,7 @@ export const DATA = {
       title: "FECINOVA | Credencial para MOSTRATEC",
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
-      funcao: "",
+      funcao: "Líder de Projeto",
       description:
         "Direto para a MOSTRATEC! Nosso projeto, vencedor da FECINOVA, representou nosso instituto na maior feira de ciências da América Latina. ",
       image: "/IF.png",
@@ -404,7 +404,7 @@ export const DATA = {
       title: "FECINOVA | Melhor Trabalho Geral do Nível Médio",
       dates: "Outubro de 2022",
       location: "Nova Andradina, Mato Grosso do Sul.",
-      funcao: "",
+      funcao: "Líder de Projeto",
       description:
         "Campeões absolutos da FECINOVA! Nosso projeto foi eleito o melhor do nível médio. Que orgulho!",
       icon: "public",
