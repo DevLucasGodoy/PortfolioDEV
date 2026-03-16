@@ -1,164 +1,91 @@
-# 🚀 Portfolio — Lucas Godoy
+# Magic Portfolio
 
-> Portfólio pessoal desenvolvido com Next.js, apresentando experiências, projetos, habilidades e um blog integrado.
+Magic Portfolio is a simple, clean, beginner-friendly portfolio template. It supports an MDX-based content system for projects and blog posts, an about / CV page and a gallery.
 
-🔗 **Deploy:** [devlucasgodoy.vercel.app](https://devlucasgodoy.vercel.app/)
+View the demo [here](https://demo.magic-portfolio.com).
 
----
+![Magic Portfolio](public/images/og/home.jpg)
 
-## 📋 Sobre o Projeto
+## Getting started
 
-Portfólio profissional de **Lucas Godoy**, Desenvolvedor Full-Stack com stack centrada em Node.js + Express no backend e React.js no frontend. O site apresenta:
-
-- **Hero** com apresentação e CTAs diretos
-- **Sobre** com resumo profissional em Markdown
-- **Experiência de Trabalho** com timeline interativa
-- **Formação** acadêmica e técnica
-- **Projetos em Destaque** em grid responsivo
-- **Contribuições** com trabalhos freelance e acadêmicos
-- **Contato** com link direto para e-mail e download de currículo
-- **Blog externo** integrado via link
-
----
-
-## 🛠️ Tecnologias
-
-| Categoria           | Tecnologias                                                     |
-| ------------------- | --------------------------------------------------------------- |
-| **Framework**       | Next.js 16 (App Router)                                         |
-| **Linguagem**       | TypeScript                                                      |
-| **Estilização**     | Tailwind CSS, tailwindcss-animate                               |
-| **UI Components**   | shadcn/ui, Radix UI                                             |
-| **Animações**       | Framer Motion, Magic UI (BlurFade)                              |
-| **Tipografia**      | Sora, JetBrains Mono (Google Fonts)                             |
-| **Blog / Markdown** | gray-matter, react-markdown, unified, rehype-pretty-code, Shiki |
-| **Temas**           | next-themes (dark/light mode)                                   |
-| **Ícones**          | Lucide React, Radix Icons                                       |
-| **Deploy**          | Vercel                                                          |
-
----
-
-## 📁 Estrutura do Projeto
-
+**1. Clone the repository**
 ```
-├── src/
-│   ├── app/
-│   │   ├── page.tsx          # Página principal (Home)
-│   │   ├── layout.tsx        # Layout global com Navbar e Providers
-│   │   └── globals.css       # Estilos globais e variáveis CSS
-│   ├── components/
-│   │   ├── ui/               # Componentes shadcn/ui (Badge, Button, Avatar…)
-│   │   ├── magicui/          # BlurFade, BlurFadeText
-│   │   ├── navbar.tsx
-│   │   ├── resume-card.tsx
-│   │   ├── project-card.tsx
-│   │   ├── hackathon-card.tsx
-│   │   ├── scroll-to-top.tsx
-│   │   ├── theme-provider.tsx
-│   │   └── icons.tsx
-│   ├── data/
-│   │   └── resume.tsx        # Fonte de dados central (DATA)
-│   └── lib/
-│       ├── utils.ts
-│       └── blog.ts           # Utilitários para leitura de posts MDX
-├── content/                  # Posts do blog em formato .mdx
-├── public/                   # Imagens, logos e currículo PDF
-├── tailwind.config.ts
-├── next.config.mjs
-├── postcss.config.mjs
-├── tsconfig.json
-└── vercel.json
+git clone https://github.com/once-ui-system/magic-portfolio.git
 ```
 
----
+**2. Install dependencies**
+```
+npm install
+```
 
-## ⚙️ Como Rodar Localmente
-
-**Pré-requisitos:** Node.js 18+ e npm
-
-```bash
-# 1. Clone o repositório
-git clone https://github.com/DevLucasGodoy/portfolio.git
-cd portfolio
-
-# 2. Instale as dependências
-npm install --legacy-peer-deps
-
-# 3. Inicie o servidor de desenvolvimento
+**3. Run dev server**
+```
 npm run dev
 ```
 
-Acesse [http://localhost:3000](http://localhost:3000) no navegador.
-
----
-
-## 📝 Scripts Disponíveis
-
-```bash
-npm run dev      # Inicia em modo desenvolvimento (Turbopack)
-npm run build    # Gera build de produção
-npm run start    # Inicia servidor de produção
-npm run lint     # Executa o linter
+**4. Edit config**
+```
+src/resources/once-ui.config.js
 ```
 
----
-
-## 🎨 Personalização
-
-Todos os dados pessoais (nome, experiências, projetos, habilidades, etc.) estão centralizados em um único arquivo:
-
+**5. Edit content**
 ```
-src/data/resume.tsx → objeto DATA
+src/resources/content.js
 ```
 
-Basta editar esse arquivo para atualizar qualquer informação exibida no site.
-
-As variáveis de tema (cores, bordas, raio) estão em `src/app/globals.css` usando CSS custom properties compatíveis com o sistema de temas do Tailwind.
-
----
-
-## 📄 Blog
-
-Os posts do blog são arquivos `.mdx` localizados na pasta `/content`. O utilitário `src/lib/blog.ts` faz a leitura, parseia o frontmatter com `gray-matter` e converte o Markdown para HTML com syntax highlighting via `rehype-pretty-code` + Shiki.
-
-Estrutura de um post:
-
-```mdx
----
-title: "Título do Post"
-publishedAt: "2024-01-01"
-summary: "Descrição breve"
-image: "/imagem-opcional.png"
----
-
-Conteúdo em **Markdown**...
+**6. Create blog posts / projects**
+```
+Add a new .mdx file to src/app/blog/posts or src/app/work/projects
 ```
 
----
+Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
 
-## 🚀 Deploy
+## Documentation
 
-O projeto está configurado para deploy na **Vercel**. O arquivo `vercel.json` define:
+Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfolio/quick-start)
 
-```json
-{ "installCommand": "npm install --legacy-peer-deps" }
-```
+## Features
 
-Isso garante compatibilidade de dependências no ambiente de build da Vercel.
+### Once UI
+- All tokens, components & features of [Once UI](https://once-ui.com)
 
----
+### SEO
+- Automatic open-graph and X image generation with next/og
+- Automatic schema and metadata generation based on the content file
 
-## 📬 Contato
+### Design
+- Responsive layout optimized for all screen sizes
+- Timeless design without heavy animations and motion
+- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
 
-| Canal     | Link                                                                        |
-| --------- | --------------------------------------------------------------------------- |
-| E-mail    | [devlucasgodoy@proton.me](mailto:devlucasgodoy@proton.me)                   |
-| GitHub    | [github.com/DevLucasGodoy](https://github.com/DevLucasGodoy)                |
-| LinkedIn  | [linkedin.com/in/devlucasgodoy](https://www.linkedin.com/in/devlucasgodoy/) |
-| Instagram | [@devlucasgodoy](https://www.instagram.com/devlucasgodoy/)                  |
+### Content
+- Render sections conditionally based on the content file
+- Enable or disable pages for blog, work, gallery and about / CV
+- Generate and display social links automatically
+- Set up password protection for URLs
 
----
+### Localization
+- A localized, earlier version of Magic Portfolio is available with the next-intl library
+- To use localization, switch to the 'i18n' branch
 
-## 📜 Licença
+## Creators
 
-Este projeto é de uso pessoal. Sinta-se livre para usar como referência ou inspiração para o seu próprio portfólio.
+Lorant One: [Threads](https://www.threads.net/@lorant.one) / [LinkedIn](https://www.linkedin.com/in/lorant-one/)
+
+## Get involved
+
+- Join the Design Engineers Club on [Discord](https://discord.com/invite/5EyAQ4eNdS) and share your project with us!
+- Deployed your docs? Share it on the [Once UI Hub](https://once-ui.com/hub) too! We feature our favorite apps on our landing page.
+
+## License
+
+Distributed under the CC BY-NC 4.0 License.
+- Attribution is required.
+- Commercial usage is not allowed.
+- You can extend the license to [Dopler CC](https://dopler.app/license) by purchasing a [Once UI Pro](https://once-ui.com/pricing) license.
+
+See `LICENSE.txt` for more information.
+
+## Deploy with Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&project-name=portfolio&repository-name=portfolio&redirect-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&demo-title=Magic%20Portfolio&demo-description=Showcase%20your%20designers%20or%20developer%20portfolio&demo-url=https%3A%2F%2Fdemo.magic-portfolio.com&demo-image=%2F%2Fraw.githubusercontent.com%2Fonce-ui-system%2Fmagic-portfolio%2Fmain%2Fpublic%2Fimages%2Fog%2Fhome.jpg)

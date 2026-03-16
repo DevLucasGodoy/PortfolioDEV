@@ -1,0 +1,43 @@
+---
+title: "Metrika — Dashboard de Analytics"
+publishedAt: "2024-08-20"
+summary: "Dashboard de analytics em tempo real para SaaS, com visualização de métricas de negócio, funil de conversão, retenção de usuários e relatórios automatizados."
+images:
+  - "/images/projects/metrika/cover.jpg"
+tag: "Dashboard"
+team:
+  - name: "Lucas Godoy"
+    role: "Desenvolvedor Front-end"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://linkedin.com/in/lucasgodoy"
+link: "https://metrika.app"
+---
+
+## Visão Geral
+
+**Metrika** é um dashboard de analytics focado em produtos SaaS. Em vez de expor dados brutos, o Metrika transforma números em insights acionáveis — mostrando não apenas o que está acontecendo, mas sugerindo o que fazer.
+
+## Problema
+
+Times de produto gastavam horas toda semana compilando relatórios manualmente no Excel a partir de exportações do banco de dados. Os dados chegavam atrasados e sem contexto.
+
+## Solução
+
+Um dashboard conectado diretamente às fontes de dados, com atualização em tempo real e visualizações prontas para as métricas que mais importam para SaaS:
+
+- **MRR e ARR** com projeções
+- **Churn rate** por cohort
+- **Funil de conversão** do trial ao pago
+- **DAU/MAU** e métricas de engajamento
+- **Relatórios automáticos** enviados por e-mail toda segunda-feira
+
+## Stack Técnica
+
+- **Frontend**: React, Recharts, TanStack Query
+- **Backend**: Python, FastAPI, ClickHouse
+- **Infra**: AWS ECS, CloudFront
+- **Dados**: dbt para transformação, Airbyte para ingestão
+
+## Impacto
+
+O time de produto passou de relatórios semanais manuais para monitoramento contínuo. O tempo de resposta a anomalias caiu de dias para minutos, e duas quedas de conversão foram detectadas e corrigidas antes de impactar a receita mensal.

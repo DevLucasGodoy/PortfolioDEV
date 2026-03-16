@@ -1,0 +1,49 @@
+---
+title: "AuthKit — Autenticação Open Source"
+publishedAt: "2024-11-15"
+summary: "Biblioteca open source para autenticação moderna em aplicações Node.js, com suporte a JWT, OAuth2, magic links e autenticação por passkey."
+images:
+  - "/images/projects/authkit/cover.jpg"
+tag: "Open Source"
+team:
+  - name: "Lucas Godoy"
+    role: "Autor e Mantenedor"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://linkedin.com/in/lucasgodoy"
+link: "https://github.com/lucasgodoy/authkit"
+---
+
+## Visão Geral
+
+**AuthKit** é uma biblioteca para Node.js que resolve autenticação de forma completa e sem vendor lock-in. O objetivo foi criar uma solução que fosse simples de integrar mas flexível o suficiente para casos de uso avançados.
+
+## Motivação
+
+As soluções de autenticação existentes ou eram muito simples (só JWT) ou muito complexas e caras (Auth0, Clerk). O AuthKit preenche esse meio-termo: completo, gratuito e sob controle total do desenvolvedor.
+
+## Funcionalidades
+
+- **JWT + Refresh Tokens** com rotação automática
+- **OAuth2** com suporte a Google, GitHub e qualquer provider compatível
+- **Magic Links** por e-mail
+- **Passkeys** (WebAuthn) para autenticação sem senha
+- **Rate limiting** integrado por padrão
+- **Logs de auditoria** para cada evento de autenticação
+
+## Exemplo de uso
+
+```ts
+import { AuthKit } from "authkit";
+
+const auth = new AuthKit({
+  secret: process.env.AUTH_SECRET,
+  providers: ["google", "github"],
+});
+
+app.post("/login", auth.handleLogin());
+app.post("/refresh", auth.handleRefresh());
+```
+
+## Adoção
+
+Mais de 800 estrelas no GitHub em 4 meses, com contribuições de desenvolvedores de 12 países. Utilizado em produção por 30+ projetos independentes.

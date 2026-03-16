@@ -1,0 +1,72 @@
+---
+title: "5 Recursos do TypeScript que Todo Dev Deveria Usar"
+publishedAt: "2025-02-20"
+summary: "Conheça cinco funcionalidades do TypeScript que vão além do básico e que podem transformar a qualidade e a segurança do seu código."
+tag: "TypeScript"
+image: "/images/blog/typescript-tips.jpg"
+---
+
+TypeScript vai muito além de apenas adicionar tipos ao JavaScript. Seu sistema de tipos é uma das ferramentas mais expressivas disponíveis para desenvolvedores front-end e back-end. Aqui estão cinco recursos que fazem diferença no dia a dia.
+
+## 1. Template Literal Types
+
+Você pode criar tipos baseados em combinações de strings — útil para eventos, rotas e identificadores.
+
+```ts
+type Direction = "top" | "bottom" | "left" | "right";
+type Padding = `padding-${Direction}`;
+// "padding-top" | "padding-bottom" | "padding-left" | "padding-right"
+```
+
+## 2. Infer em Tipos Condicionais
+
+O `infer` permite extrair partes de um tipo dentro de uma expressão condicional:
+
+```ts
+type ReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
+
+type Result = ReturnType<() => string>; // string
+```
+
+## 3. satisfies operator
+
+Introduzido no TS 4.9, `satisfies` valida que um valor atende a um tipo sem perder informações específicas:
+
+```ts
+const palette = {
+  red: [255, 0, 0],
+  green: "#00ff00",
+} satisfies Record<string, string | number[]>;
+
+// palette.red é number[] (não string | number[])
+palette.red.map((v) => v * 2); // ✅ funciona
+```
+
+## 4. Discriminated Unions
+
+Modelar estados com discriminated unions evita bugs de "estado impossível":
+
+```ts
+type RequestState =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: string }
+  | { status: "error"; message: string };
+```
+
+Agora o TypeScript sabe exatamente quais propriedades existem em cada caso.
+
+## 5. const Assertions
+
+Use `as const` para inferir tipos literais em vez de tipos genéricos:
+
+```ts
+const config = {
+  theme: "dark",
+  lang: "pt-BR",
+} as const;
+
+// config.theme é "dark", não string
+```
+
+Esses recursos, usados em conjunto, permitem criar código muito mais seguro e expressivo — com erros capturados em tempo de compilação antes mesmo de rodar um único teste.

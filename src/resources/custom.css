@@ -1,0 +1,20 @@
+:root {
+  /* Brand color: #00bf63 (green) */
+  /* Scale gerada a partir do hue 145° (green) */
+
+  --scheme-brand-100: #001a0d;
+  --scheme-brand-200: #00331a;
+  --scheme-brand-300: #005229;
+  --scheme-brand-400: #007a3d;
+  --scheme-brand-500: #009e51;
+  --scheme-brand-600: #00bf63;
+  --scheme-brand-700: #00e676;
+  --scheme-brand-800: #4dffa0;
+  --scheme-brand-900: #80ffbb;
+  --scheme-brand-1000: #b3ffd6;
+  --scheme-brand-1100: #d6ffec;
+  --scheme-brand-1200: #edfff5;
+  --scheme-brand-600-10: rgba(0, 191, 99, 0.1);
+  --scheme-brand-600-30: rgba(0, 191, 99, 0.3);
+  --scheme-brand-600-50: rgba(0, 191, 99, 0.5);
+}
