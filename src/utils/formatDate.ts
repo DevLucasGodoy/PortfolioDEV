@@ -12,19 +12,15 @@ export function formatDate(date: string, includeRelative = false) {
 
   let formattedDate = "";
 
-  if (yearsAgo > 0) {
-    formattedDate = `${yearsAgo}y ago`;
-  } else if (monthsAgo > 0) {
-    formattedDate = `${monthsAgo}mo ago`;
-  } else if (daysAgo > 0) {
-    formattedDate = `${daysAgo}d ago`;
-  } else {
-    formattedDate = "Today";
-  }
+  // Para:
+  formattedDate = `há ${yearsAgo} ano${yearsAgo > 1 ? "s" : ""}`;
+  formattedDate = `há ${monthsAgo} mês${monthsAgo > 1 ? "es" : ""}`;
+  formattedDate = `há ${daysAgo} dia${daysAgo > 1 ? "s" : ""}`;
+  formattedDate = "Hoje";
 
-  const fullDate = targetDate.toLocaleString("en-us", {
-    month: "long",
+  const fullDate = targetDate.toLocaleString("pt-BR", {
     day: "numeric",
+    month: "long",
     year: "numeric",
   });
 

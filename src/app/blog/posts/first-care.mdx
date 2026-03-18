@@ -1,0 +1,125 @@
+---
+title: "Como construí um sistema de gestão médica completo com React, TypeScript e Supabase"
+publishedAt: "2026-02-23"
+summary: "Uma análise técnica da arquitetura, decisões de design e os desafios reais de desenvolver software para o setor de saúde — do banco de dados ao prontuário eletrônico."
+tag: "React"
+image: "/images/blog/first-care.png"
+---
+
+Quando recebi o briefing do **First Care**, o escopo parecia claro: substituir planilhas por um sistema web. Na prática, entreguei uma plataforma com prontuários eletrônicos, agendamentos integrados ao WhatsApp, controle de acesso por role, exportação de PDFs e um sistema de cache otimizado.
+
+Este artigo é um relato técnico honesto das decisões que tomei, o porquê de cada uma delas e o que eu faria diferente.
+
+## Stack e por que escolhi cada tecnologia
+
+### React 18 + Vite + TypeScript
+
+Poderia ter usado Next.js, mas para uma SPA interna de clínica, o overhead de SSR não fazia sentido. O Vite entrega HMR instantâneo e build otimizado, e o TypeScript em `strict mode` me salvou de vários bugs em produção — especialmente nos tipos do banco de dados.
+
+### Supabase como BaaS
+
+Essa foi a decisão mais importante do projeto. O Supabase me deu:
+
+- **Autenticação pronta** com gerenciamento de sessão
+- **PostgreSQL com Row Level Security** nativo
+- **Storage** para anexos de prontuários
+- **Realtime** (não chegamos a usar, mas está disponível para v2)
+
+A alternativa seria Firebase, mas a falta de SQL real é um problema sério para um sistema com consultas relacionais complexas entre pacientes, consultas e prontuários.
+
+### Framer Motion
+
+Sistemas de saúde costumam ser visualmente pesados e frios. As animações do Framer Motion — especialmente `AnimatePresence` nas transições de modais e listagens — fizeram uma diferença real na percepção de qualidade do produto.
+
+## A arquitetura de segurança: Row Level Security
+
+Esse é o ponto técnico que mais me orgulho. Todas as políticas de acesso vivem no banco de dados, não no front-end.
+
+```sql
+-- Apenas admins acessam logs de auditoria
+CREATE POLICY "Admins can read audit logs"
+  ON audit_logs FOR SELECT TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM user_profiles
+      WHERE user_id = auth.uid() AND role = 'admin'
+    )
+  );
+```
+
+Isso garante que mesmo que alguém inspecione o código JavaScript, nunca conseguirá acessar dados fora do seu role. A segurança é garantida na camada de banco, não de apresentação.
+
+O desafio foi a política da tabela `user_profiles`: a política inicial era recursiva e impedia o próprio usuário de ler seu perfil após o login. Resolvi com uma migration dedicada (`fix_user_profiles_rls.sql`) separando a política de `SELECT` da de `ALL`.
+
+## Cache otimizado para prontuários
+
+Prontuários são o dado mais acessado do sistema. Para evitar requisições repetidas ao Supabase a cada navegação, implementei uma classe de cache simples com TTL:
+
+```ts
+class MedicalRecordsCache {
+  private data: MedicalRecord[] | null = null;
+  private timestamp = 0;
+  private readonly TTL = 30000; // 30 segundos
+
+  isValid(): boolean {
+    return this.data !== null && Date.now() - this.timestamp < this.TTL;
+  }
+
+  set(data: MedicalRecord[]): void {
+    this.data = data;
+    this.timestamp = Date.now();
+  }
+
+  updateRecord(id: string, updates: Partial<MedicalRecord>): void {
+    if (!this.data) return;
+    this.data = this.data.map((r) => (r.id === id ? { ...r, ...updates } : r));
+  }
+}
+```
+
+O cache é atualizado localmente nas operações de escrita (optimistic update), sem precisar recarregar tudo do banco. O resultado: resposta praticamente instantânea para o usuário, com sincronização garantida a cada 30 segundos.
+
+## O prontuário eletrônico — o módulo mais complexo
+
+O `MedicalRecords.tsx` tem quase 10 mil linhas. Não porque o código seja ruim — é porque o prontuário eletrônico é genuinamente complexo. Ele suporta:
+
+- Dados clínicos estruturados (anamnese, exame físico, diagnóstico, prescrição, sinais vitais)
+- Dados de triagem e rastreamento metabólico em JSONB
+- Relatório de biorressonância
+- Anexos de arquivos (upload direto para o Supabase Storage)
+- Gravação de áudio diretamente no navegador via `MediaRecorder API`
+- Exportação em PDF usando `jsPDF` + `html2canvas`
+- Visualização em modo lista e modo card com filtros avançados
+
+O maior aprendizado aqui foi separar o componente em partes menores com `memo` e `useMemo` para evitar re-renders desnecessários numa lista que pode ter centenas de prontuários.
+
+## Sistema de notificações global
+
+Em vez de usar uma biblioteca como `react-hot-toast`, construí um sistema próprio com Context API:
+
+```tsx
+const { success, error, warning, confirm } = useNotification();
+
+// Uso simples em qualquer componente
+confirm({
+  title: "Excluir prontuário",
+  message: "Esta ação não pode ser desfeita.",
+  onConfirm: () => handleDelete(id),
+});
+```
+
+O `confirm()` abre um modal bloqueante com suporte a `Escape` para cancelar. Simples, sem dependências extras e totalmente sob controle.
+
+## O que eu faria diferente
+
+**1. Separar o `MedicalRecords.tsx` em sub-componentes desde o início.** Cresceu orgânico demais. Hoje refatoraria para ter um componente de lista, um de formulário e um de visualização separados desde a primeira linha.
+
+**2. Usar React Query em vez de cache manual.** A solução que entreguei funciona, mas o React Query resolveria cache, invalidação, refetch e estados de loading com muito menos código.
+
+**3. Implementar testes desde o início.** Com Zod para validação já configurado, adicionar Vitest para testes unitários seria simples e teria me economizado horas de debug.
+
+## Conclusão
+
+Construir software para saúde é diferente. Os dados são sensíveis, os usuários têm baixa tolerância a bugs e a margem para erro é mínima. Cada decisão técnica — desde o RLS até o cache — tinha impacto real em pacientes reais.
+
+O First Care está em produção, sendo usado diariamente. E essa, no fim, é a métrica que importa.

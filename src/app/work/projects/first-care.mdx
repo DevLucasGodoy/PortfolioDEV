@@ -1,0 +1,69 @@
+---
+title: "First Care"
+publishedAt: "2026-03-18"
+summary: "Plataforma completa de gestão médica com prontuários eletrônicos, agendamentos, controle de usuários e análise bioenergética, integrada ao Supabase com autenticação e segurança por Row Level Security."
+images:
+  - "/images/projects/first-care.png"
+tag: "SaaS"
+team:
+  - name: "Lucas Godoy"
+    role: "Desenvolvedor Full-Stack"
+    avatar: "/images/avatar.JPEG"
+    linkedIn: "https://linkedin.com/in/lucasgodoy"
+link: "https://github.com/DevLucasGodoy/first-care"
+---
+
+## Visão Geral
+
+**First Care** é uma plataforma web SPA voltada para clínicas e profissionais de saúde, com o objetivo de centralizar todo o fluxo de atendimento em uma interface fluida, segura e intuitiva. Do cadastro de pacientes à geração de relatórios, o sistema oferece controle completo sobre as operações clínicas com suporte a múltiplos perfis de acesso.
+
+_"Atendimento inteligente, simples e humano."_
+
+## Problema
+
+Clínicas e profissionais de saúde frequentemente operam com processos fragmentados — fichas físicas, planilhas avulsas, ferramentas desconectadas para agendamento e prontuários. Isso resulta em retrabalho, falta de rastreabilidade e riscos à qualidade do atendimento.
+
+## Solução
+
+Uma plataforma integrada que reúne todos os módulos essenciais da gestão clínica em um único lugar:
+
+- **Dashboard** com métricas em tempo real, mini-calendário, lembretes do dia e consultas próximas
+- **Pacientes** com CRUD completo, busca por nome ou CPF, histórico médico, endereço e contatos
+- **Agendamentos** com controle de status, integração via WhatsApp para confirmação e visualização financeira
+- **Prontuários eletrônicos** completos com anamnese, diagnóstico, prescrição, sinais vitais, rastreamento metabólico, relatório de biorressonância, anexos e gravações de áudio
+- **Usuários** com gestão por role (médico, enfermeiro, terapeuta, admin), ativação e redefinição de senha
+- **Busca avançada** cross-entity para pesquisar pacientes, consultas e prontuários em uma única consulta
+- **Relatórios** com análises e exportação de dados
+- **Lembretes** com prioridade, tipo e vinculação a pacientes ou consultas
+- **Notificações** via sistema de toast e diálogo de confirmação global
+
+## Stack Técnica
+
+- **Frontend**: React 18, TypeScript (strict mode), Vite, Tailwind CSS, Framer Motion
+- **Backend / BaaS**: Supabase (Auth, PostgreSQL, Storage, RLS)
+- **Roteamento**: React Router DOM v7
+- **Exportação**: jsPDF + jsPDF-AutoTable para PDF, SheetJS para Excel
+- **Utilitários**: date-fns, Zod, crypto-js, bcryptjs, Lucide React
+- **Fontes**: Inter (corpo), Poppins (títulos)
+
+## Banco de Dados
+
+O banco é gerenciado pelo Supabase com Row Level Security habilitado em todas as tabelas. A estrutura contempla perfis de usuários, cadastro de pacientes com dados em JSONB, consultas, prontuários eletrônicos com campos bioenergéticos, documentos vinculados e log completo de auditoria.
+
+O controle de acesso é feito por roles: `admin` tem acesso total, enquanto `doctor`, `nurse` e `therapist` têm leitura e escrita nos módulos clínicos principais.
+
+## Autenticação e Segurança
+
+O sistema utiliza o Supabase Auth integrado a um hook customizado `useSupabaseAuth`. Após o login com e-mail e senha, o perfil do usuário é recuperado da tabela `user_profiles` e seu role define o que é visível e editável — tanto via RLS no banco quanto por condicionais no frontend. O logout invalida a sessão no Supabase e limpa o estado local.
+
+## Cache de Prontuários
+
+O `App.tsx` implementa um cache com TTL de 30 segundos para evitar requisições desnecessárias ao banco. O cache é invalidado automaticamente no logout, atualizado localmente nas operações de escrita (optimistic update) e protegido com rate limit de 2 segundos entre carregamentos.
+
+## Design System
+
+O projeto utiliza uma paleta personalizada `first-care` definida no Tailwind, baseada nas cores da identidade visual da marca — turquesa principal `#2ec4b6` e azul escuro `#0f4c5c`. Classes utilitárias globais como `.card`, `.btn-primary`, `.badge` e variantes de status estão disponíveis em `index.css`.
+
+## Impacto
+
+O First Care eliminou a necessidade de múltiplos sistemas desconectados no cotidiano clínico, centralizando o atendimento desde o agendamento até o prontuário completo. A visibilidade em tempo real sobre consultas e métricas operacionais permite uma gestão mais ágil, segura e baseada em dados.
