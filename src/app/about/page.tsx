@@ -6,6 +6,7 @@ import {
   Icon,
   IconButton,
   Media,
+  RevealFx,
   Tag,
   Text,
   Meta,
@@ -77,40 +78,40 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Row fillWidth s={{ direction: "column" }} horizontal="center">
+      <Column fillWidth horizontal="center">
         {about.avatar.display && (
-          <Column
-            className={styles.avatar}
-            top="64"
-            fitHeight
-            position="sticky"
-            s={{ position: "relative", style: { top: "auto" } }}
-            xs={{ style: { top: "auto" } }}
-            minWidth="160"
-            paddingX="l"
-            paddingBottom="xl"
-            gap="m"
-            flex={3}
-            horizontal="center"
-          >
-            <Avatar src={person.avatar} size="xl" />
-            <Row gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              {/* {person.location} */}
-              Nova Andradina, MS
-            </Row>
-            {person.languages && person.languages.length > 0 && (
-              <Row wrap gap="8">
-                {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
-                    {language}
-                  </Tag>
-                ))}
+          <RevealFx fillWidth horizontal="center">
+            <Column
+              className={styles.avatar}
+              paddingX="l"
+              paddingBottom="xl"
+              gap="m"
+              horizontal="center"
+              align="center"
+            >
+              <Avatar src={person.avatar} size="l" />
+              <Row gap="8" vertical="center">
+                <Icon onBackground="accent-weak" name="globe" />
+                Dourados, MS
               </Row>
-            )}
-          </Column>
+              {person.languages && person.languages.length > 0 && (
+                <Row wrap gap="8" horizontal="center">
+                  {person.languages.map((language, index) => (
+                    <Tag key={index} size="l">
+                      {language}
+                    </Tag>
+                  ))}
+                </Row>
+              )}
+            </Column>
+          </RevealFx>
         )}
-        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+        <Column
+          className={styles.blockAlign}
+          maxWidth={40}
+          horizontal="center"
+          align="center"
+        >
           <Column
             id={about.intro.title}
             fillWidth
@@ -202,27 +203,35 @@ export default function About() {
           </Column>
 
           {about.intro.display && (
-            <Column
-              textVariant="body-default-l"
-              fillWidth
-              gap="m"
-              marginBottom="xl"
-            >
-              {about.intro.description}
-            </Column>
+            <RevealFx translateY="8" fillWidth>
+              <Column
+                textVariant="body-default-l"
+                fillWidth
+                gap="m"
+                marginBottom="xl"
+              >
+                {about.intro.description}
+              </Column>
+            </RevealFx>
           )}
 
           {about.work.display && (
-            <>
+            <RevealFx translateY="8" delay={0.1} fillWidth>
               <Heading
                 as="h2"
                 id={about.work.title}
                 variant="display-strong-s"
                 marginBottom="m"
+                className={styles.leftAlign}
               >
                 {about.work.title}
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
+              <Column
+                fillWidth
+                gap="l"
+                marginBottom="40"
+                className={styles.leftAlign}
+              >
                 {about.work.experiences.map((experience, index) => (
                   <Column
                     key={`${experience.company}-${experience.role}-${index}`}
@@ -294,20 +303,26 @@ export default function About() {
                   </Column>
                 ))}
               </Column>
-            </>
+            </RevealFx>
           )}
 
           {about.studies.display && (
-            <>
+            <RevealFx translateY="8" delay={0.2} fillWidth>
               <Heading
                 as="h2"
                 id={about.studies.title}
                 variant="display-strong-s"
                 marginBottom="m"
+                className={styles.leftAlign}
               >
                 {about.studies.title}
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
+              <Column
+                fillWidth
+                gap="l"
+                marginBottom="40"
+                className={styles.leftAlign}
+              >
                 {about.studies.institutions.map((institution, index) => (
                   <Column
                     key={`${institution.name}-${index}`}
@@ -326,20 +341,21 @@ export default function About() {
                   </Column>
                 ))}
               </Column>
-            </>
+            </RevealFx>
           )}
 
           {about.technical.display && (
-            <>
+            <RevealFx translateY="8" delay={0.3} fillWidth>
               <Heading
                 as="h2"
                 id={about.technical.title}
                 variant="display-strong-s"
                 marginBottom="40"
+                className={styles.leftAlign}
               >
                 {about.technical.title}
               </Heading>
-              <Column fillWidth gap="l">
+              <Column fillWidth gap="l" className={styles.leftAlign}>
                 {about.technical.skills.map((skill, index) => (
                   <Column key={`${skill}-${index}`} fillWidth gap="4">
                     <Text id={skill.title} variant="heading-strong-l">
@@ -349,7 +365,7 @@ export default function About() {
                       {skill.description}
                     </Text>
                     {skill.tags && skill.tags.length > 0 && (
-                      <Row wrap gap="8" paddingTop="8">
+                      <Row wrap gap="8" paddingTop="8" horizontal="start">
                         {skill.tags.map((tag, tagIndex) => (
                           <Tag
                             key={`${skill.title}-${tagIndex}`}
@@ -385,10 +401,10 @@ export default function About() {
                   </Column>
                 ))}
               </Column>
-            </>
+            </RevealFx>
           )}
         </Column>
-      </Row>
+      </Column>
     </Column>
   );
 }
