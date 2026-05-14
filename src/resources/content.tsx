@@ -13,10 +13,10 @@ const person: Person = {
   firstName: "Lucas",
   lastName: "Godoy",
   name: `Lucas Godoy`,
-  role: "Desenvolvedor Full-Stack",
+  role: "Desenvolvedor Senior · CEO & Fundador",
   avatar: "/images/avatar.jpeg",
   email: "lucas.moraes.godoy@gmail.com",
-  location: "America/Cuiaba", // IANA time zone identifier — Três Lagoas, MS
+  location: "America/Campo_Grande", // IANA — Dourados, MS
   languages: ["Português", "Inglês", "Espanhol"],
 };
 
@@ -25,8 +25,9 @@ const newsletter: Newsletter = {
   title: <>Entre em Contato</>,
   description: (
     <>
-      Quer bater um papo? Basta me enviar uma mensagem com uma pergunta pelo meu
-      e-mail. Responderei sempre que puder.
+      Tem um projeto em mente, oportunidade de parceria ou só quer trocar uma
+      ideia sobre tecnologia? Preencha o formulário abaixo — respondo o mais
+      breve possível.
     </>
   ),
 };
@@ -62,8 +63,8 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `Portfólio - Desenvolvedor Full-Stack`,
-  description: `Portfólio pessoal do desenvolvedor Full-Stack ${person.role}.`,
+  title: `Portfólio - Desenvolvedor Senior & Empreendedor`,
+  description: `Portfólio pessoal de ${person.name}, ${person.role}.`,
   headline: <>Transformando ideias em produtos digitais reais</>,
   featured: {
     display: true,
@@ -72,11 +73,11 @@ const home: Home = {
   },
   subline: (
     <>
-      Sou Lucas, Desenvolvedor Full-Stack com stack em{" "}
-      <strong>Node.js + React</strong>, mais de{" "}
-      <strong>20 projetos entregues</strong> para clientes reais e experiência
-      como Analista e Coordenador de Implantação de ERP na{" "}
-      <strong>Ganso Sistemas</strong>.
+      Sou Lucas, Desenvolvedor Senior, CEO & Fundador da{" "}
+      <strong>First Class Dev</strong> e Sócio & Head de Tecnologia na{" "}
+      <strong>TG Distribuidora</strong>. Construo sistemas web e produtos{" "}
+      <strong>SaaS</strong> com Node.js, React e Next.js — com integrações a
+      ERPs e foco em escalabilidade.
     </>
   ),
 };
@@ -85,7 +86,7 @@ const about: About = {
   path: "/about",
   label: "Sobre",
   title: `Sobre – ${person.name}`,
-  description: `Encontre ${person.name}, ${person.role} em Três Lagoas, MS`,
+  description: `Conheça ${person.name}, ${person.role} em Dourados, MS`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -102,13 +103,16 @@ const about: About = {
     title: "Resumo Profissional",
     description: (
       <>
-        Dev Full-Stack com stack definida em Node.js + Express no backend e
-        React.js no frontend, banco de dados relacional (PostgreSQL/MySQL) e
-        deploy em produção via AWS, Vercel e Railway. Mais de 20 projetos
-        entregues para clientes reais. Paralelamente, atuo como Analista e
-        Coordenador de Implantação de ERP na Ganso Sistemas, onde desenvolvo em
-        Pascal/Delphi, otimizo banco de dados e gerencio projetos técnicos ponta
-        a ponta.
+        Desenvolvedor senior e empreendedor, atuando na interseção entre
+        tecnologia e negócio. Atualmente sou CEO e fundador da First Class Dev,
+        onde entrego soluções web e produtos digitais focados em eficiência,
+        escalabilidade e geração de valor. Em paralelo, atuo como Sócio e Head
+        de Tecnologia na TG Distribuidora, liderando a transformação digital
+        do negócio através da criação de sistemas internos, dashboards
+        estratégicos e novos produtos SaaS. Tenho experiência sólida em
+        aplicações modernas, integrações com ERPs e arquiteturas escaláveis —
+        sempre conectando tecnologia à estratégia para gerar impacto direto
+        nos resultados.
       </>
     ),
   },
@@ -117,53 +121,87 @@ const about: About = {
     title: "Experiência Profissional",
     experiences: [
       {
-        company: "First Class Dev (Fundador e CEO)",
-        timeframe: "Fev 2021 - Presente",
-        role: "Desenvolvedor Full-Stack",
+        company: "TG Distribuidora",
+        timeframe: "Mar 2026 - Presente",
+        role: "Sócio & Head de Tecnologia",
         achievements: [
           <>
-            Fundei empresa própria de desenvolvimento atendendo clientes de
-            varejo, serviços e indústria.
+            Sócio responsável pela área de tecnologia e inovação, liderando a
+            transformação digital do negócio.
           </>,
           <>
-            Stack principal: Node.js + Express (backend) · React.js + Tailwind
-            (frontend) · PostgreSQL/MySQL/MongoDB.
+            Desenvolvimento de sistemas internos e dashboards estratégicos
+            para otimização de processos e tomada de decisão baseada em dados.
           </>,
           <>
-            Ciclo completo: requisitos → Figma → código → testes (Jest/Cypress)
-            → deploy (AWS, Vercel, Railway) → manutenção.
+            Integração com ERP e automação de processos críticos, conectando
+            operação a uma camada única de dados.
           </>,
           <>
-            20+ projetos entregues em produção — sistemas de gestão,
-            e-commerces, dashboards e landing pages — com índice de satisfação
-            superior a 90%.
+            Estruturação de produtos digitais escaláveis com potencial de
+            comercialização (SaaS) como novas fontes de receita.
+          </>,
+          <>
+            Definição de arquitetura, escolha de stack e atuação hands-on como
+            desenvolvedor senior.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "First Class Dev",
+        timeframe: "Jan 2021 - Presente",
+        role: "CEO & Fundador",
+        achievements: [
+          <>
+            Fundador de software house especializada em desenvolvimento de
+            soluções web e produtos digitais (SaaS).
+          </>,
+          <>
+            Liderança estratégica e técnica: criação de sistemas sob medida,
+            validação de ideias e desenvolvimento de produtos escaláveis.
+          </>,
+          <>
+            Stack principal: Node.js + Express, React.js + Next.js,
+            PostgreSQL/MySQL/MongoDB, deploy em AWS, Vercel e Railway.
+          </>,
+          <>
+            20+ projetos entregues em produção: sistemas de gestão,
+            e-commerces, dashboards e SaaS — com índice de satisfação superior
+            a 90%.
+          </>,
+          <>
+            Integrações com APIs e ERPs, arquitetura de software e banco de
+            dados, apoio estratégico a clientes na digitalização de processos.
           </>,
         ],
         images: [],
       },
       {
         company: "Ganso Sistemas",
-        timeframe: "Jun 2025 - Jan 2026",
-        role: "Analista e Coordenador de Implantação de ERP",
+        timeframe: "Jun 2025 - Fev 2026",
+        role: "Analista de Implantação",
         achievements: [
           <>
-            Coordenei 16+ projetos de implantação ERP ponta a ponta (kickoff →
-            go-live).
+            Coordenei 16+ projetos de implantação de ERP ponta a ponta
+            (planejamento → go-live), incluindo instalação, configuração e
+            migrações entre ambientes locais e cloud.
           </>,
           <>
-            Desenvolvi customizações em Pascal/Delphi integrando APIs externas e
-            automatizando processos.
+            Customizações em Pascal/Delphi e administração de banco Firebird,
+            com ganho de 50% em performance via otimização de queries.
           </>,
           <>
-            Otimizei banco de dados Firebird com ganho de 50% em performance.
+            Integrações bancárias (CNAB) e fiscais completas (NF-e, NFC-e,
+            NFS-e, CT-e, MDF-e, SPED).
           </>,
           <>
-            Configurei integrações fiscais completas (NF-e, NFC-e, NFS-e, CT-e,
-            MDF-e, SPED, CNAB).
+            100+ relatórios criados em Fast Report (KPIs, fiscal, gerencial) e
+            treinamentos técnicos para equipes de até 10 usuários.
           </>,
           <>
-            Criei 100+ relatórios em Fast Report (KPIs, fiscal, gerencial) e
-            ministrei treinamentos técnicos para equipes de até 10 usuários.
+            Estratégias de backup, recuperação e gestão de infraestrutura de
+            servidores garantindo integridade e continuidade operacional.
           </>,
         ],
         images: [],
@@ -174,16 +212,17 @@ const about: About = {
         role: "Analista de Suporte N2",
         achievements: [
           <>
-            Resolvi incidentes críticos (produção parada, falhas fiscais) com
-            tempo médio de resolução inferior a 4 horas.
+            Diagnóstico e resolução de incidentes complexos em ERP com tempo
+            médio de resolução inferior a 4 horas.
           </>,
           <>
-            Documentei 200+ atendimentos no CRM Salesforce, criando base de
-            conhecimento que acelerou resoluções futuras.
+            Documentação estruturada de 200+ atendimentos no CRM Salesforce,
+            criando base de conhecimento que acelerou resoluções futuras.
           </>,
           <>
-            Suporte especializado em NF-e, NFC-e, SPED, certificados digitais e
-            conformidade tributária.
+            Suporte avançado em processos fiscais (NF-e, NFC-e, NFS-e, MDF-e),
+            criação de layouts/relatórios customizados e gestão de
+            permissões.
           </>,
         ],
         images: [],
@@ -194,33 +233,48 @@ const about: About = {
         role: "Analista de Suporte N1",
         achievements: [
           <>
-            30+ chamados diários via telefone, e-mail e chat com SLA de resposta
-            inferior a 30 minutos.
+            30+ chamados diários (telefone, e-mail, chat) com SLA de resposta
+            inferior a 30 minutos e CSAT de 92%.
           </>,
           <>
-            CSAT de 92% através de atendimento humanizado e resolução eficiente.
+            Suporte humanizado em emissão de documentos fiscais (NF-e, NFC-e,
+            NFS-e, MDF-e) e parametrizações tributárias (CST, NCM, CFOP).
           </>,
           <>
-            Auxiliei clientes em parametrizações fiscais (CSTs, NCMs, CFOP) e
-            emissão de documentos eletrônicos.
+            Elaboração de manuais e materiais de treinamento, gestão de
+            perfis de acesso e permissões.
           </>,
         ],
         images: [],
       },
       {
-        company: "Instituto Federal de Mato Grosso do Sul",
+        company: "Ganso Sistemas",
+        timeframe: "Set 2022 - Dez 2022",
+        role: "Estágio · Analista de Suporte",
+        achievements: [
+          <>
+            Estágio inicial em suporte técnico de ERP — base para a trajetória
+            de N1 → N2 → Implantação na empresa.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Instituto Federal de Mato Grosso do Sul (IFMS)",
         timeframe: "Mar 2021 - Dez 2023",
         role: "Técnico em Informática",
         achievements: [
           <>
-            Gestão completa da infraestrutura de TI: 150+ estações de trabalho,
-            5 servidores e 20 impressoras de rede.
+            Gestão da infraestrutura de TI da instituição: estações de
+            trabalho, servidores e impressoras de rede.
           </>,
           <>
-            Administração de rede LAN/WAN com configuração de switches, VLANs,
-            DHCP, DNS, firewall e políticas de segurança.
+            Instalação e configuração de hardware e software, administração da
+            rede interna e políticas de segurança de dados.
           </>,
-          <>Suporte técnico a professores, alunos e equipe administrativa.</>,
+          <>
+            Suporte técnico a professores, alunos e equipe administrativa.
+          </>,
         ],
         images: [],
       },
@@ -234,17 +288,17 @@ const about: About = {
         name: "UNIASSELVI",
         description: (
           <>
-            Graduação em Análise e Desenvolvimento de Sistemas (Jul 2023 -
-            Hoje).
+            Tecnólogo em Análise e Desenvolvimento de Sistemas (Set 2023 - Dez
+            2025).
           </>
         ),
       },
       {
-        name: "Instituto Federal de Mato Grosso do Sul",
+        name: "Instituto Federal de Mato Grosso do Sul (IFMS)",
         description: (
           <>
-            Técnico em Informática — Ensino Médio Integrado (Jul 2019 - Dez
-            2023).
+            Ensino Médio Técnico Integrado em Análise e Desenvolvimento de
+            Sistemas (Jul 2019 - Dez 2023).
           </>
         ),
       },
@@ -264,8 +318,8 @@ const about: About = {
         title: "Backend",
         description: (
           <>
-            Desenvolvimento de APIs RESTful robustas com Node.js, Express.js e
-            autenticação JWT.
+            APIs RESTful robustas com Node.js, Express.js e autenticação JWT.
+            Também atuo com customizações Pascal/Delphi em sistemas legados.
           </>
         ),
         tags: [
@@ -280,7 +334,8 @@ const about: About = {
         title: "Frontend",
         description: (
           <>
-            Interfaces modernas e responsivas com React, Next.js e Tailwind CSS.
+            Interfaces modernas e responsivas com React, Next.js e Tailwind
+            CSS.
           </>
         ),
         tags: [
@@ -296,7 +351,8 @@ const about: About = {
         description: (
           <>
             Modelagem e otimização de bancos relacionais e não-relacionais:
-            PostgreSQL, MySQL, MongoDB e Firebird.
+            PostgreSQL, MySQL, MongoDB e Firebird (com expertise em performance
+            tuning).
           </>
         ),
         tags: [
@@ -311,7 +367,7 @@ const about: About = {
         description: (
           <>
             Deploy em produção com AWS, Vercel e Railway. Conteinerização com
-            Docker e versionamento com Git/GitHub.
+            Docker, versionamento Git/GitHub e estratégias de backup/recovery.
           </>
         ),
         tags: [
@@ -319,6 +375,18 @@ const about: About = {
           { name: "Docker", icon: "docker" },
           { name: "Git", icon: "git" },
         ],
+        images: [],
+      },
+      {
+        title: "Integrações & Fiscal",
+        description: (
+          <>
+            Integrações com ERPs e APIs externas, automação de processos e
+            domínio em obrigações fiscais brasileiras: NF-e, NFC-e, NFS-e,
+            CT-e, MDF-e, SPED e CNAB bancário.
+          </>
+        ),
+        tags: [],
         images: [],
       },
     ],
