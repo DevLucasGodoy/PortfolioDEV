@@ -1,15 +1,17 @@
 import {
-  Heading,
-  Text,
-  Button,
   Avatar,
-  RevealFx,
-  Column,
   Badge,
+  Button,
+  Column,
+  Heading,
+  Icon,
+  Line,
+  Meta,
+  RevealFx,
   Row,
   Schema,
-  Meta,
-  Line,
+  SmartLink,
+  Text,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
@@ -42,16 +44,27 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth horizontal="center" gap="m">
-        <Column maxWidth="s" horizontal="center" align="center">
+
+      <Column
+        id="hero"
+        fillWidth
+        horizontal="center"
+        vertical="between"
+        align="center"
+        paddingY="xl"
+        style={{ minHeight: "calc(100vh - 80px)" }}
+      >
+        <div style={{ flex: 1 }} />
+
+        <Column
+          maxWidth="s"
+          horizontal="center"
+          align="center"
+          gap="20"
+          paddingX="m"
+        >
           {home.featured.display && (
-            <RevealFx
-              fillWidth
-              horizontal="center"
-              paddingTop="16"
-              paddingBottom="32"
-              paddingLeft="12"
-            >
+            <RevealFx fillWidth horizontal="center">
               <Badge
                 background="brand-alpha-weak"
                 paddingX="12"
@@ -65,37 +78,21 @@ export default function Home() {
               </Badge>
             </RevealFx>
           )}
-          <RevealFx
-            translateY="4"
-            fillWidth
-            horizontal="center"
-            paddingBottom="16"
-          >
-            <Heading wrap="balance" variant="display-strong-l">
+          <RevealFx translateY="4" fillWidth horizontal="center">
+            <Heading wrap="balance" variant="display-strong-xl">
               {home.headline}
             </Heading>
           </RevealFx>
-          <RevealFx
-            translateY="8"
-            delay={0.2}
-            fillWidth
-            horizontal="center"
-            paddingBottom="32"
-          >
+          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center">
             <Text
               wrap="balance"
               onBackground="neutral-weak"
-              variant="heading-default-xl"
+              variant="heading-default-l"
             >
               {home.subline}
             </Text>
           </RevealFx>
-          <RevealFx
-            paddingTop="12"
-            delay={0.4}
-            horizontal="center"
-            paddingLeft="12"
-          >
+          <RevealFx delay={0.4} horizontal="center" paddingTop="12">
             <Button
               id="about"
               data-border="rounded"
@@ -119,32 +116,86 @@ export default function Home() {
             </Button>
           </RevealFx>
         </Column>
-      </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
-      {routes["/blog"] && (
-        <Column fillWidth gap="24" marginBottom="l">
-          <Row fillWidth paddingRight="64">
-            <Line maxWidth={48} />
-          </Row>
-          <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
-            <Row flex={1} paddingLeft="l" paddingTop="24">
-              <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                Últimas do meu blog...
-              </Heading>
-            </Row>
-            <Row flex={3} paddingX="20">
-              <Posts range={[1, 2]} columns="2" />
-            </Row>
-          </Row>
-          <Row fillWidth paddingLeft="64" horizontal="end">
-            <Line maxWidth={48} />
-          </Row>
+
+        <Column
+          fillWidth
+          horizontal="center"
+          style={{ flex: 1, justifyContent: "flex-end" }}
+          paddingTop="xl"
+        >
+          <RevealFx delay={1} fillWidth horizontal="center">
+            <SmartLink href="#projects" unstyled>
+              <Column
+                className="scroll-indicator"
+                horizontal="center"
+                align="center"
+                gap="4"
+              >
+                <Text
+                  variant="label-default-xs"
+                  onBackground="neutral-weak"
+                  align="center"
+                >
+                  Role para ver mais
+                </Text>
+                <Icon
+                  name="chevronDown"
+                  onBackground="neutral-weak"
+                  size="s"
+                />
+              </Column>
+            </SmartLink>
+          </RevealFx>
         </Column>
-      )}
-      <Projects range={[2]} />
-      <Mailchimp />
+      </Column>
+
+      <Column
+        id="projects"
+        fillWidth
+        horizontal="center"
+        maxWidth="s"
+        gap="xl"
+      >
+        <RevealFx translateY="16">
+          <Projects range={[1, 1]} />
+        </RevealFx>
+
+        {routes["/blog"] && (
+          <RevealFx translateY="12" delay={0.1} fillWidth>
+            <Column fillWidth gap="24" marginBottom="l">
+              <Row fillWidth paddingRight="64">
+                <Line maxWidth={48} />
+              </Row>
+              <Row
+                fillWidth
+                gap="24"
+                marginTop="40"
+                s={{ direction: "column" }}
+              >
+                <Row flex={1} paddingLeft="l" paddingTop="24">
+                  <Heading as="h2" variant="display-strong-xs" wrap="balance">
+                    Últimas do meu blog...
+                  </Heading>
+                </Row>
+                <Row flex={3} paddingX="20">
+                  <Posts range={[1, 2]} columns="2" />
+                </Row>
+              </Row>
+              <Row fillWidth paddingLeft="64" horizontal="end">
+                <Line maxWidth={48} />
+              </Row>
+            </Column>
+          </RevealFx>
+        )}
+
+        <RevealFx translateY="12" delay={0.1}>
+          <Projects range={[2]} />
+        </RevealFx>
+
+        <RevealFx translateY="8" delay={0.1} fillWidth>
+          <Mailchimp />
+        </RevealFx>
+      </Column>
     </Column>
   );
 }

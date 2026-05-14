@@ -7,6 +7,8 @@ import {
   HiEnvelope,
   HiCalendarDays,
   HiArrowRight,
+  HiChevronDown,
+  HiChevronRight,
   HiOutlineEye,
   HiOutlineEyeSlash,
   HiOutlineDocument,
@@ -34,6 +36,8 @@ import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitte
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
   arrowRight: HiArrowRight,
+  chevronDown: HiChevronDown,
+  chevronRight: HiChevronRight,
   email: HiEnvelope,
   globe: HiOutlineGlobeAsiaAustralia,
   person: PiUserCircleDuotone,
