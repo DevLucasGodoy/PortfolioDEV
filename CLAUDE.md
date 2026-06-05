@@ -30,15 +30,15 @@ Content/config-driven — most edits happen in `src/resources/`, not in pages.
 
 ### Content pipeline (MDX)
 
-Blog posts live in [src/app/blog/posts/](src/app/blog/posts/), projects in [src/app/work/projects/](src/app/work/projects/). Each `.mdx` file = one route slug via `[slug]/page.tsx`. `getPosts()` in [src/utils/utils.ts](src/utils/utils.ts) walks a directory, parses frontmatter (`title`, `publishedAt`, `summary`, `image`, `images`, `tag`, `team`, `link`) and exposes `{ metadata, slug, content }`. Adding a new post = drop a new `.mdx` file. No registry to update.
+Blog posts live in `src/posts/blog/{pt,en}/`, projects in `src/posts/work/{pt,en}/` (per-locale, same slug filenames). Each `.mdx` file = one route slug rendered by `app/[locale]/blog/[slug]/page.tsx` (and the work equivalent). `getPosts(segments, locale)` in [src/utils/utils.ts](src/utils/utils.ts) appends the locale to the path, walks that directory, parses frontmatter (`title`, `publishedAt`, `summary`, `image`, `images`, `tag`, `team`, `link`) and exposes `{ metadata, slug, content }`. Adding a new post = drop the same slug `.mdx` in both `pt/` and `en/`. No registry to update.
 
 `pageExtensions` in [next.config.mjs](next.config.mjs) includes `md`/`mdx` so MDX files can be pages directly.
 
 ### Config-driven rendering
 
 - [src/resources/once-ui.config.ts](src/resources/once-ui.config.ts) — design tokens (`style`, `effects`, `dataStyle`), `routes` toggle (per-path on/off), `protectedRoutes` (password-gated paths, currently empty), `baseURL` for SEO/schema, `mailchimp` effects, social `sameAs`, `socialSharing` platforms, `fonts` (Geist + Geist_Mono).
-- [src/resources/content.tsx](src/resources/content.tsx) — `person`, `social`, `newsletter`, `home`, `about`, `blog`, `work`, `gallery`. JSX allowed in copy. `about` holds the full CV: `work.experiences`, `studies.institutions`, `technical.skills`.
-- [src/resources/index.ts](src/resources/index.ts) re-exports both. Always import from `@/resources`, not the individual files.
+- [src/resources/content/pt.tsx](src/resources/content/pt.tsx) + [en.tsx](src/resources/content/en.tsx) — `person`, `social`, `newsletter`, `home`, `about`, `blog`, `work`, `gallery` per locale. JSX allowed in copy. `about` holds the full CV: `work.experiences`, `studies.institutions`, `technical.skills`. Resolve with `getContent(locale)` (server) / `useContent()` (client) — see the i18n section.
+- [src/resources/index.ts](src/resources/index.ts) re-exports config + `getContent`. Always import from `@/resources`, not the individual files.
 
 `brand: "custom"` in `style` is cast `as any` — the brand color is set via CSS in [src/resources/custom.css](src/resources/custom.css) (`#00bf63`). Don't add it back to the union.
 
@@ -48,7 +48,7 @@ The Magic Portfolio newsletter block is repurposed as a contact form in [src/com
 
 ### Route gating
 
-[src/components/RouteGuard.tsx](src/components/RouteGuard.tsx) wraps the app via `Providers`. It checks `routes` (404s disabled paths via `app/not-found.tsx`) and `protectedRoutes` (renders a password form, hits `/api/check-auth` + `/api/authenticate`). Dynamic paths like `/blog/[slug]` are allowed if their base (`/blog`) is enabled.
+[src/components/RouteGuard.tsx](src/components/RouteGuard.tsx) wraps the app via `Providers`. It checks `routes` (404s disabled paths via `app/[locale]/not-found.tsx`) and `protectedRoutes` (renders a password form, hits `/api/check-auth` + `/api/authenticate`). Dynamic paths like `/blog/[slug]` are allowed if their base (`/blog`) is enabled.
 
 Password value lives in env (see `.env.example`); auth flow uses HTTP-only cookie set by [src/app/api/authenticate/route.ts](src/app/api/authenticate/route.ts).
 
@@ -59,9 +59,18 @@ Password value lives in env (see `.env.example`); auth flow uses HTTP-only cooki
 - `/api/og/fetch`, `/api/og/proxy` — link-preview helpers
 - `/api/rss` — feed for blog posts
 
-### Content language
+### Content language / i18n (PT + EN)
 
-Site copy is **Portuguese (PT-BR)**. The original Magic Portfolio template has an `i18n` branch using `next-intl`; this fork does NOT use it — strings are hardcoded PT in [content.tsx](src/resources/content.tsx). Keep new copy in Portuguese unless instructed otherwise.
+The site is bilingual via **next-intl** with locale-prefixed routing: `/pt/...` (default) and `/en/...`. `/` redirects to `/pt`.
+
+- **Routing core:** [src/i18n/routing.ts](src/i18n/routing.ts) (`locales: ["pt","en"]`, `defaultLocale: "pt"`, `localePrefix: "always"`), [src/i18n/navigation.ts](src/i18n/navigation.ts) (locale-aware `Link`/`usePathname`/`useRouter`), [src/i18n/request.ts](src/i18n/request.ts), root [middleware.ts](middleware.ts). Plugin wired in [next.config.mjs](next.config.mjs).
+- **UI microcopy** (buttons, form, toasts, breadcrumbs, 404) lives in [messages/pt.json](messages/pt.json) / [messages/en.json](messages/en.json), read via `useTranslations`/`getTranslations`.
+- **Rich content** (`person`, `home`, `about`/CV, `blog`, `work`, `gallery`, `newsletter` — contain JSX) lives in [src/resources/content/pt.tsx](src/resources/content/pt.tsx) + [en.tsx](src/resources/content/en.tsx). Server components call `getContent(locale)` from [src/resources/content/index.ts](src/resources/content/index.ts); client components read it via `useContent()` from [src/components/ContentProvider.tsx](src/components/ContentProvider.tsx). Keep PT and EN files in sync (same shape).
+- **MDX posts** are per-locale: `src/posts/blog/{pt,en}/` and `src/posts/work/{pt,en}/` (same slug filenames). `getPosts(["src","posts","blog"], locale)` resolves the locale subfolder. Adding a post = drop the same slug in both `pt/` and `en/`.
+- **Routes** live under `src/app/[locale]/` (`[locale]/layout.tsx` is the root layout: sets `<html lang>` + providers). `app/api/*`, `sitemap.ts`, `robots.ts` stay outside `[locale]`.
+- Internal links must be locale-prefixed (`/${locale}/...`). `formatDate(date, locale)` handles pt-BR/en-US.
+
+Add any new copy in **both** languages.
 
 ### Environment
 
@@ -72,4 +81,4 @@ Site copy is **Portuguese (PT-BR)**. The original Magic Portfolio template has a
 
 - `baseURL` in [once-ui.config.ts](src/resources/once-ui.config.ts) still points to the demo (`https://demo.magic-portfolio.com`).
 - `schema.name` (`"Once UI"`) / `schema.email` (`lorant@once-ui.com`) are still demo values.
-- `sameAs` social links still point to Once UI accounts, not Lucas's (real links live in `social` in content.tsx).
+- `sameAs` social links still point to Once UI accounts, not Lucas's (real links live in `social` in [content/pt.tsx](src/resources/content/pt.tsx)).

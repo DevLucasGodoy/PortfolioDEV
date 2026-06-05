@@ -1,8 +1,15 @@
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
+import { baseURL, getContent } from "@/resources";
+import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { setRequestLocale } from "next-intl/server";
 
-export async function generateMetadata() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const { work } = getContent(locale);
   return Meta.generate({
     title: work.title,
     description: work.description,
@@ -12,19 +19,27 @@ export async function generateMetadata() {
   });
 }
 
-export default function Work() {
+export default async function Work({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const { about, person, work } = getContent(locale);
+
   return (
     <Column maxWidth="m" paddingTop="24">
       <Schema
         as="webPage"
         baseURL={baseURL}
-        path={work.path}
+        path={`/${locale}${work.path}`}
         title={work.title}
         description={work.description}
         image={`/api/og/generate?title=${encodeURIComponent(work.title)}`}
         author={{
           name: person.name,
-          url: `${baseURL}${about.path}`,
+          url: `${baseURL}/${locale}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />

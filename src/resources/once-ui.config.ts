@@ -1,4 +1,4 @@
-import {
+import type {
   DataStyleConfig,
   DisplayConfig,
   EffectsConfig,
@@ -11,7 +11,9 @@ import {
   SocialSharingConfig,
   StyleConfig,
 } from "@/types";
-import { home } from "./index";
+import { ptContent } from "./content/pt";
+
+const { home } = ptContent;
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
 const baseURL: string = "https://demo.magic-portfolio.com";
@@ -71,16 +73,16 @@ const fonts: FontsConfig = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
-  theme: "system",      // dark | light | system
-  neutral: "gray",      // sand | gray | slate | mint | rose | dusk | custom
-  brand: "custom" as any,      // ← alterado para "custom" — cor definida no custom.css (#00bf63)
-  accent: "red",        // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  solid: "contrast",    // color | contrast
-  solidStyle: "flat",   // flat | plastic
-  border: "playful",    // rounded | playful | conservative | sharp
+  theme: "system", // dark | light | system
+  neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
+  brand: "custom" as any, // ← alterado para "custom" — cor definida no custom.css (#00bf63)
+  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  solid: "contrast", // color | contrast
+  solidStyle: "flat", // flat | plastic
+  border: "playful", // rounded | playful | conservative | sharp
   surface: "translucent", // filled | translucent
-  transition: "all",    // all | micro | macro
-  scaling: "100",       // 90 | 95 | 100 | 105 | 110
+  transition: "all", // all | micro | macro
+  scaling: "100", // 90 | 95 | 100 | 105 | 110
 };
 
 const dataStyle: DataStyleConfig = {
@@ -99,34 +101,34 @@ const dataStyle: DataStyleConfig = {
 
 const effects: EffectsConfig = {
   mask: {
-    cursor: false,
+    cursor: true, // glow segue o cursor para um fundo interativo
     x: 50,
     y: 0,
-    radius: 100,
+    radius: 75,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 50,
     x: 50,
-    y: 60,
+    y: 0,
     width: 100,
-    height: 50,
+    height: 75,
     tilt: 0,
-    colorStart: "accent-background-strong",
-    colorEnd: "page-background",
+    colorStart: "brand-background-strong",
+    colorEnd: "static-transparent",
   },
   dots: {
     display: true,
-    opacity: 40,
+    opacity: 30,
     size: "2",
     color: "brand-background-strong",
   },
   grid: {
-    display: false,
-    opacity: 100,
-    color: "neutral-alpha-medium",
-    width: "0.25rem",
-    height: "0.25rem",
+    display: true,
+    opacity: 20,
+    color: "neutral-alpha-weak",
+    width: "2rem",
+    height: "2rem",
   },
   lines: {
     display: false,

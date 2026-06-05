@@ -1,10 +1,11 @@
 "use client";
 
+import NotFound from "@/app/[locale]/not-found";
+import { usePathname } from "@/i18n/navigation";
+import { protectedRoutes, routes } from "@/resources";
+import { Button, Column, Flex, Heading, PasswordInput, Spinner } from "@once-ui-system/core";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { routes, protectedRoutes } from "@/resources";
-import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@once-ui-system/core";
-import NotFound from "@/app/not-found";
 
 interface RouteGuardProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ interface RouteGuardProps {
 
 const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const pathname = usePathname();
+  const t = useTranslations("RouteGuard");
   const [isRouteEnabled, setIsRouteEnabled] = useState(false);
   const [isPasswordRequired, setIsPasswordRequired] = useState(false);
   const [password, setPassword] = useState("");
@@ -72,7 +74,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       setIsAuthenticated(true);
       setError(undefined);
     } else {
-      setError("Incorrect password");
+      setError(t("incorrect"));
     }
   };
 
@@ -92,17 +94,17 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     return (
       <Column paddingY="128" maxWidth={24} gap="24" center>
         <Heading align="center" wrap="balance">
-          This page is password protected
+          {t("protectedTitle")}
         </Heading>
         <Column fillWidth gap="8" horizontal="center">
           <PasswordInput
             id="password"
-            label="Password"
+            label={t("passwordLabel")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             errorMessage={error}
           />
-          <Button onClick={handlePasswordSubmit}>Submit</Button>
+          <Button onClick={handlePasswordSubmit}>{t("submit")}</Button>
         </Column>
       </Column>
     );

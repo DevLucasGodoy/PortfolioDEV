@@ -1,0 +1,69 @@
+---
+title: "First Care"
+publishedAt: "2026-03-18"
+summary: "A complete medical management platform with electronic medical records, scheduling, user control and bioenergetic analysis, integrated with Supabase using authentication and Row Level Security."
+images:
+  - "/images/projects/first-care.png"
+tag: "SaaS"
+team:
+  - name: "Lucas Godoy"
+    role: "Full-Stack Developer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://linkedin.com/in/lucasgodoy"
+link: "https://github.com/DevLucasGodoy/first-care"
+---
+
+## Overview
+
+**First Care** is a SPA web platform aimed at clinics and healthcare professionals, with the goal of centralizing the entire care workflow in a fluid, secure and intuitive interface. From patient registration to report generation, the system offers full control over clinical operations with support for multiple access profiles.
+
+_"Smart, simple and human care."_
+
+## Problem
+
+Clinics and healthcare professionals frequently operate with fragmented processes — paper files, loose spreadsheets, disconnected tools for scheduling and records. This results in rework, lack of traceability and risks to the quality of care.
+
+## Solution
+
+An integrated platform that brings all the essential modules of clinical management into a single place:
+
+- **Dashboard** with real-time metrics, a mini-calendar, daily reminders and upcoming appointments
+- **Patients** with full CRUD, search by name or tax ID, medical history, address and contacts
+- **Scheduling** with status control, WhatsApp integration for confirmation and financial overview
+- **Electronic medical records** complete with anamnesis, diagnosis, prescription, vital signs, metabolic screening, bioresonance report, attachments and audio recordings
+- **Users** with role-based management (doctor, nurse, therapist, admin), activation and password reset
+- **Advanced search** cross-entity to look up patients, appointments and records in a single query
+- **Reports** with analytics and data export
+- **Reminders** with priority, type and links to patients or appointments
+- **Notifications** via a toast system and a global confirmation dialog
+
+## Tech Stack
+
+- **Frontend**: React 18, TypeScript (strict mode), Vite, Tailwind CSS, Framer Motion
+- **Backend / BaaS**: Supabase (Auth, PostgreSQL, Storage, RLS)
+- **Routing**: React Router DOM v7
+- **Export**: jsPDF + jsPDF-AutoTable for PDF, SheetJS for Excel
+- **Utilities**: date-fns, Zod, crypto-js, bcryptjs, Lucide React
+- **Fonts**: Inter (body), Poppins (headings)
+
+## Database
+
+The database is managed by Supabase with Row Level Security enabled on every table. The structure covers user profiles, patient registration with JSONB data, appointments, electronic medical records with bioenergetic fields, linked documents and a complete audit log.
+
+Access control is role-based: `admin` has full access, while `doctor`, `nurse` and `therapist` have read and write access to the main clinical modules.
+
+## Authentication and Security
+
+The system uses Supabase Auth integrated with a custom `useSupabaseAuth` hook. After logging in with email and password, the user's profile is retrieved from the `user_profiles` table and their role defines what is visible and editable — both via RLS in the database and through conditionals in the frontend. Logout invalidates the Supabase session and clears local state.
+
+## Records Cache
+
+`App.tsx` implements a cache with a 30-second TTL to avoid unnecessary requests to the database. The cache is invalidated automatically on logout, updated locally on write operations (optimistic update) and protected with a 2-second rate limit between loads.
+
+## Design System
+
+The project uses a custom `first-care` palette defined in Tailwind, based on the brand's visual identity — primary turquoise `#2ec4b6` and dark blue `#0f4c5c`. Global utility classes such as `.card`, `.btn-primary`, `.badge` and status variants are available in `index.css`.
+
+## Impact
+
+First Care removed the need for multiple disconnected systems in clinical day-to-day work, centralizing care from scheduling through to the complete medical record. Real-time visibility into appointments and operational metrics enables more agile, secure and data-driven management.

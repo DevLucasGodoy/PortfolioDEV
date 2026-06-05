@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import * as cookie from "cookie";
 import { AUTH_TTL_MS, createAuthToken, timingSafeEqual } from "@/utils/auth";
 import { clientIp, rateLimit } from "@/utils/rateLimit";
+import * as cookie from "cookie";
+import { type NextRequest, NextResponse } from "next/server";
 
 const RATE_MAX = 5;
 const RATE_WINDOW_MS = 60 * 1000;
@@ -26,9 +26,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "Invalid request" }, { status: 400 });
   }
 
-  const password = typeof (body as { password?: unknown })?.password === "string"
-    ? (body as { password: string }).password
-    : "";
+  const password =
+    typeof (body as { password?: unknown })?.password === "string"
+      ? (body as { password: string }).password
+      : "";
   const correctPassword = process.env.PAGE_ACCESS_PASSWORD;
 
   if (!correctPassword) {

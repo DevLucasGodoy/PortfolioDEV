@@ -1,9 +1,10 @@
 "use client";
 
-import { Media, MasonryGrid } from "@once-ui-system/core";
-import { gallery } from "@/resources";
+import { useContent } from "@/components/ContentProvider";
+import { MasonryGrid, Media } from "@once-ui-system/core";
 
 export default function GalleryView() {
+  const { gallery } = useContent();
   return (
     <MasonryGrid columns={2} s={{ columns: 1 }}>
       {gallery.images.map((image, index) => (

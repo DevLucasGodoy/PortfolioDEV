@@ -1,7 +1,8 @@
 "use client";
 
-import { Row, Text, Button, useToast } from "@once-ui-system/core";
 import { socialSharing } from "@/resources";
+import { Button, Row, Text, useToast } from "@once-ui-system/core";
+import { useTranslations } from "next-intl";
 
 interface ShareSectionProps {
   title: string;
@@ -48,8 +49,7 @@ const socialPlatforms: Record<string, SocialPlatform> = {
     name: "whatsapp",
     icon: "whatsapp",
     label: "WhatsApp",
-    generateUrl: (title, url) =>
-      `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`,
+    generateUrl: (title, url) => `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`,
   },
   reddit: {
     name: "reddit",
@@ -76,6 +76,8 @@ const socialPlatforms: Record<string, SocialPlatform> = {
 
 export function ShareSection({ title, url }: ShareSectionProps) {
   const { addToast } = useToast();
+  const t = useTranslations("Share");
+  const tBlog = useTranslations("Blog");
   // Don't render if sharing is disabled
   if (!socialSharing.display) {
     return null;
@@ -86,16 +88,23 @@ export function ShareSection({ title, url }: ShareSectionProps) {
       await navigator.clipboard.writeText(url);
       addToast({
         variant: "success",
-        message: "Link copied to clipboard",
+        message: t("copySuccess"),
       });
     } catch (err) {
       console.error("Failed to copy: ", err);
       addToast({
         variant: "danger",
-        message: "Failed to copy link",
+        message: t("copyFail"),
       });
     }
   };
+
+  const buildUrl = (key: string, generate: (title: string, url: string) => string) =>
+    key === "email"
+      ? `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(
+          t("emailBody", { url }),
+        )}`
+      : generate(title, url);
 
   // Get enabled platforms
   const enabledPlatforms = Object.entries(socialSharing.platforms)
@@ -109,7 +118,7 @@ export function ShareSection({ title, url }: ShareSectionProps) {
   return (
     <Row fillWidth center gap="16" marginTop="32" marginBottom="16">
       <Text variant="label-default-m" onBackground="neutral-weak">
-        Compartilhe esta postagem:
+        {tBlog("share")}
       </Text>
       <Row data-border="rounded" gap="16" horizontal="center" wrap>
         {enabledPlatforms.map((platform, index) => (
@@ -117,18 +126,13 @@ export function ShareSection({ title, url }: ShareSectionProps) {
             key={index}
             variant="secondary"
             size="s"
-            href={platform.generateUrl(title, url)}
+            href={buildUrl(platform.key, platform.generateUrl)}
             prefixIcon={platform.icon}
           />
         ))}
 
         {socialSharing.platforms.copyLink && (
-          <Button
-            variant="secondary"
-            size="s"
-            onClick={handleCopy}
-            prefixIcon="openLink"
-          />
+          <Button variant="secondary" size="s" onClick={handleCopy} prefixIcon="openLink" />
         )}
       </Row>
     </Row>

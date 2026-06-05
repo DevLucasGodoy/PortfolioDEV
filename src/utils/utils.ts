@@ -68,7 +68,8 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getPosts(customPath = ["", "", "", ""]) {
-  const postsDir = path.join(process.cwd(), ...customPath);
+export function getPosts(customPath: string[] = [], locale?: string) {
+  const segments = locale ? [...customPath, locale] : customPath;
+  const postsDir = path.join(process.cwd(), ...segments);
   return getMDXData(postsDir);
 }

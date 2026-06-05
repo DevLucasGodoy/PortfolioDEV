@@ -1,6 +1,7 @@
 "use client";
 
-import { mailchimp, newsletter } from "@/resources";
+import { useContent } from "@/components/ContentProvider";
+import { mailchimp } from "@/resources";
 import {
   Background,
   Button,
@@ -12,7 +13,8 @@ import {
   Text,
   Textarea,
 } from "@once-ui-system/core";
-import { opacity, SpacingToken } from "@once-ui-system/core";
+import type { SpacingToken, opacity } from "@once-ui-system/core";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 type FormState = {
@@ -25,9 +27,9 @@ const initialState: FormState = { name: "", email: "", message: "" };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
-  ...flex
-}) => {
+export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...flex }) => {
+  const { newsletter } = useContent();
+  const t = useTranslations("Contact");
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -36,21 +38,20 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
 
   const validate = (state: FormState): Partial<FormState> => {
     const next: Partial<FormState> = {};
-    if (!state.name.trim()) next.name = "Informe seu nome.";
+    if (!state.name.trim()) next.name = t("errNameRequired");
     if (!state.email.trim()) {
-      next.email = "Informe seu e-mail.";
+      next.email = t("errEmailRequired");
     } else if (!emailPattern.test(state.email)) {
-      next.email = "E-mail inválido.";
+      next.email = t("errEmailInvalid");
     }
     if (!state.message.trim() || state.message.trim().length < 10) {
-      next.message = "Mensagem deve ter pelo menos 10 caracteres.";
+      next.message = t("errMessageShort");
     }
     return next;
   };
 
   const handleChange =
-    (field: keyof FormState) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (field: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const value = e.target.value;
       setForm((prev) => ({ ...prev, [field]: value }));
       setErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -68,7 +69,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
 
     const formsubmitEmail = process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL;
     if (!formsubmitEmail) {
-      setServerError("Formulário de contato não configurado.");
+      setServerError(t("errNotConfigured"));
       return;
     }
 
@@ -79,31 +80,26 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
       payload.append("name", form.name);
       payload.append("email", form.email);
       payload.append("message", form.message);
-      payload.append("_subject", `Portfólio · Contato de ${form.name}`);
+      payload.append("_subject", t("subject", { name: form.name }));
       payload.append("_template", "table");
       payload.append("_captcha", "false");
       payload.append("_honey", "");
 
-      const response = await fetch(
-        `https://formsubmit.co/ajax/${formsubmitEmail}`,
-        {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: payload,
-        },
-      );
+      const response = await fetch(`https://formsubmit.co/ajax/${formsubmitEmail}`, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: payload,
+      });
 
       if (response.ok) {
         setSubmitted(true);
         setForm(initialState);
         setErrors({});
       } else {
-        setServerError(
-          "Não consegui enviar agora. Tente novamente em instantes.",
-        );
+        setServerError(t("errServer"));
       }
     } catch {
-      setServerError("Erro de rede. Verifique sua conexão e tente novamente.");
+      setServerError(t("errNetwork"));
     } finally {
       setLoading(false);
     }
@@ -171,12 +167,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
         <Heading marginBottom="s" variant="display-strong-xs">
           {newsletter.title}
         </Heading>
-        <Text
-          wrap="balance"
-          marginBottom="l"
-          variant="body-default-l"
-          onBackground="neutral-weak"
-        >
+        <Text wrap="balance" marginBottom="l" variant="body-default-l" onBackground="neutral-weak">
           {newsletter.description}
         </Text>
       </Column>
@@ -185,7 +176,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
         <RevealFx translateY="4">
           <Column maxWidth={28} horizontal="center" gap="8">
             <Text variant="heading-strong-m" onBackground="accent-strong">
-              Obrigado pelo contato!
+              {t("successTitle")}
             </Text>
             <Text
               variant="body-default-m"
@@ -193,8 +184,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
               align="center"
               wrap="balance"
             >
-              Recebi sua mensagem e retorno o mais breve possível no e-mail
-              informado.
+              {t("successBody")}
             </Text>
           </Column>
         </RevealFx>
@@ -217,7 +207,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
               id="contact-name"
               name="name"
               type="text"
-              label="Nome"
+              label={t("name")}
               required
               value={form.name}
               onChange={handleChange("name")}
@@ -227,7 +217,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
               id="contact-email"
               name="email"
               type="email"
-              label="E-mail"
+              label={t("email")}
               required
               value={form.email}
               onChange={handleChange("email")}
@@ -236,7 +226,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
             <Textarea
               id="contact-message"
               name="message"
-              label="Mensagem"
+              label={t("message")}
               lines={5}
               required
               value={form.message}
@@ -249,14 +239,8 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({
               </Text>
             )}
             <Row fillWidth horizontal="end" paddingTop="8">
-              <Button
-                id="contact-submit"
-                type="submit"
-                size="m"
-                disabled={loading}
-                arrowIcon
-              >
-                {loading ? "Enviando..." : "Enviar mensagem"}
+              <Button id="contact-submit" type="submit" size="m" disabled={loading} arrowIcon>
+                {loading ? t("sending") : t("send")}
               </Button>
             </Row>
           </Column>

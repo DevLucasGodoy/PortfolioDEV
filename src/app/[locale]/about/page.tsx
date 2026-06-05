@@ -1,3 +1,6 @@
+import TableOfContents from "@/components/about/TableOfContents";
+import styles from "@/components/about/about.module.scss";
+import { baseURL, getContent } from "@/resources";
 import {
   Avatar,
   Button,
@@ -6,19 +9,23 @@ import {
   Icon,
   IconButton,
   Media,
+  Meta,
   RevealFx,
+  Row,
+  Schema,
   Tag,
   Text,
-  Meta,
-  Schema,
-  Row,
 } from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
-import TableOfContents from "@/components/about/TableOfContents";
-import styles from "@/components/about/about.module.scss";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import React from "react";
 
-export async function generateMetadata() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const { about } = getContent(locale);
   return Meta.generate({
     title: about.title,
     description: about.description,
@@ -28,7 +35,16 @@ export async function generateMetadata() {
   });
 }
 
-export default function About() {
+export default async function About({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const { about, person, social } = getContent(locale);
+  const t = await getTranslations("About");
+
   const structure = [
     {
       title: about.intro.title,
@@ -58,11 +74,11 @@ export default function About() {
         baseURL={baseURL}
         title={about.title}
         description={about.description}
-        path={about.path}
+        path={`/${locale}${about.path}`}
         image={`/api/og/generate?title=${encodeURIComponent(about.title)}`}
         author={{
           name: person.name,
-          url: `${baseURL}${about.path}`,
+          url: `${baseURL}/${locale}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />
@@ -92,7 +108,7 @@ export default function About() {
               <Avatar src={person.avatar} size="l" />
               <Row gap="8" vertical="center">
                 <Icon onBackground="accent-weak" name="globe" />
-                Dourados, MS
+                {t("location")}
               </Row>
               {person.languages && person.languages.length > 0 && (
                 <Row wrap gap="8" horizontal="center">
@@ -106,12 +122,7 @@ export default function About() {
             </Column>
           </RevealFx>
         )}
-        <Column
-          className={styles.blockAlign}
-          maxWidth={40}
-          horizontal="center"
-          align="center"
-        >
+        <Column className={styles.blockAlign} maxWidth={40} horizontal="center" align="center">
           <Column
             id={about.intro.title}
             fillWidth
@@ -134,12 +145,8 @@ export default function About() {
                   backdropFilter: "blur(var(--static-space-1))",
                 }}
               >
-                <Icon
-                  paddingLeft="12"
-                  name="calendar"
-                  onBackground="brand-weak"
-                />
-                <Row paddingX="8">Schedule a call</Row>
+                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
+                <Row paddingX="8">{t("scheduleCall")}</Row>
                 <IconButton
                   href={about.calendar.link}
                   data-border="rounded"
@@ -204,12 +211,7 @@ export default function About() {
 
           {about.intro.display && (
             <RevealFx translateY="8" fillWidth>
-              <Column
-                textVariant="body-default-l"
-                fillWidth
-                gap="m"
-                marginBottom="xl"
-              >
+              <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
                 {about.intro.description}
               </Column>
             </RevealFx>
@@ -226,38 +228,18 @@ export default function About() {
               >
                 {about.work.title}
               </Heading>
-              <Column
-                fillWidth
-                gap="l"
-                marginBottom="40"
-                className={styles.leftAlign}
-              >
+              <Column fillWidth gap="l" marginBottom="40" className={styles.leftAlign}>
                 {about.work.experiences.map((experience, index) => (
-                  <Column
-                    key={`${experience.company}-${experience.role}-${index}`}
-                    fillWidth
-                  >
-                    <Row
-                      fillWidth
-                      horizontal="between"
-                      vertical="end"
-                      marginBottom="4"
-                    >
+                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
+                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
                       <Text id={experience.company} variant="heading-strong-l">
                         {experience.company}
                       </Text>
-                      <Text
-                        variant="heading-default-xs"
-                        onBackground="neutral-weak"
-                      >
+                      <Text variant="heading-default-xs" onBackground="neutral-weak">
                         {experience.timeframe}
                       </Text>
                     </Row>
-                    <Text
-                      variant="body-default-s"
-                      onBackground="brand-weak"
-                      marginBottom="m"
-                    >
+                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
                       {experience.role}
                     </Text>
                     <Column as="ul" gap="16">
@@ -274,13 +256,7 @@ export default function About() {
                       )}
                     </Column>
                     {experience.images && experience.images.length > 0 && (
-                      <Row
-                        fillWidth
-                        paddingTop="m"
-                        paddingLeft="40"
-                        gap="12"
-                        wrap
-                      >
+                      <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
                           <Row
                             key={index}
@@ -317,25 +293,13 @@ export default function About() {
               >
                 {about.studies.title}
               </Heading>
-              <Column
-                fillWidth
-                gap="l"
-                marginBottom="40"
-                className={styles.leftAlign}
-              >
+              <Column fillWidth gap="l" marginBottom="40" className={styles.leftAlign}>
                 {about.studies.institutions.map((institution, index) => (
-                  <Column
-                    key={`${institution.name}-${index}`}
-                    fillWidth
-                    gap="4"
-                  >
+                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
                     <Text id={institution.name} variant="heading-strong-l">
                       {institution.name}
                     </Text>
-                    <Text
-                      variant="heading-default-xs"
-                      onBackground="neutral-weak"
-                    >
+                    <Text variant="heading-default-xs" onBackground="neutral-weak">
                       {institution.description}
                     </Text>
                   </Column>
@@ -367,11 +331,7 @@ export default function About() {
                     {skill.tags && skill.tags.length > 0 && (
                       <Row wrap gap="8" paddingTop="8" horizontal="start">
                         {skill.tags.map((tag, tagIndex) => (
-                          <Tag
-                            key={`${skill.title}-${tagIndex}`}
-                            size="l"
-                            prefixIcon={tag.icon}
-                          >
+                          <Tag key={`${skill.title}-${tagIndex}`} size="l" prefixIcon={tag.icon}>
                             {tag.name}
                           </Tag>
                         ))}

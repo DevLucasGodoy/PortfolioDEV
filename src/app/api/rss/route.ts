@@ -1,6 +1,7 @@
+import { routing } from "@/i18n/routing";
+import { baseURL, getContent } from "@/resources";
 import { getPosts } from "@/utils/utils";
-import { baseURL, blog, person } from "@/resources";
-import { NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 function escapeXml(value: string): string {
   return String(value ?? "")
@@ -11,8 +12,14 @@ function escapeXml(value: string): string {
     .replace(/'/g, "&apos;");
 }
 
-export async function GET() {
-  const posts = getPosts(["src", "app", "blog", "posts"]);
+export async function GET(request: NextRequest) {
+  const requested = request.nextUrl.searchParams.get("locale");
+  const locale = routing.locales.includes(requested as any)
+    ? (requested as string)
+    : routing.defaultLocale;
+
+  const { blog, person } = getContent(locale);
+  const posts = getPosts(["src", "posts", "blog"], locale);
 
   // Sort posts by date (newest first)
   const sortedPosts = posts.sort((a, b) => {
@@ -24,25 +31,25 @@ export async function GET() {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${escapeXml(blog.title)}</title>
-    <link>${escapeXml(baseURL)}/blog</link>
+    <link>${escapeXml(baseURL)}/${locale}/blog</link>
     <description>${escapeXml(blog.description)}</description>
-    <language>en</language>
+    <language>${locale === "en" ? "en" : "pt-BR"}</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="${escapeXml(baseURL)}/api/rss" rel="self" type="application/rss+xml" />
+    <atom:link href="${escapeXml(baseURL)}/api/rss?locale=${locale}" rel="self" type="application/rss+xml" />
     <managingEditor>${escapeXml(person.email || "noreply@example.com")} (${escapeXml(person.name)})</managingEditor>
     <webMaster>${escapeXml(person.email || "noreply@example.com")} (${escapeXml(person.name)})</webMaster>
     <image>
       <url>${escapeXml(baseURL)}${escapeXml(person.avatar || "/images/avatar.jpg")}</url>
       <title>${escapeXml(blog.title)}</title>
-      <link>${escapeXml(baseURL)}/blog</link>
+      <link>${escapeXml(baseURL)}/${locale}/blog</link>
     </image>
     ${sortedPosts
       .map(
         (post) => `
     <item>
       <title>${escapeXml(post.metadata.title)}</title>
-      <link>${escapeXml(baseURL)}/blog/${escapeXml(post.slug)}</link>
-      <guid>${escapeXml(baseURL)}/blog/${escapeXml(post.slug)}</guid>
+      <link>${escapeXml(baseURL)}/${locale}/blog/${escapeXml(post.slug)}</link>
+      <guid>${escapeXml(baseURL)}/${locale}/blog/${escapeXml(post.slug)}</guid>
       <pubDate>${new Date(post.metadata.publishedAt).toUTCString()}</pubDate>
       <description><![CDATA[${String(post.metadata.summary ?? "").replace(/\]\]>/g, "]]&gt;")}]]></description>
       ${post.metadata.image ? `<enclosure url="${escapeXml(baseURL)}${escapeXml(post.metadata.image)}" type="image/jpeg" />` : ""}

@@ -1,0 +1,125 @@
+---
+title: "How I built a complete medical management system with React, TypeScript and Supabase"
+publishedAt: "2026-02-23"
+summary: "A technical look at the architecture, design decisions and the real challenges of building software for healthcare — from the database to the electronic medical record."
+tag: "React"
+image: "/images/blog/first-care.png"
+---
+
+When I got the **First Care** brief, the scope seemed clear: replace spreadsheets with a web system. In practice, I delivered a platform with electronic medical records, WhatsApp-integrated scheduling, role-based access control, PDF export and an optimized caching system.
+
+This article is an honest technical account of the decisions I made, the reasoning behind each one, and what I would do differently.
+
+## Stack and why I chose each technology
+
+### React 18 + Vite + TypeScript
+
+I could have used Next.js, but for an internal clinic SPA the overhead of SSR didn't make sense. Vite delivers instant HMR and an optimized build, and TypeScript in `strict mode` saved me from several production bugs — especially in the database types.
+
+### Supabase as the BaaS
+
+This was the most important decision of the project. Supabase gave me:
+
+- **Ready-made authentication** with session management
+- **PostgreSQL with native Row Level Security**
+- **Storage** for medical record attachments
+- **Realtime** (we didn't end up using it, but it's available for v2)
+
+The alternative would be Firebase, but the lack of real SQL is a serious problem for a system with complex relational queries between patients, appointments and records.
+
+### Framer Motion
+
+Healthcare systems tend to feel visually heavy and cold. The Framer Motion animations — especially `AnimatePresence` on modal and list transitions — made a real difference in the perceived quality of the product.
+
+## The security architecture: Row Level Security
+
+This is the technical point I'm most proud of. All access policies live in the database, not in the front-end.
+
+```sql
+-- Only admins can read audit logs
+CREATE POLICY "Admins can read audit logs"
+  ON audit_logs FOR SELECT TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM user_profiles
+      WHERE user_id = auth.uid() AND role = 'admin'
+    )
+  );
+```
+
+This ensures that even if someone inspects the JavaScript code, they will never be able to access data outside their role. Security is enforced at the database layer, not the presentation layer.
+
+The challenge was the `user_profiles` table policy: the initial policy was recursive and prevented users from reading their own profile after login. I solved it with a dedicated migration (`fix_user_profiles_rls.sql`) separating the `SELECT` policy from the `ALL` one.
+
+## Optimized cache for medical records
+
+Records are the most-accessed data in the system. To avoid repeated requests to Supabase on every navigation, I implemented a simple cache class with a TTL:
+
+```ts
+class MedicalRecordsCache {
+  private data: MedicalRecord[] | null = null;
+  private timestamp = 0;
+  private readonly TTL = 30000; // 30 seconds
+
+  isValid(): boolean {
+    return this.data !== null && Date.now() - this.timestamp < this.TTL;
+  }
+
+  set(data: MedicalRecord[]): void {
+    this.data = data;
+    this.timestamp = Date.now();
+  }
+
+  updateRecord(id: string, updates: Partial<MedicalRecord>): void {
+    if (!this.data) return;
+    this.data = this.data.map((r) => (r.id === id ? { ...r, ...updates } : r));
+  }
+}
+```
+
+The cache is updated locally on write operations (optimistic update), with no need to reload everything from the database. The result: a near-instant response for the user, with synchronization guaranteed every 30 seconds.
+
+## The electronic medical record — the most complex module
+
+`MedicalRecords.tsx` is nearly 10,000 lines. Not because the code is bad — it's because the electronic medical record is genuinely complex. It supports:
+
+- Structured clinical data (anamnesis, physical exam, diagnosis, prescription, vital signs)
+- Triage and metabolic screening data in JSONB
+- Bioresonance report
+- File attachments (direct upload to Supabase Storage)
+- Audio recording directly in the browser via the `MediaRecorder API`
+- PDF export using `jsPDF` + `html2canvas`
+- List view and card view with advanced filters
+
+The biggest lesson here was splitting the component into smaller parts with `memo` and `useMemo` to avoid unnecessary re-renders in a list that can have hundreds of records.
+
+## Global notification system
+
+Instead of using a library like `react-hot-toast`, I built my own system with the Context API:
+
+```tsx
+const { success, error, warning, confirm } = useNotification();
+
+// Simple usage in any component
+confirm({
+  title: "Delete record",
+  message: "This action cannot be undone.",
+  onConfirm: () => handleDelete(id),
+});
+```
+
+`confirm()` opens a blocking modal with `Escape` support to cancel. Simple, no extra dependencies and fully under control.
+
+## What I would do differently
+
+**1. Split `MedicalRecords.tsx` into sub-components from the start.** It grew too organically. Today I would refactor it to have a separate list, form and view component from the very first line.
+
+**2. Use React Query instead of a manual cache.** The solution I shipped works, but React Query would handle cache, invalidation, refetch and loading states with far less code.
+
+**3. Add tests from the start.** With Zod already configured for validation, adding Vitest for unit tests would have been simple and saved me hours of debugging.
+
+## Conclusion
+
+Building software for healthcare is different. The data is sensitive, users have low tolerance for bugs and the margin for error is minimal. Every technical decision — from RLS to caching — had a real impact on real patients.
+
+First Care is in production, used daily. And that, in the end, is the metric that matters.

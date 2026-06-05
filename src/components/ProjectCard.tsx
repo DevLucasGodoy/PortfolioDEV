@@ -9,6 +9,7 @@ import {
   SmartLink,
   Text,
 } from "@once-ui-system/core";
+import { useTranslations } from "next-intl";
 
 interface ProjectCardProps {
   href: string;
@@ -30,6 +31,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   avatars,
   link,
 }) => {
+  const t = useTranslations("Work");
   return (
     <Column fillWidth gap="m">
       <Carousel
@@ -57,15 +59,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
         {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
           <Column flex={7} gap="16">
-            {avatars?.length > 0 && (
-              <AvatarGroup avatars={avatars} size="m" reverse />
-            )}
+            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
             {description?.trim() && (
-              <Text
-                wrap="balance"
-                variant="body-default-l"
-                onBackground="neutral-medium"
-              >
+              <Text wrap="balance" variant="body-default-l" onBackground="neutral-medium">
                 {description}
               </Text>
             )}
@@ -76,7 +72,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
-                  <Text variant="label-strong-m">Saiba mais</Text>
+                  <Text variant="label-strong-m">{t("readMore")}</Text>
                 </SmartLink>
               )}
               {link && (
@@ -85,7 +81,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={link}
                 >
-                  <Text variant="label-strong-m">Ver projeto</Text>
+                  <Text variant="label-strong-m">{t("viewProject")}</Text>
                 </SmartLink>
               )}
             </Flex>

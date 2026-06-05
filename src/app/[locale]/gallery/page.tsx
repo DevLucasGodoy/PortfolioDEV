@@ -1,8 +1,15 @@
-import { Flex, Meta, Schema } from "@once-ui-system/core";
 import GalleryView from "@/components/gallery/GalleryView";
-import { baseURL, gallery, person } from "@/resources";
+import { baseURL, getContent } from "@/resources";
+import { Flex, Meta, Schema } from "@once-ui-system/core";
+import { setRequestLocale } from "next-intl/server";
 
-export async function generateMetadata() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const { gallery } = getContent(locale);
   return Meta.generate({
     title: gallery.title,
     description: gallery.description,
@@ -12,7 +19,15 @@ export async function generateMetadata() {
   });
 }
 
-export default function Gallery() {
+export default async function Gallery({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const { gallery, person } = getContent(locale);
+
   return (
     <Flex maxWidth="l">
       <Schema
@@ -20,11 +35,11 @@ export default function Gallery() {
         baseURL={baseURL}
         title={gallery.title}
         description={gallery.description}
-        path={gallery.path}
+        path={`/${locale}${gallery.path}`}
         image={`/api/og/generate?title=${encodeURIComponent(gallery.title)}`}
         author={{
           name: person.name,
-          url: `${baseURL}${gallery.path}`,
+          url: `${baseURL}/${locale}${gallery.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />

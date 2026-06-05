@@ -1,9 +1,16 @@
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
-import { baseURL, blog, person, newsletter } from "@/resources";
+import { baseURL, getContent } from "@/resources";
+import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export async function generateMetadata() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const { blog } = getContent(locale);
   return Meta.generate({
     title: blog.title,
     description: blog.description,
@@ -13,7 +20,16 @@ export async function generateMetadata() {
   });
 }
 
-export default function Blog() {
+export default async function Blog({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const { blog, person } = getContent(locale);
+  const t = await getTranslations("Blog");
+
   return (
     <Column maxWidth="m" paddingTop="24">
       <Schema
@@ -21,11 +37,11 @@ export default function Blog() {
         baseURL={baseURL}
         title={blog.title}
         description={blog.description}
-        path={blog.path}
+        path={`/${locale}${blog.path}`}
         image={`/api/og/generate?title=${encodeURIComponent(blog.title)}`}
         author={{
           name: person.name,
-          url: `${baseURL}/blog`,
+          url: `${baseURL}/${locale}/blog`,
           image: `${baseURL}${person.avatar}`,
         }}
       />
@@ -37,7 +53,7 @@ export default function Blog() {
         <Posts range={[2, 3]} columns="2" thumbnail direction="column" />
         <Mailchimp marginBottom="l" />
         <Heading as="h2" variant="heading-strong-xl" marginLeft="l">
-          Postagens Recentes
+          {t("recentPosts")}
         </Heading>
         <Posts range={[4]} columns="2" />
       </Column>

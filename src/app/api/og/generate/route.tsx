@@ -1,11 +1,12 @@
+import { baseURL, getContent } from "@/resources";
 import { ImageResponse } from "next/og";
-import { baseURL, person } from "@/resources";
 
 export const runtime = "nodejs";
 
 export async function GET(request: Request) {
-  let url = new URL(request.url);
-  let title = (url.searchParams.get("title") || "Portfolio").slice(0, 120);
+  const url = new URL(request.url);
+  const title = (url.searchParams.get("title") || "Portfolio").slice(0, 120);
+  const { person } = getContent(url.searchParams.get("locale") || "pt");
 
   async function loadGoogleFont(font: string) {
     const url = `https://fonts.googleapis.com/css2?family=${font}`;

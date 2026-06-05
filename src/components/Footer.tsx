@@ -1,18 +1,17 @@
-import { Row, IconButton, SmartLink, Text } from "@once-ui-system/core";
-import { person, social } from "@/resources";
+"use client";
+
+import { useContent } from "@/components/ContentProvider";
+import { IconButton, Row, SmartLink, Text } from "@once-ui-system/core";
+import { useTranslations } from "next-intl";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { person, social } = useContent();
+  const t = useTranslations("Footer");
 
   return (
-    <Row
-      as="footer"
-      fillWidth
-      padding="8"
-      horizontal="center"
-      s={{ direction: "column" }}
-    >
+    <Row as="footer" fillWidth padding="8" horizontal="center" s={{ direction: "column" }}>
       <Row
         className={styles.mobile}
         maxWidth="m"
@@ -31,15 +30,19 @@ export const Footer = () => {
           <Text onBackground="neutral-weak">© {currentYear} /</Text>
           <Text paddingX="4">{person.name}</Text>
           <Text onBackground="neutral-weak">
-            / Desenvolvido por{" "}
-            <SmartLink href="https://www.firstclassdev.com.br">
-              First Class Dev
-            </SmartLink>{" "}
-            e construído com{" "}
-            <SmartLink href="https://once-ui.com/products/magic-portfolio">
-              Once UI
-            </SmartLink>
-            .
+            {" / "}
+            {t.rich("builtBy", {
+              fcd: (chunks) => (
+                <SmartLink key="fcd" href="https://www.firstclassdev.com.br">
+                  {chunks}
+                </SmartLink>
+              ),
+              once: (chunks) => (
+                <SmartLink key="once" href="https://once-ui.com/products/magic-portfolio">
+                  {chunks}
+                </SmartLink>
+              ),
+            })}
           </Text>
         </Text>
         <Row gap="16">

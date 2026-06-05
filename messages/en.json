@@ -1,0 +1,68 @@
+{
+  "Home": {
+    "scrollMore": "Scroll to see more",
+    "latestBlog": "Latest from my blog..."
+  },
+  "Blog": {
+    "breadcrumb": "Blog",
+    "recentPosts": "Recent Posts",
+    "latestPosts": "Latest Posts",
+    "share": "Share this post:",
+    "thumbnailAlt": "Thumbnail of {title}"
+  },
+  "Work": {
+    "breadcrumb": "Projects",
+    "related": "Related Projects",
+    "readMore": "Read more",
+    "viewProject": "View project"
+  },
+  "About": {
+    "scheduleCall": "Schedule a call",
+    "location": "Dourados, Brazil"
+  },
+  "Contact": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending...",
+    "successTitle": "Thanks for reaching out!",
+    "successBody": "I got your message and will get back to you as soon as possible at the email you provided.",
+    "errNameRequired": "Please enter your name.",
+    "errEmailRequired": "Please enter your email.",
+    "errEmailInvalid": "Invalid email.",
+    "errMessageShort": "Message must be at least 10 characters.",
+    "errNotConfigured": "Contact form is not configured.",
+    "errServer": "Couldn't send right now. Please try again in a moment.",
+    "errNetwork": "Network error. Check your connection and try again.",
+    "subject": "Portfolio · Contact from {name}"
+  },
+  "Share": {
+    "copySuccess": "Link copied to clipboard",
+    "copyFail": "Failed to copy link",
+    "emailBody": "Check out this post: {url}"
+  },
+  "Heading": {
+    "copyTooltip": "Copy",
+    "copySuccess": "Link copied to clipboard.",
+    "copyFail": "Failed to copy link."
+  },
+  "RouteGuard": {
+    "protectedTitle": "This page is password protected",
+    "passwordLabel": "Password",
+    "submit": "Submit",
+    "incorrect": "Incorrect password"
+  },
+  "NotFound": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for does not exist."
+  },
+  "LanguageToggle": {
+    "label": "Language",
+    "pt": "PT",
+    "en": "EN"
+  },
+  "Footer": {
+    "builtBy": "Built by <fcd>First Class Dev</fcd> and crafted with <once>Once UI</once>."
+  }
+}

@@ -1,25 +1,52 @@
-import { getPosts } from "@/utils/utils";
+import { routing } from "@/i18n/routing";
 import { baseURL, routes as routesConfig } from "@/resources";
+import { getPosts } from "@/utils/utils";
 
-export default async function sitemap() {
-  const blogs = getPosts(["src", "app", "blog", "posts"]).map((post) => ({
-    url: `${baseURL}/blog/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
-  }));
+type SitemapEntry = {
+  url: string;
+  lastModified: string;
+  alternates?: { languages: Record<string, string> };
+};
 
-  const works = getPosts(["src", "app", "work", "projects"]).map((post) => ({
-    url: `${baseURL}/work/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
-  }));
+function altLanguages(path: string): Record<string, string> {
+  return Object.fromEntries(
+    routing.locales.map((locale) => [locale, `${baseURL}/${locale}${path}`]),
+  );
+}
+
+export default async function sitemap(): Promise<SitemapEntry[]> {
+  const today = new Date().toISOString().split("T")[0];
 
   const activeRoutes = Object.keys(routesConfig).filter(
     (route) => routesConfig[route as keyof typeof routesConfig],
   );
 
-  const routes = activeRoutes.map((route) => ({
-    url: `${baseURL}${route !== "/" ? route : ""}`,
-    lastModified: new Date().toISOString().split("T")[0],
-  }));
+  const routeEntries: SitemapEntry[] = routing.locales.flatMap((locale) =>
+    activeRoutes.map((route) => {
+      const path = route !== "/" ? route : "";
+      return {
+        url: `${baseURL}/${locale}${path}`,
+        lastModified: today,
+        alternates: { languages: altLanguages(path) },
+      };
+    }),
+  );
 
-  return [...routes, ...blogs, ...works];
+  const blogEntries: SitemapEntry[] = routing.locales.flatMap((locale) =>
+    getPosts(["src", "posts", "blog"], locale).map((post) => ({
+      url: `${baseURL}/${locale}/blog/${post.slug}`,
+      lastModified: post.metadata.publishedAt,
+      alternates: { languages: altLanguages(`/blog/${post.slug}`) },
+    })),
+  );
+
+  const workEntries: SitemapEntry[] = routing.locales.flatMap((locale) =>
+    getPosts(["src", "posts", "work"], locale).map((post) => ({
+      url: `${baseURL}/${locale}/work/${post.slug}`,
+      lastModified: post.metadata.publishedAt,
+      alternates: { languages: altLanguages(`/work/${post.slug}`) },
+    })),
+  );
+
+  return [...routeEntries, ...blogEntries, ...workEntries];
 }

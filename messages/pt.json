@@ -1,0 +1,68 @@
+{
+  "Home": {
+    "scrollMore": "Role para ver mais",
+    "latestBlog": "Últimas do meu blog..."
+  },
+  "Blog": {
+    "breadcrumb": "Blog",
+    "recentPosts": "Postagens Recentes",
+    "latestPosts": "Últimas Postagens",
+    "share": "Compartilhe esta postagem:",
+    "thumbnailAlt": "Miniatura de {title}"
+  },
+  "Work": {
+    "breadcrumb": "Projetos",
+    "related": "Projetos Relacionados",
+    "readMore": "Saiba mais",
+    "viewProject": "Ver projeto"
+  },
+  "About": {
+    "scheduleCall": "Agendar uma conversa",
+    "location": "Dourados, MS"
+  },
+  "Contact": {
+    "name": "Nome",
+    "email": "E-mail",
+    "message": "Mensagem",
+    "send": "Enviar mensagem",
+    "sending": "Enviando...",
+    "successTitle": "Obrigado pelo contato!",
+    "successBody": "Recebi sua mensagem e retorno o mais breve possível no e-mail informado.",
+    "errNameRequired": "Informe seu nome.",
+    "errEmailRequired": "Informe seu e-mail.",
+    "errEmailInvalid": "E-mail inválido.",
+    "errMessageShort": "Mensagem deve ter pelo menos 10 caracteres.",
+    "errNotConfigured": "Formulário de contato não configurado.",
+    "errServer": "Não consegui enviar agora. Tente novamente em instantes.",
+    "errNetwork": "Erro de rede. Verifique sua conexão e tente novamente.",
+    "subject": "Portfólio · Contato de {name}"
+  },
+  "Share": {
+    "copySuccess": "Link copiado para a área de transferência",
+    "copyFail": "Não foi possível copiar o link",
+    "emailBody": "Confira este post: {url}"
+  },
+  "Heading": {
+    "copyTooltip": "Copiar",
+    "copySuccess": "Link copiado para a área de transferência.",
+    "copyFail": "Não foi possível copiar o link."
+  },
+  "RouteGuard": {
+    "protectedTitle": "Esta página é protegida por senha",
+    "passwordLabel": "Senha",
+    "submit": "Entrar",
+    "incorrect": "Senha incorreta"
+  },
+  "NotFound": {
+    "title": "Página Não Encontrada",
+    "description": "A página que você está procurando não existe."
+  },
+  "LanguageToggle": {
+    "label": "Idioma",
+    "pt": "PT",
+    "en": "EN"
+  },
+  "Footer": {
+    "builtBy": "Desenvolvido por <fcd>First Class Dev</fcd> e construído com <once>Once UI</once>."
+  }
+}

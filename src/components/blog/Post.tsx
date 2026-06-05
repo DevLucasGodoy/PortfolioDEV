@@ -1,21 +1,27 @@
 "use client";
 
-import { Card, Column, Media, Row, Avatar, Text } from "@once-ui-system/core";
+import { useContent } from "@/components/ContentProvider";
 import { formatDate } from "@/utils/formatDate";
-import { person } from "@/resources";
+import { Avatar, Card, Column, Media, Row, Text } from "@once-ui-system/core";
+import { useTranslations } from "next-intl";
 
 interface PostProps {
   post: any;
   thumbnail: boolean;
   direction?: "row" | "column";
+  locale: string;
 }
 
-export default function Post({ post, thumbnail, direction }: PostProps) {
+export default function Post({ post, thumbnail, direction, locale }: PostProps) {
+  const { person } = useContent();
+  const t = useTranslations("Blog");
+  const dateLocale = locale === "en" ? "en" : "pt";
+
   return (
     <Card
       fillWidth
       key={post.slug}
-      href={`/blog/${post.slug}`}
+      href={`/${locale}/blog/${post.slug}`}
       transition="micro-medium"
       direction={direction}
       border="transparent"
@@ -33,7 +39,7 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
           cursor="interactive"
           radius="l"
           src={post.metadata.image}
-          alt={"Thumbnail of " + post.metadata.title}
+          alt={t("thumbnailAlt", { title: post.metadata.title })}
           aspectRatio="16 / 9"
         />
       )}
@@ -45,7 +51,7 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
               <Text variant="label-default-s">{person.name}</Text>
             </Row>
             <Text variant="body-default-s" onBackground="neutral-medium">
-              {formatDate(post.metadata.publishedAt, false)}
+              {formatDate(post.metadata.publishedAt, dateLocale, false)}
             </Text>
           </Row>
           <Text variant="heading-strong-l" wrap="balance">

@@ -55,3 +55,181 @@
   animation: float-in 0.8s ease-out both;
 }
 
+/* ===================================================================== */
+/* Scrollbar personalizado — tema brand (#00bf63)                        */
+/* ===================================================================== */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scheme-brand-600) transparent;
+}
+
+/* WebKit / Chromium / Edge */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--scheme-brand-700), var(--scheme-brand-500));
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--scheme-brand-800), var(--scheme-brand-600));
+  background-clip: padding-box;
+  box-shadow: 0 0 8px var(--scheme-brand-600-50);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ===================================================================== */
+/* Animações globais — aplicadas em todas as telas                       */
+/* ===================================================================== */
+
+/* Entrada de página: cada rota anima ao montar */
+@keyframes page-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(1.25rem) scale(0.995);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.page-enter {
+  animation: page-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Surgir com leve escala */
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scale-in {
+  animation: scale-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Surgir desfocado */
+@keyframes blur-in {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.blur-in {
+  animation: blur-in 0.7s ease-out both;
+}
+
+/* Pulso de brilho brand — destaque de elementos interativos */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--scheme-brand-600-30);
+  }
+  50% {
+    box-shadow: 0 0 16px 4px var(--scheme-brand-600-30);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
+/* Gradiente animado para texto/fundo brand */
+@keyframes gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-pan {
+  background: linear-gradient(
+    90deg,
+    var(--scheme-brand-600),
+    var(--scheme-brand-800),
+    var(--scheme-brand-600)
+  );
+  background-size: 200% 200%;
+  animation: gradient-pan 6s ease infinite;
+}
+
+/* Brilho deslizante (shimmer) — cards/skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -150% 0;
+  }
+  100% {
+    background-position: 150% 0;
+  }
+}
+
+.shimmer {
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    var(--scheme-brand-600-10) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* Elevação suave no hover — aplicar em cards/botões */
+.hover-lift {
+  transition: transform var(--transition-micro-medium), box-shadow var(--transition-micro-medium);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px var(--scheme-brand-600-10);
+}
+
+/* Respeita preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .scale-in,
+  .blur-in,
+  .float-in,
+  .pulse-glow,
+  .gradient-pan,
+  .shimmer,
+  .scroll-indicator {
+    animation: none !important;
+  }
+  .hover-lift:hover {
+    transform: none;
+  }
+}

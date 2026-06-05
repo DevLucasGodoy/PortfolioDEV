@@ -1,3 +1,7 @@
+import { Mailchimp } from "@/components";
+import { Posts } from "@/components/blog/Posts";
+import { Projects } from "@/components/work/Projects";
+import { baseURL, getContent, routes } from "@/resources";
 import {
   Avatar,
   Badge,
@@ -13,12 +17,15 @@ import {
   SmartLink,
   Text,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
-import { Mailchimp } from "@/components";
-import { Projects } from "@/components/work/Projects";
-import { Posts } from "@/components/blog/Posts";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export async function generateMetadata() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const { home } = getContent(locale);
   return Meta.generate({
     title: home.title,
     description: home.description,
@@ -28,19 +35,28 @@ export async function generateMetadata() {
   });
 }
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const { home, about, person } = getContent(locale);
+  const t = await getTranslations("Home");
+
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
-        path={home.path}
+        path={`/${locale}${home.path}`}
         title={home.title}
         description={home.description}
         image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
         author={{
           name: person.name,
-          url: `${baseURL}${about.path}`,
+          url: `${baseURL}/${locale}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />
@@ -56,13 +72,7 @@ export default function Home() {
       >
         <div style={{ flex: 1 }} />
 
-        <Column
-          maxWidth="s"
-          horizontal="center"
-          align="center"
-          gap="20"
-          paddingX="m"
-        >
+        <Column maxWidth="s" horizontal="center" align="center" gap="20" paddingX="m">
           {home.featured.display && (
             <RevealFx fillWidth horizontal="center">
               <Badge
@@ -84,11 +94,7 @@ export default function Home() {
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center">
-            <Text
-              wrap="balance"
-              onBackground="neutral-weak"
-              variant="heading-default-l"
-            >
+            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-l">
               {home.subline}
             </Text>
           </RevealFx>
@@ -96,7 +102,7 @@ export default function Home() {
             <Button
               id="about"
               data-border="rounded"
-              href={about.path}
+              href={`/${locale}${about.path}`}
               variant="secondary"
               size="m"
               weight="default"
@@ -125,37 +131,18 @@ export default function Home() {
         >
           <RevealFx delay={1} fillWidth horizontal="center">
             <SmartLink href="#projects" unstyled>
-              <Column
-                className="scroll-indicator"
-                horizontal="center"
-                align="center"
-                gap="4"
-              >
-                <Text
-                  variant="label-default-xs"
-                  onBackground="neutral-weak"
-                  align="center"
-                >
-                  Role para ver mais
+              <Column className="scroll-indicator" horizontal="center" align="center" gap="4">
+                <Text variant="label-default-xs" onBackground="neutral-weak" align="center">
+                  {t("scrollMore")}
                 </Text>
-                <Icon
-                  name="chevronDown"
-                  onBackground="neutral-weak"
-                  size="s"
-                />
+                <Icon name="chevronDown" onBackground="neutral-weak" size="s" />
               </Column>
             </SmartLink>
           </RevealFx>
         </Column>
       </Column>
 
-      <Column
-        id="projects"
-        fillWidth
-        horizontal="center"
-        maxWidth="s"
-        gap="xl"
-      >
+      <Column id="projects" fillWidth horizontal="center" maxWidth="s" gap="xl">
         <RevealFx translateY="16">
           <Projects range={[1, 1]} />
         </RevealFx>
@@ -166,15 +153,10 @@ export default function Home() {
               <Row fillWidth paddingRight="64">
                 <Line maxWidth={48} />
               </Row>
-              <Row
-                fillWidth
-                gap="24"
-                marginTop="40"
-                s={{ direction: "column" }}
-              >
+              <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
                 <Row flex={1} paddingLeft="l" paddingTop="24">
                   <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                    Últimas do meu blog...
+                    {t("latestBlog")}
                   </Heading>
                 </Row>
                 <Row flex={3} paddingX="20">

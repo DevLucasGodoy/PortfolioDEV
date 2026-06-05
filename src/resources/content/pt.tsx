@@ -1,13 +1,4 @@
-import {
-  About,
-  Blog,
-  Gallery,
-  Home,
-  Newsletter,
-  Person,
-  Social,
-  Work,
-} from "@/types";
+import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 
 const person: Person = {
   firstName: "Lucas",
@@ -25,9 +16,8 @@ const newsletter: Newsletter = {
   title: <>Entre em Contato</>,
   description: (
     <>
-      Tem um projeto em mente, oportunidade de parceria ou só quer trocar uma
-      ideia sobre tecnologia? Preencha o formulário abaixo — respondo o mais
-      breve possível.
+      Tem um projeto em mente, oportunidade de parceria ou só quer trocar uma ideia sobre
+      tecnologia? Preencha o formulário abaixo — respondo o mais breve possível.
     </>
   ),
 };
@@ -62,7 +52,7 @@ const social: Social = [
 const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
-  label: "Home",
+  label: "Início",
   title: `Portfólio - Desenvolvedor Senior & Empreendedor`,
   description: `Portfólio pessoal de ${person.name}, ${person.role}.`,
   headline: <>Transformando ideias em produtos digitais reais</>,
@@ -73,11 +63,10 @@ const home: Home = {
   },
   subline: (
     <>
-      Sou Lucas, Desenvolvedor Senior, CEO & Fundador da{" "}
-      <strong>First Class Dev</strong> e Sócio & Head de Tecnologia na{" "}
-      <strong>TG Distribuidora</strong>. Construo sistemas web e produtos{" "}
-      <strong>SaaS</strong> com Node.js, React e Next.js — com integrações a
-      ERPs e foco em escalabilidade.
+      Sou Lucas, Desenvolvedor Senior, CEO & Fundador da <strong>First Class Dev</strong> e Sócio &
+      Head de Tecnologia na <strong>TG Distribuidora</strong>. Construo sistemas web e produtos{" "}
+      <strong>SaaS</strong> com Node.js, React e Next.js — com integrações a ERPs e foco em
+      escalabilidade.
     </>
   ),
 };
@@ -103,16 +92,14 @@ const about: About = {
     title: "Resumo Profissional",
     description: (
       <>
-        Desenvolvedor senior e empreendedor, atuando na interseção entre
-        tecnologia e negócio. Atualmente sou CEO e fundador da First Class Dev,
-        onde entrego soluções web e produtos digitais focados em eficiência,
-        escalabilidade e geração de valor. Em paralelo, atuo como Sócio e Head
-        de Tecnologia na TG Distribuidora, liderando a transformação digital
-        do negócio através da criação de sistemas internos, dashboards
-        estratégicos e novos produtos SaaS. Tenho experiência sólida em
-        aplicações modernas, integrações com ERPs e arquiteturas escaláveis —
-        sempre conectando tecnologia à estratégia para gerar impacto direto
-        nos resultados.
+        Desenvolvedor senior e empreendedor, atuando na interseção entre tecnologia e negócio.
+        Atualmente sou CEO e fundador da First Class Dev, onde entrego soluções web e produtos
+        digitais focados em eficiência, escalabilidade e geração de valor. Em paralelo, atuo como
+        Sócio e Head de Tecnologia na TG Distribuidora, liderando a transformação digital do negócio
+        através da criação de sistemas internos, dashboards estratégicos e novos produtos SaaS.
+        Tenho experiência sólida em aplicações modernas, integrações com ERPs e arquiteturas
+        escaláveis — sempre conectando tecnologia à estratégia para gerar impacto direto nos
+        resultados.
       </>
     ),
   },
@@ -126,24 +113,23 @@ const about: About = {
         role: "Sócio & Head de Tecnologia",
         achievements: [
           <>
-            Sócio responsável pela área de tecnologia e inovação, liderando a
-            transformação digital do negócio.
+            Sócio responsável pela área de tecnologia e inovação, liderando a transformação digital
+            do negócio.
           </>,
           <>
-            Desenvolvimento de sistemas internos e dashboards estratégicos
-            para otimização de processos e tomada de decisão baseada em dados.
+            Desenvolvimento de sistemas internos e dashboards estratégicos para otimização de
+            processos e tomada de decisão baseada em dados.
           </>,
           <>
-            Integração com ERP e automação de processos críticos, conectando
-            operação a uma camada única de dados.
+            Integração com ERP e automação de processos críticos, conectando operação a uma camada
+            única de dados.
           </>,
           <>
-            Estruturação de produtos digitais escaláveis com potencial de
-            comercialização (SaaS) como novas fontes de receita.
+            Estruturação de produtos digitais escaláveis com potencial de comercialização (SaaS)
+            como novas fontes de receita.
           </>,
           <>
-            Definição de arquitetura, escolha de stack e atuação hands-on como
-            desenvolvedor senior.
+            Definição de arquitetura, escolha de stack e atuação hands-on como desenvolvedor senior.
           </>,
         ],
         images: [],
@@ -154,25 +140,24 @@ const about: About = {
         role: "CEO & Fundador",
         achievements: [
           <>
-            Fundador de software house especializada em desenvolvimento de
-            soluções web e produtos digitais (SaaS).
+            Fundador de software house especializada em desenvolvimento de soluções web e produtos
+            digitais (SaaS).
           </>,
           <>
-            Liderança estratégica e técnica: criação de sistemas sob medida,
-            validação de ideias e desenvolvimento de produtos escaláveis.
+            Liderança estratégica e técnica: criação de sistemas sob medida, validação de ideias e
+            desenvolvimento de produtos escaláveis.
           </>,
           <>
-            Stack principal: Node.js + Express, React.js + Next.js,
-            PostgreSQL/MySQL/MongoDB, deploy em AWS, Vercel e Railway.
+            Stack principal: Node.js + Express, React.js + Next.js, PostgreSQL/MySQL/MongoDB, deploy
+            em AWS, Vercel e Railway.
           </>,
           <>
-            20+ projetos entregues em produção: sistemas de gestão,
-            e-commerces, dashboards e SaaS — com índice de satisfação superior
-            a 90%.
+            20+ projetos entregues em produção: sistemas de gestão, e-commerces, dashboards e SaaS —
+            com índice de satisfação superior a 90%.
           </>,
           <>
-            Integrações com APIs e ERPs, arquitetura de software e banco de
-            dados, apoio estratégico a clientes na digitalização de processos.
+            Integrações com APIs e ERPs, arquitetura de software e banco de dados, apoio estratégico
+            a clientes na digitalização de processos.
           </>,
         ],
         images: [],
@@ -183,25 +168,24 @@ const about: About = {
         role: "Analista de Implantação",
         achievements: [
           <>
-            Coordenei 16+ projetos de implantação de ERP ponta a ponta
-            (planejamento → go-live), incluindo instalação, configuração e
-            migrações entre ambientes locais e cloud.
+            Coordenei 16+ projetos de implantação de ERP ponta a ponta (planejamento → go-live),
+            incluindo instalação, configuração e migrações entre ambientes locais e cloud.
           </>,
           <>
-            Customizações em Pascal/Delphi e administração de banco Firebird,
-            com ganho de 50% em performance via otimização de queries.
+            Customizações em Pascal/Delphi e administração de banco Firebird, com ganho de 50% em
+            performance via otimização de queries.
           </>,
           <>
-            Integrações bancárias (CNAB) e fiscais completas (NF-e, NFC-e,
-            NFS-e, CT-e, MDF-e, SPED).
+            Integrações bancárias (CNAB) e fiscais completas (NF-e, NFC-e, NFS-e, CT-e, MDF-e,
+            SPED).
           </>,
           <>
-            100+ relatórios criados em Fast Report (KPIs, fiscal, gerencial) e
-            treinamentos técnicos para equipes de até 10 usuários.
+            100+ relatórios criados em Fast Report (KPIs, fiscal, gerencial) e treinamentos técnicos
+            para equipes de até 10 usuários.
           </>,
           <>
-            Estratégias de backup, recuperação e gestão de infraestrutura de
-            servidores garantindo integridade e continuidade operacional.
+            Estratégias de backup, recuperação e gestão de infraestrutura de servidores garantindo
+            integridade e continuidade operacional.
           </>,
         ],
         images: [],
@@ -212,17 +196,16 @@ const about: About = {
         role: "Analista de Suporte N2",
         achievements: [
           <>
-            Diagnóstico e resolução de incidentes complexos em ERP com tempo
-            médio de resolução inferior a 4 horas.
+            Diagnóstico e resolução de incidentes complexos em ERP com tempo médio de resolução
+            inferior a 4 horas.
           </>,
           <>
-            Documentação estruturada de 200+ atendimentos no CRM Salesforce,
-            criando base de conhecimento que acelerou resoluções futuras.
+            Documentação estruturada de 200+ atendimentos no CRM Salesforce, criando base de
+            conhecimento que acelerou resoluções futuras.
           </>,
           <>
-            Suporte avançado em processos fiscais (NF-e, NFC-e, NFS-e, MDF-e),
-            criação de layouts/relatórios customizados e gestão de
-            permissões.
+            Suporte avançado em processos fiscais (NF-e, NFC-e, NFS-e, MDF-e), criação de
+            layouts/relatórios customizados e gestão de permissões.
           </>,
         ],
         images: [],
@@ -233,16 +216,16 @@ const about: About = {
         role: "Analista de Suporte N1",
         achievements: [
           <>
-            30+ chamados diários (telefone, e-mail, chat) com SLA de resposta
-            inferior a 30 minutos e CSAT de 92%.
+            30+ chamados diários (telefone, e-mail, chat) com SLA de resposta inferior a 30 minutos
+            e CSAT de 92%.
           </>,
           <>
-            Suporte humanizado em emissão de documentos fiscais (NF-e, NFC-e,
-            NFS-e, MDF-e) e parametrizações tributárias (CST, NCM, CFOP).
+            Suporte humanizado em emissão de documentos fiscais (NF-e, NFC-e, NFS-e, MDF-e) e
+            parametrizações tributárias (CST, NCM, CFOP).
           </>,
           <>
-            Elaboração de manuais e materiais de treinamento, gestão de
-            perfis de acesso e permissões.
+            Elaboração de manuais e materiais de treinamento, gestão de perfis de acesso e
+            permissões.
           </>,
         ],
         images: [],
@@ -253,8 +236,8 @@ const about: About = {
         role: "Estágio · Analista de Suporte",
         achievements: [
           <>
-            Estágio inicial em suporte técnico de ERP — base para a trajetória
-            de N1 → N2 → Implantação na empresa.
+            Estágio inicial em suporte técnico de ERP — base para a trajetória de N1 → N2 →
+            Implantação na empresa.
           </>,
         ],
         images: [],
@@ -265,16 +248,14 @@ const about: About = {
         role: "Técnico em Informática",
         achievements: [
           <>
-            Gestão da infraestrutura de TI da instituição: estações de
-            trabalho, servidores e impressoras de rede.
+            Gestão da infraestrutura de TI da instituição: estações de trabalho, servidores e
+            impressoras de rede.
           </>,
           <>
-            Instalação e configuração de hardware e software, administração da
-            rede interna e políticas de segurança de dados.
+            Instalação e configuração de hardware e software, administração da rede interna e
+            políticas de segurança de dados.
           </>,
-          <>
-            Suporte técnico a professores, alunos e equipe administrativa.
-          </>,
+          <>Suporte técnico a professores, alunos e equipe administrativa.</>,
         ],
         images: [],
       },
@@ -286,27 +267,20 @@ const about: About = {
     institutions: [
       {
         name: "UNIASSELVI",
-        description: (
-          <>
-            Tecnólogo em Análise e Desenvolvimento de Sistemas (Set 2023 - Dez
-            2025).
-          </>
-        ),
+        description: <>Tecnólogo em Análise e Desenvolvimento de Sistemas (Set 2023 - Dez 2025).</>,
       },
       {
         name: "Instituto Federal de Mato Grosso do Sul (IFMS)",
         description: (
           <>
-            Ensino Médio Técnico Integrado em Análise e Desenvolvimento de
-            Sistemas (Jul 2019 - Dez 2023).
+            Ensino Médio Técnico Integrado em Análise e Desenvolvimento de Sistemas (Jul 2019 - Dez
+            2023).
           </>
         ),
       },
       {
         name: "Escola Técnica Estadual Bento Quirino",
-        description: (
-          <>Curso Técnico em Tecnologia da Informação (Jan 2019 - Jun 2019).</>
-        ),
+        description: <>Curso Técnico em Tecnologia da Informação (Jan 2019 - Jun 2019).</>,
       },
     ],
   },
@@ -318,8 +292,8 @@ const about: About = {
         title: "Backend",
         description: (
           <>
-            APIs RESTful robustas com Node.js, Express.js e autenticação JWT.
-            Também atuo com customizações Pascal/Delphi em sistemas legados.
+            APIs RESTful robustas com Node.js, Express.js e autenticação JWT. Também atuo com
+            customizações Pascal/Delphi em sistemas legados.
           </>
         ),
         tags: [
@@ -332,12 +306,7 @@ const about: About = {
       },
       {
         title: "Frontend",
-        description: (
-          <>
-            Interfaces modernas e responsivas com React, Next.js e Tailwind
-            CSS.
-          </>
-        ),
+        description: <>Interfaces modernas e responsivas com React, Next.js e Tailwind CSS.</>,
         tags: [
           { name: "React", icon: "react" },
           { name: "Next.js", icon: "nextjs" },
@@ -350,9 +319,8 @@ const about: About = {
         title: "Banco de Dados",
         description: (
           <>
-            Modelagem e otimização de bancos relacionais e não-relacionais:
-            PostgreSQL, MySQL, MongoDB e Firebird (com expertise em performance
-            tuning).
+            Modelagem e otimização de bancos relacionais e não-relacionais: PostgreSQL, MySQL,
+            MongoDB e Firebird (com expertise em performance tuning).
           </>
         ),
         tags: [
@@ -366,8 +334,8 @@ const about: About = {
         title: "DevOps & Deploy",
         description: (
           <>
-            Deploy em produção com AWS, Vercel e Railway. Conteinerização com
-            Docker, versionamento Git/GitHub e estratégias de backup/recovery.
+            Deploy em produção com AWS, Vercel e Railway. Conteinerização com Docker, versionamento
+            Git/GitHub e estratégias de backup/recovery.
           </>
         ),
         tags: [
@@ -381,9 +349,8 @@ const about: About = {
         title: "Integrações & Fiscal",
         description: (
           <>
-            Integrações com ERPs e APIs externas, automação de processos e
-            domínio em obrigações fiscais brasileiras: NF-e, NFC-e, NFS-e,
-            CT-e, MDF-e, SPED e CNAB bancário.
+            Integrações com ERPs e APIs externas, automação de processos e domínio em obrigações
+            fiscais brasileiras: NF-e, NFC-e, NFS-e, CT-e, MDF-e, SPED e CNAB bancário.
           </>
         ),
         tags: [],
@@ -403,7 +370,7 @@ const blog: Blog = {
 const work: Work = {
   path: "/work",
   label: "Projetos",
-  title: `Projects – ${person.name}`,
+  title: `Projetos – ${person.name}`,
   description: `Projetos de desenvolvimento por ${person.name}`,
 };
 
@@ -415,45 +382,54 @@ const gallery: Gallery = {
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
+      alt: "imagem",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
+      alt: "imagem",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
+      alt: "imagem",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
+      alt: "imagem",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
+      alt: "imagem",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
+      alt: "imagem",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
+      alt: "imagem",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
+      alt: "imagem",
       orientation: "vertical",
     },
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export const ptContent = {
+  person,
+  social,
+  newsletter,
+  home,
+  about,
+  blog,
+  work,
+  gallery,
+};
