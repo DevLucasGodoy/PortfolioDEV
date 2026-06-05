@@ -34,17 +34,25 @@ export default function Post({ post, thumbnail, direction, locale }: PostProps) 
       {post.metadata.image && thumbnail && (
         <Media
           priority
-          sizes="(max-width: 768px) 100vw, 640px"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 560px"
           border="neutral-alpha-weak"
           cursor="interactive"
           radius="l"
           src={post.metadata.image}
           alt={t("thumbnailAlt", { title: post.metadata.title })}
           aspectRatio="16 / 9"
+          objectFit="cover"
         />
       )}
       <Row fillWidth>
-        <Column maxWidth={28} paddingY="24" paddingX="l" gap="20" vertical="center">
+        <Column
+          fillWidth
+          maxWidth={28}
+          paddingY={direction === "column" ? "16" : "24"}
+          paddingX={direction === "column" ? "8" : "l"}
+          gap="16"
+          vertical="center"
+        >
           <Row gap="24" vertical="center">
             <Row vertical="center" gap="16">
               <Avatar src={person.avatar} size="s" />

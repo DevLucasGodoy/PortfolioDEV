@@ -6,6 +6,7 @@ import {
   Column,
   Flex,
   Heading,
+  Media,
   SmartLink,
   Text,
 } from "@once-ui-system/core";
@@ -24,6 +25,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
   href,
+  priority,
   images = [],
   title,
   content,
@@ -34,31 +36,44 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const t = useTranslations("Work");
   return (
     <Column fillWidth gap="m">
-      <Carousel
-        sizes="(max-width: 960px) 100vw, 720px"
-        aspectRatio="16 / 9"
-        items={images.map((image) => ({
-          slide: image,
-          alt: title,
-        }))}
-      />
+      {images.length > 1 ? (
+        <Carousel
+          sizes="(max-width: 960px) 100vw, 720px"
+          aspectRatio="16 / 9"
+          items={images.map((image) => ({
+            slide: image,
+            alt: title,
+          }))}
+        />
+      ) : images.length === 1 ? (
+        <Media
+          priority={priority}
+          sizes="(max-width: 960px) 100vw, 720px"
+          aspectRatio="16 / 9"
+          radius="l"
+          border="neutral-alpha-weak"
+          objectFit="cover"
+          src={images[0]}
+          alt={title}
+        />
+      ) : null}
       <Flex
         s={{ direction: "column" }}
         fillWidth
-        paddingX="s"
+        paddingX="m"
         paddingTop="12"
         paddingBottom="24"
-        gap="l"
+        gap="m"
       >
         {title && (
-          <Flex flex={5}>
+          <Flex flex={4}>
             <Heading as="h2" wrap="balance" variant="heading-strong-xl">
               {title}
             </Heading>
           </Flex>
         )}
         {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
-          <Column flex={7} gap="16">
+          <Column flex={8} gap="16">
             {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
             {description?.trim() && (
               <Text wrap="balance" variant="body-default-l" onBackground="neutral-medium">
