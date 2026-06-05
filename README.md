@@ -54,7 +54,7 @@ npm run dev
 Rotas com prefixo de locale via **next-intl**: `/pt/...` (padrão) e `/en/...`; `/` redireciona pra `/pt`.
 
 - **`src/i18n/`** — `routing.ts` (locales, default, prefixo), `request.ts`, `navigation.ts` (`Link`/`usePathname` cientes de locale).
-- **`src/middleware.ts`** — middleware do next-intl. Fica em `src/` (não na raiz) porque o projeto usa diretório `src/`; na raiz o Next ignora e `/` não redireciona.
+- **`src/proxy.ts`** — proxy do next-intl (Next 16 renomeou a convenção `middleware` → `proxy`; export default segue sendo `createMiddleware` de `next-intl/middleware`). Fica em `src/` (não na raiz) porque o projeto usa diretório `src/`; na raiz o Next ignora e `/` não redireciona.
 - **`messages/{pt,en}.json`** — microcopy de UI (botões, formulário, 404), lido com `useTranslations`/`getTranslations`.
 - Rotas ficam em **`src/app/[locale]/`**.
 
