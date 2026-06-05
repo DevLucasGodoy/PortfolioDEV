@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
+import { assertSafeUrl } from '@/utils/ssrf';
+import { clientIp, rateLimit } from '@/utils/rateLimit';
 
 export const runtime = 'edge';
+
+const MAX_HTML_BYTES = 512 * 1024; // cap response body to 512 KB
 
 function decodeHTMLEntities(text: string): string {
   return text.replace(/&(#?[a-zA-Z0-9]+);/g, (match, entity) => {
@@ -66,6 +70,11 @@ async function extractMetadata(html: string) {
 }
 
 export async function GET(request: Request) {
+  const limit = rateLimit(`ogfetch:${clientIp(request)}`, 20, 60 * 1000);
+  if (!limit.allowed) {
+    return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+  }
+
   const { searchParams } = new URL(request.url);
   const url = searchParams.get('url');
 
@@ -73,14 +82,26 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'URL is required' }, { status: 400 });
   }
 
+  let safeUrl: URL;
   try {
-    const response = await fetchWithTimeout(url);
-    
+    safeUrl = assertSafeUrl(url);
+  } catch {
+    return NextResponse.json({ error: 'Invalid or blocked URL' }, { status: 400 });
+  }
+
+  try {
+    const response = await fetchWithTimeout(safeUrl.toString());
+
     if (!response.ok) {
       throw new Error(`Failed to fetch URL: ${response.status}`);
     }
 
-    const html = await response.text();
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.includes('text/html') && !contentType.includes('application/xhtml')) {
+      return NextResponse.json({ error: 'Unsupported content type' }, { status: 415 });
+    }
+
+    const html = (await response.text()).slice(0, MAX_HTML_BYTES);
     const metadata = await extractMetadata(html);
 
     return NextResponse.json({
