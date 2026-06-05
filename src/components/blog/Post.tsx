@@ -44,7 +44,7 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
               <Avatar src={person.avatar} size="s" />
               <Text variant="label-default-s">{person.name}</Text>
             </Row>
-            <Text variant="body-default-xs" onBackground="neutral-weak">
+            <Text variant="body-default-s" onBackground="neutral-medium">
               {formatDate(post.metadata.publishedAt, false)}
             </Text>
           </Row>
@@ -52,7 +52,7 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
             {post.metadata.title}
           </Text>
           {post.metadata.tag && (
-            <Text variant="label-strong-s" onBackground="neutral-weak">
+            <Text variant="label-strong-s" onBackground="brand-medium">
               {post.metadata.tag}
             </Text>
           )}

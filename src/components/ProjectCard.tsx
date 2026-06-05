@@ -63,8 +63,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             {description?.trim() && (
               <Text
                 wrap="balance"
-                variant="body-default-s"
-                onBackground="neutral-weak"
+                variant="body-default-l"
+                onBackground="neutral-medium"
               >
                 {description}
               </Text>
@@ -76,7 +76,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
-                  <Text variant="body-default-s">Saiba mais</Text>
+                  <Text variant="label-strong-m">Saiba mais</Text>
                 </SmartLink>
               )}
               {link && (
@@ -85,7 +85,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={link}
                 >
-                  <Text variant="body-default-s">Ver projeto</Text>
+                  <Text variant="label-strong-m">Ver projeto</Text>
                 </SmartLink>
               )}
             </Flex>
