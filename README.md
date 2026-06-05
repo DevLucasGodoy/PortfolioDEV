@@ -1,91 +1,93 @@
-# Magic Portfolio
+# Portfólio · Lucas Godoy
 
-Magic Portfolio is a simple, clean, beginner-friendly portfolio template. It supports an MDX-based content system for projects and blog posts, an about / CV page and a gallery.
+Portfólio pessoal de **Lucas Godoy** — Desenvolvedor Senior, CEO & Fundador da [First Class Dev](https://www.firstclassdev.com.br) e Sócio & Head de Tecnologia na TG Distribuidora (Dourados, MS).
 
-View the demo [here](https://demo.magic-portfolio.com).
+Construo sistemas web e produtos **SaaS** com Node.js, React e Next.js — com integrações a ERPs e foco em escalabilidade.
 
-![Magic Portfolio](public/images/og/home.jpg)
+Site com Home, Sobre/CV, Projetos, Blog, Galeria e formulário de contato. Construído sobre o template [Magic Portfolio](https://demo.magic-portfolio.com) com [Once UI](https://once-ui.com).
 
-## Getting started
+## Stack
 
-**1. Clone the repository**
-```
-git clone https://github.com/once-ui-system/magic-portfolio.git
-```
+- **Next.js 16** (App Router) + **React 19** + **TypeScript** (strict)
+- [@once-ui-system/core](https://once-ui.com) — design system / componentes
+- **MDX** (`@next/mdx` + `next-mdx-remote`, `gray-matter`) para projetos e posts
+- **SCSS modules** + **Biome** (format/lint)
+- Node.js v18.17+
 
-**2. Install dependencies**
-```
+## Começando
+
+### 1. Instalar dependências
+
+```bash
 npm install
 ```
 
-**3. Run dev server**
+### 2. Configurar ambiente
+
+Copie `.env.example` para `.env` e preencha:
+
+```bash
+NEXT_PUBLIC_FORMSUBMIT_EMAIL=seu-email@exemplo.com   # destino do formulário de contato
 ```
+
+### 3. Rodar dev server
+
+```bash
 npm run dev
 ```
 
-**4. Edit config**
-```
-src/resources/once-ui.config.js
-```
+## Scripts
 
-**5. Edit content**
-```
-src/resources/content.js
-```
+| Comando | O que faz |
+| --- | --- |
+| `npm run dev` | Dev server |
+| `npm run build` | Build de produção |
+| `npm start` | Serve o build de produção |
+| `npm run lint` | ESLint do Next.js |
+| `npm run biome-write` | Formata o repo com Biome (2 espaços, aspas duplas, 100 colunas) |
 
-**6. Create blog posts / projects**
-```
-Add a new .mdx file to src/app/blog/posts or src/app/work/projects
-```
+## Estrutura de conteúdo
 
-Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
+Tudo dirigido por config/conteúdo — a maioria das edições acontece em `src/resources/`, não nas páginas.
 
-## Documentation
+- **`src/resources/content.tsx`** — `person`, `social`, `home`, `about` (CV: experiências, formação, skills), `blog`, `work`, `gallery` e copy do formulário de contato. Texto em **PT-BR**.
+- **`src/resources/once-ui.config.ts`** — tokens de design (`style`, `effects`), `routes` (liga/desliga páginas), `baseURL` (SEO/schema), `socialSharing`, fontes (Geist).
+- **`src/resources/custom.css`** — cor de marca `#00bf63`.
 
-Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfolio/quick-start)
+### Adicionar projeto ou post
 
-## Features
+Solte um novo arquivo `.mdx` em `src/app/work/projects/` (projetos) ou `src/app/blog/posts/` (blog). Cada arquivo vira uma rota automaticamente — sem registro a atualizar. Frontmatter aceito: `title`, `publishedAt`, `summary`, `image`, `images`, `tag`, `team`, `link`.
 
-### Once UI
-- All tokens, components & features of [Once UI](https://once-ui.com)
+## Contato
 
-### SEO
-- Automatic open-graph and X image generation with next/og
-- Automatic schema and metadata generation based on the content file
+O formulário ([src/components/Mailchimp.tsx](src/components/Mailchimp.tsx)) valida nome/e-mail/mensagem e envia via [formsubmit.co](https://formsubmit.co) usando `NEXT_PUBLIC_FORMSUBMIT_EMAIL`. Sem essa variável, o envio é bloqueado.
 
-### Design
-- Responsive layout optimized for all screen sizes
-- Timeless design without heavy animations and motion
-- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
+## Funcionalidades
 
-### Content
-- Render sections conditionally based on the content file
-- Enable or disable pages for blog, work, gallery and about / CV
-- Generate and display social links automatically
-- Set up password protection for URLs
+- Geração automática de imagens Open Graph / X com `next/og`
+- Schema e metadata gerados a partir do conteúdo
+- Layout responsivo, troca de tema (claro/escuro/sistema)
+- Páginas ligáveis/desligáveis via `routes`
+- Proteção por senha opcional em rotas (`protectedRoutes`)
+- Feed RSS do blog (`/api/rss`)
+- Links sociais gerados automaticamente
 
-### Localization
-- A localized, earlier version of Magic Portfolio is available with the next-intl library
-- To use localization, switch to the 'i18n' branch
+## Antes de publicar
 
-## Creators
+Ainda com valores demo do template — ajustar:
 
-Lorant One: [Threads](https://www.threads.net/@lorant.one) / [LinkedIn](https://www.linkedin.com/in/lorant-one/)
+- `baseURL` em `once-ui.config.ts` (aponta para `demo.magic-portfolio.com`)
+- `schema.name` / `schema.email` (valores Once UI)
+- `sameAs` (redes sociais do Once UI; os links reais estão em `social` no `content.tsx`)
 
-## Get involved
+## Deploy
 
-- Join the Design Engineers Club on [Discord](https://discord.com/invite/5EyAQ4eNdS) and share your project with us!
-- Deployed your docs? Share it on the [Once UI Hub](https://once-ui.com/hub) too! We feature our favorite apps on our landing page.
+Otimizado para [Vercel](https://vercel.com). `npm run build` gera o build de produção.
 
-## License
+## Licença
 
-Distributed under the CC BY-NC 4.0 License.
-- Attribution is required.
-- Commercial usage is not allowed.
-- You can extend the license to [Dopler CC](https://dopler.app/license) by purchasing a [Once UI Pro](https://once-ui.com/pricing) license.
+Baseado no Magic Portfolio (Once UI), distribuído sob CC BY-NC 4.0 — atribuição obrigatória, sem uso comercial. Ver `LICENSE.txt`.
 
-See `LICENSE.txt` for more information.
+## Créditos
 
-## Deploy with Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&project-name=portfolio&repository-name=portfolio&redirect-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&demo-title=Magic%20Portfolio&demo-description=Showcase%20your%20designers%20or%20developer%20portfolio&demo-url=https%3A%2F%2Fdemo.magic-portfolio.com&demo-image=%2F%2Fraw.githubusercontent.com%2Fonce-ui-system%2Fmagic-portfolio%2Fmain%2Fpublic%2Fimages%2Fog%2Fhome.jpg)
+Template: [Magic Portfolio](https://github.com/once-ui-system/magic-portfolio) por Once UI.
