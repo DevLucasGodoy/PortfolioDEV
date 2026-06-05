@@ -95,6 +95,13 @@ export default async function About({
         </Column>
       )}
       <Column fillWidth horizontal="center">
+        <Column
+          fillWidth
+          horizontal="center"
+          vertical="center"
+          paddingY="xl"
+          style={{ minHeight: "calc(100dvh - 80px)" }}
+        >
         {about.avatar.display && (
           <RevealFx fillWidth horizontal="center">
             <Column
@@ -216,9 +223,11 @@ export default async function About({
               </Column>
             </RevealFx>
           )}
-
+        </Column>
+        </Column>
+        <Column className={styles.blockAlign} maxWidth={40} horizontal="center" align="center">
           {about.work.display && (
-            <RevealFx translateY="8" delay={0.1} fillWidth>
+            <RevealFx translateY="8" delay={0.1} fillWidth s={{ direction: "column" }}>
               <Heading
                 as="h2"
                 id={about.work.title}
@@ -231,11 +240,22 @@ export default async function About({
               <Column fillWidth gap="l" marginBottom="40" className={styles.leftAlign}>
                 {about.work.experiences.map((experience, index) => (
                   <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
+                    <Row
+                      fillWidth
+                      horizontal="between"
+                      vertical="end"
+                      marginBottom="4"
+                      gap="8"
+                      s={{ direction: "column", horizontal: "start", vertical: "start", gap: "2" }}
+                    >
+                      <Text id={experience.company} variant="heading-strong-l" wrap="balance">
                         {experience.company}
                       </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
+                      <Text
+                        variant="heading-default-xs"
+                        onBackground="neutral-weak"
+                        style={{ whiteSpace: "nowrap" }}
+                      >
                         {experience.timeframe}
                       </Text>
                     </Row>
@@ -256,7 +276,14 @@ export default async function About({
                       )}
                     </Column>
                     {experience.images && experience.images.length > 0 && (
-                      <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
+                      <Row
+                        fillWidth
+                        paddingTop="m"
+                        paddingLeft="40"
+                        gap="12"
+                        wrap
+                        s={{ paddingLeft: "0" }}
+                      >
                         {experience.images.map((image, index) => (
                           <Row
                             key={index}
@@ -283,7 +310,7 @@ export default async function About({
           )}
 
           {about.studies.display && (
-            <RevealFx translateY="8" delay={0.2} fillWidth>
+            <RevealFx translateY="8" delay={0.2} fillWidth s={{ direction: "column" }}>
               <Heading
                 as="h2"
                 id={about.studies.title}
@@ -309,7 +336,7 @@ export default async function About({
           )}
 
           {about.technical.display && (
-            <RevealFx translateY="8" delay={0.3} fillWidth>
+            <RevealFx translateY="8" delay={0.3} fillWidth s={{ direction: "column" }}>
               <Heading
                 as="h2"
                 id={about.technical.title}

@@ -35,7 +35,7 @@ export const Header = () => {
         className={styles.position}
         position="sticky"
         as="header"
-        zIndex={9}
+        zIndex={10}
         fillWidth
         padding="8"
         horizontal="center"

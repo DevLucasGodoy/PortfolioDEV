@@ -19,6 +19,35 @@
   --scheme-brand-600-50: rgba(0, 191, 99, 0.5);
 }
 
+/* ===================================================================== */
+/* Guarda de responsividade — evita scroll horizontal em telas pequenas   */
+/* ===================================================================== */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Quebra palavras/URLs longas para não estourar a largura no mobile */
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 @keyframes scroll-bounce {
   0%,
   100% {

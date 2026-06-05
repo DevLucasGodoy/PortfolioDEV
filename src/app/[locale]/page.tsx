@@ -68,7 +68,7 @@ export default async function Home({
         vertical="between"
         align="center"
         paddingY="xl"
-        style={{ minHeight: "calc(100vh - 80px)" }}
+        style={{ minHeight: "calc(100dvh - 80px)" }}
       >
         <div style={{ flex: 1 }} />
 
@@ -149,21 +149,21 @@ export default async function Home({
 
         {routes["/blog"] && (
           <RevealFx translateY="12" delay={0.1} fillWidth>
-            <Column fillWidth gap="24" marginBottom="l">
-              <Row fillWidth paddingRight="64">
+            <Column fillWidth gap="16" marginBottom="l">
+              <Row fillWidth paddingRight="32">
                 <Line maxWidth={48} />
               </Row>
-              <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
-                <Row flex={1} paddingLeft="l" paddingTop="24">
+              <Row fillWidth gap="24" marginTop="16" vertical="center" s={{ direction: "column" }}>
+                <Row flex={2} paddingLeft="m">
                   <Heading as="h2" variant="display-strong-xs" wrap="balance">
                     {t("latestBlog")}
                   </Heading>
                 </Row>
-                <Row flex={3} paddingX="20">
-                  <Posts range={[1, 2]} columns="2" />
+                <Row flex={6}>
+                  <Posts range={[1, 2]} columns="1" thumbnail direction="column" />
                 </Row>
               </Row>
-              <Row fillWidth paddingLeft="64" horizontal="end">
+              <Row fillWidth paddingLeft="32" horizontal="end">
                 <Line maxWidth={48} />
               </Row>
             </Column>
