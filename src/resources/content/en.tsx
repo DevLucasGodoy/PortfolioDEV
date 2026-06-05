@@ -111,23 +111,11 @@ const about: About = {
         timeframe: "Mar 2026 - Present",
         role: "Partner & Head of Technology",
         achievements: [
-          <>
-            Partner responsible for technology and innovation, leading the company's digital
-            transformation.
-          </>,
-          <>
-            Built internal systems and strategic dashboards to optimize processes and enable
-            data-driven decision making.
-          </>,
-          <>
-            ERP integration and automation of critical processes, connecting operations to a single
-            data layer.
-          </>,
-          <>
-            Structured scalable digital products with commercialization potential (SaaS) as new
-            revenue streams.
-          </>,
-          <>Defined architecture, chose the stack and worked hands-on as a senior developer.</>,
+          "Partner responsible for technology and innovation, leading the company's digital transformation.",
+          "Built internal systems and strategic dashboards to optimize processes and enable data-driven decision making.",
+          "ERP integration and automation of critical processes, connecting operations to a single data layer.",
+          "Structured scalable digital products with commercialization potential (SaaS) as new revenue streams.",
+          "Defined architecture, chose the stack and worked hands-on as a senior developer.",
         ],
         images: [],
       },
@@ -136,26 +124,11 @@ const about: About = {
         timeframe: "Jan 2021 - Present",
         role: "CEO & Founder",
         achievements: [
-          <>
-            Founder of a software house specialized in building web solutions and digital products
-            (SaaS).
-          </>,
-          <>
-            Strategic and technical leadership: custom systems, idea validation and development of
-            scalable products.
-          </>,
-          <>
-            Main stack: Node.js + Express, React.js + Next.js, PostgreSQL/MySQL/MongoDB, deployed on
-            AWS, Vercel and Railway.
-          </>,
-          <>
-            20+ projects delivered to production: management systems, e-commerce, dashboards and
-            SaaS — with a satisfaction rate above 90%.
-          </>,
-          <>
-            API and ERP integrations, software and database architecture, and strategic support
-            helping clients digitize their processes.
-          </>,
+          "Founder of a software house specialized in building web solutions and digital products (SaaS).",
+          "Strategic and technical leadership: custom systems, idea validation and development of scalable products.",
+          "Main stack: Node.js + Express, React.js + Next.js, PostgreSQL/MySQL/MongoDB, deployed on AWS, Vercel and Railway.",
+          "20+ projects delivered to production: management systems, e-commerce, dashboards and SaaS — with a satisfaction rate above 90%.",
+          "API and ERP integrations, software and database architecture, and strategic support helping clients digitize their processes.",
         ],
         images: [],
       },
@@ -164,25 +137,11 @@ const about: About = {
         timeframe: "Jun 2025 - Feb 2026",
         role: "Implementation Analyst",
         achievements: [
-          <>
-            Led 16+ end-to-end ERP implementation projects (planning → go-live), including
-            installation, configuration and migrations between on-premise and cloud environments.
-          </>,
-          <>
-            Pascal/Delphi customizations and Firebird database administration, with a 50%
-            performance gain through query optimization.
-          </>,
-          <>
-            Complete banking (CNAB) and tax integrations (NF-e, NFC-e, NFS-e, CT-e, MDF-e, SPED).
-          </>,
-          <>
-            100+ reports built in Fast Report (KPIs, tax, management) and technical training for
-            teams of up to 10 users.
-          </>,
-          <>
-            Backup, recovery and server infrastructure management strategies ensuring integrity and
-            operational continuity.
-          </>,
+          "Led 16+ end-to-end ERP implementation projects (planning → go-live), including installation, configuration and migrations between on-premise and cloud environments.",
+          "Pascal/Delphi customizations and Firebird database administration, with a 50% performance gain through query optimization.",
+          "Complete banking (CNAB) and tax integrations (NF-e, NFC-e, NFS-e, CT-e, MDF-e, SPED).",
+          "100+ reports built in Fast Report (KPIs, tax, management) and technical training for teams of up to 10 users.",
+          "Backup, recovery and server infrastructure management strategies ensuring integrity and operational continuity.",
         ],
         images: [],
       },
@@ -191,18 +150,9 @@ const about: About = {
         timeframe: "Jan 2025 - Jun 2025",
         role: "N2 Support Analyst",
         achievements: [
-          <>
-            Diagnosed and resolved complex ERP incidents with an average resolution time under 4
-            hours.
-          </>,
-          <>
-            Structured documentation of 200+ tickets in Salesforce CRM, building a knowledge base
-            that sped up future resolutions.
-          </>,
-          <>
-            Advanced support for tax processes (NF-e, NFC-e, NFS-e, MDF-e), custom layouts/reports
-            and permission management.
-          </>,
+          "Diagnosed and resolved complex ERP incidents with an average resolution time under 4 hours.",
+          "Structured documentation of 200+ tickets in Salesforce CRM, building a knowledge base that sped up future resolutions.",
+          "Advanced support for tax processes (NF-e, NFC-e, NFS-e, MDF-e), custom layouts/reports and permission management.",
         ],
         images: [],
       },
@@ -211,15 +161,9 @@ const about: About = {
         timeframe: "Jan 2023 - Dec 2024",
         role: "N1 Support Analyst",
         achievements: [
-          <>
-            30+ daily tickets (phone, email, chat) with a response SLA under 30 minutes and a 92%
-            CSAT.
-          </>,
-          <>
-            Friendly support for issuing tax documents (NF-e, NFC-e, NFS-e, MDF-e) and tax
-            configuration (CST, NCM, CFOP).
-          </>,
-          <>Authored manuals and training materials, managed access profiles and permissions.</>,
+          "30+ daily tickets (phone, email, chat) with a response SLA under 30 minutes and a 92% CSAT.",
+          "Friendly support for issuing tax documents (NF-e, NFC-e, NFS-e, MDF-e) and tax configuration (CST, NCM, CFOP).",
+          "Authored manuals and training materials, managed access profiles and permissions.",
         ],
         images: [],
       },
@@ -228,10 +172,7 @@ const about: About = {
         timeframe: "Sep 2022 - Dec 2022",
         role: "Intern · Support Analyst",
         achievements: [
-          <>
-            Initial internship in ERP technical support — the foundation for the N1 → N2 →
-            Implementation path at the company.
-          </>,
+          "Initial internship in ERP technical support — the foundation for the N1 → N2 → Implementation path at the company.",
         ],
         images: [],
       },
@@ -240,14 +181,9 @@ const about: About = {
         timeframe: "Mar 2021 - Dec 2023",
         role: "IT Technician",
         achievements: [
-          <>
-            Managed the institution's IT infrastructure: workstations, servers and network printers.
-          </>,
-          <>
-            Hardware and software installation and configuration, internal network administration
-            and data security policies.
-          </>,
-          <>Technical support for teachers, students and administrative staff.</>,
+          "Managed the institution's IT infrastructure: workstations, servers and network printers.",
+          "Hardware and software installation and configuration, internal network administration and data security policies.",
+          "Technical support for teachers, students and administrative staff.",
         ],
         images: [],
       },

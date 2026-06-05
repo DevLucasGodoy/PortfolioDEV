@@ -112,25 +112,11 @@ const about: About = {
         timeframe: "Mar 2026 - Presente",
         role: "Sócio & Head de Tecnologia",
         achievements: [
-          <>
-            Sócio responsável pela área de tecnologia e inovação, liderando a transformação digital
-            do negócio.
-          </>,
-          <>
-            Desenvolvimento de sistemas internos e dashboards estratégicos para otimização de
-            processos e tomada de decisão baseada em dados.
-          </>,
-          <>
-            Integração com ERP e automação de processos críticos, conectando operação a uma camada
-            única de dados.
-          </>,
-          <>
-            Estruturação de produtos digitais escaláveis com potencial de comercialização (SaaS)
-            como novas fontes de receita.
-          </>,
-          <>
-            Definição de arquitetura, escolha de stack e atuação hands-on como desenvolvedor senior.
-          </>,
+          "Sócio responsável pela área de tecnologia e inovação, liderando a transformação digital do negócio.",
+          "Desenvolvimento de sistemas internos e dashboards estratégicos para otimização de processos e tomada de decisão baseada em dados.",
+          "Integração com ERP e automação de processos críticos, conectando operação a uma camada única de dados.",
+          "Estruturação de produtos digitais escaláveis com potencial de comercialização (SaaS) como novas fontes de receita.",
+          "Definição de arquitetura, escolha de stack e atuação hands-on como desenvolvedor senior.",
         ],
         images: [],
       },
@@ -139,26 +125,11 @@ const about: About = {
         timeframe: "Jan 2021 - Presente",
         role: "CEO & Fundador",
         achievements: [
-          <>
-            Fundador de software house especializada em desenvolvimento de soluções web e produtos
-            digitais (SaaS).
-          </>,
-          <>
-            Liderança estratégica e técnica: criação de sistemas sob medida, validação de ideias e
-            desenvolvimento de produtos escaláveis.
-          </>,
-          <>
-            Stack principal: Node.js + Express, React.js + Next.js, PostgreSQL/MySQL/MongoDB, deploy
-            em AWS, Vercel e Railway.
-          </>,
-          <>
-            20+ projetos entregues em produção: sistemas de gestão, e-commerces, dashboards e SaaS —
-            com índice de satisfação superior a 90%.
-          </>,
-          <>
-            Integrações com APIs e ERPs, arquitetura de software e banco de dados, apoio estratégico
-            a clientes na digitalização de processos.
-          </>,
+          "Fundador de software house especializada em desenvolvimento de soluções web e produtos digitais (SaaS).",
+          "Liderança estratégica e técnica: criação de sistemas sob medida, validação de ideias e desenvolvimento de produtos escaláveis.",
+          "Stack principal: Node.js + Express, React.js + Next.js, PostgreSQL/MySQL/MongoDB, deploy em AWS, Vercel e Railway.",
+          "20+ projetos entregues em produção: sistemas de gestão, e-commerces, dashboards e SaaS — com índice de satisfação superior a 90%.",
+          "Integrações com APIs e ERPs, arquitetura de software e banco de dados, apoio estratégico a clientes na digitalização de processos.",
         ],
         images: [],
       },
@@ -167,26 +138,11 @@ const about: About = {
         timeframe: "Jun 2025 - Fev 2026",
         role: "Analista de Implantação",
         achievements: [
-          <>
-            Coordenei 16+ projetos de implantação de ERP ponta a ponta (planejamento → go-live),
-            incluindo instalação, configuração e migrações entre ambientes locais e cloud.
-          </>,
-          <>
-            Customizações em Pascal/Delphi e administração de banco Firebird, com ganho de 50% em
-            performance via otimização de queries.
-          </>,
-          <>
-            Integrações bancárias (CNAB) e fiscais completas (NF-e, NFC-e, NFS-e, CT-e, MDF-e,
-            SPED).
-          </>,
-          <>
-            100+ relatórios criados em Fast Report (KPIs, fiscal, gerencial) e treinamentos técnicos
-            para equipes de até 10 usuários.
-          </>,
-          <>
-            Estratégias de backup, recuperação e gestão de infraestrutura de servidores garantindo
-            integridade e continuidade operacional.
-          </>,
+          "Coordenei 16+ projetos de implantação de ERP ponta a ponta (planejamento → go-live), incluindo instalação, configuração e migrações entre ambientes locais e cloud.",
+          "Customizações em Pascal/Delphi e administração de banco Firebird, com ganho de 50% em performance via otimização de queries.",
+          "Integrações bancárias (CNAB) e fiscais completas (NF-e, NFC-e, NFS-e, CT-e, MDF-e, SPED).",
+          "100+ relatórios criados em Fast Report (KPIs, fiscal, gerencial) e treinamentos técnicos para equipes de até 10 usuários.",
+          "Estratégias de backup, recuperação e gestão de infraestrutura de servidores garantindo integridade e continuidade operacional.",
         ],
         images: [],
       },
@@ -195,18 +151,9 @@ const about: About = {
         timeframe: "Jan 2025 - Jun 2025",
         role: "Analista de Suporte N2",
         achievements: [
-          <>
-            Diagnóstico e resolução de incidentes complexos em ERP com tempo médio de resolução
-            inferior a 4 horas.
-          </>,
-          <>
-            Documentação estruturada de 200+ atendimentos no CRM Salesforce, criando base de
-            conhecimento que acelerou resoluções futuras.
-          </>,
-          <>
-            Suporte avançado em processos fiscais (NF-e, NFC-e, NFS-e, MDF-e), criação de
-            layouts/relatórios customizados e gestão de permissões.
-          </>,
+          "Diagnóstico e resolução de incidentes complexos em ERP com tempo médio de resolução inferior a 4 horas.",
+          "Documentação estruturada de 200+ atendimentos no CRM Salesforce, criando base de conhecimento que acelerou resoluções futuras.",
+          "Suporte avançado em processos fiscais (NF-e, NFC-e, NFS-e, MDF-e), criação de layouts/relatórios customizados e gestão de permissões.",
         ],
         images: [],
       },
@@ -215,18 +162,9 @@ const about: About = {
         timeframe: "Jan 2023 - Dez 2024",
         role: "Analista de Suporte N1",
         achievements: [
-          <>
-            30+ chamados diários (telefone, e-mail, chat) com SLA de resposta inferior a 30 minutos
-            e CSAT de 92%.
-          </>,
-          <>
-            Suporte humanizado em emissão de documentos fiscais (NF-e, NFC-e, NFS-e, MDF-e) e
-            parametrizações tributárias (CST, NCM, CFOP).
-          </>,
-          <>
-            Elaboração de manuais e materiais de treinamento, gestão de perfis de acesso e
-            permissões.
-          </>,
+          "30+ chamados diários (telefone, e-mail, chat) com SLA de resposta inferior a 30 minutos e CSAT de 92%.",
+          "Suporte humanizado em emissão de documentos fiscais (NF-e, NFC-e, NFS-e, MDF-e) e parametrizações tributárias (CST, NCM, CFOP).",
+          "Elaboração de manuais e materiais de treinamento, gestão de perfis de acesso e permissões.",
         ],
         images: [],
       },
@@ -235,10 +173,7 @@ const about: About = {
         timeframe: "Set 2022 - Dez 2022",
         role: "Estágio · Analista de Suporte",
         achievements: [
-          <>
-            Estágio inicial em suporte técnico de ERP — base para a trajetória de N1 → N2 →
-            Implantação na empresa.
-          </>,
+          "Estágio inicial em suporte técnico de ERP — base para a trajetória de N1 → N2 → Implantação na empresa.",
         ],
         images: [],
       },
@@ -247,15 +182,9 @@ const about: About = {
         timeframe: "Mar 2021 - Dez 2023",
         role: "Técnico em Informática",
         achievements: [
-          <>
-            Gestão da infraestrutura de TI da instituição: estações de trabalho, servidores e
-            impressoras de rede.
-          </>,
-          <>
-            Instalação e configuração de hardware e software, administração da rede interna e
-            políticas de segurança de dados.
-          </>,
-          <>Suporte técnico a professores, alunos e equipe administrativa.</>,
+          "Gestão da infraestrutura de TI da instituição: estações de trabalho, servidores e impressoras de rede.",
+          "Instalação e configuração de hardware e software, administração da rede interna e políticas de segurança de dados.",
+          "Suporte técnico a professores, alunos e equipe administrativa.",
         ],
         images: [],
       },
