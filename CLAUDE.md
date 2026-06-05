@@ -20,6 +20,7 @@ No test runner configured. Node.js v18.17+.
 
 - Next.js 16 App Router + React 19 + TypeScript (strict, `@/*` → `src/*`)
 - [@once-ui-system/core](https://once-ui.com) design system (all UI primitives: `Flex`, `Column`, `Heading`, `Button`, `Input`, etc.)
+- **next-intl** for i18n (locale routing + message catalogs)
 - MDX via `@next/mdx` + `next-mdx-remote`, `gray-matter` for frontmatter
 - SCSS modules
 - Biome for format/lint (NOT Prettier/ESLint for style)
@@ -50,20 +51,22 @@ The Magic Portfolio newsletter block is repurposed as a contact form in [src/com
 
 [src/components/RouteGuard.tsx](src/components/RouteGuard.tsx) wraps the app via `Providers`. It checks `routes` (404s disabled paths via `app/[locale]/not-found.tsx`) and `protectedRoutes` (renders a password form, hits `/api/check-auth` + `/api/authenticate`). Dynamic paths like `/blog/[slug]` are allowed if their base (`/blog`) is enabled.
 
-Password value lives in env (see `.env.example`); auth flow uses HTTP-only cookie set by [src/app/api/authenticate/route.ts](src/app/api/authenticate/route.ts).
+Auth uses a **signed, expiring HMAC cookie** (`AUTH_SECRET`) set by [src/app/api/authenticate/route.ts](src/app/api/authenticate/route.ts) and verified via [src/utils/auth.ts](src/utils/auth.ts); login is rate-limited ([src/utils/rateLimit.ts](src/utils/rateLimit.ts)). Password lives in env (see `.env.example`).
 
 ### API routes
 
-- `/api/authenticate`, `/api/check-auth` — RouteGuard password flow
-- `/api/og/generate` — dynamic OG images via `next/og`
-- `/api/og/fetch`, `/api/og/proxy` — link-preview helpers
-- `/api/rss` — feed for blog posts
+- `/api/authenticate`, `/api/check-auth` — RouteGuard password flow (signed cookie)
+- `/api/og/generate` — dynamic OG images via `next/og` (title length clamped)
+- `/api/og/fetch`, `/api/og/proxy` — link-preview helpers, **SSRF-guarded** ([src/utils/ssrf.ts](src/utils/ssrf.ts))
+- `/api/rss` — feed for blog posts (XML-escaped output)
+
+Security headers are set for all routes in [next.config.mjs](next.config.mjs).
 
 ### Content language / i18n (PT + EN)
 
 The site is bilingual via **next-intl** with locale-prefixed routing: `/pt/...` (default) and `/en/...`. `/` redirects to `/pt`.
 
-- **Routing core:** [src/i18n/routing.ts](src/i18n/routing.ts) (`locales: ["pt","en"]`, `defaultLocale: "pt"`, `localePrefix: "always"`), [src/i18n/navigation.ts](src/i18n/navigation.ts) (locale-aware `Link`/`usePathname`/`useRouter`), [src/i18n/request.ts](src/i18n/request.ts), root [middleware.ts](middleware.ts). Plugin wired in [next.config.mjs](next.config.mjs).
+- **Routing core:** [src/i18n/routing.ts](src/i18n/routing.ts) (`locales: ["pt","en"]`, `defaultLocale: "pt"`, `localePrefix: "always"`), [src/i18n/navigation.ts](src/i18n/navigation.ts) (locale-aware `Link`/`usePathname`/`useRouter`), [src/i18n/request.ts](src/i18n/request.ts), [src/middleware.ts](src/middleware.ts). Plugin wired in [next.config.mjs](next.config.mjs). The middleware **must live in `src/`** (not the project root) — because the project uses a `src/` directory, a root `middleware.ts` is ignored and `/` won't redirect.
 - **UI microcopy** (buttons, form, toasts, breadcrumbs, 404) lives in [messages/pt.json](messages/pt.json) / [messages/en.json](messages/en.json), read via `useTranslations`/`getTranslations`.
 - **Rich content** (`person`, `home`, `about`/CV, `blog`, `work`, `gallery`, `newsletter` — contain JSX) lives in [src/resources/content/pt.tsx](src/resources/content/pt.tsx) + [en.tsx](src/resources/content/en.tsx). Server components call `getContent(locale)` from [src/resources/content/index.ts](src/resources/content/index.ts); client components read it via `useContent()` from [src/components/ContentProvider.tsx](src/components/ContentProvider.tsx). Keep PT and EN files in sync (same shape).
 - **MDX posts** are per-locale: `src/posts/blog/{pt,en}/` and `src/posts/work/{pt,en}/` (same slug filenames). `getPosts(["src","posts","blog"], locale)` resolves the locale subfolder. Adding a post = drop the same slug in both `pt/` and `en/`.
@@ -75,7 +78,10 @@ Add any new copy in **both** languages.
 ### Environment
 
 - `NEXT_PUBLIC_FORMSUBMIT_EMAIL` — destination email for the contact form (required for submissions to work).
-- Optional route password vars — see `.env.example`.
+- `AUTH_SECRET` — required whenever the password gate is used (signs the auth cookie).
+- `PAGE_ACCESS_PASSWORD` — password for protected routes.
+
+See [.env.example](.env.example).
 
 ### Customization notes (still demo defaults — fix before deploy)
 
