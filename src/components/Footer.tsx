@@ -37,11 +37,6 @@ export const Footer = () => {
                   {chunks}
                 </SmartLink>
               ),
-              once: (chunks) => (
-                <SmartLink key="once" href="https://once-ui.com/products/magic-portfolio">
-                  {chunks}
-                </SmartLink>
-              ),
             })}
           </Text>
         </Text>
