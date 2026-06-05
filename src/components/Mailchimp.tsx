@@ -16,6 +16,7 @@ import {
 import type { SpacingToken, opacity } from "@once-ui-system/core";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import styles from "./Mailchimp.module.scss";
 
 type FormState = {
   name: string;
@@ -80,6 +81,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
       payload.append("name", form.name);
       payload.append("email", form.email);
       payload.append("message", form.message);
+      payload.append("_replyto", form.email);
       payload.append("_subject", t("subject", { name: form.name }));
       payload.append("_template", "table");
       payload.append("_captcha", "false");
@@ -174,7 +176,13 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
 
       {submitted ? (
         <RevealFx translateY="4">
-          <Column maxWidth={28} horizontal="center" gap="8">
+          <Column maxWidth={28} horizontal="center" gap="8" className={styles.success}>
+            <span className={styles.badge} aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 60 60">
+                <circle className={styles.ring} cx="30" cy="30" r="26" />
+                <path className={styles.check} d="M18 31 L27 40 L43 22" />
+              </svg>
+            </span>
             <Text variant="heading-strong-m" onBackground="accent-strong">
               {t("successTitle")}
             </Text>
