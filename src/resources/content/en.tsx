@@ -1,4 +1,15 @@
-import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import type {
+  About,
+  Blog,
+  FirstClassDev,
+  Gallery,
+  Home,
+  Newsletter,
+  Person,
+  Social,
+  Work,
+} from "@/types";
+import { Fragment } from "react";
 
 const person: Person = {
   firstName: "Lucas",
@@ -59,7 +70,7 @@ const home: Home = {
   featured: {
     display: true,
     title: <>First Class Dev — Software House</>,
-    href: "https://www.firstclassdev.com.br",
+    href: "/en/first-class-dev",
   },
   subline: (
     <>
@@ -351,6 +362,196 @@ const gallery: Gallery = {
   ],
 };
 
+const firstClassDev: FirstClassDev = {
+  path: "/first-class-dev",
+  label: "First Class Dev",
+  title: "First Class Dev — Custom technology that grows your business",
+  description:
+    "Software house founded in 2021 by Lucas Godoy. SaaS, custom web systems and digital brand for small and mid-sized businesses in Brazil and abroad.",
+  logo: "/images/projects/first-class-dev.png",
+  hero: {
+    badge: "Since 2021 · 100% online",
+    headline: (
+      <>
+        Custom technology that makes your business <strong>sell more and grow</strong>
+      </>
+    ),
+    subline: (
+      <>
+        <strong>First Class Dev</strong> is the technology studio behind my products. We turn
+        processes into technology that sells: SaaS, websites, stores and custom systems for SMBs in
+        Brazil and abroad.
+      </>
+    ),
+  },
+  cta: {
+    site: "https://www.firstclassdev.com.br",
+    whatsapp: "https://wa.me/5519996168818",
+    email: "mailto:contato@firstclassdev.com.br",
+  },
+  stats: [
+    { value: "2021", label: "Founded" },
+    { value: "20+", label: "Projects delivered" },
+    { value: "11", label: "SaaS products" },
+    { value: "3", label: "Countries served" },
+  ],
+  story: {
+    title: "Our story",
+    paragraphs: [
+      <Fragment key="story-1">
+        Every good product is born from a real problem. First Class Dev started in 2021, from the
+        unrest of a developer who saw, every day, small and mid-sized businesses stuck with manual
+        processes, endless spreadsheets and off-the-shelf software that never really fit.
+      </Fragment>,
+      <Fragment key="story-2">
+        The question was simple: <em>what if technology adapted to the business — not the other way
+        around?</em> With that idea, <strong>Lucas Godoy</strong>, founder and CEO, started the
+        company: delivering high-level technology with proximity, agility and a focus on results.
+      </Fragment>,
+      <Fragment key="story-3">
+        Since the first project, the way of working has been the same: understand the problem before
+        writing the first line of code. We dive into the client's business, map processes and only
+        then propose the solution. That has earned 20+ delivered projects and clients who have
+        walked with us since 2021.
+      </Fragment>,
+    ],
+  },
+  fronts: {
+    title: "What we do",
+    items: [
+      {
+        icon: "rocket",
+        title: "SaaS",
+        description:
+          "Ready-to-use products with monthly subscription and no installation. They solve real problems across different markets.",
+      },
+      {
+        icon: "grid",
+        title: "Dev",
+        description:
+          "Custom systems, portals and web applications that fit the client's process and scale with it.",
+      },
+      {
+        icon: "figma",
+        title: "Brand",
+        description:
+          "Visual identity, websites, landing pages and stores that turn the brand into pixels that sell.",
+      },
+    ],
+  },
+  products: {
+    title: "Our products",
+    description: "11 SaaS born from real problems — living proof of our engineering.",
+    items: [
+      {
+        name: "Radar B3",
+        tagline: "Where strategy meets technology",
+        description: "Stock market analysis with signals, dashboards and alerts.",
+        image: "/images/projects/radar-b3.png",
+        slug: "radar-b3",
+      },
+      {
+        name: "Servix",
+        tagline: "Less paper. More service.",
+        description: "Work-order management for technical teams.",
+        image: "/images/projects/servix.png",
+        slug: "servix",
+      },
+      {
+        name: "Syncro",
+        tagline: "Your systems and your team in sync",
+        description: "No-code systems integration and automation.",
+        image: "/images/projects/syncro.png",
+        slug: "syncro",
+      },
+      {
+        name: "Velaris",
+        tagline: "Management that drives growth",
+        description: "Complete ERP/CRM for SMBs.",
+        image: "/images/projects/velaris.png",
+        slug: "velaris",
+      },
+      {
+        name: "First Care",
+        tagline: "Smart, simple and human care",
+        description: "Clinical management and customer-service platform.",
+        image: "/images/projects/first-care.png",
+        slug: "first-care",
+      },
+      {
+        name: "FC Converter",
+        tagline: "Unlimited file converter",
+        description: "File conversion in the cloud.",
+        image: "/images/projects/fc-converter.png",
+        slug: "fc-converter",
+      },
+      {
+        name: "First Class Insight",
+        tagline: "Executive content that speeds up decisions",
+        description: "Summaries, courses and case studies for leaders.",
+        image: "/images/projects/first-class-insight.png",
+        slug: "first-class-insight",
+      },
+      {
+        name: "FC Academy",
+        tagline: "A tech school with real projects",
+        description: "Technology training with market-grade practice.",
+        image: "/images/projects/fc-academy.png",
+        slug: "fc-academy",
+      },
+      {
+        name: "FC Noivos",
+        tagline: "Your big day, planned with love",
+        description: "End-to-end wedding planning.",
+        image: "/images/projects/fc-noivos.png",
+        slug: "fc-noivos",
+      },
+      {
+        name: "FC Chef",
+        tagline: "Master Chef",
+        description: "Recipes, shopping list and weekly menu.",
+        image: "/images/projects/fc-chef.png",
+        slug: "fc-chef",
+      },
+      {
+        name: "FC Moments",
+        tagline: "Every moment, in the right place",
+        description: "Event and special-moment management.",
+        image: "/images/projects/fc-moments.png",
+        slug: "fc-moments",
+      },
+    ],
+  },
+  values: {
+    title: "What we believe",
+    items: [
+      {
+        title: "Client first",
+        description:
+          "We don't deliver code. We deliver results. If it doesn't solve the problem, it's not done.",
+      },
+      {
+        title: "Simple wins",
+        description:
+          "We look for the simplest solution that works. Unnecessary complexity is technical debt.",
+      },
+      {
+        title: "Long-term partners",
+        description: "We build relationships, not transactions. Clients who have walked with us since 2021.",
+      },
+    ],
+  },
+  closing: {
+    title: <>Let's talk?</>,
+    description: (
+      <>
+        If your company wants to turn a challenge into results, the next chapter of First Class Dev
+        can include your business. The conversation starts here.
+      </>
+    ),
+  },
+};
+
 export const enContent = {
   person,
   social,
@@ -360,4 +561,5 @@ export const enContent = {
   blog,
   work,
   gallery,
+  firstClassDev,
 };
