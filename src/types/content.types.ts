@@ -224,6 +224,71 @@ export interface Blog extends BasePageConfig {}
 export interface Work extends BasePageConfig {}
 
 /**
+ * A single First Class Dev product shown in the products grid.
+ */
+export interface FirstClassDevProduct {
+  /** Product name */
+  name: string;
+  /** Short tagline / slogan */
+  tagline: string;
+  /** What the product solves */
+  description: string;
+  /** Logo/cover image inside `public/images` */
+  image: string;
+  /** Optional internal work-post slug to link to */
+  slug?: string;
+}
+
+/**
+ * Dedicated First Class Dev showcase page configuration.
+ * @description Standalone, featured page that tells the company story and lists its products.
+ */
+export interface FirstClassDev extends BasePageConfig {
+  /** Company logo inside `public/images` */
+  logo: string;
+  /** Hero section copy */
+  hero: {
+    badge: string;
+    headline: React.ReactNode;
+    subline: React.ReactNode;
+  };
+  /** Contact CTAs */
+  cta: {
+    site: string;
+    whatsapp: string;
+    email: string;
+  };
+  /** Highlight stats (e.g. "20+" projects) */
+  stats: Array<{ value: string; label: string }>;
+  /** The "our story" narrative */
+  story: {
+    title: string;
+    paragraphs: React.ReactNode[];
+  };
+  /** The three service fronts (SaaS / Dev / Brand) */
+  fronts: {
+    title: string;
+    items: Array<{ icon: string; title: string; description: string }>;
+  };
+  /** Product catalog */
+  products: {
+    title: string;
+    description: string;
+    items: FirstClassDevProduct[];
+  };
+  /** Company values */
+  values: {
+    title: string;
+    items: Array<{ title: string; description: string }>;
+  };
+  /** Closing CTA block */
+  closing: {
+    title: React.ReactNode;
+    description: React.ReactNode;
+  };
+}
+
+/**
  * Gallery page configuration.
  * @description Configuration for the Gallery page, including metadata, navigation label, and image list.
  */

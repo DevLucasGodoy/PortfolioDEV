@@ -14,7 +14,7 @@ import { ThemeToggle } from "./ThemeToggle";
 export const Header = () => {
   const pathname = usePathname() ?? "";
   const locale = useLocale();
-  const { about, blog, work } = useContent();
+  const { about, blog, work, firstClassDev } = useContent();
   const prefix = `/${locale}`;
 
   return (
@@ -96,6 +96,25 @@ export const Header = () => {
                       prefixIcon="grid"
                       href={`${prefix}/work`}
                       selected={pathname.startsWith("/work")}
+                    />
+                  </Row>
+                </>
+              )}
+              {routes["/first-class-dev"] && (
+                <>
+                  <Row s={{ hide: true }}>
+                    <ToggleButton
+                      prefixIcon="rocket"
+                      href={`${prefix}/first-class-dev`}
+                      label={firstClassDev.label}
+                      selected={pathname.startsWith("/first-class-dev")}
+                    />
+                  </Row>
+                  <Row hide s={{ hide: false }}>
+                    <ToggleButton
+                      prefixIcon="rocket"
+                      href={`${prefix}/first-class-dev`}
+                      selected={pathname.startsWith("/first-class-dev")}
                     />
                   </Row>
                 </>

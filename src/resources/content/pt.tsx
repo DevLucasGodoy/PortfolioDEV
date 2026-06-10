@@ -1,4 +1,15 @@
-import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import type {
+  About,
+  Blog,
+  FirstClassDev,
+  Gallery,
+  Home,
+  Newsletter,
+  Person,
+  Social,
+  Work,
+} from "@/types";
+import { Fragment } from "react";
 
 const person: Person = {
   firstName: "Lucas",
@@ -59,7 +70,7 @@ const home: Home = {
   featured: {
     display: true,
     title: <>First Class Dev — Software House</>,
-    href: "https://www.firstclassdev.com.br",
+    href: "/pt/first-class-dev",
   },
   subline: (
     <>
@@ -352,6 +363,199 @@ const gallery: Gallery = {
   ],
 };
 
+const firstClassDev: FirstClassDev = {
+  path: "/first-class-dev",
+  label: "First Class Dev",
+  title: "First Class Dev — Tecnologia sob medida que faz sua empresa crescer",
+  description:
+    "Software house fundada em 2021 por Lucas Godoy. SaaS, sistemas web sob medida e identidade digital para pequenas e médias empresas no Brasil e no exterior.",
+  logo: "/images/projects/first-class-dev.png",
+  hero: {
+    badge: "Desde 2021 · 100% online",
+    headline: (
+      <>
+        Tecnologia sob medida que faz a sua empresa{" "}
+        <strong>vender mais e crescer</strong>
+      </>
+    ),
+    subline: (
+      <>
+        A <strong>First Class Dev</strong> é o estúdio de tecnologia por trás dos meus produtos.
+        Transformamos processos em tecnologia que vende: SaaS, sites, lojas e sistemas sob medida
+        para PMEs no Brasil e no exterior.
+      </>
+    ),
+  },
+  cta: {
+    site: "https://www.firstclassdev.com.br",
+    whatsapp: "https://wa.me/5519996168818",
+    email: "mailto:contato@firstclassdev.com.br",
+  },
+  stats: [
+    { value: "2021", label: "Fundada" },
+    { value: "20+", label: "Projetos entregues" },
+    { value: "11", label: "Produtos SaaS" },
+    { value: "3", label: "Países atendidos" },
+  ],
+  story: {
+    title: "Nossa história",
+    paragraphs: [
+      <Fragment key="story-1">
+        Todo bom produto nasce de um problema real. A First Class Dev nasceu em 2021, da
+        inquietação de um desenvolvedor que via, todos os dias, pequenas e médias empresas travadas
+        por processos manuais, planilhas infinitas e softwares de prateleira que nunca se
+        encaixavam de verdade.
+      </Fragment>,
+      <Fragment key="story-2">
+        A pergunta era simples: <em>e se a tecnologia se adaptasse ao negócio — e não o
+        contrário?</em> Foi com essa ideia que <strong>Lucas Godoy</strong>, fundador e CEO, abriu a
+        empresa: entregar tecnologia de alto nível com proximidade, agilidade e foco em resultado.
+      </Fragment>,
+      <Fragment key="story-3">
+        Desde o primeiro projeto, a forma de trabalhar é a mesma: entender o problema antes de
+        escrever a primeira linha de código. Mergulhamos no negócio do cliente, mapeamos processos e
+        só então propomos a solução. Isso rendeu mais de 20 projetos entregues e clientes que
+        caminham conosco desde 2021.
+      </Fragment>,
+    ],
+  },
+  fronts: {
+    title: "O que fazemos",
+    items: [
+      {
+        icon: "rocket",
+        title: "SaaS",
+        description:
+          "Produtos prontos para usar, com assinatura mensal e sem instalação. Resolvem problemas reais de mercados diferentes.",
+      },
+      {
+        icon: "grid",
+        title: "Dev",
+        description:
+          "Sistemas, portais e aplicações web sob medida, que se encaixam no processo do cliente e escalam com ele.",
+      },
+      {
+        icon: "figma",
+        title: "Brand",
+        description:
+          "Identidade visual, sites, landing pages e lojas que transformam a marca em pixels que vendem.",
+      },
+    ],
+  },
+  products: {
+    title: "Nossos produtos",
+    description:
+      "11 SaaS criados a partir de problemas reais — a prova viva da nossa engenharia.",
+    items: [
+      {
+        name: "Radar B3",
+        tagline: "Onde estratégia encontra tecnologia",
+        description: "Análise do mercado financeiro com sinais, dashboards e alertas.",
+        image: "/images/projects/radar-b3.png",
+        slug: "radar-b3",
+      },
+      {
+        name: "Servix",
+        tagline: "Menos papel. Mais serviço.",
+        description: "Gestão de ordens de serviço para equipes técnicas.",
+        image: "/images/projects/servix.png",
+        slug: "servix",
+      },
+      {
+        name: "Syncro",
+        tagline: "Seus sistemas e sua equipe em sincronia",
+        description: "Integração e automação de sistemas sem código.",
+        image: "/images/projects/syncro.png",
+        slug: "syncro",
+      },
+      {
+        name: "Velaris",
+        tagline: "Gestão que impulsiona",
+        description: "ERP/CRM completo para PMEs.",
+        image: "/images/projects/velaris.png",
+        slug: "velaris",
+      },
+      {
+        name: "First Care",
+        tagline: "Atendimento inteligente, simples e humano",
+        description: "Plataforma de gestão clínica e atendimento ao cliente.",
+        image: "/images/projects/first-care.png",
+        slug: "first-care",
+      },
+      {
+        name: "FC Converter",
+        tagline: "Conversor de arquivos ilimitado",
+        description: "Conversão de arquivos na nuvem.",
+        image: "/images/projects/fc-converter.png",
+        slug: "fc-converter",
+      },
+      {
+        name: "First Class Insight",
+        tagline: "Conteúdo executivo que acelera decisão",
+        description: "Resumos, cursos e estudos de caso para líderes.",
+        image: "/images/projects/first-class-insight.png",
+        slug: "first-class-insight",
+      },
+      {
+        name: "FC Academy",
+        tagline: "Escola de tecnologia com projetos reais",
+        description: "Formação em tecnologia com prática de mercado.",
+        image: "/images/projects/fc-academy.png",
+        slug: "fc-academy",
+      },
+      {
+        name: "FC Noivos",
+        tagline: "O seu grande dia planejado com amor",
+        description: "Planejamento completo de casamentos.",
+        image: "/images/projects/fc-noivos.png",
+        slug: "fc-noivos",
+      },
+      {
+        name: "FC Chef",
+        tagline: "Master Chef",
+        description: "Receitas, lista de compras e cardápio semanal.",
+        image: "/images/projects/fc-chef.png",
+        slug: "fc-chef",
+      },
+      {
+        name: "FC Moments",
+        tagline: "Cada momento, no lugar certo",
+        description: "Gestão de eventos e momentos especiais.",
+        image: "/images/projects/fc-moments.png",
+        slug: "fc-moments",
+      },
+    ],
+  },
+  values: {
+    title: "No que acreditamos",
+    items: [
+      {
+        title: "Cliente em primeiro lugar",
+        description:
+          "Não entregamos código. Entregamos resultado. Se não resolve o problema, não está pronto.",
+      },
+      {
+        title: "Simples vence",
+        description:
+          "Buscamos a solução mais simples que resolve. Complexidade desnecessária é dívida técnica.",
+      },
+      {
+        title: "Parceiros de longo prazo",
+        description: "Construímos relações, não transações. Clientes que caminham conosco desde 2021.",
+      },
+    ],
+  },
+  closing: {
+    title: <>Vamos conversar?</>,
+    description: (
+      <>
+        Se a sua empresa quer transformar um desafio em resultado, o próximo capítulo da First Class
+        Dev pode incluir o seu negócio. A conversa começa aqui.
+      </>
+    ),
+  },
+};
+
 export const ptContent = {
   person,
   social,
@@ -361,4 +565,5 @@ export const ptContent = {
   blog,
   work,
   gallery,
+  firstClassDev,
 };
