@@ -310,7 +310,7 @@ export default async function About({
           )}
 
           {about.studies.display && (
-            <RevealFx translateY="8" delay={0.2} fillWidth s={{ direction: "column" }}>
+            <RevealFx translateY="8" delay={0.1} fillWidth s={{ direction: "column" }}>
               <Heading
                 as="h2"
                 id={about.studies.title}
@@ -336,7 +336,7 @@ export default async function About({
           )}
 
           {about.technical.display && (
-            <RevealFx translateY="8" delay={0.3} fillWidth s={{ direction: "column" }}>
+            <RevealFx translateY="8" delay={0.15} fillWidth s={{ direction: "column" }}>
               <Heading
                 as="h2"
                 id={about.technical.title}

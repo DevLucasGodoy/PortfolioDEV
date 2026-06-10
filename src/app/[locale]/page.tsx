@@ -93,12 +93,12 @@ export default async function Home({
               {home.headline}
             </Heading>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center">
+          <RevealFx translateY="8" delay={0.1} fillWidth horizontal="center">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-l">
               {home.subline}
             </Text>
           </RevealFx>
-          <RevealFx delay={0.4} horizontal="center" paddingTop="12">
+          <RevealFx delay={0.15} horizontal="center" paddingTop="12">
             <Button
               id="about"
               data-border="rounded"
@@ -129,7 +129,7 @@ export default async function Home({
           style={{ flex: 1, justifyContent: "flex-end" }}
           paddingTop="xl"
         >
-          <RevealFx delay={1} fillWidth horizontal="center">
+          <RevealFx delay={0.3} fillWidth horizontal="center">
             <SmartLink href="#projects" unstyled>
               <Column className="scroll-indicator" horizontal="center" align="center" gap="4">
                 <Text variant="label-default-xs" onBackground="neutral-weak" align="center">
