@@ -15,8 +15,8 @@ import { ptContent } from "./content/pt";
 
 const { home } = ptContent;
 
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+// Used for SEO in meta tags and schema
+const baseURL: string = "https://devlucasgodoy.vercel.app";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -24,6 +24,7 @@ const routes: RoutesConfig = {
   "/work": true,
   "/blog": true,
   "/gallery": true,
+  "/first-class-dev": true,
 };
 
 const display: DisplayConfig = {
@@ -186,18 +187,18 @@ const mailchimp: MailchimpConfig = {
 
 // default schema data
 const schema: SchemaConfig = {
-  logo: "",
-  type: "Organization",
-  name: "Once UI",
+  logo: "/images/avatar.jpeg",
+  type: "Person",
+  name: "Lucas Godoy",
   description: home.description,
-  email: "lorant@once-ui.com",
+  email: "lucas.moraes.godoy@gmail.com",
 };
 
 // social links
 const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  linkedin: "https://www.linkedin.com/in/devlucasgodoy/",
+  github: "https://github.com/DevLucasGodoy",
+  instagram: "https://www.instagram.com/devlucasgodoy/",
 };
 
 // social sharing configuration for blog posts
