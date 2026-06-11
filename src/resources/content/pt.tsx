@@ -485,7 +485,7 @@ const firstClassDev: FirstClassDev = {
       {
         name: "FC Converter",
         tagline: "Conversor de arquivos ilimitado",
-        description: "Conversão de arquivos na nuvem.",
+        description: "Conversão de arquivos 100% no navegador, grátis e sem limites.",
         image: "/images/projects/fc-converter.png",
         slug: "fc-converter",
       },
@@ -506,7 +506,7 @@ const firstClassDev: FirstClassDev = {
       {
         name: "FC Noivos",
         tagline: "O seu grande dia planejado com amor",
-        description: "Planejamento completo de casamentos.",
+        description: "Site para os convidados e painel completo para os noivos, com Pix integrado.",
         image: "/images/projects/fc-noivos.png",
         slug: "fc-noivos",
       },

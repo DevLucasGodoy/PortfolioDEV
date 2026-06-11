@@ -1,7 +1,7 @@
 ---
 title: "FC Converter"
 publishedAt: "2026-04-05"
-summary: "Conversor de arquivos na nuvem, ilimitado e sem instalação — converta documentos, imagens, áudio e vídeo direto do navegador."
+summary: "Conversor de arquivos 100% no navegador — imagens, áudio, vídeo e documentos, grátis e sem limites. Sem upload: seus arquivos nunca saem do seu dispositivo."
 images:
   - "/images/projects/fc-converter.png"
 tag: "SaaS"
@@ -10,36 +10,48 @@ team:
     role: "Desenvolvedor Full-Stack"
     avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
-link: "https://www.firstclassdev.com.br"
+link: "https://fcconverter.vercel.app/pt"
 ---
 
 ## Visão Geral
 
-**FC Converter** é um conversor de arquivos na nuvem, sem instalação e sem limite de uso. O usuário sobe o arquivo, escolhe o formato de saída e baixa o resultado — tudo pelo navegador.
+**FC Converter** converte imagens, áudio, vídeo e documentos **100% no navegador**. Sem upload, sem servidor, sem conta, sem limite e sem pagar nada — todo o processamento roda no dispositivo do usuário com WebAssembly.
 
-_"Conversor de arquivos ilimitado."_
+_"Converta qualquer arquivo, grátis e sem limites — sem que nada saia do seu dispositivo."_
 
 ## Problema
 
-Conversores online costumam ser cheios de anúncios, com limite de arquivos por dia e dúvida sobre o que acontece com os dados enviados. Quem precisa converter em volume acaba refém de software pago ou inseguro.
+A maioria dos conversores online envia o arquivo para um servidor, converte lá e devolve. Isso significa espera de upload, limites por plano, marca-d'água — e dúvida real sobre o que acontece com contratos, documentos médicos e fotos pessoais depois do envio.
 
 ## Solução
 
-Conversão rápida, ilimitada e direta no navegador:
+### Privacidade por arquitetura
 
-- **Documentos**: PDF, DOCX, XLSX, PPTX e mais
-- **Imagens**: PNG, JPG, WEBP, SVG
-- **Áudio e vídeo**: MP3, MP4, WAV, entre outros
-- **Lote**: múltiplos arquivos de uma vez
-- **Privacidade**: arquivos processados e descartados após a conversão
+O FC Converter **não tem servidor de conversão**: nada é enviado, nada é armazenado, nada é acessado. Não é uma promessa de política de privacidade — é a arquitetura do produto. Não podemos ver o que nunca recebemos.
+
+### +200 formatos suportados
+
+- **Imagens**: PNG, JPG, WEBP, GIF, BMP, TIFF e mais — incluindo ICO (favicon) e SVG
+- **Áudio**: MP3, WAV, OGG, AAC, FLAC, M4A e mais
+- **Vídeo**: MP4, WEBM, MOV, AVI, MKV — inclusive extrair áudio de vídeo
+- **Documentos**: DOCX, PDF, TXT, HTML, EPUB, XLSX e CSV, com conversões cruzadas (DOCX → PDF, PDF → DOCX/PNG, XLSX ↔ CSV e mais)
+
+### Grátis de verdade, ilimitado de verdade
+
+- **R$ 0, para sempre** — sem plano pago, sem marca-d'água, sem teste de 7 dias
+- **Sem limite de arquivos**: converta 1 ou 100 de uma vez, com arraste e solte em lote
+- **Sem conta**: nenhum cadastro, nenhum e-mail, nenhuma senha
+- Motores carregados **sob demanda**: o site abre leve e só baixa o motor do tipo de arquivo usado
+- Bilíngue (PT/EN), tema claro/escuro/automático e analítica opt-in (desativada por padrão)
 
 ## Stack Técnica
 
-- **Frontend**: React, TypeScript, Tailwind CSS
-- **Backend**: Node.js com workers de conversão em fila
-- **Processamento**: ferramentas de conversão server-side (ex.: FFmpeg para mídia)
-- **Infra**: storage temporário em nuvem com expiração automática
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript
+- **Mídia**: FFmpeg compilado para WebAssembly — o mesmo motor usado pela indústria, rodando no navegador
+- **Documentos**: pdf-lib, pdf.js, mammoth, docx, exceljs e jszip, carregados sob demanda
+- **Imagens especiais**: Canvas API para ICO e SVG
+- **Arquitetura**: 100% client-side — nenhuma rota de API de conversão existe no produto
 
 ## Impacto
 
-O FC Converter resolve a conversão de arquivos sem fricção: sem instalar nada, sem limite artificial e sem deixar o arquivo parado num servidor. Útil para o dia a dia de quem lida com muitos formatos.
+O FC Converter elimina a troca entre conveniência e privacidade: conversão imediata, sem fila de upload, em qualquer dispositivo com navegador moderno. É o conversor em que o arquivo não viaja — útil de criadores de conteúdo a escritórios que lidam com material confidencial.

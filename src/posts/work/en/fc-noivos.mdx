@@ -1,7 +1,7 @@
 ---
 title: "FC Noivos"
 publishedAt: "2025-11-30"
-summary: "End-to-end wedding planning — guests, budget, vendors and checklist, from the 'yes' to the big day."
+summary: "Complete wedding planning platform — a public site for guests and an admin dashboard for the couple, with RSVP, budget, seating plan and built-in Pix payments."
 images:
   - "/images/projects/fc-noivos.png"
 tag: "SaaS"
@@ -10,36 +10,49 @@ team:
     role: "Full-Stack Developer"
     avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
-link: "https://www.firstclassdev.com.br"
+link: "https://fcnoivos.vercel.app"
 ---
 
 ## Overview
 
-**FC Noivos** is a SaaS platform for end-to-end wedding planning. It brings together guest list, budget, vendors and checklist in one place, so the couple can organize the big day without losing track.
+**FC Noivos** is a complete wedding planning platform. It combines the public site guests visit with an admin dashboard where the couple centralizes every decision — guest list, budget, day-of timeline, gifts and much more — under a single visual identity.
 
-_"Your big day, planned with love."_
+_"A beautiful site for the guests and a complete dashboard for the couple, with built-in Pix."_
 
 ## Problem
 
-Planning a wedding means managing dozens of fronts at once — guests, tables, vendors, budget, deadlines. It usually lives scattered across spreadsheets and chats, and any forgotten detail is costly.
+Planning a wedding means managing dozens of fronts at once — guests, tables, vendors, budget, deadlines. It usually lives scattered across spreadsheets, chats and third-party gift registries, and any forgotten detail is costly.
 
 ## Solution
 
-The whole wedding organized, from engagement to the altar:
+### For the guests (public site)
 
-- **Guests** with RSVP, plus-ones and table arrangement
-- **Budget** with spend tracking versus plan
-- **Vendors** with contracts, payments and contacts
-- **Checklist** with tasks and deadlines by stage
-- **Timeline** from preparation to the event day
+- **Home** with full-screen cover photo, countdown and shortcuts to RSVP and View the Venue
+- **Venue** with embedded Google Map, ceremony and reception times and a photo gallery of the space
+- **Accommodation** (optional) with a curated hotel list — perfect for out-of-town relatives
+- **Gift Registry** with group gifts, valid Pix QR Code (Bacen-standard BR Code) or automated charging via Abacate Pay
+- **RSVP wizard**: lookup by name or invitation PIN, individual attendance per group member and kid-specific questions
+- **Guestbook** with public messages on a masonry wall
+- **Custom identity**: fully editable color palette, photos, copy and couple's monogram
+
+### For the couple (admin dashboard)
+
+- **Guests** with filters, grouping, RSVP status by origin and drag-and-drop seating plan
+- **Wedding party** management with role, side, responsibilities and a color palette per member
+- **Tasks** in kanban, unified monthly **calendar** and hour-by-hour **day-of timeline**, exportable for vendors
+- **Budget** with categories, installments with down payment, per-installment due dates and a dedicated Installments & Due Dates panel
+- **Gifts** with optional Abacate Pay integration to receive Pix automatically
+- **Ideas** as a Pinterest-style mood board, with boards per category and PDF export
+- **Honeymoon** planning with its own budget, notification center with optional emails, team with three roles (Groom, Bride, Wedding Planner) and appearance with five configurable colors and live preview
 
 ## Tech Stack
 
-- **Frontend**: React, TypeScript, Tailwind CSS (responsive)
-- **Backend**: Node.js + REST API
-- **Database**: PostgreSQL with data isolated per couple/event
-- **Infra**: cloud deploy
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS 4 with custom tokens that respond to the couple's configured theme
+- **Database**: serverless PostgreSQL 16 (Neon), accessed via `@neondatabase/serverless` with parameterized queries
+- **Payments**: native Abacate Pay (Pix) integration, or manual Pix via key + QR Code
+- **Uploads**: images on Cloudflare R2 with real content validation (magic bytes); financial receipts in a private bucket served only through an authenticated route
+- **Auth**: signed httpOnly session cookie (HMAC), scrypt + salt password hashing, rate limiting and origin validation
 
 ## Impact
 
-FC Noivos turns planning chaos into a clear, calm dashboard. The couple tracks everything in one place and reaches the big day feeling in control — not in a rush.
+FC Noivos turns planning chaos into a clear, calm dashboard. No loose spreadsheets, no gift registry on a third-party vendor: the couple tracks everything in one place, receives Pix gifts straight into their account and reaches the big day feeling in control — not in a rush.

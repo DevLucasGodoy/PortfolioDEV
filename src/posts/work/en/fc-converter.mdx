@@ -1,7 +1,7 @@
 ---
 title: "FC Converter"
 publishedAt: "2026-04-05"
-summary: "Unlimited file converter in the cloud, no install — convert documents, images, audio and video straight from the browser."
+summary: "File converter that runs 100% in the browser — images, audio, video and documents, free and unlimited. No upload: your files never leave your device."
 images:
   - "/images/projects/fc-converter.png"
 tag: "SaaS"
@@ -10,36 +10,48 @@ team:
     role: "Full-Stack Developer"
     avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
-link: "https://www.firstclassdev.com.br"
+link: "https://fcconverter.vercel.app/en"
 ---
 
 ## Overview
 
-**FC Converter** is a cloud file converter with no install and no usage limit. The user uploads a file, picks the output format and downloads the result — all in the browser.
+**FC Converter** converts images, audio, video and documents **100% in the browser**. No upload, no server, no account, no limits and nothing to pay — all processing runs on the user's device with WebAssembly.
 
-_"Unlimited file converter."_
+_"Convert any file, free and unlimited — without anything leaving your device."_
 
 ## Problem
 
-Online converters are usually full of ads, with daily file limits and doubts about what happens to the data you upload. Anyone converting in volume ends up stuck with paid or unsafe software.
+Most online converters send your file to a server, convert it there and send it back. That means upload waits, plan-based limits, watermarks — and real doubt about what happens to contracts, medical documents and personal photos after upload.
 
 ## Solution
 
-Fast, unlimited conversion right in the browser:
+### Privacy by architecture
 
-- **Documents**: PDF, DOCX, XLSX, PPTX and more
-- **Images**: PNG, JPG, WEBP, SVG
-- **Audio and video**: MP3, MP4, WAV and others
-- **Batch**: multiple files at once
-- **Privacy**: files processed and discarded after conversion
+FC Converter has **no conversion server**: nothing is sent, nothing is stored, nothing is accessed. It's not a privacy-policy promise — it's the product's architecture. We can't see what we never receive.
+
+### 200+ supported formats
+
+- **Images**: PNG, JPG, WEBP, GIF, BMP, TIFF and more — including ICO (favicon) and SVG
+- **Audio**: MP3, WAV, OGG, AAC, FLAC, M4A and more
+- **Video**: MP4, WEBM, MOV, AVI, MKV — including audio extraction from video
+- **Documents**: DOCX, PDF, TXT, HTML, EPUB, XLSX and CSV, with cross conversions (DOCX → PDF, PDF → DOCX/PNG, XLSX ↔ CSV and more)
+
+### Actually free, actually unlimited
+
+- **$0, forever** — no paid plan, no watermark, no 7-day trial
+- **No file limit**: convert 1 or 100 at once, with batch drag and drop
+- **No account**: no sign-up, no email, no password
+- Engines loaded **on demand**: the site opens light and only downloads the engine for the file type you use
+- Bilingual (PT/EN), light/dark/auto theme and opt-in analytics (off by default)
 
 ## Tech Stack
 
-- **Frontend**: React, TypeScript, Tailwind CSS
-- **Backend**: Node.js with queued conversion workers
-- **Processing**: server-side conversion tools (e.g. FFmpeg for media)
-- **Infra**: temporary cloud storage with automatic expiration
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript
+- **Media**: FFmpeg compiled to WebAssembly — the same industry-standard engine, running in the browser
+- **Documents**: pdf-lib, pdf.js, mammoth, docx, exceljs and jszip, loaded on demand
+- **Special images**: Canvas API for ICO and SVG
+- **Architecture**: 100% client-side — no conversion API route exists in the product
 
 ## Impact
 
-FC Converter solves file conversion without friction: nothing to install, no artificial limits, and no files left sitting on a server. Handy for anyone dealing with many formats daily.
+FC Converter removes the trade-off between convenience and privacy: instant conversion, no upload queue, on any device with a modern browser. The converter where the file never travels — useful for everyone from content creators to offices handling confidential material.

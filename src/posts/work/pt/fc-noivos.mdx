@@ -1,7 +1,7 @@
 ---
 title: "FC Noivos"
 publishedAt: "2025-11-30"
-summary: "Plataforma de planejamento completo de casamentos — convidados, orçamento, fornecedores e checklist, do 'sim' ao grande dia."
+summary: "Plataforma completa de planejamento de casamento — site público para os convidados e painel administrativo para os noivos, com RSVP, orçamento, plano de mesas e Pix integrado."
 images:
   - "/images/projects/fc-noivos.png"
 tag: "SaaS"
@@ -10,36 +10,49 @@ team:
     role: "Desenvolvedor Full-Stack"
     avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
-link: "https://www.firstclassdev.com.br"
+link: "https://fcnoivos.vercel.app"
 ---
 
 ## Visão Geral
 
-**FC Noivos** é uma plataforma SaaS para planejamento completo de casamentos. Reúne lista de convidados, orçamento, fornecedores e checklist num só lugar, para o casal organizar o grande dia sem se perder.
+**FC Noivos** é uma plataforma completa de planejamento de casamento. Reúne o site público que os convidados acessam e um painel administrativo em que os noivos centralizam todas as decisões — lista de convidados, orçamento, cronograma, presentes e muito mais — em uma única identidade visual.
 
-_"O seu grande dia planejado com amor."_
+_"Um site lindo para os convidados e um painel completo para os noivos, com Pix integrado."_
 
 ## Problema
 
-Planejar um casamento é gerenciar dezenas de frentes ao mesmo tempo — convidados, mesas, fornecedores, orçamento, prazos. Tudo costuma viver espalhado em planilhas e conversas, e qualquer detalhe esquecido custa caro.
+Planejar um casamento é gerenciar dezenas de frentes ao mesmo tempo — convidados, mesas, fornecedores, orçamento, prazos. Tudo costuma viver espalhado em planilhas, conversas e páginas de presentes em outros fornecedores, e qualquer detalhe esquecido custa caro.
 
 ## Solução
 
-Todo o casamento organizado, do noivado ao altar:
+### Para os convidados (site público)
 
-- **Convidados** com RSVP, acompanhantes e organização de mesas
-- **Orçamento** com controle de gastos e comparação com o previsto
-- **Fornecedores** com contratos, pagamentos e contatos
-- **Checklist** com tarefas e prazos por etapa
-- **Linha do tempo** da preparação até o dia do evento
+- **Início** com foto de capa em tela cheia, contagem regressiva e atalhos para Confirmar Presença e Ver o Local
+- **Local** com mapa do Google embutido, horários de cerimônia e recepção e galeria de fotos do espaço
+- **Hospedagem** opcional com lista curada de hotéis — perfeita para parentes que vêm de fora
+- **Lista de Presentes** com presentes em grupo, QR Code Pix válido (BR Code no padrão do Bacen) ou cobrança automatizada via Abacate Pay
+- **RSVP em wizard**: busca por nome ou PIN do convite, presença individual de cada membro do grupo e perguntas específicas para crianças
+- **Livro de Visitas** com mensagens públicas em mural masonry
+- **Identidade personalizada**: paleta de cores, fotos, textos e monograma do casal totalmente editáveis
+
+### Para os noivos (painel administrativo)
+
+- **Convidados** com filtros, agrupamento, status RSVP por origem e plano de mesas drag-and-drop
+- **Padrinhos e madrinhas** com função, lado, responsabilidades e paleta de cores por membro
+- **Tarefas** em kanban, **calendário** mensal unificado e **cronograma do dia** hora a hora, exportável para fornecedores
+- **Orçamento** com categorias, parcelamento com entrada, vencimentos individuais e painel dedicado de Parcelas & Vencimentos
+- **Presentes** com integração opcional ao Abacate Pay para receber Pix automaticamente
+- **Ideias** em mood board estilo Pinterest, com boards por categoria e exportação em PDF
+- **Lua de mel** com orçamento próprio, central de notificações com e-mail opcional, equipe com três funções (Noivo, Noiva, Cerimonialista) e aparência com cinco cores configuráveis em pré-visualização ao vivo
 
 ## Stack Técnica
 
-- **Frontend**: React, TypeScript, Tailwind CSS (responsivo)
-- **Backend**: Node.js + API REST
-- **Banco**: PostgreSQL com dados isolados por casal/evento
-- **Infra**: deploy em nuvem
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript e Tailwind CSS 4 com tokens próprios que respondem ao tema configurado pelo casal
+- **Banco**: PostgreSQL 16 serverless (Neon), acessado via `@neondatabase/serverless` em queries parametrizadas
+- **Pagamentos**: integração nativa com Abacate Pay (Pix) ou Pix manual via chave + QR Code
+- **Uploads**: imagens no Cloudflare R2 com validação de conteúdo real (magic bytes); comprovantes em bucket privado servido só por rota autenticada
+- **Autenticação**: sessão em cookie httpOnly assinado (HMAC), senhas com scrypt + salt, rate limit e validação de origem
 
 ## Impacto
 
-O FC Noivos transforma o caos do planejamento em um painel claro e tranquilo. O casal acompanha tudo num lugar só e chega ao grande dia com a sensação de controle — não de correria.
+O FC Noivos transforma o caos do planejamento em um painel claro e tranquilo. Nenhuma planilha solta, nenhuma página de presentes em outro fornecedor: o casal acompanha tudo num lugar só, recebe os presentes em Pix direto na conta e chega ao grande dia com a sensação de controle — não de correria.
