@@ -366,23 +366,23 @@ const gallery: Gallery = {
 const firstClassDev: FirstClassDev = {
   path: "/first-class-dev",
   label: "First Class Dev",
-  title: "First Class Dev — Tecnologia sob medida que faz sua empresa crescer",
+  title: "First Class Dev — Sites que transformam visitantes em clientes",
   description:
-    "Software house fundada em 2021 por Lucas Godoy. SaaS, sistemas web sob medida e identidade digital para pequenas e médias empresas no Brasil e no exterior.",
+    "Estúdio de tecnologia fundado em 2021 por Lucas Godoy. Sites desenhados para converter, 11 produtos SaaS e sistemas sob medida para PMEs no Brasil e no exterior.",
   logo: "/images/projects/first-class-dev.png",
   hero: {
     badge: "Desde 2021 · 100% online",
     headline: (
       <>
-        Tecnologia sob medida que faz a sua empresa{" "}
-        <strong>vender mais e crescer</strong>
+        O estúdio de tecnologia que transforma o seu site em uma{" "}
+        <strong>máquina de conversão de novos clientes</strong>
       </>
     ),
     subline: (
       <>
-        A <strong>First Class Dev</strong> é o estúdio de tecnologia por trás dos meus produtos.
-        Transformamos processos em tecnologia que vende: SaaS, sites, lojas e sistemas sob medida
-        para PMEs no Brasil e no exterior.
+        Desde 2021, a <strong>First Class Dev</strong> cria sites, lojas e landing pages desenhados
+        para vender — rápidos, encontráveis e com cada pixel guiando o visitante até o contato. E
+        quando o desafio vai além do site, nossos SaaS e sistemas sob medida resolvem.
       </>
     ),
   },
@@ -417,16 +417,29 @@ const firstClassDev: FirstClassDev = {
         só então propomos a solução. Isso rendeu mais de 20 projetos entregues e clientes que
         caminham conosco desde 2021.
       </Fragment>,
+      <Fragment key="story-4">
+        Com o tempo, uma especialidade ficou clara: <strong>transformar sites em máquinas de
+        conversão</strong>. Os nossos são construídos sobre quatro pilares — rápido e encontrável
+        (performance e SEO), desenhado para converter (hierarquia visual, prova social e CTAs
+        estratégicos), direto para a venda (o visitante vira conversa no WhatsApp em poucos
+        cliques) e feito para crescer (métricas e otimização contínua de conversão).
+      </Fragment>,
     ],
   },
   fronts: {
     title: "O que fazemos",
     items: [
       {
+        icon: "figma",
+        title: "Brand",
+        description:
+          "Identidade visual, sites, landing pages e lojas onde cada pixel guia o visitante até o contato. Nossa especialidade: sites que viram máquina de conversão de novos clientes.",
+      },
+      {
         icon: "rocket",
         title: "SaaS",
         description:
-          "Produtos prontos para usar, com assinatura mensal e sem instalação. Resolvem problemas reais de mercados diferentes.",
+          "Produtos prontos para usar, com assinatura mensal, sem instalação e 7 dias de teste grátis. Resolvem problemas reais de mercados diferentes.",
       },
       {
         icon: "grid",
@@ -434,18 +447,12 @@ const firstClassDev: FirstClassDev = {
         description:
           "Sistemas, portais e aplicações web sob medida, que se encaixam no processo do cliente e escalam com ele.",
       },
-      {
-        icon: "figma",
-        title: "Brand",
-        description:
-          "Identidade visual, sites, landing pages e lojas que transformam a marca em pixels que vendem.",
-      },
     ],
   },
   products: {
     title: "Nossos produtos",
     description:
-      "11 SaaS criados a partir de problemas reais — a prova viva da nossa engenharia.",
+      "11 SaaS criados a partir de problemas reais — todos com 7 dias de teste grátis, sem cartão de crédito.",
     items: [
       {
         name: "Radar B3",
@@ -478,7 +485,7 @@ const firstClassDev: FirstClassDev = {
       {
         name: "First Care",
         tagline: "Atendimento inteligente, simples e humano",
-        description: "Plataforma de gestão clínica e atendimento ao cliente.",
+        description: "Atendimento ao cliente multicanal com IA.",
         image: "/images/projects/first-care.png",
         slug: "first-care",
       },
@@ -549,8 +556,8 @@ const firstClassDev: FirstClassDev = {
     title: <>Vamos conversar?</>,
     description: (
       <>
-        Se a sua empresa quer transformar um desafio em resultado, o próximo capítulo da First Class
-        Dev pode incluir o seu negócio. A conversa começa aqui.
+        Se a sua empresa quer um site que transforma visitantes em clientes, o próximo capítulo da
+        First Class Dev pode incluir o seu negócio. A conversa começa aqui.
       </>
     ),
   },

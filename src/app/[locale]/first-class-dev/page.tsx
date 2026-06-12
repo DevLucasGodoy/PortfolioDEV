@@ -44,13 +44,13 @@ export default async function FirstClassDevPage({
   const labels =
     locale === "en"
       ? {
-          visit: "Visit the website",
+          visit: "I want a site like this",
           whatsapp: "Talk on WhatsApp",
           email: "Send an email",
           seeProject: "See project",
         }
       : {
-          visit: "Visitar o site",
+          visit: "Quero um site assim",
           whatsapp: "Falar no WhatsApp",
           email: "Enviar e-mail",
           seeProject: "Ver projeto",

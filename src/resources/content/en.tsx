@@ -365,22 +365,23 @@ const gallery: Gallery = {
 const firstClassDev: FirstClassDev = {
   path: "/first-class-dev",
   label: "First Class Dev",
-  title: "First Class Dev — Custom technology that grows your business",
+  title: "First Class Dev — Websites that turn visitors into clients",
   description:
-    "Software house founded in 2021 by Lucas Godoy. SaaS, custom web systems and digital brand for small and mid-sized businesses in Brazil and abroad.",
+    "Technology studio founded in 2021 by Lucas Godoy. Websites designed to convert, 11 SaaS products and custom systems for SMBs in Brazil and abroad.",
   logo: "/images/projects/first-class-dev.png",
   hero: {
     badge: "Since 2021 · 100% online",
     headline: (
       <>
-        Custom technology that makes your business <strong>sell more and grow</strong>
+        The technology studio that turns your website into a{" "}
+        <strong>new-client conversion machine</strong>
       </>
     ),
     subline: (
       <>
-        <strong>First Class Dev</strong> is the technology studio behind my products. We turn
-        processes into technology that sells: SaaS, websites, stores and custom systems for SMBs in
-        Brazil and abroad.
+        Since 2021, <strong>First Class Dev</strong> has built websites, stores and landing pages
+        designed to sell — fast, findable, with every pixel guiding the visitor to contact. And
+        when the challenge goes beyond the website, our SaaS and custom systems take over.
       </>
     ),
   },
@@ -414,16 +415,29 @@ const firstClassDev: FirstClassDev = {
         then propose the solution. That has earned 20+ delivered projects and clients who have
         walked with us since 2021.
       </Fragment>,
+      <Fragment key="story-4">
+        Over time, one specialty became clear: <strong>turning websites into conversion
+        machines</strong>. Ours are built on four pillars — fast and findable (performance and
+        SEO), designed to convert (visual hierarchy, social proof and strategic CTAs), straight to
+        the sale (the visitor becomes a WhatsApp conversation in a few clicks) and built to grow
+        (metrics and continuous conversion optimization).
+      </Fragment>,
     ],
   },
   fronts: {
     title: "What we do",
     items: [
       {
+        icon: "figma",
+        title: "Brand",
+        description:
+          "Visual identity, websites, landing pages and stores where every pixel guides the visitor to contact. Our specialty: websites that become new-client conversion machines.",
+      },
+      {
         icon: "rocket",
         title: "SaaS",
         description:
-          "Ready-to-use products with monthly subscription and no installation. They solve real problems across different markets.",
+          "Ready-to-use products with monthly subscription, no installation and a 7-day free trial. They solve real problems across different markets.",
       },
       {
         icon: "grid",
@@ -431,17 +445,11 @@ const firstClassDev: FirstClassDev = {
         description:
           "Custom systems, portals and web applications that fit the client's process and scale with it.",
       },
-      {
-        icon: "figma",
-        title: "Brand",
-        description:
-          "Visual identity, websites, landing pages and stores that turn the brand into pixels that sell.",
-      },
     ],
   },
   products: {
     title: "Our products",
-    description: "11 SaaS born from real problems — living proof of our engineering.",
+    description: "11 SaaS born from real problems — all with a 7-day free trial, no credit card.",
     items: [
       {
         name: "Radar B3",
@@ -474,7 +482,7 @@ const firstClassDev: FirstClassDev = {
       {
         name: "First Care",
         tagline: "Smart, simple and human care",
-        description: "Clinical management and customer-service platform.",
+        description: "Multichannel customer service with AI.",
         image: "/images/projects/first-care.png",
         slug: "first-care",
       },
@@ -545,8 +553,8 @@ const firstClassDev: FirstClassDev = {
     title: <>Let's talk?</>,
     description: (
       <>
-        If your company wants to turn a challenge into results, the next chapter of First Class Dev
-        can include your business. The conversation starts here.
+        If your company wants a website that turns visitors into clients, the next chapter of First
+        Class Dev can include your business. The conversation starts here.
       </>
     ),
   },
