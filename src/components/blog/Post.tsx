@@ -42,9 +42,11 @@ export default function Post({ post, thumbnail, direction, locale }: PostProps) 
           alt={t("thumbnailAlt", { title: post.metadata.title })}
           aspectRatio="16 / 9"
           objectFit="cover"
+          fillWidth
+          style={direction === "column" ? undefined : { flex: 1, maxWidth: 460 }}
         />
       )}
-      <Row fillWidth>
+      <Row fillWidth={direction === "column"} flex={direction === "column" ? undefined : 1}>
         <Column
           fillWidth
           maxWidth={28}

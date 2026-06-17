@@ -1,8 +1,9 @@
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, getContent } from "@/resources";
+import { getPosts } from "@/utils/utils";
 import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -30,8 +31,10 @@ export default async function Blog({
   const { blog, person } = getContent(locale);
   const t = await getTranslations("Blog");
 
+  const total = getPosts(["src", "posts", "blog"], await getLocale()).length;
+
   return (
-    <Column maxWidth="m" paddingTop="24">
+    <Column maxWidth="m" paddingTop="24" paddingX="l" gap="xl" horizontal="center">
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -45,18 +48,24 @@ export default async function Blog({
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading marginBottom="l" variant="heading-strong-xl" marginLeft="24">
+      <Heading variant="heading-strong-xl">
         {blog.title}
       </Heading>
-      <Column fillWidth flex={1} gap="40">
+      <Column fillWidth gap="40">
         <Posts range={[1, 1]} thumbnail />
-        <Posts range={[2, 3]} columns="2" thumbnail direction="column" />
-        <Mailchimp marginBottom="l" />
-        <Heading as="h2" variant="heading-strong-xl" marginLeft="l">
-          {t("recentPosts")}
-        </Heading>
-        <Posts range={[4]} columns="2" />
+        {total > 1 && <Posts range={[2, 3]} columns="2" thumbnail direction="column" />}
       </Column>
+
+      {total > 3 && (
+        <Column fillWidth gap="24">
+          <Heading as="h2" variant="heading-strong-xl">
+            {t("recentPosts")}
+          </Heading>
+          <Posts range={[4]} columns="2" />
+        </Column>
+      )}
+
+      <Mailchimp marginTop="l" marginBottom="l" />
     </Column>
   );
 }

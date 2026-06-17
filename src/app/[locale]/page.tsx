@@ -144,34 +144,25 @@ export default async function Home({
 
       <Column id="projects" fillWidth horizontal="center" maxWidth="s" gap="xl">
         <RevealFx translateY="16">
-          <Projects range={[1, 1]} />
+          <Projects range={[1, 2]} />
         </RevealFx>
 
         {routes["/blog"] && (
           <RevealFx translateY="12" delay={0.1} fillWidth>
-            <Column fillWidth gap="16" marginBottom="l">
-              <Row fillWidth paddingRight="32">
-                <Line maxWidth={48} />
+            <Column fillWidth gap="24" marginBottom="l">
+              <Row fillWidth vertical="center" gap="16" paddingX="m">
+                <Heading as="h2" variant="display-strong-xs" wrap="balance">
+                  {t("latestBlog")}
+                </Heading>
+                <Line />
               </Row>
-              <Row fillWidth gap="24" marginTop="16" vertical="center" s={{ direction: "column" }}>
-                <Row flex={2} paddingLeft="m">
-                  <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                    {t("latestBlog")}
-                  </Heading>
-                </Row>
-                <Row flex={6}>
-                  <Posts range={[1, 2]} columns="1" thumbnail direction="column" />
-                </Row>
-              </Row>
-              <Row fillWidth paddingLeft="32" horizontal="end">
-                <Line maxWidth={48} />
-              </Row>
+              <Posts range={[1, 2]} columns="1" thumbnail direction="row" />
             </Column>
           </RevealFx>
         )}
 
         <RevealFx translateY="12" delay={0.1}>
-          <Projects range={[2]} />
+          <Projects range={[3]} />
         </RevealFx>
 
         <RevealFx translateY="8" delay={0.1} fillWidth>
