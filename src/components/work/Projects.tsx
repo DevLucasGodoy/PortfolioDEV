@@ -1,6 +1,6 @@
 import { ProjectCard } from "@/components";
 import { getPosts } from "@/utils/utils";
-import { Column } from "@once-ui-system/core";
+import { Grid } from "@once-ui-system/core";
 import { getLocale } from "next-intl/server";
 
 interface ProjectsProps {
@@ -26,7 +26,14 @@ export async function Projects({ range, exclude }: ProjectsProps) {
     : sortedProjects;
 
   return (
-    <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
+    <Grid
+      fillWidth
+      columns="2"
+      s={{ columns: "1" }}
+      gap="l"
+      marginBottom="40"
+      paddingX="l"
+    >
       {displayedProjects.map((post, index) => (
         <ProjectCard
           priority={index < 2}
@@ -37,9 +44,10 @@ export async function Projects({ range, exclude }: ProjectsProps) {
           description={post.metadata.summary}
           content={post.content}
           avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
+          team={post.metadata.team}
           link={post.metadata.link || ""}
         />
       ))}
-    </Column>
+    </Grid>
   );
 }
