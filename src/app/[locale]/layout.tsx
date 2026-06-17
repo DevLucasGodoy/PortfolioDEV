@@ -59,12 +59,10 @@ export default async function RootLayout({
   const content = getContent(locale);
 
   return (
-    <Flex
+    <html
       suppressHydrationWarning
-      as="html"
       lang={locale}
       data-scroll-behavior="smooth"
-      fillWidth
       className={classNames(
         fonts.heading.variable,
         fonts.body.variable,
@@ -198,6 +196,6 @@ export default async function RootLayout({
           </Providers>
         </ContentProvider>
       </NextIntlClientProvider>
-    </Flex>
+    </html>
   );
 }
