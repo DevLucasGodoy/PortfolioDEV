@@ -1,0 +1,27 @@
+/*
+ * Tailwind v4 entry — utilities only (NO preflight) so it never resets
+ * once-ui's base styles. Drives the magicui card effects.
+ */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Scan the app for class names (preflight skipped, so explicit source). */
+@source "../**/*.{ts,tsx}";
+
+/* Drives ShineBorder's animated border (magicui). */
+@theme {
+  --animate-shine: shine var(--duration) infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  to {
+    background-position: 0% 0%;
+  }
+}
