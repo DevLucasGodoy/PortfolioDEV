@@ -44,9 +44,7 @@ export const Header = () => {
           position: "fixed",
         }}
       >
-        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          <LanguageToggle />
-        </Row>
+        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s" />
         <Row fillWidth horizontal="center">
           <Row
             background="page"
@@ -138,6 +136,8 @@ export const Header = () => {
                   </Row>
                 </>
               )}
+              <Line background="neutral-alpha-medium" vert maxHeight="24" />
+              <LanguageToggle />
               {display.themeSwitcher && (
                 <>
                   <Line background="neutral-alpha-medium" vert maxHeight="24" />

@@ -5,11 +5,19 @@ import { routing } from "@/i18n/routing";
 import { Row, ToggleButton } from "@once-ui-system/core";
 import { useLocale, useTranslations } from "next-intl";
 
+const flags: Record<string, string> = {
+  pt: "🇧🇷",
+  en: "🇺🇸",
+};
+
 export const LanguageToggle = () => {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
   const t = useTranslations("LanguageToggle");
+
+  const index = routing.locales.indexOf(locale as (typeof routing.locales)[number]);
+  const nextLocale = routing.locales[(index + 1) % routing.locales.length];
 
   const switchTo = (next: string) => {
     if (next === locale) return;
@@ -19,12 +27,15 @@ export const LanguageToggle = () => {
   };
 
   return (
-    <Row gap="2" vertical="center" data-border="rounded" aria-label={t("label")}>
-      {routing.locales.map((loc) => (
-        <ToggleButton key={loc} size="s" selected={locale === loc} onClick={() => switchTo(loc)}>
-          {t(loc)}
-        </ToggleButton>
-      ))}
+    <Row vertical="center" data-border="rounded" aria-label={t("label")}>
+      <ToggleButton
+        size="s"
+        onClick={() => switchTo(nextLocale)}
+        aria-label={t(nextLocale)}
+        title={t(nextLocale)}
+      >
+        {flags[locale] ?? t(locale)}
+      </ToggleButton>
     </Row>
   );
 };
