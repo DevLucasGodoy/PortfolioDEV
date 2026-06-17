@@ -48,12 +48,14 @@ export default async function FirstClassDevPage({
           whatsapp: "Talk on WhatsApp",
           email: "Send an email",
           seeProject: "See project",
+          scroll: "Scroll to see more",
         }
       : {
           visit: "Quero um site assim",
           whatsapp: "Falar no WhatsApp",
           email: "Enviar e-mail",
           seeProject: "Ver projeto",
+          scroll: "Role para ver mais",
         };
 
   return (
@@ -73,64 +75,100 @@ export default async function FirstClassDevPage({
       />
 
       {/* Hero */}
-      <Column fillWidth horizontal="center" align="center" gap="20" paddingX="m" paddingTop="xl">
-        <RevealFx fillWidth horizontal="center">
-          <Media
-            src={fcd.logo}
-            alt="First Class Dev"
-            radius="l"
-            sizes="120px"
-            aspectRatio="1 / 1"
-            style={{ width: 120, height: 120 }}
-          />
-        </RevealFx>
-        <RevealFx fillWidth horizontal="center">
-          <Badge
-            background="brand-alpha-weak"
-            paddingX="12"
-            paddingY="4"
-            onBackground="neutral-strong"
-            textVariant="label-default-s"
-            arrow={false}
-          >
-            {fcd.hero.badge}
-          </Badge>
-        </RevealFx>
-        <RevealFx translateY="4" fillWidth horizontal="center">
-          <Heading wrap="balance" variant="display-strong-xl" align="center">
-            {fcd.hero.headline}
-          </Heading>
-        </RevealFx>
-        <RevealFx translateY="8" delay={0.1} fillWidth horizontal="center">
-          <Text
-            wrap="balance"
-            onBackground="neutral-weak"
-            variant="heading-default-l"
-            align="center"
-            style={{ maxWidth: 640 }}
-          >
-            {fcd.hero.subline}
-          </Text>
-        </RevealFx>
-        <RevealFx delay={0.15} horizontal="center" paddingTop="12">
-          <Row gap="12" s={{ direction: "column" }} horizontal="center">
-            <Button href={fcd.cta.site} variant="primary" size="m" arrowIcon data-border="rounded">
-              {labels.visit}
-            </Button>
-            <Button
-              href={fcd.cta.whatsapp}
-              variant="secondary"
-              size="m"
-              prefixIcon="whatsapp"
-              data-border="rounded"
+      <Column
+        id="fcd-hero"
+        fillWidth
+        horizontal="center"
+        vertical="between"
+        align="center"
+        paddingY="xl"
+        style={{ minHeight: "calc(100dvh - 80px)" }}
+      >
+        <div style={{ flex: 1 }} />
+
+        <Column maxWidth="m" horizontal="center" align="center" gap="20" paddingX="m">
+          <RevealFx fillWidth horizontal="center">
+            <Media
+              src={fcd.logo}
+              alt="First Class Dev"
+              radius="l"
+              sizes="120px"
+              aspectRatio="1 / 1"
+              style={{ width: 120, height: 120 }}
+            />
+          </RevealFx>
+          <RevealFx fillWidth horizontal="center">
+            <Badge
+              background="brand-alpha-weak"
+              paddingX="12"
+              paddingY="4"
+              onBackground="neutral-strong"
+              textVariant="label-default-s"
+              arrow={false}
             >
-              {labels.whatsapp}
-            </Button>
-          </Row>
-        </RevealFx>
+              {fcd.hero.badge}
+            </Badge>
+          </RevealFx>
+          <RevealFx translateY="4" fillWidth horizontal="center">
+            <Heading
+              wrap="balance"
+              variant="display-strong-l"
+              align="center"
+              style={{ maxWidth: 760 }}
+            >
+              {fcd.hero.headline}
+            </Heading>
+          </RevealFx>
+          <RevealFx translateY="8" delay={0.1} fillWidth horizontal="center">
+            <Text
+              wrap="balance"
+              onBackground="neutral-weak"
+              variant="heading-default-l"
+              align="center"
+              style={{ maxWidth: 640 }}
+            >
+              {fcd.hero.subline}
+            </Text>
+          </RevealFx>
+          <RevealFx delay={0.15} horizontal="center" paddingTop="12">
+            <Row gap="12" s={{ direction: "column" }} horizontal="center">
+              <Button href={fcd.cta.site} variant="primary" size="m" arrowIcon data-border="rounded">
+                {labels.visit}
+              </Button>
+              <Button
+                href={fcd.cta.whatsapp}
+                variant="secondary"
+                size="m"
+                prefixIcon="whatsapp"
+                data-border="rounded"
+              >
+                {labels.whatsapp}
+              </Button>
+            </Row>
+          </RevealFx>
+        </Column>
+
+        <Column
+          fillWidth
+          horizontal="center"
+          style={{ flex: 1, justifyContent: "flex-end" }}
+          paddingTop="xl"
+        >
+          <RevealFx delay={0.3} fillWidth horizontal="center">
+            <SmartLink href="#fcd-content" unstyled>
+              <Column className="scroll-indicator" horizontal="center" align="center" gap="4">
+                <Text variant="label-default-xs" onBackground="neutral-weak" align="center">
+                  {labels.scroll}
+                </Text>
+                <Icon name="chevronDown" onBackground="neutral-weak" size="s" />
+              </Column>
+            </SmartLink>
+          </RevealFx>
+        </Column>
       </Column>
 
       {/* Stats */}
+      <div id="fcd-content" style={{ scrollMarginTop: "80px" }} />
       <RevealFx fillWidth>
         <Row fillWidth gap="16" wrap horizontal="center" paddingX="m">
           {fcd.stats.map((stat) => (
