@@ -62,7 +62,7 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: `/api/og/generate?title=${encodeURIComponent("Portfólio - Desenvolvedor Senior & Empreendedor")}&locale=pt`,
   label: "Início",
   title: `Portfólio - Desenvolvedor Senior & Empreendedor`,
   description: `Portfólio pessoal de ${person.name}, ${person.role}.`,
