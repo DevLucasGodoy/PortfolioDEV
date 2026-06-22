@@ -385,6 +385,7 @@ const firstClassDev: FirstClassDev = {
         quando o desafio vai além do site, nossos SaaS e sistemas sob medida resolvem.
       </>
     ),
+    note: "Resposta em até 4h · Orçamento sem compromisso",
   },
   cta: {
     site: "https://www.firstclassdev.com.br",
@@ -399,17 +400,24 @@ const firstClassDev: FirstClassDev = {
   ],
   story: {
     title: "Nossa história",
+    headline: (
+      <>
+        Começou com um incômodo: e se a tecnologia se adaptasse ao negócio —{" "}
+        <em>e não o contrário?</em>
+      </>
+    ),
     paragraphs: [
       <Fragment key="story-1">
-        Todo bom produto nasce de um problema real. A First Class Dev nasceu em 2021, da
-        inquietação de um desenvolvedor que via, todos os dias, pequenas e médias empresas travadas
-        por processos manuais, planilhas infinitas e softwares de prateleira que nunca se
-        encaixavam de verdade.
+        Todo bom produto nasce de um problema real. A First Class Dev nasceu em 2021, da inquietação
+        de um desenvolvedor que via, todos os dias, pequenas e médias empresas travadas por
+        processos manuais, planilhas infinitas e softwares de prateleira que nunca se encaixavam de
+        verdade.
       </Fragment>,
       <Fragment key="story-2">
-        A pergunta era simples: <em>e se a tecnologia se adaptasse ao negócio — e não o
-        contrário?</em> Foi com essa ideia que <strong>Lucas Godoy</strong>, fundador e CEO, abriu a
-        empresa: entregar tecnologia de alto nível com proximidade, agilidade e foco em resultado.
+        A pergunta era simples:{" "}
+        <em>e se a tecnologia se adaptasse ao negócio — e não o contrário?</em> Foi com essa ideia
+        que <strong>Lucas Godoy</strong>, fundador e CEO, abriu a empresa: entregar tecnologia de
+        alto nível com proximidade, agilidade e foco em resultado.
       </Fragment>,
       <Fragment key="story-3">
         Desde o primeiro projeto, a forma de trabalhar é a mesma: entender o problema antes de
@@ -418,16 +426,22 @@ const firstClassDev: FirstClassDev = {
         caminham conosco desde 2021.
       </Fragment>,
       <Fragment key="story-4">
-        Com o tempo, uma especialidade ficou clara: <strong>transformar sites em máquinas de
-        conversão</strong>. Os nossos são construídos sobre quatro pilares — rápido e encontrável
-        (performance e SEO), desenhado para converter (hierarquia visual, prova social e CTAs
-        estratégicos), direto para a venda (o visitante vira conversa no WhatsApp em poucos
-        cliques) e feito para crescer (métricas e otimização contínua de conversão).
+        Com o tempo, uma especialidade ficou clara:{" "}
+        <strong>transformar sites em máquinas de conversão</strong>. Os nossos são construídos sobre
+        quatro pilares — rápido e encontrável (performance e SEO), desenhado para converter
+        (hierarquia visual, prova social e CTAs estratégicos), direto para a venda (o visitante vira
+        conversa no WhatsApp em poucos cliques) e feito para crescer (métricas e otimização contínua
+        de conversão).
       </Fragment>,
     ],
   },
   fronts: {
     title: "O que fazemos",
+    headline: (
+      <>
+        Três frentes que <em>se completam.</em>
+      </>
+    ),
     items: [
       {
         icon: "figma",
@@ -451,6 +465,11 @@ const firstClassDev: FirstClassDev = {
   },
   products: {
     title: "Nossos produtos",
+    headline: (
+      <>
+        11 SaaS, todos com <em>7 dias grátis.</em>
+      </>
+    ),
     description:
       "11 SaaS criados a partir de problemas reais — todos com 7 dias de teste grátis, sem cartão de crédito.",
     items: [
@@ -535,6 +554,11 @@ const firstClassDev: FirstClassDev = {
   },
   values: {
     title: "No que acreditamos",
+    headline: (
+      <>
+        O que nos move <em>todo dia.</em>
+      </>
+    ),
     items: [
       {
         title: "Cliente em primeiro lugar",
@@ -548,18 +572,40 @@ const firstClassDev: FirstClassDev = {
       },
       {
         title: "Parceiros de longo prazo",
-        description: "Construímos relações, não transações. Clientes que caminham conosco desde 2021.",
+        description:
+          "Construímos relações, não transações. Clientes que caminham conosco desde 2021.",
       },
     ],
   },
+  founder: {
+    name: "Lucas Godoy",
+    monogram: "LG",
+    badge: "CEO & Fundador",
+    subtitle: "Desenvolvedor sênior · arquiteturas na nuvem",
+    bio: "Engenheiro de software com experiência em sistemas web, integrações com ERPs e arquiteturas na nuvem. Fundou a First Class Dev em 2021 para entregar tecnologia de alto nível com proximidade e foco em resultado.",
+    links: [
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/firstclassdev/" },
+      { label: "Instagram", href: "https://instagram.com/firstclassdev/" },
+      { label: "X", href: "https://x.com/firstclassdev_" },
+      { label: "WhatsApp", href: "https://wa.me/5519996168818" },
+    ],
+  },
+  presence: {
+    eyebrow: "Presença global",
+    title: "Operamos 100% online, atendendo no Brasil e no exterior.",
+    description:
+      "Projetos hoje no Brasil, Estados Unidos e Argentina — em português, inglês e espanhol.",
+    countries: ["Brasil", "Estados Unidos", "Argentina"],
+    languages: "PT · EN · ES",
+  },
   closing: {
-    title: <>Vamos conversar?</>,
-    description: (
+    eyebrow: "Vamos conversar",
+    title: (
       <>
-        Se a sua empresa quer um site que transforma visitantes em clientes, o próximo capítulo da
-        First Class Dev pode incluir o seu negócio. A conversa começa aqui.
+        Sua empresa pode ter um site que <em>transforma visitantes em clientes.</em>
       </>
     ),
+    description: <>Em 30 minutos entendemos o seu desafio e mostramos como podemos ajudar.</>,
   },
 };
 

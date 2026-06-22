@@ -380,10 +380,11 @@ const firstClassDev: FirstClassDev = {
     subline: (
       <>
         Since 2021, <strong>First Class Dev</strong> has built websites, stores and landing pages
-        designed to sell — fast, findable, with every pixel guiding the visitor to contact. And
-        when the challenge goes beyond the website, our SaaS and custom systems take over.
+        designed to sell — fast, findable, with every pixel guiding the visitor to contact. And when
+        the challenge goes beyond the website, our SaaS and custom systems take over.
       </>
     ),
+    note: "Reply within 4h · Free, no-strings quote",
   },
   cta: {
     site: "https://www.firstclassdev.com.br",
@@ -398,6 +399,12 @@ const firstClassDev: FirstClassDev = {
   ],
   story: {
     title: "Our story",
+    headline: (
+      <>
+        It started with a nuisance: what if technology adapted to the business —{" "}
+        <em>and not the other way around?</em>
+      </>
+    ),
     paragraphs: [
       <Fragment key="story-1">
         Every good product is born from a real problem. First Class Dev started in 2021, from the
@@ -405,9 +412,10 @@ const firstClassDev: FirstClassDev = {
         processes, endless spreadsheets and off-the-shelf software that never really fit.
       </Fragment>,
       <Fragment key="story-2">
-        The question was simple: <em>what if technology adapted to the business — not the other way
-        around?</em> With that idea, <strong>Lucas Godoy</strong>, founder and CEO, started the
-        company: delivering high-level technology with proximity, agility and a focus on results.
+        The question was simple:{" "}
+        <em>what if technology adapted to the business — not the other way around?</em> With that
+        idea, <strong>Lucas Godoy</strong>, founder and CEO, started the company: delivering
+        high-level technology with proximity, agility and a focus on results.
       </Fragment>,
       <Fragment key="story-3">
         Since the first project, the way of working has been the same: understand the problem before
@@ -416,16 +424,21 @@ const firstClassDev: FirstClassDev = {
         walked with us since 2021.
       </Fragment>,
       <Fragment key="story-4">
-        Over time, one specialty became clear: <strong>turning websites into conversion
-        machines</strong>. Ours are built on four pillars — fast and findable (performance and
-        SEO), designed to convert (visual hierarchy, social proof and strategic CTAs), straight to
-        the sale (the visitor becomes a WhatsApp conversation in a few clicks) and built to grow
-        (metrics and continuous conversion optimization).
+        Over time, one specialty became clear:{" "}
+        <strong>turning websites into conversion machines</strong>. Ours are built on four pillars —
+        fast and findable (performance and SEO), designed to convert (visual hierarchy, social proof
+        and strategic CTAs), straight to the sale (the visitor becomes a WhatsApp conversation in a
+        few clicks) and built to grow (metrics and continuous conversion optimization).
       </Fragment>,
     ],
   },
   fronts: {
     title: "What we do",
+    headline: (
+      <>
+        Three fronts that <em>complete each other.</em>
+      </>
+    ),
     items: [
       {
         icon: "figma",
@@ -449,6 +462,11 @@ const firstClassDev: FirstClassDev = {
   },
   products: {
     title: "Our products",
+    headline: (
+      <>
+        11 SaaS, all with a <em>7-day free trial.</em>
+      </>
+    ),
     description: "11 SaaS born from real problems — all with a 7-day free trial, no credit card.",
     items: [
       {
@@ -510,7 +528,8 @@ const firstClassDev: FirstClassDev = {
       {
         name: "FC Noivos",
         tagline: "Your big day, planned with love",
-        description: "A site for the guests and a complete dashboard for the couple, with built-in Pix.",
+        description:
+          "A site for the guests and a complete dashboard for the couple, with built-in Pix.",
         image: "/images/projects/fc-noivos.png",
         slug: "fc-noivos",
       },
@@ -532,6 +551,11 @@ const firstClassDev: FirstClassDev = {
   },
   values: {
     title: "What we believe",
+    headline: (
+      <>
+        What moves us <em>every day.</em>
+      </>
+    ),
     items: [
       {
         title: "Client first",
@@ -545,18 +569,40 @@ const firstClassDev: FirstClassDev = {
       },
       {
         title: "Long-term partners",
-        description: "We build relationships, not transactions. Clients who have walked with us since 2021.",
+        description:
+          "We build relationships, not transactions. Clients who have walked with us since 2021.",
       },
     ],
   },
+  founder: {
+    name: "Lucas Godoy",
+    monogram: "LG",
+    badge: "CEO & Founder",
+    subtitle: "Senior developer · cloud architectures",
+    bio: "Software engineer with experience in web systems, ERP integrations and cloud architectures. He founded First Class Dev in 2021 to deliver high-level technology with proximity and a focus on results.",
+    links: [
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/firstclassdev/" },
+      { label: "Instagram", href: "https://instagram.com/firstclassdev/" },
+      { label: "X", href: "https://x.com/firstclassdev_" },
+      { label: "WhatsApp", href: "https://wa.me/5519996168818" },
+    ],
+  },
+  presence: {
+    eyebrow: "Global presence",
+    title: "We operate 100% online, serving Brazil and abroad.",
+    description:
+      "Projects today in Brazil, the United States and Argentina — in Portuguese, English and Spanish.",
+    countries: ["Brazil", "United States", "Argentina"],
+    languages: "PT · EN · ES",
+  },
   closing: {
-    title: <>Let's talk?</>,
-    description: (
+    eyebrow: "Let's talk",
+    title: (
       <>
-        If your company wants a website that turns visitors into clients, the next chapter of First
-        Class Dev can include your business. The conversation starts here.
+        Your company can have a website that <em>turns visitors into clients.</em>
       </>
     ),
+    description: <>In 30 minutes we understand your challenge and show how we can help.</>,
   },
 };
 

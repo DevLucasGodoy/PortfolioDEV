@@ -1,0 +1,24 @@
+/*
+ * Realce serif-itálico dos títulos da página First Class Dev.
+ * O conteúdo marca o trecho a destacar com <em> (títulos claros) ou
+ * <strong> (hero/CTA escuros). As regras só atingem <strong>/<em> dentro de
+ * h1/h2 — emphasis em parágrafos permanece normal.
+ */
+
+.accentBrand :is(h1, h2) :is(strong, em) {
+  font-family: var(--font-fcd-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #00bf63;
+}
+
+.accentGradient :is(h1, h2) :is(strong, em) {
+  font-family: var(--font-fcd-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(90deg, #1fdb80, #9df0cc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}

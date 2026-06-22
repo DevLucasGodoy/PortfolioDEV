@@ -248,9 +248,12 @@ export interface FirstClassDev extends BasePageConfig {
   logo: string;
   /** Hero section copy */
   hero: {
+    /** Eyebrow / badge above the headline */
     badge: string;
     headline: React.ReactNode;
     subline: React.ReactNode;
+    /** Small mono note under the CTAs (e.g. response time) */
+    note: string;
   };
   /** Contact CTAs */
   cta: {
@@ -262,27 +265,65 @@ export interface FirstClassDev extends BasePageConfig {
   stats: Array<{ value: string; label: string }>;
   /** The "our story" narrative */
   story: {
+    /** Eyebrow label */
     title: string;
+    /** Display headline (use <em> to mark the serif-italic accent) */
+    headline: React.ReactNode;
     paragraphs: React.ReactNode[];
   };
   /** The three service fronts (SaaS / Dev / Brand) */
   fronts: {
+    /** Eyebrow label */
     title: string;
+    /** Display headline (use <em> to mark the serif-italic accent) */
+    headline: React.ReactNode;
     items: Array<{ icon: string; title: string; description: string }>;
   };
   /** Product catalog */
   products: {
+    /** Eyebrow label */
     title: string;
+    /** Display headline (use <em> to mark the serif-italic accent) */
+    headline: React.ReactNode;
     description: string;
     items: FirstClassDevProduct[];
   };
   /** Company values */
   values: {
+    /** Eyebrow label */
     title: string;
+    /** Display headline (use <em> to mark the serif-italic accent) */
+    headline: React.ReactNode;
     items: Array<{ title: string; description: string }>;
+  };
+  /** Founder spotlight card */
+  founder: {
+    name: string;
+    /** Initials shown in the avatar disc */
+    monogram: string;
+    /** Role pill, e.g. "CEO & Fundador" */
+    badge: string;
+    /** Secondary mono line under the name */
+    subtitle: string;
+    bio: string;
+    /** External links (LinkedIn, Instagram, X, WhatsApp…) */
+    links: Array<{ label: string; href: string }>;
+  };
+  /** Global presence block */
+  presence: {
+    /** Eyebrow label */
+    eyebrow: string;
+    title: string;
+    description: string;
+    /** Country chips */
+    countries: string[];
+    /** Languages line, e.g. "PT · EN · ES" */
+    languages: string;
   };
   /** Closing CTA block */
   closing: {
+    /** Eyebrow label */
+    eyebrow: string;
     title: React.ReactNode;
     description: React.ReactNode;
   };
