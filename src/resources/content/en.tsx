@@ -388,8 +388,8 @@ const firstClassDev: FirstClassDev = {
   },
   cta: {
     site: "https://www.firstclassdev.com.br",
-    whatsapp: "https://wa.me/5519996168818",
-    email: "mailto:contato@firstclassdev.com.br",
+    whatsapp: "https://wa.me/5511941683003",
+    email: "mailto:equipe@firstclassdev.com.br",
   },
   stats: [
     { value: "2021", label: "Founded" },
@@ -584,7 +584,7 @@ const firstClassDev: FirstClassDev = {
       { label: "LinkedIn", href: "https://www.linkedin.com/company/firstclassdev/" },
       { label: "Instagram", href: "https://instagram.com/firstclassdev/" },
       { label: "X", href: "https://x.com/firstclassdev_" },
-      { label: "WhatsApp", href: "https://wa.me/5519996168818" },
+      { label: "WhatsApp", href: "https://wa.me/5511941683003" },
     ],
   },
   presence: {
