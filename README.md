@@ -28,7 +28,9 @@ npm install
 Copie `.env.example` para `.env` e preencha:
 
 ```bash
-NEXT_PUBLIC_FORMSUBMIT_EMAIL=seu-email@exemplo.com   # destino do formulário de contato
+RESEND_API_KEY=                        # chave do Resend
+CONTACT_FROM_EMAIL=Portfolio <contato@exemplo.com>  # domínio verificado
+CONTACT_TO_EMAIL=seu-email@exemplo.com  # destino do formulário
 AUTH_SECRET=                                          # assina o cookie do gate de senha (se usar protectedRoutes)
 PAGE_ACCESS_PASSWORD=                                 # senha das rotas protegidas
 ```
@@ -72,7 +74,7 @@ Solte o mesmo arquivo `.mdx` (mesmo slug) em **ambos** os locales: `src/posts/wo
 
 ## Contato
 
-O formulário ([src/components/Mailchimp.tsx](src/components/Mailchimp.tsx)) valida nome/e-mail/mensagem e envia via [formsubmit.co](https://formsubmit.co) usando `NEXT_PUBLIC_FORMSUBMIT_EMAIL`. Sem essa variável, o envio é bloqueado.
+O formulário ([src/components/Mailchimp.tsx](src/components/Mailchimp.tsx)) valida nome/e-mail/mensagem e envia para `/api/contact`, que valida de novo, limita tentativas e entrega pelo Resend. Requer `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL`.
 
 ## Funcionalidades
 

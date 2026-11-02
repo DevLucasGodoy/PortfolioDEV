@@ -34,10 +34,8 @@
     "errEmailRequired": "Informe seu e-mail.",
     "errEmailInvalid": "E-mail inválido.",
     "errMessageShort": "Mensagem deve ter pelo menos 10 caracteres.",
-    "errNotConfigured": "Formulário de contato não configurado.",
     "errServer": "Não consegui enviar agora. Tente novamente em instantes.",
-    "errNetwork": "Erro de rede. Verifique sua conexão e tente novamente.",
-    "subject": "Portfólio · Contato de {name}"
+    "errNetwork": "Erro de rede. Verifique sua conexão e tente novamente."
   },
   "Share": {
     "copySuccess": "Link copiado para a área de transferência",

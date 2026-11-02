@@ -34,10 +34,8 @@
     "errEmailRequired": "Please enter your email.",
     "errEmailInvalid": "Invalid email.",
     "errMessageShort": "Message must be at least 10 characters.",
-    "errNotConfigured": "Contact form is not configured.",
     "errServer": "Couldn't send right now. Please try again in a moment.",
-    "errNetwork": "Network error. Check your connection and try again.",
-    "subject": "Portfolio · Contact from {name}"
+    "errNetwork": "Network error. Check your connection and try again."
   },
   "Share": {
     "copySuccess": "Link copied to clipboard",

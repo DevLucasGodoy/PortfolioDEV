@@ -45,7 +45,7 @@ Blog posts live in `src/posts/blog/{pt,en}/`, projects in `src/posts/work/{pt,en
 
 ### Contact form
 
-The Magic Portfolio newsletter block is repurposed as a contact form in [src/components/Mailchimp.tsx](src/components/Mailchimp.tsx). It validates name/email/message client-side and POSTs to `https://formsubmit.co/ajax/${NEXT_PUBLIC_FORMSUBMIT_EMAIL}` (honeypot `_honey`, `_captcha` off). The `mailchimp.action` URL in config is NOT used for submission — only `mailchimp.effects` for the background. `newsletter.display` toggles the whole block; `newsletter.title`/`description` are the form heading copy.
+The Magic Portfolio newsletter block is repurposed as a contact form in [src/components/Mailchimp.tsx](src/components/Mailchimp.tsx). It validates name/email/message client-side, keeps a `_honey` honeypot and POSTs JSON to `/api/contact` ([src/app/api/contact/route.ts](src/app/api/contact/route.ts)), which validates again, rate-limits and sends through Resend. The `mailchimp.action` URL in config is NOT used for submission — only `mailchimp.effects` for the background. `newsletter.display` toggles the whole block; `newsletter.title`/`description` are the form heading copy.
 
 ### Route gating
 
@@ -55,6 +55,7 @@ Auth uses a **signed, expiring HMAC cookie** (`AUTH_SECRET`) set by [src/app/api
 
 ### API routes
 
+- `/api/contact` — contact form delivery through Resend (validated, rate-limited)
 - `/api/authenticate`, `/api/check-auth` — RouteGuard password flow (signed cookie)
 - `/api/og/generate` — dynamic OG images via `next/og` (title length clamped)
 - `/api/og/fetch`, `/api/og/proxy` — link-preview helpers, **SSRF-guarded** ([src/utils/ssrf.ts](src/utils/ssrf.ts))
@@ -77,7 +78,7 @@ Add any new copy in **both** languages.
 
 ### Environment
 
-- `NEXT_PUBLIC_FORMSUBMIT_EMAIL` — destination email for the contact form (required for submissions to work).
+- `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL` — server-side contact form delivery through Resend (sender on a verified domain).
 - `AUTH_SECRET` — required whenever the password gate is used (signs the auth cookie).
 - `PAGE_ACCESS_PASSWORD` — password for protected routes.
 

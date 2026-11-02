@@ -74,30 +74,14 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
       return;
     }
 
-    const formsubmitEmail = process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL;
-    if (!formsubmitEmail) {
-      setServerError(t("errNotConfigured"));
-      return;
-    }
-
     setLoading(true);
 
     try {
-      const payload = new FormData();
-      payload.append("name", form.name);
-      payload.append("email", form.email);
-      payload.append("message", form.message);
-      payload.append("_replyto", form.email);
-      payload.append("_subject", t("subject", { name: form.name }));
-      payload.append("_template", "table");
-      payload.append("_captcha", "false");
-      payload.append("_honey", "");
-
-      const response = await fetch(`https://formsubmit.co/ajax/${formsubmitEmail}`, {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        signal: AbortSignal.timeout(30000),
-        body: payload,
+        headers: { "Content-Type": "application/json" },
+        signal: AbortSignal.timeout(20000),
+        body: JSON.stringify(form),
       });
 
       if (response.ok) {
