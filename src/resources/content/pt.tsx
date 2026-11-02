@@ -183,7 +183,8 @@ const about: About = {
         description: (
           <>
             Ensino Médio Técnico Integrado em Análise e Desenvolvimento de Sistemas (Jul 2019 - Dez
-            2023).
+            2023). FECINOVA 2022: 1º lugar na área multidisciplinar, melhor trabalho geral do nível
+            médio e credencial para a MOSTRATEC.
           </>
         ),
       },

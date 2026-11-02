@@ -182,7 +182,8 @@ const about: About = {
         description: (
           <>
             Integrated Technical High School in Systems Analysis and Development (Jul 2019 - Dec
-            2023).
+            2023). FECINOVA 2022: 1st place in the multidisciplinary area, best overall high school
+            project and qualification for MOSTRATEC.
           </>
         ),
       },
