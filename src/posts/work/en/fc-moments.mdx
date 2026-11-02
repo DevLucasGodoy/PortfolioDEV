@@ -1,7 +1,7 @@
 ---
 title: "FC Moments"
-publishedAt: "2026-01-20"
-summary: "Event and special-moment management — organize guests, tasks and vendors in one place."
+publishedAt: "2026-10-24"
+summary: "In beta: collaborative event gallery where each guest uploads photos and videos to a vertical feed, via QR code or link."
 images:
   - "/images/projects/fc-moments.png"
 tag: "SaaS"
@@ -10,36 +10,23 @@ team:
     role: "Full-Stack Developer"
     avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
-link: "https://www.firstclassdev.com.br"
 ---
 
 ## Overview
 
-**FC Moments** is a SaaS platform for managing events and special moments. From birthdays to get-togethers and corporate events, it centralizes guests, tasks, budget and vendors on a single screen.
+**FC Moments** is a collaborative event gallery: every guest becomes a photographer and nothing gets lost. It is in beta.
 
-_"Every moment, in the right place."_
-
-## Problem
-
-Organizing an event becomes a puzzle of WhatsApp groups, spreadsheets and loose notes. Guests who don't confirm, forgotten tasks and a budget that blows up without anyone noticing.
+_"Memories that last forever."_
 
 ## Solution
 
-Everything an event needs, organized:
-
-- **Guests** with RSVP and real-time headcount
-- **Tasks** with deadlines, owners and checklist
-- **Budget** with spend tracking by category
-- **Vendors** with contacts and contracting status
-- **Timeline** of the event, from planning to the day
+- **Vertical feed** of photos and videos
+- **Direct upload** to Cloudflare R2 with file validation
+- **Invites** via QR code or link
+- **Likes and comments**
+- **Password and expiry** on the public page
+- **Dashboard** with multiple events
 
 ## Tech Stack
 
-- **Frontend**: React, TypeScript, Tailwind CSS (responsive)
-- **Backend**: Node.js + REST API
-- **Database**: PostgreSQL with per-event access control
-- **Infra**: cloud deploy
-
-## Impact
-
-FC Moments takes the event out of the mess of spreadsheets and messages and puts everything in one place. Less forgetting, more control — and more time to enjoy the moment.
+- Next.js 16, React 19, Neon with Row Level Security, Cloudflare R2, Resend, Tailwind CSS 4, Zod

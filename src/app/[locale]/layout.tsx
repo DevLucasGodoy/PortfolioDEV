@@ -13,6 +13,7 @@ import { notFound } from "next/navigation";
 import { Footer, Header, Providers, RouteGuard } from "@/components";
 import { ContentProvider } from "@/components/ContentProvider";
 import { baseURL, dataStyle, effects, fonts, getContent, style } from "@/resources";
+import { localeMeta } from "@/utils/seo";
 import {
   Background,
   Column,
@@ -38,7 +39,7 @@ export async function generateMetadata({
     title: home.title,
     description: home.description,
     baseURL: baseURL,
-    path: home.path,
+    ...localeMeta(locale, home.path),
     image: home.image,
   });
 }

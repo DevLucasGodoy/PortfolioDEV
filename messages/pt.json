@@ -1,13 +1,15 @@
 {
   "Home": {
     "scrollMore": "Role para ver mais",
-    "latestBlog": "Últimas do meu blog..."
+    "latestBlog": "Do meu blog",
+    "contactCta": "Entre em contato"
   },
   "Blog": {
     "breadcrumb": "Blog",
     "recentPosts": "Postagens Recentes",
     "latestPosts": "Últimas Postagens",
     "share": "Compartilhe esta postagem:",
+    "copyLink": "Copiar link",
     "thumbnailAlt": "Miniatura de {title}"
   },
   "Work": {

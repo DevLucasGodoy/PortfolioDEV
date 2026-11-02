@@ -14,8 +14,8 @@ import { Fragment } from "react";
 const person: Person = {
   firstName: "Lucas",
   lastName: "Godoy",
-  name: `Lucas Godoy`,
-  role: "Desenvolvedor Senior · CEO & Fundador",
+  name: "Lucas Godoy",
+  role: "Desenvolvedor Sênior · CEO & Fundador",
   avatar: "/images/avatar.jpeg",
   email: "lucas.moraes.godoy@gmail.com",
   location: "America/Campo_Grande", // IANA — Dourados, MS
@@ -55,16 +55,16 @@ const social: Social = [
   {
     name: "Email",
     icon: "email",
-    link: `mailto:lucas.moraes.godoy@gmail.com?subject=Portfolio%20-%20DevLucasGodoy`,
+    link: "mailto:lucas.moraes.godoy@gmail.com?subject=Portfolio%20-%20DevLucasGodoy",
     essential: true,
   },
 ];
 
 const home: Home = {
   path: "/",
-  image: `/api/og/generate?title=${encodeURIComponent("Portfólio - Desenvolvedor Senior & Empreendedor")}&locale=pt`,
+  image: `/api/og/generate?title=${encodeURIComponent("Lucas Godoy - Desenvolvedor Sênior & Empreendedor")}&locale=pt`,
   label: "Início",
-  title: `Portfólio - Desenvolvedor Senior & Empreendedor`,
+  title: "Lucas Godoy - Desenvolvedor Sênior & Empreendedor",
   description: `Portfólio pessoal de ${person.name}, ${person.role}.`,
   headline: <>Transformando ideias em produtos digitais reais</>,
   featured: {
@@ -74,7 +74,7 @@ const home: Home = {
   },
   subline: (
     <>
-      Sou Lucas, Desenvolvedor Senior, CEO & Fundador da <strong>First Class Dev</strong> e Sócio &
+      Sou Lucas, Desenvolvedor Sênior, CEO & Fundador da <strong>First Class Dev</strong> e Sócio &
       Head de Tecnologia na <strong>TG Distribuidora</strong>. Construo sistemas web e produtos{" "}
       <strong>SaaS</strong> com Node.js, React e Next.js — com integrações a ERPs e foco em
       escalabilidade.
@@ -103,7 +103,7 @@ const about: About = {
     title: "Resumo Profissional",
     description: (
       <>
-        Desenvolvedor senior e empreendedor, atuando na interseção entre tecnologia e negócio.
+        Desenvolvedor sênior e empreendedor, atuando na interseção entre tecnologia e negócio.
         Atualmente sou CEO e fundador da First Class Dev, onde entrego soluções web e produtos
         digitais focados em eficiência, escalabilidade e geração de valor. Em paralelo, atuo como
         Sócio e Head de Tecnologia na TG Distribuidora, liderando a transformação digital do negócio
@@ -123,11 +123,11 @@ const about: About = {
         timeframe: "Mar 2026 - Presente",
         role: "Sócio & Head de Tecnologia",
         achievements: [
-          "Sócio responsável pela área de tecnologia e inovação, liderando a transformação digital do negócio.",
-          "Desenvolvimento de sistemas internos e dashboards estratégicos para otimização de processos e tomada de decisão baseada em dados.",
-          "Integração com ERP e automação de processos críticos, conectando operação a uma camada única de dados.",
-          "Estruturação de produtos digitais escaláveis com potencial de comercialização (SaaS) como novas fontes de receita.",
-          "Definição de arquitetura, escolha de stack e atuação hands-on como desenvolvedor senior.",
+          "Sócio responsável pela tecnologia, liderando a transformação digital da distribuidora com 4 unidades em Mato Grosso do Sul.",
+          "Liderei e construí o Syncro OS: suíte web sobre o ERP Oracle WinThor com força de vendas, compras, liberação de pedidos, financeiro e RH.",
+          "SyncroAgent: ETL em .NET 8 que espelha Oracle e SQL Server no Neon de forma incremental, com outbox que grava de volta no ERP preservando operador e auditoria.",
+          "Segurança da plataforma: login com a senha do WinThor, MFA/TOTP, escopo por filial e permissões por módulo e tela, com log de auditoria.",
+          "Ferramentas em Python/FastAPI para baixa de cartões e conciliação, além da migração do site institucional de PHP para Next.js.",
         ],
         images: [],
       },
@@ -136,55 +136,24 @@ const about: About = {
         timeframe: "Jan 2021 - Presente",
         role: "CEO & Fundador",
         achievements: [
-          "Fundador de software house especializada em desenvolvimento de soluções web e produtos digitais (SaaS).",
-          "Liderança estratégica e técnica: criação de sistemas sob medida, validação de ideias e desenvolvimento de produtos escaláveis.",
-          "Stack principal: Node.js + Express, React.js + Next.js, PostgreSQL/MySQL/MongoDB, deploy em AWS, Vercel e Railway.",
-          "20+ projetos entregues em produção: sistemas de gestão, e-commerces, dashboards e SaaS — com índice de satisfação superior a 90%.",
-          "Integrações com APIs e ERPs, arquitetura de software e banco de dados, apoio estratégico a clientes na digitalização de processos.",
+          "Fundador de software house especializada em sites, sistemas sob medida e plataformas próprias.",
+          "Liderança estratégica e técnica: validação de ideias, arquitetura, desenvolvimento e operação dos produtos.",
+          "Plataformas em produção: FC Noivos, Velaris, First Care, Syncro OS e FC Converter, além de outras em desenvolvimento.",
+          "20+ projetos entregues: sites, sistemas de gestão e app nativo com Expo, para clientes no Brasil, Estados Unidos e Argentina.",
+          "Stack principal: Next.js, React, TypeScript, Node.js, PostgreSQL (Neon, Supabase), Cloudflare R2 e Vercel.",
         ],
         images: [],
       },
       {
         company: "Ganso Sistemas",
-        timeframe: "Jun 2025 - Fev 2026",
-        role: "Analista de Implantação",
+        timeframe: "Set 2022 - Fev 2026",
+        role: "Analista de Implantação (Estágio → N1 → N2 → Implantação)",
         achievements: [
-          "Coordenei 16+ projetos de implantação de ERP ponta a ponta (planejamento → go-live), incluindo instalação, configuração e migrações entre ambientes locais e cloud.",
+          "Coordenei 16+ projetos de implantação de ERP ponta a ponta, incluindo instalação, configuração e migrações entre ambientes locais e cloud.",
           "Customizações em Pascal/Delphi e administração de banco Firebird, com ganho de 50% em performance via otimização de queries.",
-          "Integrações bancárias (CNAB) e fiscais completas (NF-e, NFC-e, NFS-e, CT-e, MDF-e, SPED).",
-          "100+ relatórios criados em Fast Report (KPIs, fiscal, gerencial) e treinamentos técnicos para equipes de até 10 usuários.",
-          "Estratégias de backup, recuperação e gestão de infraestrutura de servidores garantindo integridade e continuidade operacional.",
-        ],
-        images: [],
-      },
-      {
-        company: "Ganso Sistemas",
-        timeframe: "Jan 2025 - Jun 2025",
-        role: "Analista de Suporte N2",
-        achievements: [
-          "Diagnóstico e resolução de incidentes complexos em ERP com tempo médio de resolução inferior a 4 horas.",
-          "Documentação estruturada de 200+ atendimentos no CRM Salesforce, criando base de conhecimento que acelerou resoluções futuras.",
-          "Suporte avançado em processos fiscais (NF-e, NFC-e, NFS-e, MDF-e), criação de layouts/relatórios customizados e gestão de permissões.",
-        ],
-        images: [],
-      },
-      {
-        company: "Ganso Sistemas",
-        timeframe: "Jan 2023 - Dez 2024",
-        role: "Analista de Suporte N1",
-        achievements: [
-          "30+ chamados diários (telefone, e-mail, chat) com SLA de resposta inferior a 30 minutos e CSAT de 92%.",
-          "Suporte humanizado em emissão de documentos fiscais (NF-e, NFC-e, NFS-e, MDF-e) e parametrizações tributárias (CST, NCM, CFOP).",
-          "Elaboração de manuais e materiais de treinamento, gestão de perfis de acesso e permissões.",
-        ],
-        images: [],
-      },
-      {
-        company: "Ganso Sistemas",
-        timeframe: "Set 2022 - Dez 2022",
-        role: "Estágio · Analista de Suporte",
-        achievements: [
-          "Estágio inicial em suporte técnico de ERP — base para a trajetória de N1 → N2 → Implantação na empresa.",
+          "Integrações bancárias (CNAB) e fiscais completas (NF-e, NFC-e, NFS-e, CT-e, MDF-e, SPED) e 100+ relatórios em Fast Report.",
+          "Suporte N2 a incidentes complexos com tempo médio de resolução inferior a 4 horas e 200+ atendimentos documentados no Salesforce.",
+          "Suporte N1 com 30+ chamados diários, SLA de resposta inferior a 30 minutos e CSAT de 92%.",
         ],
         images: [],
       },
@@ -232,8 +201,9 @@ const about: About = {
         title: "Backend",
         description: (
           <>
-            APIs RESTful robustas com Node.js, Express.js e autenticação JWT. Também atuo com
-            customizações Pascal/Delphi em sistemas legados.
+            APIs RESTful com Node.js, Express.js e Next.js, serviços em NestJS, ETL em .NET 8 e
+            ferramentas em Python/FastAPI. Também atuo com customizações Pascal/Delphi em sistemas
+            legados.
           </>
         ),
         tags: [
@@ -241,6 +211,8 @@ const about: About = {
           { name: "Express.js", icon: "express" },
           { name: "JavaScript", icon: "javascript" },
           { name: "TypeScript", icon: "typescript" },
+          { name: ".NET 8" },
+          { name: "Python" },
         ],
         images: [],
       },
@@ -252,6 +224,7 @@ const about: About = {
           { name: "Next.js", icon: "nextjs" },
           { name: "TypeScript", icon: "typescript" },
           { name: "Tailwind CSS", icon: "tailwind" },
+          { name: "Expo" },
         ],
         images: [],
       },
@@ -267,6 +240,8 @@ const about: About = {
           { name: "PostgreSQL", icon: "postgresql" },
           { name: "MySQL", icon: "mysql" },
           { name: "MongoDB", icon: "mongodb" },
+          { name: "Supabase", icon: "supabase" },
+          { name: "Oracle" },
         ],
         images: [],
       },
@@ -368,7 +343,7 @@ const firstClassDev: FirstClassDev = {
   label: "First Class Dev",
   title: "First Class Dev — Sites que transformam visitantes em clientes",
   description:
-    "Estúdio de tecnologia fundado em 2021 por Lucas Godoy. Sites desenhados para converter, 11 produtos SaaS e sistemas sob medida para PMEs no Brasil e no exterior.",
+    "Estúdio de tecnologia fundado em 2021 por Lucas Godoy. Sites desenhados para vender, plataformas próprias e sistemas sob medida para PMEs no Brasil e no exterior.",
   logo: "/images/projects/first-class-dev.png",
   hero: {
     badge: "Desde 2021 · 100% online",
@@ -382,10 +357,10 @@ const firstClassDev: FirstClassDev = {
       <>
         Desde 2021, a <strong>First Class Dev</strong> cria sites, lojas e landing pages desenhados
         para vender — rápidos, encontráveis e com cada pixel guiando o visitante até o contato. E
-        quando o desafio vai além do site, nossos SaaS e sistemas sob medida resolvem.
+        quando o desafio vai além do site, nossas plataformas e sistemas sob medida resolvem.
       </>
     ),
-    note: "Resposta em até 4h · Orçamento sem compromisso",
+    note: "Resposta em até 4 horas úteis · Orçamento sem compromisso",
   },
   cta: {
     site: "https://www.firstclassdev.com.br",
@@ -395,7 +370,7 @@ const firstClassDev: FirstClassDev = {
   stats: [
     { value: "2021", label: "Fundada" },
     { value: "20+", label: "Projetos entregues" },
-    { value: "11", label: "Produtos SaaS" },
+    { value: "5", label: "Plataformas no ar" },
     { value: "3", label: "Países atendidos" },
   ],
   story: {
@@ -445,19 +420,19 @@ const firstClassDev: FirstClassDev = {
     items: [
       {
         icon: "figma",
-        title: "Brand",
+        title: "Marca & site",
         description:
-          "Identidade visual, sites, landing pages e lojas onde cada pixel guia o visitante até o contato. Nossa especialidade: sites que viram máquina de conversão de novos clientes.",
+          "Identidade visual, sites, landing pages e lojas que abrem rápido, aparecem no Google e levam o visitante até a conversa no WhatsApp.",
       },
       {
         icon: "rocket",
-        title: "SaaS",
+        title: "Produtos prontos",
         description:
-          "Produtos prontos para usar, com assinatura mensal, sem instalação e 7 dias de teste grátis. Resolvem problemas reais de mercados diferentes.",
+          "Plataformas próprias, sem instalação, com planos mensais ou anuais. Resolvem problemas reais de mercados diferentes.",
       },
       {
         icon: "grid",
-        title: "Dev",
+        title: "Sob medida",
         description:
           "Sistemas, portais e aplicações web sob medida, que se encaixam no processo do cliente e escalam com ele.",
       },
@@ -465,90 +440,91 @@ const firstClassDev: FirstClassDev = {
   },
   products: {
     title: "Nossos produtos",
+    soonLabel: "em breve",
     headline: (
       <>
-        11 SaaS, todos com <em>7 dias grátis.</em>
+        5 plataformas no ar, <em>outras a caminho.</em>
       </>
     ),
     description:
-      "11 SaaS criados a partir de problemas reais — todos com 7 dias de teste grátis, sem cartão de crédito.",
+      "Plataformas criadas a partir de problemas reais: 5 prontas para usar hoje e outras em desenvolvimento.",
     items: [
       {
-        name: "Radar B3",
-        tagline: "Onde estratégia encontra tecnologia",
-        description: "Análise do mercado financeiro com sinais, dashboards e alertas.",
-        image: "/images/projects/radar-b3.png",
-        slug: "radar-b3",
+        name: "FC Noivos",
+        tagline: "O seu grande dia, planejado com amor.",
+        description:
+          "Site para os convidados e painel para os noivos, com RSVP, mesas, orçamento e presentes com Pix sem comissão.",
+        image: "/images/projects/fc-noivos.jpg",
+        slug: "fc-noivos",
+      },
+      {
+        name: "First Care",
+        tagline: "Gestão completa para a sua clínica.",
+        description:
+          "Prontuário eletrônico, agenda, financeiro e relatórios para clínicas e profissionais de saúde.",
+        image: "/images/projects/first-care.jpg",
+        slug: "first-care",
+      },
+      {
+        name: "Velaris",
+        tagline: "Do primeiro contato ao contrato fechado.",
+        description: "CRM e gestão para agências, consultorias e PMEs.",
+        image: "/images/projects/velaris.jpg",
+        slug: "velaris",
+      },
+      {
+        name: "FC Converter",
+        tagline: "Converta tudo. Nada sai do seu dispositivo.",
+        description: "Conversão de arquivos 100% no navegador, grátis, sem conta e sem limites.",
+        image: "/images/projects/fc-converter.jpg",
+        slug: "fc-converter",
+      },
+      {
+        name: "Syncro OS",
+        tagline: "Seus sistemas e sua equipe em sincronia.",
+        description:
+          "Suíte web sobre o ERP WinThor para distribuidoras: vendas, pedidos, financeiro e RH.",
+        image: "/images/projects/syncro-os.webp",
+        slug: "syncro",
+      },
+      {
+        name: "FC Moments",
+        tagline: "Memórias que duram para sempre.",
+        description: "Galeria colaborativa de eventos: cada convidado vira fotógrafo.",
+        image: "/images/projects/fc-moments.png",
+        slug: "fc-moments",
+        soon: true,
+      },
+      {
+        name: "FC Academy",
+        tagline: "Sua escola de tecnologia.",
+        description: "Plataforma de cursos com um site para cada escola.",
+        image: "/images/projects/fc-academy.png",
+        slug: "fc-academy",
+        soon: true,
+      },
+      {
+        name: "FC Chef",
+        tagline: "Master chef na palma da mão.",
+        description: "Receitas, lista de compras e cardápio semanal.",
+        image: "/images/projects/fc-chef.png",
+        soon: true,
       },
       {
         name: "Servix",
         tagline: "Menos papel. Mais serviço.",
-        description: "Gestão de ordens de serviço para equipes técnicas.",
+        description: "Ordens de serviço, agenda e financeiro para pequenos prestadores.",
         image: "/images/projects/servix.png",
         slug: "servix",
-      },
-      {
-        name: "Syncro",
-        tagline: "Seus sistemas e sua equipe em sincronia",
-        description: "Integração e automação de sistemas sem código.",
-        image: "/images/projects/syncro.png",
-        slug: "syncro",
-      },
-      {
-        name: "Velaris",
-        tagline: "Gestão que impulsiona",
-        description: "ERP/CRM completo para PMEs.",
-        image: "/images/projects/velaris.png",
-        slug: "velaris",
-      },
-      {
-        name: "First Care",
-        tagline: "Atendimento inteligente, simples e humano",
-        description: "Atendimento ao cliente multicanal com IA.",
-        image: "/images/projects/first-care.png",
-        slug: "first-care",
-      },
-      {
-        name: "FC Converter",
-        tagline: "Conversor de arquivos ilimitado",
-        description: "Conversão de arquivos 100% no navegador, grátis e sem limites.",
-        image: "/images/projects/fc-converter.png",
-        slug: "fc-converter",
+        soon: true,
       },
       {
         name: "First Class Insight",
-        tagline: "Conteúdo executivo que acelera decisão",
-        description: "Resumos, cursos e estudos de caso para líderes.",
+        tagline: "Conhecimento que abre portas.",
+        description: "Blog e biblioteca digital sobre tecnologia e negócios.",
         image: "/images/projects/first-class-insight.png",
         slug: "first-class-insight",
-      },
-      {
-        name: "FC Academy",
-        tagline: "Escola de tecnologia com projetos reais",
-        description: "Formação em tecnologia com prática de mercado.",
-        image: "/images/projects/fc-academy.png",
-        slug: "fc-academy",
-      },
-      {
-        name: "FC Noivos",
-        tagline: "O seu grande dia planejado com amor",
-        description: "Site para os convidados e painel completo para os noivos, com Pix integrado.",
-        image: "/images/projects/fc-noivos.png",
-        slug: "fc-noivos",
-      },
-      {
-        name: "FC Chef",
-        tagline: "Master Chef",
-        description: "Receitas, lista de compras e cardápio semanal.",
-        image: "/images/projects/fc-chef.png",
-        slug: "fc-chef",
-      },
-      {
-        name: "FC Moments",
-        tagline: "Cada momento, no lugar certo",
-        description: "Gestão de eventos e momentos especiais.",
-        image: "/images/projects/fc-moments.png",
-        slug: "fc-moments",
+        soon: true,
       },
     ],
   },
@@ -581,8 +557,8 @@ const firstClassDev: FirstClassDev = {
     name: "Lucas Godoy",
     monogram: "LG",
     badge: "CEO & Fundador",
-    subtitle: "Desenvolvedor sênior · arquiteturas na nuvem",
-    bio: "Engenheiro de software com experiência em sistemas web, integrações com ERPs e arquiteturas na nuvem. Fundou a First Class Dev em 2021 para entregar tecnologia de alto nível com proximidade e foco em resultado.",
+    subtitle: "Desenvolvedor sênior · sistemas na nuvem",
+    bio: "Desenvolvedor sênior e empreendedor. Fundou a First Class Dev em 2021, criando sistemas web sob medida e plataformas próprias. Especialista em sistemas web, integrações com ERPs e arquiteturas na nuvem.",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/company/firstclassdev/" },
       { label: "Instagram", href: "https://instagram.com/firstclassdev/" },

@@ -1,13 +1,15 @@
 {
   "Home": {
     "scrollMore": "Scroll to see more",
-    "latestBlog": "Latest from my blog..."
+    "latestBlog": "From my blog",
+    "contactCta": "Get in touch"
   },
   "Blog": {
     "breadcrumb": "Blog",
     "recentPosts": "Recent Posts",
     "latestPosts": "Latest Posts",
     "share": "Share this post:",
+    "copyLink": "Copy link",
     "thumbnailAlt": "Thumbnail of {title}"
   },
   "Work": {

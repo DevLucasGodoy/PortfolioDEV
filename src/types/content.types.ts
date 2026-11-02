@@ -237,6 +237,8 @@ export interface FirstClassDevProduct {
   image: string;
   /** Optional internal work-post slug to link to */
   slug?: string;
+  /** Still in development */
+  soon?: boolean;
 }
 
 /**
@@ -283,6 +285,8 @@ export interface FirstClassDev extends BasePageConfig {
   products: {
     /** Eyebrow label */
     title: string;
+    /** Badge for products still in development */
+    soonLabel: string;
     /** Display headline (use <em> to mark the serif-italic accent) */
     headline: React.ReactNode;
     description: string;

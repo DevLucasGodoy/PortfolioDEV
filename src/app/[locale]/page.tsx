@@ -2,6 +2,7 @@ import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { Projects } from "@/components/work/Projects";
 import { baseURL, getContent, routes } from "@/resources";
+import { localeMeta } from "@/utils/seo";
 import {
   Avatar,
   Badge,
@@ -30,7 +31,7 @@ export async function generateMetadata({
     title: home.title,
     description: home.description,
     baseURL: baseURL,
-    path: home.path,
+    ...localeMeta(locale, home.path),
     image: home.image,
   });
 }
@@ -99,27 +100,40 @@ export default async function Home({
             </Text>
           </RevealFx>
           <RevealFx delay={0.15} horizontal="center" paddingTop="12">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={`/${locale}${about.path}`}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Row gap="8" vertical="center" paddingRight="4">
-                {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {about.title}
-              </Row>
-            </Button>
+            <Row gap="12" wrap horizontal="center">
+              <Button
+                id="contact-cta"
+                data-border="rounded"
+                href="#contact"
+                variant="primary"
+                size="m"
+                weight="default"
+                arrowIcon
+              >
+                {t("contactCta")}
+              </Button>
+              <Button
+                id="about"
+                data-border="rounded"
+                href={`/${locale}${about.path}`}
+                variant="secondary"
+                size="m"
+                weight="default"
+                arrowIcon
+              >
+                <Row gap="8" vertical="center" paddingRight="4">
+                  {about.avatar.display && (
+                    <Avatar
+                      marginRight="8"
+                      style={{ marginLeft: "-0.75rem" }}
+                      src={person.avatar}
+                      size="m"
+                    />
+                  )}
+                  {about.title}
+                </Row>
+              </Button>
+            </Row>
           </RevealFx>
         </Column>
 
@@ -162,11 +176,11 @@ export default async function Home({
         )}
 
         <RevealFx translateY="12" delay={0.1}>
-          <Projects range={[3]} />
+          <Projects range={[3, 4]} />
         </RevealFx>
 
         <RevealFx translateY="8" delay={0.1} fillWidth>
-          <Mailchimp />
+          <Mailchimp id="contact" />
         </RevealFx>
       </Column>
     </Column>

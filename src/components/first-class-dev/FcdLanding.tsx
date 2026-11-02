@@ -317,7 +317,6 @@ export default function FcdLanding({
             <div className="flex flex-col gap-[18px] pt-1.5">
               {fcd.story.paragraphs.map((p, i) => (
                 <p
-                  // biome-ignore lint/suspicious/noArrayIndexKey: static content list
                   key={i}
                   className="m-0 text-[16px] leading-[1.65]"
                   style={{ color: C.body }}
@@ -617,6 +616,7 @@ export default function FcdLanding({
               };
               const cls =
                 "rounded-full border bg-white px-[18px] py-[11px] text-[15px] font-semibold no-underline transition hover:-translate-y-0.5";
+              const label = p.soon ? `${p.name} · ${fcd.products.soonLabel}` : p.name;
               return p.slug ? (
                 <a
                   key={p.name}
@@ -624,11 +624,11 @@ export default function FcdLanding({
                   className={cls}
                   style={pillStyle}
                 >
-                  {p.name}
+                  {label}
                 </a>
               ) : (
                 <span key={p.name} className={cls} style={pillStyle}>
-                  {p.name}
+                  {label}
                 </span>
               );
             })}

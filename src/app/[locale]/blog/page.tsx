@@ -1,6 +1,7 @@
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, getContent } from "@/resources";
+import { localeMeta } from "@/utils/seo";
 import { getPosts } from "@/utils/utils";
 import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
@@ -17,7 +18,7 @@ export async function generateMetadata({
     description: blog.description,
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(blog.title)}`,
-    path: blog.path,
+    ...localeMeta(locale, blog.path),
   });
 }
 

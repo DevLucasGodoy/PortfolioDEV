@@ -14,7 +14,7 @@ import { ThemeToggle } from "./ThemeToggle";
 export const Header = () => {
   const pathname = usePathname() ?? "";
   const locale = useLocale();
-  const { about, blog, work, firstClassDev } = useContent();
+  const { home, about, blog, work, firstClassDev } = useContent();
   const prefix = `/${locale}`;
 
   return (
@@ -57,7 +57,7 @@ export const Header = () => {
           >
             <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href={prefix} selected={pathname === "/"} />
+                <ToggleButton prefixIcon="home" href={prefix} aria-label={home.label} selected={pathname === "/"} />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
@@ -74,6 +74,7 @@ export const Header = () => {
                     <ToggleButton
                       prefixIcon="person"
                       href={`${prefix}/about`}
+                      aria-label={about.label}
                       selected={pathname === "/about"}
                     />
                   </Row>
@@ -93,6 +94,7 @@ export const Header = () => {
                     <ToggleButton
                       prefixIcon="grid"
                       href={`${prefix}/work`}
+                      aria-label={work.label}
                       selected={pathname.startsWith("/work")}
                     />
                   </Row>
@@ -112,6 +114,7 @@ export const Header = () => {
                     <ToggleButton
                       prefixIcon="rocket"
                       href={`${prefix}/first-class-dev`}
+                      aria-label={firstClassDev.label}
                       selected={pathname.startsWith("/first-class-dev")}
                     />
                   </Row>
@@ -131,6 +134,7 @@ export const Header = () => {
                     <ToggleButton
                       prefixIcon="book"
                       href={`${prefix}/blog`}
+                      aria-label={blog.label}
                       selected={pathname.startsWith("/blog")}
                     />
                   </Row>

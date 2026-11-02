@@ -14,7 +14,7 @@ import { Fragment } from "react";
 const person: Person = {
   firstName: "Lucas",
   lastName: "Godoy",
-  name: `Lucas Godoy`,
+  name: "Lucas Godoy",
   role: "Senior Developer · CEO & Founder",
   avatar: "/images/avatar.jpeg",
   email: "lucas.moraes.godoy@gmail.com",
@@ -55,16 +55,16 @@ const social: Social = [
   {
     name: "Email",
     icon: "email",
-    link: `mailto:lucas.moraes.godoy@gmail.com?subject=Portfolio%20-%20DevLucasGodoy`,
+    link: "mailto:lucas.moraes.godoy@gmail.com?subject=Portfolio%20-%20DevLucasGodoy",
     essential: true,
   },
 ];
 
 const home: Home = {
   path: "/",
-  image: `/api/og/generate?title=${encodeURIComponent("Portfolio - Senior Developer & Entrepreneur")}&locale=en`,
+  image: `/api/og/generate?title=${encodeURIComponent("Lucas Godoy - Senior Developer & Entrepreneur")}&locale=en`,
   label: "Home",
-  title: `Portfolio - Senior Developer & Entrepreneur`,
+  title: "Lucas Godoy - Senior Developer & Entrepreneur",
   description: `Personal portfolio of ${person.name}, ${person.role}.`,
   headline: <>Turning ideas into real digital products</>,
   featured: {
@@ -122,11 +122,11 @@ const about: About = {
         timeframe: "Mar 2026 - Present",
         role: "Partner & Head of Technology",
         achievements: [
-          "Partner responsible for technology and innovation, leading the company's digital transformation.",
-          "Built internal systems and strategic dashboards to optimize processes and enable data-driven decision making.",
-          "ERP integration and automation of critical processes, connecting operations to a single data layer.",
-          "Structured scalable digital products with commercialization potential (SaaS) as new revenue streams.",
-          "Defined architecture, chose the stack and worked hands-on as a senior developer.",
+          "Partner in charge of technology, leading the digital transformation of a distributor with 4 branches in Mato Grosso do Sul.",
+          "Led and built Syncro OS: a web suite on top of the Oracle WinThor ERP with sales force, purchasing, order release, finance and HR.",
+          "SyncroAgent: a .NET 8 ETL mirroring Oracle and SQL Server to Neon incrementally, with an outbox writing back to the ERP while preserving operator identity and audit.",
+          "Platform security: WinThor password login, MFA/TOTP, branch scope and per-module and per-screen permissions, with an audit log.",
+          "Python/FastAPI tools for card settlement and reconciliation, plus migrating the corporate website from PHP to Next.js.",
         ],
         images: [],
       },
@@ -135,55 +135,24 @@ const about: About = {
         timeframe: "Jan 2021 - Present",
         role: "CEO & Founder",
         achievements: [
-          "Founder of a software house specialized in building web solutions and digital products (SaaS).",
-          "Strategic and technical leadership: custom systems, idea validation and development of scalable products.",
-          "Main stack: Node.js + Express, React.js + Next.js, PostgreSQL/MySQL/MongoDB, deployed on AWS, Vercel and Railway.",
-          "20+ projects delivered to production: management systems, e-commerce, dashboards and SaaS — with a satisfaction rate above 90%.",
-          "API and ERP integrations, software and database architecture, and strategic support helping clients digitize their processes.",
+          "Founder of a software house specialized in websites, custom systems and in-house platforms.",
+          "Strategic and technical leadership: idea validation, architecture, development and product operations.",
+          "Platforms in production: FC Noivos, Velaris, First Care, Syncro OS and FC Converter, with others in development.",
+          "20+ projects delivered: websites, management systems and a native Expo app, for clients in Brazil, the United States and Argentina.",
+          "Main stack: Next.js, React, TypeScript, Node.js, PostgreSQL (Neon, Supabase), Cloudflare R2 and Vercel.",
         ],
         images: [],
       },
       {
         company: "Ganso Sistemas",
-        timeframe: "Jun 2025 - Feb 2026",
-        role: "Implementation Analyst",
+        timeframe: "Sep 2022 - Feb 2026",
+        role: "Implementation Analyst (Intern → N1 → N2 → Implementation)",
         achievements: [
-          "Led 16+ end-to-end ERP implementation projects (planning → go-live), including installation, configuration and migrations between on-premise and cloud environments.",
+          "Led 16+ end-to-end ERP implementation projects, including installation, configuration and migrations between on-premise and cloud environments.",
           "Pascal/Delphi customizations and Firebird database administration, with a 50% performance gain through query optimization.",
-          "Complete banking (CNAB) and tax integrations (NF-e, NFC-e, NFS-e, CT-e, MDF-e, SPED).",
-          "100+ reports built in Fast Report (KPIs, tax, management) and technical training for teams of up to 10 users.",
-          "Backup, recovery and server infrastructure management strategies ensuring integrity and operational continuity.",
-        ],
-        images: [],
-      },
-      {
-        company: "Ganso Sistemas",
-        timeframe: "Jan 2025 - Jun 2025",
-        role: "N2 Support Analyst",
-        achievements: [
-          "Diagnosed and resolved complex ERP incidents with an average resolution time under 4 hours.",
-          "Structured documentation of 200+ tickets in Salesforce CRM, building a knowledge base that sped up future resolutions.",
-          "Advanced support for tax processes (NF-e, NFC-e, NFS-e, MDF-e), custom layouts/reports and permission management.",
-        ],
-        images: [],
-      },
-      {
-        company: "Ganso Sistemas",
-        timeframe: "Jan 2023 - Dec 2024",
-        role: "N1 Support Analyst",
-        achievements: [
-          "30+ daily tickets (phone, email, chat) with a response SLA under 30 minutes and a 92% CSAT.",
-          "Friendly support for issuing tax documents (NF-e, NFC-e, NFS-e, MDF-e) and tax configuration (CST, NCM, CFOP).",
-          "Authored manuals and training materials, managed access profiles and permissions.",
-        ],
-        images: [],
-      },
-      {
-        company: "Ganso Sistemas",
-        timeframe: "Sep 2022 - Dec 2022",
-        role: "Intern · Support Analyst",
-        achievements: [
-          "Initial internship in ERP technical support — the foundation for the N1 → N2 → Implementation path at the company.",
+          "Complete banking (CNAB) and tax integrations (NF-e, NFC-e, NFS-e, CT-e, MDF-e, SPED) and 100+ Fast Report reports.",
+          "N2 support for complex incidents with average resolution under 4 hours and 200+ tickets documented in Salesforce.",
+          "N1 support with 30+ daily tickets, a response SLA under 30 minutes and a 92% CSAT.",
         ],
         images: [],
       },
@@ -231,8 +200,8 @@ const about: About = {
         title: "Backend",
         description: (
           <>
-            Robust RESTful APIs with Node.js, Express.js and JWT authentication. I also work on
-            Pascal/Delphi customizations in legacy systems.
+            RESTful APIs with Node.js, Express.js and Next.js, NestJS services, a .NET 8 ETL and
+            Python/FastAPI tools. I also work on Pascal/Delphi customizations in legacy systems.
           </>
         ),
         tags: [
@@ -240,6 +209,8 @@ const about: About = {
           { name: "Express.js", icon: "express" },
           { name: "JavaScript", icon: "javascript" },
           { name: "TypeScript", icon: "typescript" },
+          { name: ".NET 8" },
+          { name: "Python" },
         ],
         images: [],
       },
@@ -251,6 +222,7 @@ const about: About = {
           { name: "Next.js", icon: "nextjs" },
           { name: "TypeScript", icon: "typescript" },
           { name: "Tailwind CSS", icon: "tailwind" },
+          { name: "Expo" },
         ],
         images: [],
       },
@@ -266,6 +238,8 @@ const about: About = {
           { name: "PostgreSQL", icon: "postgresql" },
           { name: "MySQL", icon: "mysql" },
           { name: "MongoDB", icon: "mongodb" },
+          { name: "Supabase", icon: "supabase" },
+          { name: "Oracle" },
         ],
         images: [],
       },
@@ -367,7 +341,7 @@ const firstClassDev: FirstClassDev = {
   label: "First Class Dev",
   title: "First Class Dev — Websites that turn visitors into clients",
   description:
-    "Technology studio founded in 2021 by Lucas Godoy. Websites designed to convert, 11 SaaS products and custom systems for SMBs in Brazil and abroad.",
+    "Technology studio founded in 2021 by Lucas Godoy. Websites designed to sell, in-house platforms and custom systems for SMBs in Brazil and abroad.",
   logo: "/images/projects/first-class-dev.png",
   hero: {
     badge: "Since 2021 · 100% online",
@@ -381,10 +355,10 @@ const firstClassDev: FirstClassDev = {
       <>
         Since 2021, <strong>First Class Dev</strong> has built websites, stores and landing pages
         designed to sell — fast, findable, with every pixel guiding the visitor to contact. And when
-        the challenge goes beyond the website, our SaaS and custom systems take over.
+        the challenge goes beyond the website, our platforms and custom systems take over.
       </>
     ),
-    note: "Reply within 4h · Free, no-strings quote",
+    note: "Reply within 4 business hours · Free, no-strings quote",
   },
   cta: {
     site: "https://www.firstclassdev.com.br",
@@ -394,7 +368,7 @@ const firstClassDev: FirstClassDev = {
   stats: [
     { value: "2021", label: "Founded" },
     { value: "20+", label: "Projects delivered" },
-    { value: "11", label: "SaaS products" },
+    { value: "5", label: "Live platforms" },
     { value: "3", label: "Countries served" },
   ],
   story: {
@@ -442,19 +416,19 @@ const firstClassDev: FirstClassDev = {
     items: [
       {
         icon: "figma",
-        title: "Brand",
+        title: "Brand & website",
         description:
-          "Visual identity, websites, landing pages and stores where every pixel guides the visitor to contact. Our specialty: websites that become new-client conversion machines.",
+          "Visual identity, websites, landing pages and stores that load fast, show up on Google and take the visitor to a WhatsApp conversation.",
       },
       {
         icon: "rocket",
-        title: "SaaS",
+        title: "Ready-made products",
         description:
-          "Ready-to-use products with monthly subscription, no installation and a 7-day free trial. They solve real problems across different markets.",
+          "In-house platforms with no installation and monthly or annual plans. They solve real problems across different markets.",
       },
       {
         icon: "grid",
-        title: "Dev",
+        title: "Custom-built",
         description:
           "Custom systems, portals and web applications that fit the client's process and scale with it.",
       },
@@ -462,90 +436,91 @@ const firstClassDev: FirstClassDev = {
   },
   products: {
     title: "Our products",
+    soonLabel: "soon",
     headline: (
       <>
-        11 SaaS, all with a <em>7-day free trial.</em>
+        5 platforms live, <em>more on the way.</em>
       </>
     ),
-    description: "11 SaaS born from real problems — all with a 7-day free trial, no credit card.",
+    description:
+      "Platforms born from real problems: 5 ready to use today and others in development.",
     items: [
       {
-        name: "Radar B3",
-        tagline: "Where strategy meets technology",
-        description: "Stock market analysis with signals, dashboards and alerts.",
-        image: "/images/projects/radar-b3.png",
-        slug: "radar-b3",
+        name: "FC Noivos",
+        tagline: "Your big day, planned with love.",
+        description:
+          "A site for the guests and a dashboard for the couple, with RSVP, seating, budget and commission-free Pix gifts.",
+        image: "/images/projects/fc-noivos.jpg",
+        slug: "fc-noivos",
+      },
+      {
+        name: "First Care",
+        tagline: "Complete management for your clinic.",
+        description:
+          "Electronic records, scheduling, finance and reports for clinics and health professionals.",
+        image: "/images/projects/first-care.jpg",
+        slug: "first-care",
+      },
+      {
+        name: "Velaris",
+        tagline: "From first contact to signed deal.",
+        description: "CRM and management for agencies, consultancies and SMBs.",
+        image: "/images/projects/velaris.jpg",
+        slug: "velaris",
+      },
+      {
+        name: "FC Converter",
+        tagline: "Convert anything. Nothing leaves your device.",
+        description: "File conversion 100% in the browser, free, no account and no limits.",
+        image: "/images/projects/fc-converter.jpg",
+        slug: "fc-converter",
+      },
+      {
+        name: "Syncro OS",
+        tagline: "Your systems and your team in sync.",
+        description:
+          "Web suite on top of the WinThor ERP for distributors: sales, orders, finance and HR.",
+        image: "/images/projects/syncro-os.webp",
+        slug: "syncro",
+      },
+      {
+        name: "FC Moments",
+        tagline: "Memories that last forever.",
+        description: "Collaborative event gallery: every guest becomes a photographer.",
+        image: "/images/projects/fc-moments.png",
+        slug: "fc-moments",
+        soon: true,
+      },
+      {
+        name: "FC Academy",
+        tagline: "Your tech school.",
+        description: "Course platform with a site for each school.",
+        image: "/images/projects/fc-academy.png",
+        slug: "fc-academy",
+        soon: true,
+      },
+      {
+        name: "FC Chef",
+        tagline: "Master chef in your pocket.",
+        description: "Recipes, shopping list and weekly menu.",
+        image: "/images/projects/fc-chef.png",
+        soon: true,
       },
       {
         name: "Servix",
         tagline: "Less paper. More service.",
-        description: "Work-order management for technical teams.",
+        description: "Service orders, calendar and finance for small providers.",
         image: "/images/projects/servix.png",
         slug: "servix",
-      },
-      {
-        name: "Syncro",
-        tagline: "Your systems and your team in sync",
-        description: "No-code systems integration and automation.",
-        image: "/images/projects/syncro.png",
-        slug: "syncro",
-      },
-      {
-        name: "Velaris",
-        tagline: "Management that drives growth",
-        description: "Complete ERP/CRM for SMBs.",
-        image: "/images/projects/velaris.png",
-        slug: "velaris",
-      },
-      {
-        name: "First Care",
-        tagline: "Smart, simple and human care",
-        description: "Multichannel customer service with AI.",
-        image: "/images/projects/first-care.png",
-        slug: "first-care",
-      },
-      {
-        name: "FC Converter",
-        tagline: "Unlimited file converter",
-        description: "File conversion 100% in the browser, free and unlimited.",
-        image: "/images/projects/fc-converter.png",
-        slug: "fc-converter",
+        soon: true,
       },
       {
         name: "First Class Insight",
-        tagline: "Executive content that speeds up decisions",
-        description: "Summaries, courses and case studies for leaders.",
+        tagline: "Knowledge that opens doors.",
+        description: "Blog and digital library on technology and business.",
         image: "/images/projects/first-class-insight.png",
         slug: "first-class-insight",
-      },
-      {
-        name: "FC Academy",
-        tagline: "A tech school with real projects",
-        description: "Technology training with market-grade practice.",
-        image: "/images/projects/fc-academy.png",
-        slug: "fc-academy",
-      },
-      {
-        name: "FC Noivos",
-        tagline: "Your big day, planned with love",
-        description:
-          "A site for the guests and a complete dashboard for the couple, with built-in Pix.",
-        image: "/images/projects/fc-noivos.png",
-        slug: "fc-noivos",
-      },
-      {
-        name: "FC Chef",
-        tagline: "Master Chef",
-        description: "Recipes, shopping list and weekly menu.",
-        image: "/images/projects/fc-chef.png",
-        slug: "fc-chef",
-      },
-      {
-        name: "FC Moments",
-        tagline: "Every moment, in the right place",
-        description: "Event and special-moment management.",
-        image: "/images/projects/fc-moments.png",
-        slug: "fc-moments",
+        soon: true,
       },
     ],
   },
@@ -578,8 +553,8 @@ const firstClassDev: FirstClassDev = {
     name: "Lucas Godoy",
     monogram: "LG",
     badge: "CEO & Founder",
-    subtitle: "Senior developer · cloud architectures",
-    bio: "Software engineer with experience in web systems, ERP integrations and cloud architectures. He founded First Class Dev in 2021 to deliver high-level technology with proximity and a focus on results.",
+    subtitle: "Senior developer · cloud systems",
+    bio: "Senior developer and entrepreneur. Founded First Class Dev in 2021, building custom web systems and in-house platforms. Specialist in web systems, ERP integrations and cloud architectures.",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/company/firstclassdev/" },
       { label: "Instagram", href: "https://instagram.com/firstclassdev/" },

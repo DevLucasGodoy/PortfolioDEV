@@ -2,6 +2,7 @@ import { CustomMDX, ScrollToHash } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { routing } from "@/i18n/routing";
 import { baseURL, getContent } from "@/resources";
+import { localeMeta } from "@/utils/seo";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import {
@@ -48,7 +49,7 @@ export async function generateMetadata({
     description: post.metadata.summary,
     baseURL: baseURL,
     image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
-    path: `/${locale}${work.path}/${post.slug}`,
+    ...localeMeta(locale, `${work.path}/${post.slug}`),
   });
 }
 

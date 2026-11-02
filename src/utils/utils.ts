@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import matter from "gray-matter";
 
 type Team = {
@@ -70,6 +70,6 @@ function getMDXData(dir: string) {
 
 export function getPosts(customPath: string[] = [], locale?: string) {
   const segments = locale ? [...customPath, locale] : customPath;
-  const postsDir = path.join(process.cwd(), ...segments);
+  const postsDir = path.join(/*turbopackIgnore: true*/ process.cwd(), ...segments);
   return getMDXData(postsDir);
 }

@@ -1,45 +1,52 @@
 ---
-title: "Syncro"
-publishedAt: "2026-05-10"
-summary: "Plataforma de integração e automação de sistemas sem código — conecta ferramentas e mantém seus sistemas e sua equipe em sincronia."
+title: "Syncro OS"
+publishedAt: "2026-11-02"
+summary: "Suíte web de gestão sobre o ERP WinThor para distribuidoras: força de vendas, pedidos, compras, financeiro e RH, com dados espelhados na nuvem."
 images:
-  - "/images/projects/syncro.png"
+  - "/images/projects/syncro-os.webp"
 tag: "SaaS"
 team:
   - name: "Lucas Godoy"
     role: "Desenvolvedor Full-Stack"
     avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
-link: "https://www.firstclassdev.com.br"
+link: "https://www.syncroos.com.br"
 ---
 
 ## Visão Geral
 
-**Syncro** é uma plataforma SaaS de integração e automação que conecta sistemas diferentes sem escrever código. Em vez de planilhas copiadas à mão entre ferramentas, a empresa monta fluxos que sincronizam dados automaticamente.
+**Syncro OS** é uma suíte web para distribuidoras que usam o ERP Oracle WinThor. Ela não substitui o ERP: espelha os dados na nuvem e adiciona módulos modernos por cima. Produto da First Class Dev, desenvolvido em parceria com a TG Distribuidora, onde roda em produção. Liderei e construí a plataforma, que conta com mais de 3.800 commits.
 
 _"Seus sistemas e sua equipe em sincronia."_
 
 ## Problema
 
-PMEs usam dezenas de ferramentas que não conversam entre si — ERP, planilhas, e-commerce, CRM. A integração vira trabalho manual, sujeito a erro, e o dado nunca está atualizado em todos os lugares ao mesmo tempo.
+O WinThor é robusto, mas preso ao desktop da loja. Vendedor em campo, gestor fora da empresa e financeiro dependem de telas legadas, relatórios manuais e planilhas, sem visão consolidada por filial.
 
 ## Solução
 
-Um construtor visual de automações que liga sistemas por gatilho e ação:
+- **Força de Vendas** no navegador: painel, carteira e pedido com preço, estoque e crédito do ERP
+- **SalesDash** com metas e indicadores por filial
+- **Compras e distribuição** entre filiais, gestão e liberação de pedidos
+- **Financeiro**, faturamento e DRE
+- **RH** com integração a relógios de ponto Control iD
+- **Modo TV**, chat corporativo e PWA
 
-- **Conectores** para ERPs, planilhas, APIs e serviços externos
-- **Fluxos** visuais (gatilho → condição → ação) sem código
-- **Sincronização** agendada ou em tempo real
-- **Logs** e reprocessamento de execuções com falha
-- **Mapeamento** de campos entre sistemas de origem e destino
+## Arquitetura
+
+- **SyncroAgent**: ETL em .NET 8 que roda na loja, lê Oracle e SQL Server e sincroniza de forma incremental com o Neon
+- **Escrita de volta**: outbox grava no WinThor preservando operador e auditoria
+- **Web**: lê apenas do Neon, nunca direto do Oracle
+- **Ferramentas em Python/FastAPI**: baixa de cartões e conciliação
 
 ## Stack Técnica
 
-- **Frontend**: React, TypeScript — editor visual de fluxos
-- **Backend**: Node.js, motor de execução com filas e workers
-- **Banco**: PostgreSQL para definições de fluxo e histórico de execução
-- **Integrações**: REST, webhooks e conectores customizados
+- **Web**: Next.js 16, React 19, TypeScript, Tailwind CSS
+- **Dados**: Neon (PostgreSQL), Cloudflare R2, Oracle, SQL Server
+- **Agente**: .NET 8, Dapper, Oracle.ManagedDataAccess, Npgsql
+- **Segurança**: login com a senha do WinThor, JWT, MFA/TOTP, escopo por filial, acesso por módulo e tela, log de auditoria
+- **Qualidade**: Playwright, xUnit e migrations versionadas
 
-## Impacto
+## Em números
 
-O Syncro acaba com a digitação dupla entre sistemas e mantém o dado consistente em toda a operação. A equipe deixa de ser "ponte manual" entre ferramentas e foca no que importa.
+299 migrations, 267 rotas de API e 12 specs de ponta a ponta no repositório.

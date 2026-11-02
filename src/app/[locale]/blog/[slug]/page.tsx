@@ -3,6 +3,7 @@ import { Posts } from "@/components/blog/Posts";
 import { ShareSection } from "@/components/blog/ShareSection";
 import { routing } from "@/i18n/routing";
 import { baseURL, getContent } from "@/resources";
+import { localeMeta } from "@/utils/seo";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import {
@@ -50,7 +51,7 @@ export async function generateMetadata({
     description: post.metadata.summary,
     baseURL: baseURL,
     image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
-    path: `/${locale}${blog.path}/${post.slug}`,
+    ...localeMeta(locale, `${blog.path}/${post.slug}`),
   });
 }
 

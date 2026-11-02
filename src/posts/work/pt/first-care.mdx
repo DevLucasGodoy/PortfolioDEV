@@ -1,22 +1,23 @@
 ---
 title: "First Care"
 publishedAt: "2026-03-18"
-summary: "Plataforma completa de gestão médica com prontuários eletrônicos, agendamentos, controle de usuários e análise bioenergética, integrada ao Supabase com autenticação e segurança por Row Level Security."
+summary: "Sistema de gestão clínica com prontuário eletrônico, agenda, financeiro e relatórios, com segurança por Row Level Security e foco em LGPD."
 images:
-  - "/images/projects/first-care.png"
+  - "/images/projects/first-care.jpg"
 tag: "SaaS"
 team:
   - name: "Lucas Godoy"
     role: "Desenvolvedor Full-Stack"
     avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+link: "https://www.firstcare.app.br"
 ---
 
 ## Visão Geral
 
 **First Care** é uma plataforma web SPA voltada para clínicas e profissionais de saúde, com o objetivo de centralizar todo o fluxo de atendimento em uma interface fluida, segura e intuitiva. Do cadastro de pacientes à geração de relatórios, o sistema oferece controle completo sobre as operações clínicas com suporte a múltiplos perfis de acesso.
 
-_"Atendimento inteligente, simples e humano."_
+_"Gestão completa para a sua clínica."_
 
 ## Problema
 
@@ -29,7 +30,7 @@ Uma plataforma integrada que reúne todos os módulos essenciais da gestão clí
 - **Dashboard** com métricas em tempo real, mini-calendário, lembretes do dia e consultas próximas
 - **Pacientes** com CRUD completo, busca por nome ou CPF, histórico médico, endereço e contatos
 - **Agendamentos** com controle de status, integração via WhatsApp para confirmação e visualização financeira
-- **Prontuários eletrônicos** completos com anamnese, diagnóstico, prescrição, sinais vitais, rastreamento metabólico, relatório de biorressonância, anexos e gravações de áudio
+- **Prontuários eletrônicos** completos com anamnese, diagnóstico, prescrição, sinais vitais, rastreamento metabólico, anexos e gravações de áudio
 - **Usuários** com gestão por role (médico, enfermeiro, terapeuta, admin), ativação e redefinição de senha
 - **Busca avançada** cross-entity para pesquisar pacientes, consultas e prontuários em uma única consulta
 - **Relatórios** com análises e exportação de dados
@@ -47,7 +48,7 @@ Uma plataforma integrada que reúne todos os módulos essenciais da gestão clí
 
 ## Banco de Dados
 
-O banco é gerenciado pelo Supabase com Row Level Security habilitado em todas as tabelas. A estrutura contempla perfis de usuários, cadastro de pacientes com dados em JSONB, consultas, prontuários eletrônicos com campos bioenergéticos, documentos vinculados e log completo de auditoria.
+O banco é gerenciado pelo Supabase com Row Level Security habilitado em todas as tabelas. A estrutura contempla perfis de usuários, cadastro de pacientes com dados em JSONB, consultas, prontuários eletrônicos, documentos vinculados e log completo de auditoria.
 
 O controle de acesso é feito por roles: `admin` tem acesso total, enquanto `doctor`, `nurse` e `therapist` têm leitura e escrita nos módulos clínicos principais.
 

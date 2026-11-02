@@ -14,6 +14,7 @@ export const ThemeToggle: React.FC = () => {
     setCurrentTheme(document.documentElement.getAttribute("data-theme") || "light");
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-read the DOM whenever the theme changes
   useEffect(() => {
     setCurrentTheme(document.documentElement.getAttribute("data-theme") || "light");
   }, [theme]);

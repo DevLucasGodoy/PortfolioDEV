@@ -1,5 +1,6 @@
 import { Projects } from "@/components/work/Projects";
 import { baseURL, getContent } from "@/resources";
+import { localeMeta } from "@/utils/seo";
 import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { setRequestLocale } from "next-intl/server";
 
@@ -15,7 +16,7 @@ export async function generateMetadata({
     description: work.description,
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
-    path: work.path,
+    ...localeMeta(locale, work.path),
   });
 }
 

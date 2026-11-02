@@ -1,6 +1,7 @@
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { baseURL, getContent } from "@/resources";
+import { localeMeta } from "@/utils/seo";
 import {
   Avatar,
   Button,
@@ -31,7 +32,7 @@ export async function generateMetadata({
     description: about.description,
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
-    path: about.path,
+    ...localeMeta(locale, about.path),
   });
 }
 

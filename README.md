@@ -4,7 +4,7 @@ Portfólio pessoal de **Lucas Godoy** — Desenvolvedor Senior, CEO & Fundador d
 
 Construo sistemas web e produtos **SaaS** com Node.js, React e Next.js — com integrações a ERPs e foco em escalabilidade.
 
-Site **bilíngue (PT padrão, EN)** com Home, Sobre/CV, Projetos, Blog, Galeria e formulário de contato. Construído sobre o template [Magic Portfolio](https://demo.magic-portfolio.com) com [Once UI](https://once-ui.com).
+Site **bilíngue (PT padrão, EN)** com Home, Sobre/CV, Projetos, Blog, First Class Dev e formulário de contato. Construído sobre o template [Magic Portfolio](https://demo.magic-portfolio.com) com [Once UI](https://once-ui.com).
 
 ## Stack
 
@@ -85,14 +85,6 @@ O formulário ([src/components/Mailchimp.tsx](src/components/Mailchimp.tsx)) val
 - Endpoints de OG com proteção SSRF; headers de segurança HTTP
 - Feed RSS do blog (`/api/rss`)
 - Links sociais gerados automaticamente
-
-## Antes de publicar
-
-Ainda com valores demo do template — ajustar:
-
-- `baseURL` em `once-ui.config.ts` (aponta para `demo.magic-portfolio.com`)
-- `schema.name` / `schema.email` (valores Once UI)
-- `sameAs` (redes sociais do Once UI; os links reais estão em `social` no `content/pt.tsx`)
 
 ## Deploy
 

@@ -3,7 +3,7 @@ title: "Como construí um sistema de gestão médica completo com React, TypeScr
 publishedAt: "2026-02-23"
 summary: "Uma análise técnica da arquitetura, decisões de design e os desafios reais de desenvolver software para o setor de saúde — do banco de dados ao prontuário eletrônico."
 tag: "React"
-image: "/images/blog/first-care.png"
+image: "/images/blog/first-care.jpg"
 ---
 
 Quando recebi o briefing do **First Care**, o escopo parecia claro: substituir planilhas por um sistema web. Na prática, entreguei uma plataforma com prontuários eletrônicos, agendamentos integrados ao WhatsApp, controle de acesso por role, exportação de PDFs e um sistema de cache otimizado.
@@ -81,11 +81,10 @@ O cache é atualizado localmente nas operações de escrita (optimistic update),
 
 ## O prontuário eletrônico — o módulo mais complexo
 
-O `MedicalRecords.tsx` tem quase 10 mil linhas. Não porque o código seja ruim — é porque o prontuário eletrônico é genuinamente complexo. Ele suporta:
+O prontuário eletrônico é genuinamente complexo, e o módulo cresceu mais do que deveria. Ele suporta:
 
 - Dados clínicos estruturados (anamnese, exame físico, diagnóstico, prescrição, sinais vitais)
 - Dados de triagem e rastreamento metabólico em JSONB
-- Relatório de biorressonância
 - Anexos de arquivos (upload direto para o Supabase Storage)
 - Gravação de áudio diretamente no navegador via `MediaRecorder API`
 - Exportação em PDF usando `jsPDF` + `html2canvas`

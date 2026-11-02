@@ -1,5 +1,6 @@
 import GalleryView from "@/components/gallery/GalleryView";
 import { baseURL, getContent } from "@/resources";
+import { localeMeta } from "@/utils/seo";
 import { Flex, Meta, Schema } from "@once-ui-system/core";
 import { setRequestLocale } from "next-intl/server";
 
@@ -15,7 +16,7 @@ export async function generateMetadata({
     description: gallery.description,
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(gallery.title)}`,
-    path: gallery.path,
+    ...localeMeta(locale, gallery.path),
   });
 }
 

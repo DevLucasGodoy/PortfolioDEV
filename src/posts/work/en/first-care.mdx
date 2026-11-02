@@ -1,15 +1,16 @@
 ---
 title: "First Care"
 publishedAt: "2026-03-18"
-summary: "A complete medical management platform with electronic medical records, scheduling, user control and bioenergetic analysis, integrated with Supabase using authentication and Row Level Security."
+summary: "Clinic management system with electronic records, scheduling, finance and reports, secured with Row Level Security and built with LGPD in mind."
 images:
-  - "/images/projects/first-care.png"
+  - "/images/projects/first-care.jpg"
 tag: "SaaS"
 team:
   - name: "Lucas Godoy"
     role: "Full-Stack Developer"
     avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+link: "https://www.firstcare.app.br"
 ---
 
 ## Overview
@@ -29,7 +30,7 @@ An integrated platform that brings all the essential modules of clinical managem
 - **Dashboard** with real-time metrics, a mini-calendar, daily reminders and upcoming appointments
 - **Patients** with full CRUD, search by name or tax ID, medical history, address and contacts
 - **Scheduling** with status control, WhatsApp integration for confirmation and financial overview
-- **Electronic medical records** complete with anamnesis, diagnosis, prescription, vital signs, metabolic screening, bioresonance report, attachments and audio recordings
+- **Electronic medical records** complete with anamnesis, diagnosis, prescription, vital signs, metabolic screening, attachments and audio recordings
 - **Users** with role-based management (doctor, nurse, therapist, admin), activation and password reset
 - **Advanced search** cross-entity to look up patients, appointments and records in a single query
 - **Reports** with analytics and data export
@@ -47,7 +48,7 @@ An integrated platform that brings all the essential modules of clinical managem
 
 ## Database
 
-The database is managed by Supabase with Row Level Security enabled on every table. The structure covers user profiles, patient registration with JSONB data, appointments, electronic medical records with bioenergetic fields, linked documents and a complete audit log.
+The database is managed by Supabase with Row Level Security enabled on every table. The structure covers user profiles, patient registration with JSONB data, appointments, electronic medical records, linked documents and a complete audit log.
 
 Access control is role-based: `admin` has full access, while `doctor`, `nurse` and `therapist` have read and write access to the main clinical modules.
 

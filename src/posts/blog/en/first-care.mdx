@@ -3,7 +3,7 @@ title: "How I built a complete medical management system with React, TypeScript 
 publishedAt: "2026-02-23"
 summary: "A technical look at the architecture, design decisions and the real challenges of building software for healthcare — from the database to the electronic medical record."
 tag: "React"
-image: "/images/blog/first-care.png"
+image: "/images/blog/first-care.jpg"
 ---
 
 When I got the **First Care** brief, the scope seemed clear: replace spreadsheets with a web system. In practice, I delivered a platform with electronic medical records, WhatsApp-integrated scheduling, role-based access control, PDF export and an optimized caching system.
@@ -81,11 +81,10 @@ The cache is updated locally on write operations (optimistic update), with no ne
 
 ## The electronic medical record — the most complex module
 
-`MedicalRecords.tsx` is nearly 10,000 lines. Not because the code is bad — it's because the electronic medical record is genuinely complex. It supports:
+The electronic medical record is genuinely complex, and the module grew more than it should have. It supports:
 
 - Structured clinical data (anamnesis, physical exam, diagnosis, prescription, vital signs)
 - Triage and metabolic screening data in JSONB
-- Bioresonance report
 - File attachments (direct upload to Supabase Storage)
 - Audio recording directly in the browser via the `MediaRecorder API`
 - PDF export using `jsPDF` + `html2canvas`

@@ -172,7 +172,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
       />
 
       <Column maxWidth="xs" horizontal="center">
-        <Heading marginBottom="s" variant="display-strong-xs">
+        <Heading as="h2" marginBottom="s" variant="display-strong-xs">
           {newsletter.title}
         </Heading>
         <Text wrap="balance" marginBottom="l" variant="body-default-l" onBackground="neutral-weak">
@@ -184,7 +184,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
         <RevealFx translateY="4">
           <Column maxWidth={28} horizontal="center" gap="8" className={styles.success}>
             <span className={styles.badge} aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 60 60">
+              <svg width="48" height="48" viewBox="0 0 60 60" aria-hidden="true">
                 <circle className={styles.ring} cx="30" cy="30" r="26" />
                 <path className={styles.check} d="M18 31 L27 40 L43 22" />
               </svg>

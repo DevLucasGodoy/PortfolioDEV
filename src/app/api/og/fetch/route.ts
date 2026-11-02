@@ -2,8 +2,6 @@ import { clientIp, rateLimit } from "@/utils/rateLimit";
 import { assertSafeUrl } from "@/utils/ssrf";
 import { NextResponse } from "next/server";
 
-export const runtime = "edge";
-
 const MAX_HTML_BYTES = 512 * 1024; // cap response body to 512 KB
 
 function decodeHTMLEntities(text: string): string {

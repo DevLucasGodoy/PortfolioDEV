@@ -1,6 +1,7 @@
 import FcdLanding from "@/components/first-class-dev/FcdLanding";
 import { fcdFontVars } from "@/components/first-class-dev/fonts";
 import { baseURL, getContent } from "@/resources";
+import { localeMeta } from "@/utils/seo";
 import { Meta, Schema } from "@once-ui-system/core";
 import { setRequestLocale } from "next-intl/server";
 
@@ -16,7 +17,7 @@ export async function generateMetadata({
     description: firstClassDev.description,
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(firstClassDev.label)}`,
-    path: firstClassDev.path,
+    ...localeMeta(locale, firstClassDev.path),
   });
 }
 

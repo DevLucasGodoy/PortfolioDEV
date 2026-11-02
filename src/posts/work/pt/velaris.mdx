@@ -1,45 +1,41 @@
 ---
-title: "Velaris CRM"
-publishedAt: "2026-01-01"
-summary: "Plataforma completa de gestão para agências e empresas de tecnologia, com módulos de projetos, financeiro, clientes, chamados e relatórios com IA em uma interface única."
+title: "Velaris"
+publishedAt: "2026-10-24"
+summary: "CRM e gestão para agências, consultorias e PMEs: do primeiro contato ao contrato, com projetos, chamados, financeiro e DRE."
 images:
-  - "/images/projects/velaris.png"
+  - "/images/projects/velaris.jpg"
 tag: "SaaS"
 team:
   - name: "Lucas Godoy"
     role: "Desenvolvedor Full-Stack"
     avatar: "/images/avatar.jpeg"
     linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+link: "https://www.velaris.dev.br"
 ---
 
 ## Visão Geral
 
-**Velaris CRM** é uma aplicação web para gestão de negócios, desenvolvida para agências digitais, consultorias e empresas de tecnologia que buscam centralizar operações e escalar com inteligência.
+**Velaris** é uma plataforma de CRM e gestão para agências, consultorias e empresas de tecnologia, que cobre da venda ao financeiro em uma interface única.
 
-Em vez de ferramentas fragmentadas, o Velaris reúne em uma interface fluida e responsiva tudo o que uma empresa precisa para operar: projetos, finanças, clientes, suporte e automação com IA.
+_"Do primeiro contato ao contrato fechado."_
 
 ## Problema
 
-Agências e empresas de tecnologia costumam operar com um conjunto disperso de ferramentas — uma para projetos, outra para finanças, outra para CRM. Isso gera retrabalho, falta de visibilidade e decisões tomadas com dados desatualizados.
+Agências costumam operar com ferramentas separadas para vendas, projetos e finanças. Isso gera retrabalho, pouca visibilidade e decisões com dados desatualizados.
 
 ## Solução
 
-Uma plataforma integrada com todos os módulos essenciais de gestão em um único lugar:
-
-- **Dashboard** com KPIs e alertas em tempo real
-- **Projetos** em Kanban, Gantt e lista com controle de prazos e colaboração
-- **Financeiro** com faturas, fluxo de caixa e DRE automatizado
-- **Clientes** com pipeline, histórico e segmentação
-- **Chamados** com SLA automático e priorização
-- **Relatórios** com insights gerados por IA
+- **Clientes e funil** de vendas
+- **Projetos** em Kanban, vendidos ou internos
+- **Tarefas e chamados** com SLA
+- **Financeiro** com plano de contas, DRE e comissões
+- **Contratos recorrentes** com alertas de 30, 15 e 7 dias
+- **E-mails automáticos**, Google Agenda e PWA
 
 ## Stack Técnica
 
-- **Frontend**: React 18, TypeScript, Tailwind CSS, Framer Motion
-- **Backend**: Supabase (PostgreSQL, Auth, Edge Functions)
-- **Segurança**: Row Level Security (RLS), conformidade com LGPD
-- **Infra**: Vite 5, deploy via Vercel
-
-## Impacto
-
-A plataforma eliminou a necessidade de múltiplas ferramentas no dia a dia de agências, centralizando operações e reduzindo o tempo gasto em relatórios manuais. A visibilidade em tempo real sobre projetos e finanças permitiu decisões mais ágeis e baseadas em dados.
+- **App**: React 19, Vite 6, TypeScript, Tailwind CSS 4
+- **Dados e autenticação**: Neon (PostgreSQL)
+- **API**: Express, Resend, Google Gemini para relatórios
+- **Site**: Next.js 15 na Vercel
+- **Qualidade**: Vitest e CI por projeto

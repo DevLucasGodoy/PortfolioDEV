@@ -128,11 +128,18 @@ export function ShareSection({ title, url }: ShareSectionProps) {
             size="s"
             href={buildUrl(platform.key, platform.generateUrl)}
             prefixIcon={platform.icon}
+            aria-label={platform.label}
           />
         ))}
 
         {socialSharing.platforms.copyLink && (
-          <Button variant="secondary" size="s" onClick={handleCopy} prefixIcon="openLink" />
+          <Button
+            variant="secondary"
+            size="s"
+            onClick={handleCopy}
+            prefixIcon="openLink"
+            aria-label={tBlog("copyLink")}
+          />
         )}
       </Row>
     </Row>

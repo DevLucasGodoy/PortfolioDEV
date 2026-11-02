@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal portfolio for **Lucas Godoy** — Desenvolvedor Senior · CEO & Fundador da [First Class Dev](https://www.firstclassdev.com.br), Sócio & Head de Tecnologia na TG Distribuidora (Dourados, MS). Built on the Magic Portfolio template (Once UI) and customized into a PT-BR single-person portfolio with Home, About/CV, Work (projetos), Blog, Gallery and a contact form.
+Personal portfolio for **Lucas Godoy** — Desenvolvedor Sênior · CEO & Fundador da [First Class Dev](https://www.firstclassdev.com.br), Sócio & Head de Tecnologia na TG Distribuidora (Dourados, MS). Built on the Magic Portfolio template (Once UI) and customized into a PT-BR single-person portfolio with Home, About/CV, Work (projetos), Blog, First Class Dev and a contact form. `/gallery` is disabled in `routes`.
 
 ## Commands
 
 - `npm run dev` — start Next.js dev server
 - `npm run build` — production build
 - `npm start` — serve production build
-- `npm run lint` — Next.js ESLint
+- `npm run lint` — Biome lint on `src`
 - `npm run biome-write` — format whole repo with Biome (2-space indent, double quotes, 100-col line width)
 
 No test runner configured. Node.js v18.17+.
@@ -83,8 +83,3 @@ Add any new copy in **both** languages.
 
 See [.env.example](.env.example).
 
-### Customization notes (still demo defaults — fix before deploy)
-
-- `baseURL` in [once-ui.config.ts](src/resources/once-ui.config.ts) still points to the demo (`https://demo.magic-portfolio.com`).
-- `schema.name` (`"Once UI"`) / `schema.email` (`lorant@once-ui.com`) are still demo values.
-- `sameAs` social links still point to Once UI accounts, not Lucas's (real links live in `social` in [content/pt.tsx](src/resources/content/pt.tsx)).
