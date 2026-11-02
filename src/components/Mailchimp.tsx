@@ -96,6 +96,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
       const response = await fetch(`https://formsubmit.co/ajax/${formsubmitEmail}`, {
         method: "POST",
         headers: { Accept: "application/json" },
+        signal: AbortSignal.timeout(30000),
         body: payload,
       });
 
