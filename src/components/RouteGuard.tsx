@@ -11,57 +11,37 @@ interface RouteGuardProps {
   children: React.ReactNode;
 }
 
+const isRouteEnabled = (pathname: string) => {
+  if (pathname in routes) {
+    return routes[pathname as keyof typeof routes];
+  }
+
+  const dynamicRoutes = ["/blog", "/work"] as const;
+  return dynamicRoutes.some((route) => pathname.startsWith(route) && routes[route]);
+};
+
 const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const pathname = usePathname();
   const t = useTranslations("RouteGuard");
-  const [isRouteEnabled, setIsRouteEnabled] = useState(false);
-  const [isPasswordRequired, setIsPasswordRequired] = useState(false);
+  const isPasswordRequired = Boolean(protectedRoutes[pathname as keyof typeof protectedRoutes]);
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(isPasswordRequired);
 
   useEffect(() => {
-    const performChecks = async () => {
-      setLoading(true);
-      setIsRouteEnabled(false);
-      setIsPasswordRequired(false);
-      setIsAuthenticated(false);
-
-      const checkRouteEnabled = () => {
-        if (!pathname) return false;
-
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
-        }
-
-        const dynamicRoutes = ["/blog", "/work"] as const;
-        for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
-            return true;
-          }
-        }
-
-        return false;
-      };
-
-      const routeEnabled = checkRouteEnabled();
-      setIsRouteEnabled(routeEnabled);
-
-      if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
-        setIsPasswordRequired(true);
-
-        const response = await fetch("/api/check-auth");
-        if (response.ok) {
-          setIsAuthenticated(true);
-        }
-      }
-
+    setIsAuthenticated(false);
+    if (!isPasswordRequired) {
       setLoading(false);
-    };
+      return;
+    }
 
-    performChecks();
-  }, [pathname]);
+    setLoading(true);
+    fetch("/api/check-auth").then((response) => {
+      setIsAuthenticated(response.ok);
+      setLoading(false);
+    });
+  }, [isPasswordRequired, pathname]);
 
   const handlePasswordSubmit = async () => {
     const response = await fetch("/api/authenticate", {
@@ -86,7 +66,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     );
   }
 
-  if (!isRouteEnabled) {
+  if (!isRouteEnabled(pathname)) {
     return <NotFound />;
   }
 
