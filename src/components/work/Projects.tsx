@@ -1,51 +1,35 @@
-import { ProjectCard } from "@/components";
+import { type Folder, WorkFolders } from "@/components/work/WorkFolders";
 import { getPosts } from "@/utils/utils";
-import { Grid } from "@once-ui-system/core";
 import { getLocale } from "next-intl/server";
 
 interface ProjectsProps {
-  range?: [number, number?];
   exclude?: string[];
 }
 
-export async function Projects({ range, exclude }: ProjectsProps) {
+// A project without a public link is still being built
+const folderOf = (tag: string | undefined, link: string | undefined): Folder => {
+  if (!link) return "building";
+  return tag === "Cliente" ? "clients" : "products";
+};
+
+export async function Projects({ exclude = [] }: ProjectsProps) {
   const locale = await getLocale();
-  let allProjects = getPosts(["src", "posts", "work"], locale);
 
-  // Exclude by slug (exact match)
-  if (exclude && exclude.length > 0) {
-    allProjects = allProjects.filter((post) => !exclude.includes(post.slug));
-  }
+  const projects = getPosts(["src", "posts", "work"], locale)
+    .filter((post) => !exclude.includes(post.slug))
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime(),
+    )
+    .map((post) => ({
+      slug: post.slug,
+      href: `/${locale}/work/${post.slug}`,
+      title: post.metadata.title,
+      summary: post.metadata.summary,
+      image: post.metadata.images?.[0],
+      link: post.metadata.link || "",
+      folder: folderOf(post.metadata.tag, post.metadata.link),
+    }));
 
-  const sortedProjects = allProjects.sort((a, b) => {
-    return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
-  });
-
-  const displayedProjects = range
-    ? sortedProjects.slice(range[0] - 1, range[1] ?? sortedProjects.length)
-    : sortedProjects;
-
-  return (
-    <Grid
-      fillWidth
-      columns="2"
-      s={{ columns: "1" }}
-      gap="l"
-      marginBottom="40"
-      paddingX="l"
-    >
-      {displayedProjects.map((post, index) => (
-        <ProjectCard
-          priority={index < 2}
-          key={post.slug}
-          href={`/${locale}/work/${post.slug}`}
-          images={post.metadata.images}
-          title={post.metadata.title}
-          description={post.metadata.summary}
-          content={post.content}
-          link={post.metadata.link || ""}
-        />
-      ))}
-    </Grid>
-  );
+  return <WorkFolders projects={projects} />;
 }

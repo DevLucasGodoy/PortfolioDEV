@@ -1,7 +1,8 @@
 {
   "Home": {
-    "scrollMore": "Scroll to see more",
+    "chapterProjects": "Projects",
     "latestBlog": "From my blog",
+    "chapterContact": "Contact",
     "contactCta": "Get in touch"
   },
   "Blog": {
@@ -16,13 +17,17 @@
     "breadcrumb": "Projects",
     "related": "Related Projects",
     "readMore": "Read more",
-    "viewProject": "View project"
+    "viewProject": "View project",
+    "products": "Products",
+    "clients": "Clients",
+    "building": "In development"
   },
   "About": {
     "scheduleCall": "Schedule a call",
     "location": "Dourados, Brazil"
   },
   "Contact": {
+    "direct": "Prefer direct email?",
     "name": "Name",
     "email": "Email",
     "message": "Message",

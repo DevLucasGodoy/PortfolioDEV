@@ -1,7 +1,8 @@
 {
   "Home": {
-    "scrollMore": "Role para ver mais",
+    "chapterProjects": "Projetos",
     "latestBlog": "Do meu blog",
+    "chapterContact": "Contato",
     "contactCta": "Entre em contato"
   },
   "Blog": {
@@ -16,13 +17,17 @@
     "breadcrumb": "Projetos",
     "related": "Projetos Relacionados",
     "readMore": "Saiba mais",
-    "viewProject": "Ver projeto"
+    "viewProject": "Ver projeto",
+    "products": "Produtos",
+    "clients": "Clientes",
+    "building": "Em desenvolvimento"
   },
   "About": {
     "scheduleCall": "Agendar uma conversa",
     "location": "Dourados, MS"
   },
   "Contact": {
+    "direct": "Prefere e-mail direto?",
     "name": "Nome",
     "email": "E-mail",
     "message": "Mensagem",

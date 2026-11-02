@@ -37,7 +37,7 @@ Blog posts live in `src/posts/blog/{pt,en}/`, projects in `src/posts/work/{pt,en
 
 ### Config-driven rendering
 
-- [src/resources/once-ui.config.ts](src/resources/once-ui.config.ts) — design tokens (`style`, `effects`, `dataStyle`), `routes` toggle (per-path on/off), `protectedRoutes` (password-gated paths, currently empty), `baseURL` for SEO/schema, `mailchimp` effects, social `sameAs`, `socialSharing` platforms, `fonts` (Geist + Geist_Mono).
+- [src/resources/once-ui.config.ts](src/resources/once-ui.config.ts) — design tokens (`style`, `effects`, `dataStyle`), `routes` toggle (per-path on/off), `protectedRoutes` (password-gated paths, currently empty), `baseURL` for SEO/schema, social `sameAs`, `socialSharing` platforms, `fonts` (Geist + Geist_Mono).
 - [src/resources/content/pt.tsx](src/resources/content/pt.tsx) + [en.tsx](src/resources/content/en.tsx) — `person`, `social`, `newsletter`, `home`, `about`, `blog`, `work`, `gallery` per locale. JSX allowed in copy. `about` holds the full CV: `work.experiences`, `studies.institutions`, `technical.skills`. Resolve with `getContent(locale)` (server) / `useContent()` (client) — see the i18n section.
 - [src/resources/index.ts](src/resources/index.ts) re-exports config + `getContent`. Always import from `@/resources`, not the individual files.
 
@@ -45,7 +45,7 @@ Blog posts live in `src/posts/blog/{pt,en}/`, projects in `src/posts/work/{pt,en
 
 ### Contact form
 
-The Magic Portfolio newsletter block is repurposed as a contact form in [src/components/Mailchimp.tsx](src/components/Mailchimp.tsx). It validates name/email/message client-side, keeps a `_honey` honeypot and POSTs JSON to `/api/contact` ([src/app/api/contact/route.ts](src/app/api/contact/route.ts)), which validates again, rate-limits and sends through Resend. The `mailchimp.action` URL in config is NOT used for submission — only `mailchimp.effects` for the background. `newsletter.display` toggles the whole block; `newsletter.title`/`description` are the form heading copy.
+The Magic Portfolio newsletter block is repurposed as a contact form in [src/components/Mailchimp.tsx](src/components/Mailchimp.tsx). It validates name/email/message client-side, keeps a `_honey` honeypot and POSTs JSON to `/api/contact` ([src/app/api/contact/route.ts](src/app/api/contact/route.ts)), which validates again, rate-limits and sends through Resend. The `mailchimp.action` URL in config is NOT used for submission. `newsletter.display` toggles the whole block; `newsletter.title`/`description` are the form heading copy.
 
 ### Route gating
 

@@ -28,7 +28,7 @@ const newsletter: Newsletter = {
   description: (
     <>
       Tem um projeto em mente, oportunidade de parceria ou só quer trocar uma ideia sobre
-      tecnologia? Preencha o formulário abaixo — respondo o mais breve possível.
+      tecnologia? Preencha o formulário — respondo o mais breve possível.
     </>
   ),
 };

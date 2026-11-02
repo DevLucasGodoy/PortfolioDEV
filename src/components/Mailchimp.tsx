@@ -1,9 +1,7 @@
 "use client";
 
 import { useContent } from "@/components/ContentProvider";
-import { mailchimp } from "@/resources";
 import {
-  Background,
   Button,
   Column,
   Heading,
@@ -13,7 +11,6 @@ import {
   Text,
   Textarea,
 } from "@once-ui-system/core";
-import type { SpacingToken, opacity } from "@once-ui-system/core";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import styles from "./Mailchimp.module.scss";
@@ -28,8 +25,11 @@ const initialState: FormState = { name: "", email: "", message: "" };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...flex }) => {
-  const { newsletter } = useContent();
+export const Mailchimp: React.FC<React.ComponentProps<typeof Column> & { eyebrow?: string }> = ({
+  eyebrow,
+  ...flex
+}) => {
+  const { newsletter, person } = useContent();
   const t = useTranslations("Contact");
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Partial<FormState>>({});
@@ -101,150 +101,105 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
   if (newsletter.display === false) return null;
 
   return (
-    <Column
-      overflow="hidden"
-      fillWidth
-      padding="xl"
-      radius="l"
-      marginBottom="m"
-      horizontal="center"
-      align="center"
-      background="surface"
-      border="neutral-alpha-weak"
-      {...flex}
-    >
-      <Background
-        top="0"
-        position="absolute"
-        mask={{
-          x: mailchimp.effects.mask.x,
-          y: mailchimp.effects.mask.y,
-          radius: mailchimp.effects.mask.radius,
-          cursor: mailchimp.effects.mask.cursor,
-        }}
-        gradient={{
-          display: mailchimp.effects.gradient.display,
-          opacity: mailchimp.effects.gradient.opacity as opacity,
-          x: mailchimp.effects.gradient.x,
-          y: mailchimp.effects.gradient.y,
-          width: mailchimp.effects.gradient.width,
-          height: mailchimp.effects.gradient.height,
-          tilt: mailchimp.effects.gradient.tilt,
-          colorStart: mailchimp.effects.gradient.colorStart,
-          colorEnd: mailchimp.effects.gradient.colorEnd,
-        }}
-        dots={{
-          display: mailchimp.effects.dots.display,
-          opacity: mailchimp.effects.dots.opacity as opacity,
-          size: mailchimp.effects.dots.size as SpacingToken,
-          color: mailchimp.effects.dots.color,
-        }}
-        grid={{
-          display: mailchimp.effects.grid.display,
-          opacity: mailchimp.effects.grid.opacity as opacity,
-          color: mailchimp.effects.grid.color,
-          width: mailchimp.effects.grid.width,
-          height: mailchimp.effects.grid.height,
-        }}
-        lines={{
-          display: mailchimp.effects.lines.display,
-          opacity: mailchimp.effects.lines.opacity as opacity,
-          size: mailchimp.effects.lines.size as SpacingToken,
-          thickness: mailchimp.effects.lines.thickness,
-          angle: mailchimp.effects.lines.angle,
-          color: mailchimp.effects.lines.color,
-        }}
-      />
-
-      <Column maxWidth="xs" horizontal="center">
-        <Heading as="h2" marginBottom="s" variant="display-strong-xs">
+    <Column fillWidth radius="l" marginBottom="m" className={styles.panel} {...flex}>
+      <Column gap="16" className={styles.intro}>
+        {eyebrow && <span className={styles.eyebrow}>{eyebrow}</span>}
+        <Heading as="h2" variant="display-strong-m" wrap="balance" style={{ color: "inherit" }}>
           {newsletter.title}
         </Heading>
-        <Text wrap="balance" marginBottom="l" variant="body-default-l" onBackground="neutral-weak">
+        <Text wrap="balance" variant="body-default-l" style={{ color: "inherit" }}>
           {newsletter.description}
+        </Text>
+        <Text variant="body-default-m" style={{ color: "inherit" }}>
+          {t("direct")}{" "}
+          <a href={`mailto:${person.email}`} className={styles.email}>
+            {person.email}
+          </a>
         </Text>
       </Column>
 
-      {submitted ? (
-        <RevealFx translateY="4">
-          <Column maxWidth={28} horizontal="center" gap="8" className={styles.success}>
-            <span className={styles.badge} aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 60 60" aria-hidden="true">
-                <circle className={styles.ring} cx="30" cy="30" r="26" />
-                <path className={styles.check} d="M18 31 L27 40 L43 22" />
-              </svg>
-            </span>
-            <Text variant="heading-strong-m" onBackground="accent-strong">
-              {t("successTitle")}
-            </Text>
-            <Text
-              variant="body-default-m"
-              onBackground="neutral-weak"
-              align="center"
-              wrap="balance"
-            >
-              {t("successBody")}
-            </Text>
-          </Column>
-        </RevealFx>
-      ) : (
-        <form
-          onSubmit={handleSubmit}
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-          noValidate
-        >
-          <Column fillWidth maxWidth={28} gap="12">
-            <input
-              type="text"
-              name="_honey"
-              tabIndex={-1}
-              autoComplete="off"
-              style={{ display: "none" }}
-              aria-hidden="true"
-            />
-            <Input
-              id="contact-name"
-              name="name"
-              type="text"
-              label={t("name")}
-              required
-              value={form.name}
-              onChange={handleChange("name")}
-              errorMessage={errors.name}
-            />
-            <Input
-              id="contact-email"
-              name="email"
-              type="email"
-              label={t("email")}
-              required
-              value={form.email}
-              onChange={handleChange("email")}
-              errorMessage={errors.email}
-            />
-            <Textarea
-              id="contact-message"
-              name="message"
-              label={t("message")}
-              lines={5}
-              required
-              value={form.message}
-              onChange={handleChange("message")}
-              errorMessage={errors.message}
-            />
-            {serverError && (
-              <Text variant="body-default-s" onBackground="danger-strong">
-                {serverError}
+      <div className={styles.card}>
+        {submitted ? (
+          <RevealFx translateY="4">
+            <Column maxWidth={28} horizontal="center" gap="8" className={styles.success}>
+              <span className={styles.badge} aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 60 60" aria-hidden="true">
+                  <circle className={styles.ring} cx="30" cy="30" r="26" />
+                  <path className={styles.check} d="M18 31 L27 40 L43 22" />
+                </svg>
+              </span>
+              <Text variant="heading-strong-m" onBackground="accent-strong">
+                {t("successTitle")}
               </Text>
-            )}
-            <Row fillWidth horizontal="end" paddingTop="8">
-              <Button id="contact-submit" type="submit" size="m" disabled={loading} arrowIcon>
-                {loading ? t("sending") : t("send")}
-              </Button>
-            </Row>
-          </Column>
-        </form>
-      )}
+              <Text
+                variant="body-default-m"
+                onBackground="neutral-weak"
+                align="center"
+                wrap="balance"
+              >
+                {t("successBody")}
+              </Text>
+            </Column>
+          </RevealFx>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+            noValidate
+          >
+            <Column fillWidth maxWidth={28} gap="12">
+              <input
+                type="text"
+                name="_honey"
+                tabIndex={-1}
+                autoComplete="off"
+                style={{ display: "none" }}
+                aria-hidden="true"
+              />
+              <Input
+                id="contact-name"
+                name="name"
+                type="text"
+                label={t("name")}
+                required
+                value={form.name}
+                onChange={handleChange("name")}
+                errorMessage={errors.name}
+              />
+              <Input
+                id="contact-email"
+                name="email"
+                type="email"
+                label={t("email")}
+                required
+                value={form.email}
+                onChange={handleChange("email")}
+                errorMessage={errors.email}
+              />
+              <Textarea
+                id="contact-message"
+                name="message"
+                label={t("message")}
+                lines={5}
+                required
+                value={form.message}
+                onChange={handleChange("message")}
+                errorMessage={errors.message}
+              />
+              {serverError && (
+                <Text variant="body-default-s" onBackground="danger-strong">
+                  {serverError}
+                </Text>
+              )}
+              <Row fillWidth horizontal="end" paddingTop="8">
+                <Button id="contact-submit" type="submit" size="m" disabled={loading} arrowIcon>
+                  {loading ? t("sending") : t("send")}
+                </Button>
+              </Row>
+            </Column>
+          </form>
+        )}
+      </div>
     </Column>
   );
 };

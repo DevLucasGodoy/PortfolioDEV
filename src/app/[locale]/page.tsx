@@ -9,7 +9,6 @@ import {
   Button,
   Column,
   Heading,
-  Icon,
   Line,
   Meta,
   Row,
@@ -42,8 +41,13 @@ export default async function Home({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const { home, about, person } = getContent(locale);
+  const { home, about, blog, person } = getContent(locale);
   const t = await getTranslations("Home");
+  const chapters = [
+    { id: "projects", label: t("chapterProjects") },
+    ...(routes["/blog"] ? [{ id: "blog", label: blog.label }] : []),
+    { id: "contact", label: t("chapterContact") },
+  ].map((chapter, index) => ({ ...chapter, index: `0${index + 1}` }));
 
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
@@ -67,8 +71,8 @@ export default async function Home({
         horizontal="center"
         vertical="between"
         align="center"
-        paddingY="xl"
-        style={{ minHeight: "calc(100dvh - 80px)" }}
+        paddingY="m"
+        style={{ minHeight: "calc(100dvh - 160px)" }}
       >
         <div style={{ flex: 1 }} />
 
@@ -136,32 +140,55 @@ export default async function Home({
           </Row>
         </Column>
 
-        <Column
+        <Row
+          as="nav"
           fillWidth
           horizontal="center"
-          style={{ flex: 1, justifyContent: "flex-end" }}
-          paddingTop="xl"
+          gap="8"
+          wrap
+          paddingTop="l"
+          style={{ flex: 1, alignItems: "flex-end" }}
         >
-          <Row fillWidth horizontal="center">
-            <SmartLink href="#projects" unstyled>
-              <Column className="scroll-indicator" horizontal="center" align="center" gap="4">
-                <Text variant="label-default-xs" onBackground="neutral-weak" align="center">
-                  {t("scrollMore")}
-                </Text>
-                <Icon name="chevronDown" onBackground="neutral-weak" size="s" />
-              </Column>
+          {chapters.map((chapter) => (
+            <SmartLink key={chapter.id} href={`#${chapter.id}`} unstyled>
+              <span className="chapter-tab">
+                <span className="chapter-tab-index">{chapter.index}</span>
+                {chapter.label}
+              </span>
             </SmartLink>
-          </Row>
-        </Column>
+          ))}
+        </Row>
       </Column>
 
-      <Column id="projects" fillWidth horizontal="center" maxWidth="s" gap="xl">
-        <Projects range={[1, 4]} />
+      <Column id="projects" fillWidth horizontal="center" gap="xl">
+        <Column fillWidth gap="24" paddingX="m">
+          <Row fillWidth vertical="center" gap="16">
+            <Text variant="label-strong-m" onBackground="brand-weak">
+              01
+            </Text>
+            <Heading
+              as="h2"
+              variant="display-strong-xs"
+              style={{ flexShrink: 0, wordBreak: "normal" }}
+            >
+              {t("chapterProjects")}
+            </Heading>
+            <Line />
+          </Row>
+          <Projects />
+        </Column>
 
         {routes["/blog"] && (
-          <Column fillWidth gap="24" marginBottom="l">
+          <Column id="blog" fillWidth maxWidth="s" gap="24" marginBottom="l">
             <Row fillWidth vertical="center" gap="16" paddingX="m">
-              <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              <Text variant="label-strong-m" onBackground="brand-weak">
+                02
+              </Text>
+              <Heading
+                as="h2"
+                variant="display-strong-xs"
+                style={{ flexShrink: 0, wordBreak: "normal" }}
+              >
                 {t("latestBlog")}
               </Heading>
               <Line />
@@ -170,7 +197,7 @@ export default async function Home({
           </Column>
         )}
 
-        <Mailchimp id="contact" />
+        <Mailchimp id="contact" eyebrow={chapters[chapters.length - 1].index} />
       </Column>
     </Column>
   );

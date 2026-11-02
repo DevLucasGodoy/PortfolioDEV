@@ -5,11 +5,6 @@ import { routing } from "@/i18n/routing";
 import { Row, ToggleButton } from "@once-ui-system/core";
 import { useLocale, useTranslations } from "next-intl";
 
-const flags: Record<string, string> = {
-  pt: "🇧🇷",
-  en: "🇺🇸",
-};
-
 export const LanguageToggle = () => {
   const locale = useLocale();
   const pathname = usePathname();
@@ -34,7 +29,7 @@ export const LanguageToggle = () => {
         aria-label={t(nextLocale)}
         title={t(nextLocale)}
       >
-        {flags[locale] ?? t(locale)}
+        {locale.toUpperCase()}
       </ToggleButton>
     </Row>
   );

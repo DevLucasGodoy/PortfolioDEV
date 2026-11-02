@@ -44,8 +44,8 @@ export default async function Work({
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading marginBottom="l" variant="heading-strong-xl" align="center">
-        {work.title}
+      <Heading marginBottom="l" variant="display-strong-m">
+        {work.label}
       </Heading>
       <Projects />
     </Column>

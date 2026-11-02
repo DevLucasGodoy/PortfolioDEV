@@ -28,7 +28,7 @@ const newsletter: Newsletter = {
   description: (
     <>
       Have a project in mind, a partnership opportunity, or just want to talk tech? Fill out the
-      form below — I'll reply as soon as possible.
+      form — I'll reply as soon as possible.
     </>
   ),
 };
