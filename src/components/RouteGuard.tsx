@@ -29,6 +29,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(isPasswordRequired);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: pathname re-checks auth per route
   useEffect(() => {
     setIsAuthenticated(false);
     if (!isPasswordRequired) {

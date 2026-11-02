@@ -12,7 +12,6 @@ import {
   Icon,
   Line,
   Meta,
-  RevealFx,
   Row,
   Schema,
   SmartLink,
@@ -75,7 +74,7 @@ export default async function Home({
 
         <Column maxWidth="s" horizontal="center" align="center" gap="20" paddingX="m">
           {home.featured.display && (
-            <RevealFx fillWidth horizontal="center">
+            <Row fillWidth horizontal="center">
               <Badge
                 background="brand-alpha-weak"
                 paddingX="12"
@@ -87,19 +86,19 @@ export default async function Home({
               >
                 <Row paddingY="2">{home.featured.title}</Row>
               </Badge>
-            </RevealFx>
+            </Row>
           )}
-          <RevealFx translateY="4" fillWidth horizontal="center">
+          <Row fillWidth horizontal="center">
             <Heading wrap="balance" variant="display-strong-xl">
               {home.headline}
             </Heading>
-          </RevealFx>
-          <RevealFx translateY="8" delay={0.1} fillWidth horizontal="center">
+          </Row>
+          <Row fillWidth horizontal="center">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-l">
               {home.subline}
             </Text>
-          </RevealFx>
-          <RevealFx delay={0.15} horizontal="center" paddingTop="12">
+          </Row>
+          <Row horizontal="center" paddingTop="12">
             <Row gap="12" wrap horizontal="center">
               <Button
                 id="contact-cta"
@@ -134,7 +133,7 @@ export default async function Home({
                 </Row>
               </Button>
             </Row>
-          </RevealFx>
+          </Row>
         </Column>
 
         <Column
@@ -143,7 +142,7 @@ export default async function Home({
           style={{ flex: 1, justifyContent: "flex-end" }}
           paddingTop="xl"
         >
-          <RevealFx delay={0.3} fillWidth horizontal="center">
+          <Row fillWidth horizontal="center">
             <SmartLink href="#projects" unstyled>
               <Column className="scroll-indicator" horizontal="center" align="center" gap="4">
                 <Text variant="label-default-xs" onBackground="neutral-weak" align="center">
@@ -152,36 +151,26 @@ export default async function Home({
                 <Icon name="chevronDown" onBackground="neutral-weak" size="s" />
               </Column>
             </SmartLink>
-          </RevealFx>
+          </Row>
         </Column>
       </Column>
 
       <Column id="projects" fillWidth horizontal="center" maxWidth="s" gap="xl">
-        <RevealFx translateY="16">
-          <Projects range={[1, 2]} />
-        </RevealFx>
+        <Projects range={[1, 4]} />
 
         {routes["/blog"] && (
-          <RevealFx translateY="12" delay={0.1} fillWidth>
-            <Column fillWidth gap="24" marginBottom="l">
-              <Row fillWidth vertical="center" gap="16" paddingX="m">
-                <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                  {t("latestBlog")}
-                </Heading>
-                <Line />
-              </Row>
-              <Posts range={[1, 2]} columns="1" thumbnail direction="row" />
-            </Column>
-          </RevealFx>
+          <Column fillWidth gap="24" marginBottom="l">
+            <Row fillWidth vertical="center" gap="16" paddingX="m">
+              <Heading as="h2" variant="display-strong-xs" wrap="balance">
+                {t("latestBlog")}
+              </Heading>
+              <Line />
+            </Row>
+            <Posts range={[1, 2]} columns="1" thumbnail direction="row" />
+          </Column>
         )}
 
-        <RevealFx translateY="12" delay={0.1}>
-          <Projects range={[3, 4]} />
-        </RevealFx>
-
-        <RevealFx translateY="8" delay={0.1} fillWidth>
-          <Mailchimp id="contact" />
-        </RevealFx>
+        <Mailchimp id="contact" />
       </Column>
     </Column>
   );

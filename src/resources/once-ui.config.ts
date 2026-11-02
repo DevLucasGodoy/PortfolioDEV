@@ -102,7 +102,7 @@ const dataStyle: DataStyleConfig = {
 
 const effects: EffectsConfig = {
   mask: {
-    cursor: true, // glow segue o cursor para um fundo interativo
+    cursor: false,
     x: 50,
     y: 0,
     radius: 75,
@@ -145,7 +145,7 @@ const mailchimp: MailchimpConfig = {
   action: "https://url/subscribe/post?parameters",
   effects: {
     mask: {
-      cursor: true,
+      cursor: false,
       x: 50,
       y: 0,
       radius: 100,

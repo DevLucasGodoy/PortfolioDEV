@@ -14,7 +14,7 @@ Personal portfolio for **Lucas Godoy** — Desenvolvedor Sênior · CEO & Fundad
 - `npm run lint` — Biome lint on `src`
 - `npm run biome-write` — format whole repo with Biome (2-space indent, double quotes, 100-col line width)
 
-No test runner configured. Node.js v18.17+.
+No test runner configured. Node.js 24 (same as Vercel).
 
 ## Stack
 

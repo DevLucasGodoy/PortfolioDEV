@@ -8,6 +8,12 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const text = (value: unknown) => (typeof value === "string" ? value.trim() : "");
 
 export async function POST(request: NextRequest) {
+  // Browsers always send Origin on POST, so plain scripts are turned away here
+  const origin = request.headers.get("origin");
+  if (!origin?.endsWith(`//${request.headers.get("host")}`)) {
+    return NextResponse.json({ message: "Forbidden" }, { status: 403 });
+  }
+
   const limit = rateLimit(`contact:${clientIp(request)}`, RATE_MAX, RATE_WINDOW_MS);
   if (!limit.allowed) {
     return NextResponse.json(

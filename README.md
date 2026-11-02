@@ -13,7 +13,7 @@ Site **bilíngue (PT padrão, EN)** com Home, Sobre/CV, Projetos, Blog, First Cl
 - **next-intl** — i18n (rotas por locale + catálogos de mensagens)
 - **MDX** (`@next/mdx` + `next-mdx-remote`, `gray-matter`) para projetos e posts
 - **SCSS modules** + **Biome** (format/lint)
-- Node.js v18.17+
+- Node.js 24
 
 ## Começando
 

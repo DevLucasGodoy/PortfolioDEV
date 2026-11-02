@@ -1,26 +1,7 @@
 "use client";
 
-import {
-  Avatar,
-  AvatarGroup,
-  Carousel,
-  Column,
-  Flex,
-  Heading,
-  Media,
-  SmartLink,
-  Text,
-} from "@once-ui-system/core";
+import { Carousel, Column, Flex, Heading, Media, SmartLink, Text } from "@once-ui-system/core";
 import { useTranslations } from "next-intl";
-import { BorderBeam } from "@/components/ui/border-beam";
-import { MagicCard } from "@/components/ui/magic-card";
-import { ShineBorder } from "@/components/ui/shine-border";
-
-interface TeamMember {
-  name?: string;
-  role?: string;
-  avatar?: string;
-}
 
 interface ProjectCardProps {
   href: string;
@@ -29,8 +10,6 @@ interface ProjectCardProps {
   title: string;
   content: string;
   description: string;
-  avatars: { src: string }[];
-  team?: TeamMember[];
   link: string;
 }
 
@@ -41,22 +20,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   content,
   description,
-  avatars,
-  team = [],
   link,
 }) => {
   const t = useTranslations("Work");
-  const lead = team[0];
 
   return (
     <div className="group/card h-full transition-transform duration-300 ease-out hover:-translate-y-1">
-      <MagicCard
-        className="h-full rounded-2xl border border-[#00bf63]/15 shadow-lg shadow-black/30 transition-shadow duration-300 group-hover/card:shadow-xl group-hover/card:shadow-[#00bf63]/15"
-        gradientColor="#00bf63"
-      >
-        <ShineBorder borderWidth={1} duration={14} shineColor={["#00bf63", "#00e676"]} />
-        <BorderBeam size={70} duration={7} colorFrom="#00bf63" colorTo="#00e676" />
-
+      <div className="h-full rounded-2xl border border-[#00bf63]/15 shadow-lg shadow-black/30 transition-shadow duration-300 group-hover/card:shadow-xl group-hover/card:shadow-[#00bf63]/15">
         <Column fillWidth gap="m" padding="12">
           {images.length > 1 ? (
             <Carousel
@@ -86,23 +56,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 {title}
               </Heading>
             )}
-            {(team.length > 0 || description?.trim() || content?.trim()) && (
+            {(description?.trim() || content?.trim()) && (
               <Column gap="16">
-                {lead?.avatar && (lead.name || lead.role) ? (
-                  <Flex gap="12" vertical="center">
-                    <Avatar src={lead.avatar} size="l" />
-                    <Column gap="2">
-                      {lead.name && <Text variant="label-strong-m">{lead.name}</Text>}
-                      {lead.role && (
-                        <Text variant="label-default-s" onBackground="neutral-weak">
-                          {lead.role}
-                        </Text>
-                      )}
-                    </Column>
-                  </Flex>
-                ) : (
-                  avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />
-                )}
                 {description?.trim() && (
                   <Text wrap="balance" variant="body-default-l" onBackground="neutral-medium">
                     {description}
@@ -132,7 +87,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             )}
           </Column>
         </Column>
-      </MagicCard>
+      </div>
     </div>
   );
 };
