@@ -3,11 +3,10 @@
   "version": "2.3.0",
   "scripts": {
     "dev": "next dev",
-    "export": "next export",
     "build": "next build",
     "biome-write": "npx @biomejs/biome format --write .",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "biome lint src"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -30,7 +29,8 @@
     "transliteration": "^2.3.5"
   },
   "overrides": {
-    "postcss": "^8.5.10"
+    "postcss": "^8.5.10",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

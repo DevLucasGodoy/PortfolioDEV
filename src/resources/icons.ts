@@ -25,7 +25,6 @@ import {
 } from "react-icons/pi";
 
 import {
-  SiAmazonwebservices,
   SiDocker,
   SiExpress,
   SiFigma,
@@ -43,6 +42,7 @@ import {
 } from "react-icons/si";
 
 import {
+  FaAws,
   FaDiscord,
   FaFacebook,
   FaGithub,
@@ -94,7 +94,7 @@ export const iconLibrary: Record<string, IconType> = {
   mysql: SiMysql,
   typescript: SiTypescript,
   express: SiExpress,
-  aws: SiAmazonwebservices,
+  aws: FaAws,
   docker: SiDocker,
   git: SiGit,
   facebook: FaFacebook,

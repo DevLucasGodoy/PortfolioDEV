@@ -62,6 +62,12 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
     e.preventDefault();
     setServerError("");
 
+    // Honeypot: bots that fill the hidden field get a fake success and nothing is sent
+    if (new FormData(e.currentTarget).get("_honey")) {
+      setSubmitted(true);
+      return;
+    }
+
     const validation = validate(form);
     if (Object.keys(validation).length > 0) {
       setErrors(validation);
