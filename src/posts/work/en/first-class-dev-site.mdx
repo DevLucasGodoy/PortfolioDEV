@@ -1,0 +1,46 @@
+---
+title: "First Class Dev Website"
+publishedAt: "2026-11-06"
+summary: "First Class Dev's trilingual website, with a priced services catalog, own-products showcase, maintenance plans, checkout and the free Speed X-Ray tool."
+images:
+  - "/images/projects/first-class-dev.png"
+tag: "Site"
+team:
+  - name: "Lucas Godoy"
+    role: "Senior Developer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+link: "https://www.firstclassdev.com.br"
+---
+
+## Overview
+
+Website of **First Class Dev**, the software house I founded in 2021, which builds websites, online stores, visual identity, custom systems and SaaS products for small and medium businesses. The site is the company's showcase and sales channel, in Portuguese, English and Spanish.
+
+## Problem
+
+An agency needs to show what it does, what it costs and what it has already built, and turn a visit into a lead or a sale. Without clear pricing and a simple way to buy, visitors leave without talking to anyone.
+
+## Solution
+
+- **Services catalog** with prices: brand websites, landing pages, online stores, logo and identity, custom systems and redesign, each with scope, phases and FAQ
+- **Showcase of 11 own products**, such as FC Noivos, First Care, Velaris, FC Converter and Syncro, with detail pages and category filters
+- **Monthly maintenance plans** with a matrix of what each tier includes
+- **Custom checkout** integrated with Asaas, supporting Pix, boleto and card
+- **Speed X-Ray ("Raio-X de Velocidade")**: a free tool that measures the visitor's site with Google PageSpeed Insights and emails an action plan
+- **Blog** with articles and a contact form delivered through Resend
+
+## Architecture
+
+- **Static, typed content**, no CMS: services, products, prices and FAQs in `lib/data`
+- **i18n with next-intl** and mandatory locale-prefixed routes
+- **API routes** for contact, checkout (charge, status and webhook), Speed X-Ray and unsubscribe
+- **Zod validation** and rate limiting on forms
+- **SEO**: sitemap, robots, dynamic Open Graph images and `llms.txt`
+
+## Tech Stack
+
+- **Web**: Next.js 16, React, TypeScript, Tailwind CSS, Framer Motion
+- **i18n**: next-intl (PT, EN and ES)
+- **Forms**: React Hook Form and Zod
+- **Integrations**: Resend and React Email, Asaas, Google PageSpeed Insights

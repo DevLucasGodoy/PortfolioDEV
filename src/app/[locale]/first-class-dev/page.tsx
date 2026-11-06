@@ -1,34 +1,27 @@
 import FcdLanding from "@/components/first-class-dev/FcdLanding";
 import { fcdFontVars } from "@/components/first-class-dev/fonts";
-import { baseURL, getContent } from "@/resources";
-import { localeMeta } from "@/utils/seo";
-import { Meta, Schema } from "@once-ui-system/core";
+import { getContent } from "@/resources";
+import { buildMeta, JsonLd } from "@/utils/seo";
 import { setRequestLocale } from "next-intl/server";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const { firstClassDev } = getContent(locale);
-  return Meta.generate({
+  return buildMeta({
     title: firstClassDev.title,
     description: firstClassDev.description,
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(firstClassDev.label)}`,
-    ...localeMeta(locale, firstClassDev.path),
+    locale,
+    path: firstClassDev.path,
+    image: `/api/og/generate?title=${encodeURIComponent(firstClassDev.label)}&locale=${locale}`,
   });
 }
 
 export default async function FirstClassDevPage({
   params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+}: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const { firstClassDev: fcd, about, person } = getContent(locale);
+  const { firstClassDev: fcd } = getContent(locale);
 
   const labels =
     locale === "en"
@@ -36,21 +29,15 @@ export default async function FirstClassDevPage({
       : { visit: "Quero um site assim", specialist: "Falar com especialista" };
 
   return (
-    <div className={fcdFontVars} style={{ width: "100%" }}>
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        path={`/${locale}${fcd.path}`}
+    <main className={fcdFontVars} style={{ width: "100%" }}>
+      <JsonLd
+        type="WebPage"
+        locale={locale}
+        path={fcd.path}
         title={fcd.title}
         description={fcd.description}
-        image={`/api/og/generate?title=${encodeURIComponent(fcd.label)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}/${locale}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
       />
       <FcdLanding fcd={fcd} locale={locale} labels={labels} />
-    </div>
+    </main>
   );
 }

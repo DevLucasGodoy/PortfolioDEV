@@ -1,0 +1,48 @@
+---
+title: "FC Pay"
+publishedAt: "2026-07-21"
+summary: "In development: First Class Dev's Pix and card payment gateway and orchestrator, built on licensed PSPs (AbacatePay and Asaas)."
+images: []
+tag: "SaaS"
+team:
+  - name: "Lucas Godoy"
+    role: "Senior Developer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+---
+
+## Overview
+
+**FC Pay** is First Class Dev's payment gateway and orchestrator. It is a technical layer on top of PSPs already licensed by Brazil's Central Bank: FC Pay does not hold funds and is not a payment institution. It provides the API, the checkout, idempotent webhooks, the ledger and reconciliation. It is in development.
+
+## Problem
+
+Becoming a payment institution requires prior Central Bank authorization, minimum capital and ongoing supervision, rules that got stricter in 2025. At the same time, First Class Dev's SaaS products need to charge via Pix and card without being locked into a single partner.
+
+## Solution
+
+- **Orchestrator model**: money settles in the partner PSP's account, with AbacatePay as primary and Asaas as fallback
+- **Charges API** that creates Pix charges (QR Code and copy-and-paste code) and card charges
+- **Card tokenized on the PSP side**: the card number never touches FC Pay's servers
+- **Webhooks** as the source of a charge's final state, never the synchronous response
+- **Append-only ledger**: charge status is derived from events
+- **Marketing website** in Next.js to present the product
+
+## Architecture
+
+- **Providers behind a single interface** (`PaymentProvider`): switching partners or triggering fallback is configuration
+- **Two-layer idempotency**: `Idempotency-Key` on charges and `UNIQUE(provider, event_id)` on webhooks
+- **HMAC-verified webhooks** in constant time over the raw body, with an anti-replay window
+- **Multi-tenant** with PostgreSQL RLS and an audit table
+- **Fail closed**: critical variables validated at boot; decisions recorded as ADRs
+
+## Tech Stack
+
+- **Core**: NestJS, TypeScript, Zod, Helmet, allowlist-based CORS
+- **Data**: PostgreSQL (migration with per-tenant RLS)
+- **PSPs**: AbacatePay and Asaas
+- **Website**: Next.js, React, Tailwind CSS
+
+## Status
+
+In development. The core is at the scaffold stage, with the ledger still in memory; merchant API key authentication, Postgres persistence and merchant notifications are on the roadmap.

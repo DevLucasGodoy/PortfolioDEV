@@ -1,32 +1,34 @@
 "use client";
 
-import { Row, ToggleButton, useTheme } from "@once-ui-system/core";
-import type React from "react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { LuMoon, LuSun } from "react-icons/lu";
 
-export const ThemeToggle: React.FC = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState("light");
+/** Flips the `.dark` class set by the theme script in layout.tsx and remembers the choice. */
+export function ThemeToggle({ className }: { className?: string }) {
+  const t = useTranslations("Nav");
+  const [dark, setDark] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    setCurrentTheme(document.documentElement.getAttribute("data-theme") || "light");
-  }, []);
+  useEffect(() => setDark(document.documentElement.classList.contains("dark")), []);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: re-read the DOM whenever the theme changes
-  useEffect(() => {
-    setCurrentTheme(document.documentElement.getAttribute("data-theme") || "light");
-  }, [theme]);
-
-  const icon = currentTheme === "dark" ? "light" : "dark";
-  const nextTheme = currentTheme === "light" ? "dark" : "light";
+  const toggle = () => {
+    const next = !dark;
+    document.documentElement.classList.toggle("dark", next);
+    try {
+      localStorage.setItem("theme", next ? "dark" : "light");
+    } catch {}
+    setDark(next);
+  };
 
   return (
-    <ToggleButton
-      prefixIcon={icon}
-      onClick={() => setTheme(nextTheme)}
-      aria-label={`Switch to ${nextTheme} mode`}
-    />
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={t("theme")}
+      title={t("theme")}
+      className={className}
+    >
+      {dark ? <LuSun className="size-4" /> : <LuMoon className="size-4" />}
+    </button>
   );
-};
+}

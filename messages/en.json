@@ -1,10 +1,4 @@
 {
-  "Home": {
-    "chapterProjects": "Projects",
-    "latestBlog": "From my blog",
-    "chapterContact": "Contact",
-    "contactCta": "Get in touch"
-  },
   "Blog": {
     "breadcrumb": "Blog",
     "recentPosts": "Recent Posts",
@@ -20,7 +14,8 @@
     "viewProject": "View project",
     "products": "Products",
     "clients": "Clients",
-    "building": "In development"
+    "building": "In development",
+    "all": "All"
   },
   "About": {
     "scheduleCall": "Schedule a call",
@@ -47,11 +42,6 @@
     "copyFail": "Failed to copy link",
     "emailBody": "Check out this post: {url}"
   },
-  "Heading": {
-    "copyTooltip": "Copy",
-    "copySuccess": "Link copied to clipboard.",
-    "copyFail": "Failed to copy link."
-  },
   "RouteGuard": {
     "protectedTitle": "This page is password protected",
     "passwordLabel": "Password",
@@ -69,5 +59,25 @@
   },
   "Footer": {
     "builtBy": "Built by <fcd>First Class Dev</fcd>."
+  },
+  "Nav": {
+    "label": "Main navigation",
+    "theme": "Toggle theme",
+    "role": "Senior Developer",
+    "available": "Available",
+    "iAm": "I am {name}"
+  },
+  "Booking": {
+    "step": "Step {n} of 3",
+    "selectService": "Select a service",
+    "details": "Your details",
+    "done": "Done",
+    "next": "Continue",
+    "back": "Back",
+    "service": "Service"
+  },
+  "Testimonials": {
+    "prev": "Previous testimonial",
+    "next": "Next testimonial"
   }
 }

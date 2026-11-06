@@ -1,0 +1,49 @@
+---
+title: "Duo Class"
+publishedAt: "2026-10-28"
+summary: "In development: a couples' finance app to organize bills, expense splitting, debts, budget and goals together."
+images: []
+tag: "SaaS"
+team:
+  - name: "Lucas Godoy"
+    role: "Senior Developer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+---
+
+## Overview
+
+**Duo Class** is a finance app for couples by First Class Dev. It brings expenses, bill splitting, debts, budget and goals into one place, shared between both partners. It is in development.
+
+_"Couple finances, first class."_
+
+## Problem
+
+Splitting household bills usually ends up in spreadsheets, chat messages and mental math. It is hard to know who paid what, how much each person owes and how far away a debt payoff or a savings goal is.
+
+## Solution
+
+- **Expenses** split 50/50, proportionally to each partner's income, or individually
+- **Debts** with recorded payments, an estimate of months to payoff with compound interest, and avalanche (highest interest first) or snowball (smallest balance first) strategies
+- **Budget** per category
+- **Goals** with contributions and running totals
+- **Couple dashboard** and an invite for the partner to join
+
+## Architecture
+
+- **No custom backend**: the front end talks directly to Neon through the Data API (PostgREST), authenticated by Neon Auth
+- **Couple isolation through RLS** in PostgreSQL, never relying on front-end filters
+- **Joining a couple only through RPCs** (`criar_casal` and `aceitar_convite`)
+- **Balances via triggers**: debt balance and goal totals only change through payments and contributions
+- **Money as integer cents** in JavaScript and `numeric(12,2)` in the database; the leftover cent from a split goes to whoever paid
+
+## Tech Stack
+
+- **Web**: Vite 6, React 19, React Router, TypeScript, Tailwind CSS 4
+- **Data and auth**: Neon (PostgreSQL), Neon Auth, Data API, RLS
+- **Quality**: Vitest on the financial rules
+- **Deploy**: Vercel, with security headers (HSTS, X-Frame-Options, Permissions-Policy)
+
+## Status
+
+In development.

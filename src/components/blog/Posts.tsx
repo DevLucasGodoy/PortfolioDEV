@@ -1,54 +1,31 @@
 import { getPosts } from "@/utils/utils";
-import { Grid } from "@once-ui-system/core";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Post from "./Post";
 
-interface PostsProps {
-  range?: [number] | [number, number];
-  columns?: "1" | "2" | "3";
-  thumbnail?: boolean;
-  direction?: "row" | "column";
-  exclude?: string[];
-}
-
-export async function Posts({
-  range,
-  columns = "1",
-  thumbnail = false,
-  exclude = [],
-  direction,
-}: PostsProps) {
+/** Blog posts, newest first, optionally excluding slugs and limited to `limit`. */
+export async function Posts({ exclude = [], limit }: { exclude?: string[]; limit?: number }) {
   const locale = await getLocale();
-  let allBlogs = getPosts(["src", "posts", "blog"], locale);
+  const t = await getTranslations("Blog");
+  const posts = getPosts(["src", "posts", "blog"], locale)
+    .filter((post) => !exclude.includes(post.slug))
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime(),
+    )
+    .slice(0, limit);
 
-  // Exclude by slug (exact match)
-  if (exclude.length) {
-    allBlogs = allBlogs.filter((post) => !exclude.includes(post.slug));
-  }
-
-  const sortedBlogs = allBlogs.sort((a, b) => {
-    return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
-  });
-
-  const displayedBlogs = range
-    ? sortedBlogs.slice(range[0] - 1, range.length === 2 ? range[1] : sortedBlogs.length)
-    : sortedBlogs;
+  if (posts.length === 0) return null;
 
   return (
-    <>
-      {displayedBlogs.length > 0 && (
-        <Grid columns={columns} s={{ columns: 1 }} fillWidth marginBottom="40" gap="16">
-          {displayedBlogs.map((post) => (
-            <Post
-              key={post.slug}
-              post={post}
-              thumbnail={thumbnail}
-              direction={direction}
-              locale={locale}
-            />
-          ))}
-        </Grid>
-      )}
-    </>
+    <div className="flex flex-col gap-5">
+      {posts.map((post) => (
+        <Post
+          key={post.slug}
+          post={post}
+          locale={locale}
+          alt={t("thumbnailAlt", { title: post.metadata.title })}
+        />
+      ))}
+    </div>
   );
 }

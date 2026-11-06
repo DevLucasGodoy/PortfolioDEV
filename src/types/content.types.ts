@@ -104,6 +104,77 @@ export interface Home extends BasePageConfig {
 }
 
 /**
+ * Zolt-style one-page home sections.
+ * Entries marked "placeholder" in the content files are sample copy to replace.
+ */
+export interface Landing {
+  /** Rotating greeting in the hero ("Olá", "Hello", "Hola") */
+  greetings: string[];
+  /** Short role under the name */
+  role: string;
+  cta: { cv: string; connect: string };
+  about: {
+    eyebrow: string;
+    title: string;
+    /** Everyday stack card (icon keys from resources/icons.ts) */
+    stack: { label: string; items: Array<{ name: string; icon: string }> };
+    /** Photo-stack card, optionally linking somewhere */
+    trip: { title: string; count: string; images: string[]; href?: string };
+    /** Sticky note card */
+    note: { sticky: string; caption: string; surprise: React.ReactNode };
+  };
+  works: { eyebrow: string; title: string; viewAll: string; caseStudy: string };
+  experience: {
+    eyebrow: string;
+    title: string;
+    /** GitHub handle shown above the contribution grid */
+    github: string;
+    contributions: string;
+    present: string;
+  };
+  services: {
+    eyebrow: string;
+    title: string;
+    items: Array<{ title: string; description: string }>;
+  };
+  /** Testimonials — an empty list hides the section */
+  testimonials: {
+    eyebrow: string;
+    title: string;
+    items: Array<{ quote: string; name: string; role: string; avatar?: string }>;
+  };
+  hire: {
+    eyebrow: string;
+    title: string;
+    location: string;
+    stats: Array<{ value: string; label: string }>;
+    verified: string;
+    motto: string;
+    available: string;
+    heading: string;
+    text: string;
+    /** Featured monthly plan */
+    plan: {
+      name: string;
+      tagline: string;
+      description: string;
+      note: string;
+      price: string;
+      period: string;
+      features: string[];
+      /** Secondary line under the price, e.g. yearly price / other tiers */
+      others?: string;
+      /** Link to the full plans page */
+      href?: string;
+    };
+  };
+  /** Booking widget services; `duration` holds the delivery/lead time */
+  booking: {
+    services: Array<{ title: string; price: string; duration: string; description: string }>;
+  };
+}
+
+/**
  * About page configuration.
  * @description Configuration for the About page, including sections for table of contents, avatar, calendar, introduction, work experience, studies, and technical skills.
  */
@@ -150,6 +221,8 @@ export interface About extends BasePageConfig {
       timeframe: string;
       /** Role or job title */
       role: string;
+      /** Stack / skills chips shown in the timeline */
+      tags?: string[];
       /** Achievements at the company */
       achievements: React.ReactNode[];
       /** Images related to the experience */
@@ -178,6 +251,12 @@ export interface About extends BasePageConfig {
       /** Description of studies */
       description: React.ReactNode;
     }>;
+  };
+  /** Certifications / awards section */
+  certifications: {
+    display: boolean;
+    title: string;
+    items: Array<{ name: string; issuer: string; date: string }>;
   };
   /** Technical skills section */
   technical: {

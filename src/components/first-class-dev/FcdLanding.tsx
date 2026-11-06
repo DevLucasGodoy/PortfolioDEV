@@ -34,7 +34,8 @@ const FONT = {
   serif: "var(--font-fcd-serif), 'Instrument Serif', Georgia, serif",
 };
 
-const SHELL = "mx-auto w-full max-w-[1200px] px-5 md:px-10";
+// md:pl-20 keeps content clear of the fixed left dock
+const SHELL = "mx-auto w-full max-w-[1200px] px-5 md:pr-10 md:pl-20 xl:px-10";
 const GRID_BG =
   "linear-gradient(rgba(255,255,255,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.045) 1px,transparent 1px)";
 
@@ -316,11 +317,7 @@ export default function FcdLanding({
             </h2>
             <div className="flex flex-col gap-[18px] pt-1.5">
               {fcd.story.paragraphs.map((p, i) => (
-                <p
-                  key={i}
-                  className="m-0 text-[16px] leading-[1.65]"
-                  style={{ color: C.body }}
-                >
+                <p key={i} className="m-0 text-[16px] leading-[1.65]" style={{ color: C.body }}>
                   {p}
                 </p>
               ))}

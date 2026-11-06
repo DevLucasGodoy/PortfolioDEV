@@ -39,6 +39,17 @@ import {
   SiSupabase,
   SiTailwindcss,
   SiTypescript,
+  SiCloudflare,
+  SiDotnet,
+  SiDrizzle,
+  SiExpo,
+  SiFastapi,
+  SiNeon,
+  SiNestjs,
+  SiPrisma,
+  SiPython,
+  SiVercel,
+  SiVite,
 } from "react-icons/si";
 
 import {
@@ -103,6 +114,17 @@ export const iconLibrary: Record<string, IconType> = {
   reddit: FaReddit,
   telegram: FaTelegram,
   instagram: FaInstagram,
+  cloudflare: SiCloudflare,
+  dotnet: SiDotnet,
+  drizzle: SiDrizzle,
+  expo: SiExpo,
+  fastapi: SiFastapi,
+  neon: SiNeon,
+  nestjs: SiNestjs,
+  prisma: SiPrisma,
+  python: SiPython,
+  vercel: SiVercel,
+  vite: SiVite,
 };
 
 export type IconLibrary = typeof iconLibrary;

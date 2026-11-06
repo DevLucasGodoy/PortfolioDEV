@@ -2,10 +2,9 @@
 
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
-import { Row, ToggleButton } from "@once-ui-system/core";
 import { useLocale, useTranslations } from "next-intl";
 
-export const LanguageToggle = () => {
+export function LanguageToggle({ className }: { className?: string }) {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -14,23 +13,16 @@ export const LanguageToggle = () => {
   const index = routing.locales.indexOf(locale as (typeof routing.locales)[number]);
   const nextLocale = routing.locales[(index + 1) % routing.locales.length];
 
-  const switchTo = (next: string) => {
-    if (next === locale) return;
-    // usePathname() returns the path without the locale prefix; next-intl
-    // re-applies the prefix for the target locale.
-    router.replace(pathname, { locale: next });
-  };
-
   return (
-    <Row vertical="center" data-border="rounded" aria-label={t("label")}>
-      <ToggleButton
-        size="s"
-        onClick={() => switchTo(nextLocale)}
-        aria-label={t(nextLocale)}
-        title={t(nextLocale)}
-      >
-        {locale.toUpperCase()}
-      </ToggleButton>
-    </Row>
+    <button
+      type="button"
+      // usePathname() has no locale prefix; next-intl re-applies it for the target locale
+      onClick={() => router.replace(pathname, { locale: nextLocale })}
+      aria-label={t(nextLocale)}
+      title={t(nextLocale)}
+      className={className}
+    >
+      <span className="text-[11px] font-semibold">{locale.toUpperCase()}</span>
+    </button>
   );
-};
+}

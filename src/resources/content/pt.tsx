@@ -4,6 +4,7 @@ import type {
   FirstClassDev,
   Gallery,
   Home,
+  Landing,
   Newsletter,
   Person,
   Social,
@@ -82,6 +83,190 @@ const home: Home = {
   ),
 };
 
+// Seções da home one-page (serviços e preços espelham firstclassdev.com.br/pt/solucoesdigitais).
+const landing: Landing = {
+  greetings: ["Olá", "Hello", "Hola"],
+  role: "Desenvolvedor Sênior & Fundador",
+  cta: { cv: "Ver currículo", connect: "Vamos conversar" },
+  about: {
+    eyebrow: "Sobre mim",
+    title: "A pessoa por trás do código",
+    stack: {
+      label: "Stack do dia a dia",
+      items: [
+        { name: "Next.js", icon: "nextjs" },
+        { name: "TypeScript", icon: "typescript" },
+        { name: "PostgreSQL", icon: "postgresql" },
+        { name: ".NET 8", icon: "dotnet" },
+      ],
+    },
+    trip: {
+      title: "Plataformas no ar",
+      count: "5 produtos",
+      href: "/pt/first-class-dev",
+      images: [
+        "/images/projects/fc-noivos.jpg",
+        "/images/projects/first-care.jpg",
+        "/images/projects/velaris.jpg",
+      ],
+    },
+    note: {
+      sticky: "Clique e ganhe uma surpresa",
+      caption: "Tenho uma surpresa para você 🙃",
+      surprise: (
+        <>
+          Diagnóstico First Class por <strong>R$ 149</strong>, 100% abatido se você fechar o
+          projeto. Orçamento com resposta em até 4 horas úteis.
+        </>
+      ),
+    },
+  },
+  works: {
+    eyebrow: "Projetos em destaque",
+    title: "Os que mais me ensinaram",
+    viewAll: "Ver todos os projetos",
+    caseStudy: "Ler estudo de caso",
+  },
+  experience: {
+    eyebrow: "Stack & Experiência",
+    title: "Onde sou bom e onde aprendi",
+    github: "@DevLucasGodoy",
+    contributions: "contribuições no último ano",
+    present: "Presente",
+  },
+  services: {
+    eyebrow: "Serviços",
+    title: "Posso te ajudar com isso",
+    items: [
+      {
+        title: "Sites Institucionais",
+        description:
+          "Sites rápidos e feitos do zero, sem modelo pronto, preparados para aparecer no Google e abrir rápido no celular.",
+      },
+      {
+        title: "Landing Pages",
+        description:
+          "Cada parte da página pensada para transformar clique em contato e contato em cliente, ajustada com base nos números.",
+      },
+      {
+        title: "Lojas Virtuais",
+        description:
+          "Loja segura, rápida e fácil de gerenciar, com pagamento, estoque e logística integrados em um único painel.",
+      },
+      {
+        title: "Sistemas Sob Demanda",
+        description:
+          "Sistemas, portais e aplicações web sob medida para resolver exatamente o problema do seu negócio — e escalar com ele.",
+      },
+      {
+        title: "Integrações com ERP & Fiscal",
+        description:
+          "Integração com ERPs (WinThor, Oracle, Firebird), APIs externas e obrigações fiscais (NF-e, SPED, CNAB).",
+      },
+      {
+        title: "Logo & Identidade Visual",
+        description:
+          "Logos exclusivas e identidades visuais completas, do conceito ao manual da marca.",
+      },
+      {
+        title: "Redesign de Sites",
+        description:
+          "Reformulamos design, estrutura e performance de sites desatualizados para que voltem a converter.",
+      },
+    ],
+  },
+  // Sem depoimentos a seção some. Adicione itens { quote, name, role, avatar? } para exibi-la.
+  testimonials: {
+    eyebrow: "Depoimentos",
+    title: "O que dizem as pessoas com quem trabalhei",
+    items: [],
+  },
+  hire: {
+    eyebrow: "Como funciona",
+    title: "Sem intermediários — só eu, totalmente dentro do seu produto",
+    location: "Dourados, MS · Brasil",
+    stats: [
+      { value: "20+", label: "Projetos" },
+      { value: "11", label: "Produtos próprios" },
+      { value: "3", label: "Países" },
+    ],
+    verified: "Empreendendo desde 2021",
+    motto: "Cuido de cada detalhe para construir coisas que as pessoas gostam de usar.",
+    available: "Disponível",
+    heading: "Contrate-me hoje",
+    text: "Pego poucos projetos por vez, para que o seu tenha sempre foco total.",
+    plan: {
+      name: "Manutenção Essencial",
+      tagline: "Seu site no ar, rápido e evoluindo — todo mês.",
+      description:
+        "Site não é obra entregue, é ativo vivo. O plano mais escolhido da First Class Dev.",
+      note: "Sem fidelidade. Cancele quando quiser",
+      price: "R$ 247",
+      period: "/mês",
+      features: [
+        "Hospedagem gerenciada, SSL e CDN",
+        "Backup diário (90 dias)",
+        "Monitoramento 24/7",
+        "Atualizações de segurança",
+        "Suporte rápido no WhatsApp",
+        "Correção de bugs",
+        "Alterações de conteúdo",
+        "Relatório mensal",
+        "Ambiente de staging",
+      ],
+      others: "Ou R$ 2.470/ano · Também: Base R$ 97 e Pro R$ 497",
+      href: "https://www.firstclassdev.com.br/pt/solucoesdigitais",
+    },
+  },
+  // Preços "a partir de" de firstclassdev.com.br/pt/solucoesdigitais
+  booking: {
+    services: [
+      {
+        title: "Diagnóstico First Class",
+        price: "R$ 149",
+        duration: "Abatido 100% no projeto",
+        description: "Análise do seu cenário e proposta de solução antes de começar",
+      },
+      {
+        title: "Landing Page",
+        price: "a partir de R$ 1.500",
+        duration: "7 a 14 dias úteis",
+        description: "Página pensada para transformar clique em cliente",
+      },
+      {
+        title: "Site Institucional",
+        price: "a partir de R$ 2.900",
+        duration: "Proposta em 5 dias úteis",
+        description: "Feito do zero, rápido e preparado para o Google",
+      },
+      {
+        title: "Sistema Sob Demanda",
+        price: "a partir de R$ 2.900",
+        duration: "Entregas semanais",
+        description: "Sistemas, portais e integrações sob medida",
+      },
+      {
+        title: "Loja Virtual",
+        price: "a partir de R$ 5.900",
+        duration: "Proposta em 5 dias úteis",
+        description: "Pagamento, estoque e logística em um painel",
+      },
+      {
+        title: "Logo & Identidade Visual",
+        price: "a partir de R$ 900",
+        duration: "Proposta em 5 dias úteis",
+        description: "Do conceito ao manual da marca",
+      },
+      {
+        title: "Redesign de Site",
+        price: "a partir de R$ 997",
+        duration: "Proposta em 5 dias úteis",
+        description: "Novo design, estrutura e performance",
+      },
+    ],
+  },
+};
+
 const about: About = {
   path: "/about",
   label: "Sobre",
@@ -122,6 +307,7 @@ const about: About = {
         company: "TG Distribuidora",
         timeframe: "Mar 2026 - Presente",
         role: "Sócio & Head de Tecnologia",
+        tags: ["Next.js", ".NET 8", "Oracle", "Python", "Neon"],
         achievements: [
           "Sócio responsável pela tecnologia, liderando a transformação digital da distribuidora com 4 unidades em Mato Grosso do Sul.",
           "Liderei e construí o Syncro OS: suíte web sobre o ERP Oracle WinThor com força de vendas, compras, liberação de pedidos, financeiro e RH.",
@@ -135,6 +321,7 @@ const about: About = {
         company: "First Class Dev",
         timeframe: "Jan 2021 - Presente",
         role: "CEO & Fundador",
+        tags: ["Next.js", "React", "TypeScript", "PostgreSQL", "Vercel"],
         achievements: [
           "Fundador de software house especializada em sites, sistemas sob medida e plataformas próprias.",
           "Liderança estratégica e técnica: validação de ideias, arquitetura, desenvolvimento e operação dos produtos.",
@@ -148,6 +335,7 @@ const about: About = {
         company: "Ganso Sistemas",
         timeframe: "Set 2022 - Fev 2026",
         role: "Analista de Implantação (Estágio → N1 → N2 → Implantação)",
+        tags: ["Delphi", "Firebird", "Fast Report", "NF-e / SPED"],
         achievements: [
           "Coordenei 16+ projetos de implantação de ERP ponta a ponta, incluindo instalação, configuração e migrações entre ambientes locais e cloud.",
           "Customizações em Pascal/Delphi e administração de banco Firebird, com ganho de 50% em performance via otimização de queries.",
@@ -161,6 +349,7 @@ const about: About = {
         company: "Instituto Federal de Mato Grosso do Sul (IFMS)",
         timeframe: "Mar 2021 - Dez 2023",
         role: "Técnico em Informática",
+        tags: ["Infraestrutura", "Redes", "Suporte"],
         achievements: [
           "Gestão da infraestrutura de TI da instituição: estações de trabalho, servidores e impressoras de rede.",
           "Instalação e configuração de hardware e software, administração da rede interna e políticas de segurança de dados.",
@@ -194,6 +383,27 @@ const about: About = {
       },
     ],
   },
+  certifications: {
+    display: true,
+    title: "Certificações",
+    items: [
+      {
+        name: "FECINOVA — 1º lugar na área multidisciplinar (nível médio)",
+        issuer: "IFMS",
+        date: "Out 2022",
+      },
+      { name: "FECINOVA — Melhor trabalho geral do nível médio", issuer: "IFMS", date: "Out 2022" },
+      { name: "FECINOVA — Credencial para a MOSTRATEC", issuer: "IFMS", date: "Out 2022" },
+      {
+        name: "Programa de Treinamento para Suporte Técnico",
+        issuer: "Ganso Sistemas",
+        date: "Dez 2022",
+      },
+      { name: "(ISC)² Candidate", issuer: "ISC2", date: "Set 2022" },
+      { name: "Desvendando a Reforma Tributária", issuer: "3C Contabilidade", date: "Ago 2025" },
+      { name: "Semana de Ciência e Tecnologia do IFMS", issuer: "IFMS", date: "Out 2021" },
+    ],
+  },
   technical: {
     display: true,
     title: "Habilidades Técnicas",
@@ -212,8 +422,10 @@ const about: About = {
           { name: "Express.js", icon: "express" },
           { name: "JavaScript", icon: "javascript" },
           { name: "TypeScript", icon: "typescript" },
-          { name: ".NET 8" },
-          { name: "Python" },
+          { name: ".NET 8", icon: "dotnet" },
+          { name: "Python", icon: "python" },
+          { name: "NestJS", icon: "nestjs" },
+          { name: "FastAPI", icon: "fastapi" },
         ],
         images: [],
       },
@@ -225,7 +437,7 @@ const about: About = {
           { name: "Next.js", icon: "nextjs" },
           { name: "TypeScript", icon: "typescript" },
           { name: "Tailwind CSS", icon: "tailwind" },
-          { name: "Expo" },
+          { name: "Expo", icon: "expo" },
         ],
         images: [],
       },
@@ -242,6 +454,9 @@ const about: About = {
           { name: "MySQL", icon: "mysql" },
           { name: "MongoDB", icon: "mongodb" },
           { name: "Supabase", icon: "supabase" },
+          { name: "Neon", icon: "neon" },
+          { name: "Prisma", icon: "prisma" },
+          { name: "Drizzle", icon: "drizzle" },
           { name: "Oracle" },
         ],
         images: [],
@@ -258,6 +473,8 @@ const about: About = {
           { name: "AWS", icon: "aws" },
           { name: "Docker", icon: "docker" },
           { name: "Git", icon: "git" },
+          { name: "Vercel", icon: "vercel" },
+          { name: "Cloudflare R2", icon: "cloudflare" },
         ],
         images: [],
       },
@@ -591,6 +808,7 @@ export const ptContent = {
   social,
   newsletter,
   home,
+  landing,
   about,
   blog,
   work,

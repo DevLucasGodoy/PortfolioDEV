@@ -1,0 +1,51 @@
+---
+title: "RadarB3"
+publishedAt: "2026-05-13"
+summary: "Em desenvolvimento: terminal de análise quantitativa para B3, cripto e ações dos EUA, com alertas por e-mail, backtesting e insights por IA."
+images: []
+tag: "SaaS"
+team:
+  - name: "Lucas Godoy"
+    role: "Desenvolvedor Sênior"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+---
+
+## Visão Geral
+
+**RadarB3** é uma plataforma full-stack de análise quantitativa para o mercado financeiro brasileiro e global. Reúne cotações de ativos da B3, criptomoedas e ações dos EUA, alertas por e-mail, backtesting e insights gerados por IA em um único terminal. Está em desenvolvimento.
+
+_"Onde estratégia encontra tecnologia."_
+
+## Problema
+
+Quem opera de forma quantitativa costuma alternar entre várias ferramentas: uma para cotações da B3, outra para cripto, outra para gráficos e indicadores, e planilhas para testar estratégias. Os dados ficam espalhados e os alertas dependem de acompanhar a tela.
+
+## Solução
+
+- **Dashboard** com visão consolidada do mercado, watchlist e métricas principais
+- **Screener** para filtrar ativos por critérios técnicos e fundamentalistas
+- **Gráficos** com candles, RSI(14) e médias móveis em vários timeframes (15m a 1W)
+- **Alertas** de preço com histórico e notificação por e-mail
+- **Backtesting** de estratégias sobre dados históricos
+- **Insights por IA** com Google Gemini
+
+## Arquitetura
+
+- **Next.js App Router** concentra páginas e rotas de API (`auth`, `market`, `alerts`, `backtest`, `health`)
+- **Fontes de dados em cascata**: BRAPI para a B3, Binance com fallback para CoinCap em cripto, AlphaVantage para ações dos EUA
+- **Cache com TTL no Postgres** para dados de mercado
+- **Fallback gracioso**: sem as chaves opcionais, a plataforma segue funcionando com dados simulados
+- **Rate limiting** por IP e logger estruturado
+
+## Stack Técnica
+
+- **Web**: Next.js 16, React 19, TypeScript, Tailwind CSS 4, Motion, Recharts
+- **Dados**: Neon (PostgreSQL) via `pg`, Supabase como provider auxiliar opcional
+- **Auth**: JWT e bcrypt
+- **Integrações**: BRAPI, Binance, CoinCap, AlphaVantage, Google Gemini, Resend
+- **Deploy**: Vercel
+
+## Status
+
+Em desenvolvimento. Próximos passos previstos no repositório incluem testes automatizados, validação de payloads com Zod, cotações via WebSocket e migrations versionadas.

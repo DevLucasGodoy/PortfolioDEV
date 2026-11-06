@@ -1,0 +1,48 @@
+---
+title: "FC Pay"
+publishedAt: "2026-07-21"
+summary: "Em desenvolvimento: gateway e orquestrador de pagamentos Pix e cartão da First Class Dev, sobre PSPs licenciados (AbacatePay e Asaas)."
+images: []
+tag: "SaaS"
+team:
+  - name: "Lucas Godoy"
+    role: "Desenvolvedor Sênior"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+---
+
+## Visão Geral
+
+**FC Pay** é o gateway e orquestrador de pagamentos da First Class Dev. É uma camada técnica sobre PSPs já licenciados pelo Banco Central: a FC Pay não custodia dinheiro nem é instituição de pagamento. Ela entrega a API, o checkout, os webhooks idempotentes, o ledger e a conciliação. Está em desenvolvimento.
+
+## Problema
+
+Ser instituição de pagamento própria exige autorização prévia do Banco Central, capital mínimo e supervisão contínua, regras que ficaram mais rígidas em 2025. Ao mesmo tempo, os SaaS da First Class Dev precisam cobrar via Pix e cartão sem ficar presos a um único parceiro.
+
+## Solução
+
+- **Modelo orquestrador**: o dinheiro liquida na conta do PSP parceiro, com AbacatePay como primário e Asaas como fallback
+- **Charges API** que cria cobranças Pix (QR Code e copia-e-cola) e de cartão
+- **Cartão tokenizado no lado do PSP**: o número do cartão nunca passa pelo servidor da FC Pay
+- **Webhooks** como fonte do estado final da cobrança, nunca a resposta síncrona
+- **Ledger append-only**: o status da cobrança é derivado dos eventos
+- **Site institucional** em Next.js para apresentar o produto
+
+## Arquitetura
+
+- **Providers atrás de uma interface única** (`PaymentProvider`): trocar de parceiro ou acionar fallback vira configuração
+- **Idempotência em duas camadas**: `Idempotency-Key` na cobrança e `UNIQUE(provider, event_id)` no webhook
+- **Webhook validado com HMAC** em tempo constante sobre o corpo bruto, com janela anti-replay
+- **Multi-tenant** com RLS no PostgreSQL e tabela de auditoria
+- **Fail closed**: variáveis críticas validadas no boot; decisões registradas em ADR
+
+## Stack Técnica
+
+- **Core**: NestJS, TypeScript, Zod, Helmet, CORS por allowlist
+- **Dados**: PostgreSQL (migration com RLS por tenant)
+- **PSPs**: AbacatePay e Asaas
+- **Site**: Next.js, React, Tailwind CSS
+
+## Status
+
+Em desenvolvimento. O core está em fase de scaffold, com ledger ainda em memória; autenticação por API key do lojista, persistência em Postgres e notificação ao lojista estão no roadmap.

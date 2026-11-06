@@ -1,0 +1,46 @@
+---
+title: "Site First Class Dev"
+publishedAt: "2026-11-06"
+summary: "Site institucional trilíngue da First Class Dev, com catálogo de serviços com preços, vitrine de produtos próprios, planos de manutenção, checkout e o Raio-X de Velocidade grátis."
+images:
+  - "/images/projects/first-class-dev.png"
+tag: "Site"
+team:
+  - name: "Lucas Godoy"
+    role: "Desenvolvedor Sênior"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+link: "https://www.firstclassdev.com.br"
+---
+
+## Visão Geral
+
+Site da **First Class Dev**, a software house que fundei em 2021 e que desenvolve sites, lojas virtuais, identidade visual, sistemas sob medida e produtos SaaS para pequenas e médias empresas. O site é a vitrine e o canal de vendas da empresa, em português, inglês e espanhol.
+
+## Problema
+
+Uma agência precisa mostrar o que faz, quanto custa e o que já construiu, e transformar a visita em contato ou venda. Sem preço claro e sem uma forma simples de contratar, o visitante sai sem falar com ninguém.
+
+## Solução
+
+- **Catálogo de serviços** com preços: sites institucionais, landing pages, lojas virtuais, logo e identidade, sistemas sob demanda e redesign, cada um com escopo, fases e FAQ
+- **Vitrine de 11 produtos próprios**, como FC Noivos, First Care, Velaris, FC Converter e Syncro, com página de detalhe e filtro por categoria
+- **Planos de manutenção** mensais com matriz do que cada nível inclui
+- **Checkout próprio** integrado ao Asaas, com Pix, boleto e cartão
+- **Raio-X de Velocidade**: ferramenta grátis que mede o site do visitante com o PageSpeed Insights do Google e envia o plano de ação por e-mail
+- **Blog** com artigos e formulário de contato com envio via Resend
+
+## Arquitetura
+
+- **Conteúdo estático e tipado**, sem CMS: serviços, produtos, preços e FAQs em `lib/data`
+- **i18n com next-intl** e rotas com prefixo de locale obrigatório
+- **Rotas de API** para contato, checkout (cobrança, status e webhook), Raio-X e descadastro
+- **Validação com Zod** e rate limiting nos formulários
+- **SEO**: sitemap, robots, imagens Open Graph dinâmicas e `llms.txt`
+
+## Stack Técnica
+
+- **Web**: Next.js 16, React, TypeScript, Tailwind CSS, Framer Motion
+- **i18n**: next-intl (PT, EN e ES)
+- **Formulários**: React Hook Form e Zod
+- **Integrações**: Resend e React Email, Asaas, Google PageSpeed Insights

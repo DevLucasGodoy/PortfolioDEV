@@ -1,53 +1,34 @@
+import { Shell } from "@/components";
+import { Section, SectionHeader } from "@/components/ui/primitives";
 import { Projects } from "@/components/work/Projects";
-import { baseURL, getContent } from "@/resources";
-import { localeMeta } from "@/utils/seo";
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { getContent } from "@/resources";
+import { buildMeta, JsonLd } from "@/utils/seo";
 import { setRequestLocale } from "next-intl/server";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const { work } = getContent(locale);
-  return Meta.generate({
-    title: work.title,
-    description: work.description,
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
-    ...localeMeta(locale, work.path),
-  });
+  return buildMeta({ title: work.title, description: work.description, locale, path: work.path });
 }
 
-export default async function Work({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default async function Work({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const { about, person, work } = getContent(locale);
+  const { work, landing } = getContent(locale);
 
   return (
-    <Column maxWidth="m" paddingTop="24">
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        path={`/${locale}${work.path}`}
+    <Shell>
+      <JsonLd
+        type="WebPage"
+        locale={locale}
+        path={work.path}
         title={work.title}
         description={work.description}
-        image={`/api/og/generate?title=${encodeURIComponent(work.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}/${locale}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
       />
-      <Heading marginBottom="l" variant="display-strong-m">
-        {work.label}
-      </Heading>
-      <Projects />
-    </Column>
+      <Section className="border-b-0 pt-28 md:pt-36">
+        <SectionHeader as="h1" eyebrow={work.label} title={landing.works.title} />
+        <Projects />
+      </Section>
+    </Shell>
   );
 }

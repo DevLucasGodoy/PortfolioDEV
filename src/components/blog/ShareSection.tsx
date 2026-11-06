@@ -1,147 +1,122 @@
 "use client";
 
 import { socialSharing } from "@/resources";
-import { Button, Row, Text, useToast } from "@once-ui-system/core";
+import { iconLibrary } from "@/resources/icons";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { LuCheck, LuLink } from "react-icons/lu";
 
-interface ShareSectionProps {
-  title: string;
-  url: string;
-}
-
-interface SocialPlatform {
-  name: string;
-  icon: string;
-  label: string;
-  generateUrl: (title: string, url: string) => string;
-}
-
-const socialPlatforms: Record<string, SocialPlatform> = {
+const shareUrls: Record<
+  string,
+  { icon: string; label: string; url: (title: string, url: string) => string }
+> = {
   x: {
-    name: "x",
     icon: "twitter",
     label: "X",
-    generateUrl: (title, url) =>
+    url: (title, url) =>
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
   },
   linkedin: {
-    name: "linkedin",
     icon: "linkedin",
     label: "LinkedIn",
-    generateUrl: (title, url) =>
+    url: (_, url) =>
       `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
   },
   facebook: {
-    name: "facebook",
     icon: "facebook",
     label: "Facebook",
-    generateUrl: (title, url) =>
-      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+    url: (_, url) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
   },
   pinterest: {
-    name: "pinterest",
     icon: "pinterest",
     label: "Pinterest",
-    generateUrl: (title, url) =>
+    url: (title, url) =>
       `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(title)}`,
   },
   whatsapp: {
-    name: "whatsapp",
     icon: "whatsapp",
     label: "WhatsApp",
-    generateUrl: (title, url) => `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`,
+    url: (title, url) => `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`,
   },
   reddit: {
-    name: "reddit",
     icon: "reddit",
     label: "Reddit",
-    generateUrl: (title, url) =>
+    url: (title, url) =>
       `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
   },
   telegram: {
-    name: "telegram",
     icon: "telegram",
     label: "Telegram",
-    generateUrl: (title, url) =>
+    url: (title, url) =>
       `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
-  },
-  email: {
-    name: "email",
-    icon: "email",
-    label: "Email",
-    generateUrl: (title, url) =>
-      `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`Check out this post: ${url}`)}`,
   },
 };
 
-export function ShareSection({ title, url }: ShareSectionProps) {
-  const { addToast } = useToast();
+const iconButton =
+  "flex size-9 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-muted";
+
+export function ShareSection({ title, url }: { title: string; url: string }) {
   const t = useTranslations("Share");
   const tBlog = useTranslations("Blog");
-  // Don't render if sharing is disabled
-  if (!socialSharing.display) {
-    return null;
-  }
+  const [copied, setCopied] = useState(false);
 
-  const handleCopy = async () => {
+  if (!socialSharing.display) return null;
+
+  const copy = async () => {
     try {
       await navigator.clipboard.writeText(url);
-      addToast({
-        variant: "success",
-        message: t("copySuccess"),
-      });
-    } catch (err) {
-      console.error("Failed to copy: ", err);
-      addToast({
-        variant: "danger",
-        message: t("copyFail"),
-      });
-    }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {}
   };
 
-  const buildUrl = (key: string, generate: (title: string, url: string) => string) =>
-    key === "email"
-      ? `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(
-          t("emailBody", { url }),
-        )}`
-      : generate(title, url);
-
-  // Get enabled platforms
-  const enabledPlatforms = Object.entries(socialSharing.platforms)
-    .filter(([_, enabled]) => enabled && _ !== "copyLink")
-    .map(([platformKey]) => ({
-      key: platformKey,
-      ...socialPlatforms[platformKey],
-    }))
-    .filter((platform) => platform.name); // Filter out platforms that don't exist in our definitions
+  const platforms = Object.entries(socialSharing.platforms).filter(
+    ([key, enabled]) => enabled && (key === "email" || shareUrls[key]),
+  );
 
   return (
-    <Row fillWidth center gap="16" marginTop="32" marginBottom="16">
-      <Text variant="label-default-m" onBackground="neutral-weak">
-        {tBlog("share")}
-      </Text>
-      <Row data-border="rounded" gap="16" horizontal="center" wrap>
-        {enabledPlatforms.map((platform, index) => (
-          <Button
-            key={index}
-            variant="secondary"
-            size="s"
-            href={buildUrl(platform.key, platform.generateUrl)}
-            prefixIcon={platform.icon}
-            aria-label={platform.label}
-          />
-        ))}
-
-        {socialSharing.platforms.copyLink && (
-          <Button
-            variant="secondary"
-            size="s"
-            onClick={handleCopy}
-            prefixIcon="openLink"
-            aria-label={tBlog("copyLink")}
-          />
-        )}
-      </Row>
-    </Row>
+    <div className="mx-auto mt-10 flex max-w-2xl flex-wrap items-center gap-3">
+      <span className="text-sm text-muted-foreground">{tBlog("share")}</span>
+      {platforms.map(([key]) => {
+        if (key === "email") {
+          const Icon = iconLibrary.email;
+          return (
+            <a
+              key={key}
+              aria-label="Email"
+              className={iconButton}
+              href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(t("emailBody", { url }))}`}
+            >
+              <Icon className="size-4" />
+            </a>
+          );
+        }
+        const p = shareUrls[key];
+        const Icon = iconLibrary[p.icon];
+        return (
+          <a
+            key={key}
+            href={p.url(title, url)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={p.label}
+            className={iconButton}
+          >
+            <Icon className="size-4" />
+          </a>
+        );
+      })}
+      {socialSharing.platforms.copyLink && (
+        <button
+          type="button"
+          onClick={copy}
+          aria-label={copied ? t("copySuccess") : tBlog("copyLink")}
+          title={copied ? t("copySuccess") : tBlog("copyLink")}
+          className={iconButton}
+        >
+          {copied ? <LuCheck className="size-4 text-primary" /> : <LuLink className="size-4" />}
+        </button>
+      )}
+    </div>
   );
 }

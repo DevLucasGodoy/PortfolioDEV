@@ -1,10 +1,4 @@
 {
-  "Home": {
-    "chapterProjects": "Projetos",
-    "latestBlog": "Do meu blog",
-    "chapterContact": "Contato",
-    "contactCta": "Entre em contato"
-  },
   "Blog": {
     "breadcrumb": "Blog",
     "recentPosts": "Postagens Recentes",
@@ -20,7 +14,8 @@
     "viewProject": "Ver projeto",
     "products": "Produtos",
     "clients": "Clientes",
-    "building": "Em desenvolvimento"
+    "building": "Em desenvolvimento",
+    "all": "Todos"
   },
   "About": {
     "scheduleCall": "Agendar uma conversa",
@@ -47,11 +42,6 @@
     "copyFail": "Não foi possível copiar o link",
     "emailBody": "Confira este post: {url}"
   },
-  "Heading": {
-    "copyTooltip": "Copiar",
-    "copySuccess": "Link copiado para a área de transferência.",
-    "copyFail": "Não foi possível copiar o link."
-  },
   "RouteGuard": {
     "protectedTitle": "Esta página é protegida por senha",
     "passwordLabel": "Senha",
@@ -69,5 +59,25 @@
   },
   "Footer": {
     "builtBy": "Desenvolvido por <fcd>First Class Dev</fcd>."
+  },
+  "Nav": {
+    "label": "Navegação principal",
+    "theme": "Alternar tema",
+    "role": "Desenvolvedor Sênior",
+    "available": "Disponível",
+    "iAm": "eu sou {name}"
+  },
+  "Booking": {
+    "step": "Passo {n} de 3",
+    "selectService": "Selecione o serviço",
+    "details": "Seus dados",
+    "done": "Pronto",
+    "next": "Continuar",
+    "back": "Voltar",
+    "service": "Serviço"
+  },
+  "Testimonials": {
+    "prev": "Depoimento anterior",
+    "next": "Próximo depoimento"
   }
 }

@@ -5,15 +5,11 @@ export type { Content } from "./content";
 
 export {
   display,
-  mailchimp,
   routes,
   protectedRoutes,
   baseURL,
-  fonts,
-  style,
+  fontVariables,
   schema,
   sameAs,
   socialSharing,
-  effects,
-  dataStyle,
-} from "./once-ui.config";
+} from "./site.config";

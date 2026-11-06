@@ -1,0 +1,49 @@
+---
+title: "Duo Class"
+publishedAt: "2026-10-28"
+summary: "Em desenvolvimento: app de finanças do casal para organizar contas, divisão de despesas, dívidas, orçamento e metas a dois."
+images: []
+tag: "SaaS"
+team:
+  - name: "Lucas Godoy"
+    role: "Desenvolvedor Sênior"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+---
+
+## Visão Geral
+
+**Duo Class** é um app de finanças para casais, da First Class Dev. Reúne despesas, divisão de contas, dívidas, orçamento e metas em um só lugar, compartilhado entre os dois. Está em desenvolvimento.
+
+_"Finanças do casal em primeira classe."_
+
+## Problema
+
+Dividir as contas da casa costuma acabar em planilha, conversa de aplicativo e cálculo de cabeça. Fica difícil saber quem pagou o quê, quanto cada um deve e quanto falta para quitar uma dívida ou chegar a uma meta.
+
+## Solução
+
+- **Despesas** com divisão 50/50, proporcional à renda de cada um ou individual
+- **Dívidas** com pagamentos registrados, estimativa de meses até quitar com juros compostos e estratégias avalanche (maior juro primeiro) ou bola de neve (menor saldo primeiro)
+- **Orçamento** por categoria
+- **Metas** com aportes e acumulado
+- **Dashboard** do casal e convite para o parceiro entrar
+
+## Arquitetura
+
+- **Sem servidor próprio**: o front fala direto com o Neon pela Data API (PostgREST), autenticado pelo Neon Auth
+- **Isolamento entre casais por RLS** no PostgreSQL, sem depender de filtro no front
+- **Entrada no casal só por RPC** (`criar_casal` e `aceitar_convite`)
+- **Saldos por trigger**: saldo de dívida e acumulado de meta só mudam com pagamentos e aportes
+- **Dinheiro em centavos inteiros** no JavaScript e `numeric(12,2)` no banco; o centavo que sobra da divisão vai para quem pagou
+
+## Stack Técnica
+
+- **Web**: Vite 6, React 19, React Router, TypeScript, Tailwind CSS 4
+- **Dados e auth**: Neon (PostgreSQL), Neon Auth, Data API, RLS
+- **Qualidade**: Vitest nas regras financeiras
+- **Deploy**: Vercel, com headers de segurança (HSTS, X-Frame-Options, Permissions-Policy)
+
+## Status
+
+Em desenvolvimento.

@@ -1,62 +1,47 @@
-"use client";
+import { iconLibrary } from "@/resources/icons";
+import { getContent } from "@/resources";
+import { getLocale, getTranslations } from "next-intl/server";
 
-import { useContent } from "@/components/ContentProvider";
-import { IconButton, Row, SmartLink, Text } from "@once-ui-system/core";
-import { useTranslations } from "next-intl";
-import styles from "./Footer.module.scss";
-
-export const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  const { person, social } = useContent();
-  const t = useTranslations("Footer");
+export async function Footer() {
+  const locale = await getLocale();
+  const { person, social } = getContent(locale);
+  const t = await getTranslations("Footer");
 
   return (
-    <Row as="footer" fillWidth padding="8" horizontal="center" s={{ direction: "column" }}>
-      <Row
-        className={styles.mobile}
-        maxWidth="m"
-        paddingY="8"
-        paddingX="16"
-        gap="16"
-        horizontal="between"
-        vertical="center"
-        s={{
-          direction: "column",
-          horizontal: "center",
-          align: "center",
-        }}
-      >
-        <Text variant="body-default-s" onBackground="neutral-strong">
-          <Text onBackground="neutral-weak">© {currentYear} /</Text>
-          <Text paddingX="4">{person.name}</Text>
-          <Text onBackground="neutral-weak">
-            {" / "}
-            {t.rich("builtBy", {
-              fcd: (chunks) => (
-                <SmartLink key="fcd" href="https://www.firstclassdev.com.br">
-                  {chunks}
-                </SmartLink>
-              ),
-            })}
-          </Text>
-        </Text>
-        <Row gap="16">
-          {social.map(
-            (item) =>
-              item.link && (
-                <IconButton
-                  key={item.name}
-                  href={item.link}
-                  icon={item.icon}
-                  tooltip={item.name}
-                  size="s"
-                  variant="ghost"
-                />
-              ),
-          )}
-        </Row>
-      </Row>
-      <Row height="80" hide s={{ hide: false }} />
-    </Row>
+    <footer className="flex flex-col items-center justify-between gap-4 px-5 py-8 pb-24 text-sm text-muted-foreground sm:flex-row sm:px-10 md:pb-8">
+      <p>
+        © {new Date().getFullYear()} {person.name} ·{" "}
+        {t.rich("builtBy", {
+          fcd: (chunks) => (
+            <a
+              href="https://www.firstclassdev.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground underline-offset-4 hover:underline"
+            >
+              {chunks}
+            </a>
+          ),
+        })}
+      </p>
+      <div className="flex gap-1">
+        {social.map((item) => {
+          const Icon = iconLibrary[item.icon];
+          return (
+            <a
+              key={item.name}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={item.name}
+              title={item.name}
+              className="flex size-9 items-center justify-center rounded-full transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <Icon className="size-4" />
+            </a>
+          );
+        })}
+      </div>
+    </footer>
   );
-};
+}

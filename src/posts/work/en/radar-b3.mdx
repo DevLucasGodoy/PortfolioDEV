@@ -1,0 +1,51 @@
+---
+title: "RadarB3"
+publishedAt: "2026-05-13"
+summary: "In development: a quantitative analysis terminal for B3, crypto and US stocks, with email alerts, backtesting and AI insights."
+images: []
+tag: "SaaS"
+team:
+  - name: "Lucas Godoy"
+    role: "Senior Developer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://www.linkedin.com/in/devlucasgodoy/"
+---
+
+## Overview
+
+**RadarB3** is a full-stack quantitative analysis platform for the Brazilian and global financial markets. It brings together quotes for B3 assets, cryptocurrencies and US stocks, email alerts, backtesting and AI-generated insights in a single terminal. It is in development.
+
+_"Where strategy meets technology."_
+
+## Problem
+
+Quantitative traders usually juggle several tools: one for B3 quotes, another for crypto, another for charts and indicators, and spreadsheets to test strategies. Data is scattered and alerts depend on watching the screen.
+
+## Solution
+
+- **Dashboard** with a consolidated market view, watchlist and key metrics
+- **Screener** to filter assets by technical and fundamental criteria
+- **Charts** with candles, RSI(14) and moving averages across several timeframes (15m to 1W)
+- **Price alerts** with history and email notifications
+- **Backtesting** of strategies on historical data
+- **AI insights** with Google Gemini
+
+## Architecture
+
+- **Next.js App Router** holds both pages and API routes (`auth`, `market`, `alerts`, `backtest`, `health`)
+- **Cascading data sources**: BRAPI for B3, Binance with CoinCap fallback for crypto, AlphaVantage for US stocks
+- **TTL cache in Postgres** for market data
+- **Graceful fallback**: without the optional keys, the platform keeps working with mock data
+- **Rate limiting** per IP and structured logging
+
+## Tech Stack
+
+- **Web**: Next.js 16, React 19, TypeScript, Tailwind CSS 4, Motion, Recharts
+- **Data**: Neon (PostgreSQL) via `pg`, Supabase as an optional auxiliary provider
+- **Auth**: JWT and bcrypt
+- **Integrations**: BRAPI, Binance, CoinCap, AlphaVantage, Google Gemini, Resend
+- **Deploy**: Vercel
+
+## Status
+
+In development. Next steps listed in the repository include automated tests, payload validation with Zod, WebSocket quotes and versioned migrations.

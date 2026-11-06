@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal portfolio for **Lucas Godoy** — Desenvolvedor Sênior · CEO & Fundador da [First Class Dev](https://www.firstclassdev.com.br), Sócio & Head de Tecnologia na TG Distribuidora (Dourados, MS). Built on the Magic Portfolio template (Once UI) and customized into a PT-BR single-person portfolio with Home, About/CV, Work (projetos), Blog, First Class Dev and a contact form. `/gallery` is disabled in `routes`.
+Personal portfolio for **Lucas Godoy** — Desenvolvedor Sênior · CEO & Fundador da [First Class Dev](https://www.firstclassdev.com.br), Sócio & Head de Tecnologia na TG Distribuidora (Dourados, MS). Started from Magic Portfolio (Once UI) and redesigned after the [Zolt](https://21st.dev/@clevision/templates/zolt-shadcn-ui-portfolio-template) shadcn template in plain Tailwind v4 (Once UI removed): one-page Home (hero, about bento, featured work, stack + experience timeline, services, testimonials, hire/plan, booking-style contact), plus About/CV, Work, Blog and First Class Dev. `/gallery` is disabled in `routes`.
 
 ## Commands
 
@@ -19,10 +19,11 @@ No test runner configured. Node.js 24 (same as Vercel).
 ## Stack
 
 - Next.js 16 App Router + React 19 + TypeScript (strict, `@/*` → `src/*`)
-- [@once-ui-system/core](https://once-ui.com) design system (all UI primitives: `Flex`, `Column`, `Heading`, `Button`, `Input`, etc.)
+- Tailwind v4 (full, with preflight) + shadcn-style hand-written primitives in `src/components/ui/` (`Button`/`ButtonLink`, `Chip`, `StatusBadge`, `Section`, `SectionHeader`, `Card`, `Shell`, `Reveal`). Tokens (`--background`, `--primary` = #00bf63, …) and `.dark` overrides live in [src/app/globals.css](src/app/globals.css); `.prose` styles MDX articles
+- `motion` for reveal/hero animations, `react-icons` (`lu` set for UI, `si`/`fa6` for brands)
 - **next-intl** for i18n (locale routing + message catalogs)
 - MDX via `@next/mdx` + `next-mdx-remote`, `gray-matter` for frontmatter
-- SCSS modules
+- SCSS module only for the First Class Dev page (`fcd.module.scss`)
 - Biome for format/lint (NOT Prettier/ESLint for style)
 
 ## Architecture
@@ -37,15 +38,15 @@ Blog posts live in `src/posts/blog/{pt,en}/`, projects in `src/posts/work/{pt,en
 
 ### Config-driven rendering
 
-- [src/resources/once-ui.config.ts](src/resources/once-ui.config.ts) — design tokens (`style`, `effects`, `dataStyle`), `routes` toggle (per-path on/off), `protectedRoutes` (password-gated paths, currently empty), `baseURL` for SEO/schema, social `sameAs`, `socialSharing` platforms, `fonts` (Geist + Geist_Mono).
-- [src/resources/content/pt.tsx](src/resources/content/pt.tsx) + [en.tsx](src/resources/content/en.tsx) — `person`, `social`, `newsletter`, `home`, `about`, `blog`, `work`, `gallery` per locale. JSX allowed in copy. `about` holds the full CV: `work.experiences`, `studies.institutions`, `technical.skills`. Resolve with `getContent(locale)` (server) / `useContent()` (client) — see the i18n section.
+- [src/resources/site.config.ts](src/resources/site.config.ts) — `routes` toggle (per-path on/off), `protectedRoutes` (password-gated paths, currently empty), `baseURL` for SEO/schema, social `sameAs`, `socialSharing` platforms, fonts (Plus Jakarta Sans as Satoshi stand-in, Geist Mono, Delicious Handrawn) exposed as `fontVariables`.
+- [src/resources/content/pt.tsx](src/resources/content/pt.tsx) + [en.tsx](src/resources/content/en.tsx) — `person`, `social`, `newsletter`, `home`, `landing` (one-page home sections; services/prices mirror firstclassdev.com.br/pt/solucoesdigitais; an empty `testimonials.items` hides that section), `about`, `blog`, `work`, `gallery`, `firstClassDev` per locale. JSX allowed in copy. `about` holds the full CV: `work.experiences`, `studies.institutions`, `technical.skills`. Resolve with `getContent(locale)` (server) / `useContent()` (client) — see the i18n section.
 - [src/resources/index.ts](src/resources/index.ts) re-exports config + `getContent`. Always import from `@/resources`, not the individual files.
 
-`brand: "custom"` in `style` is cast `as any` — the brand color is set via CSS in [src/resources/custom.css](src/resources/custom.css) (`#00bf63`). Don't add it back to the union.
+Theme: an inline script in `[locale]/layout.tsx` sets `.dark` on `<html>` from `localStorage.theme` or the system preference; `ThemeToggle` flips it. SEO: `buildMeta()` + `<JsonLd>` in [src/utils/seo.tsx](src/utils/seo.tsx).
 
 ### Contact form
 
-The Magic Portfolio newsletter block is repurposed as a contact form in [src/components/Mailchimp.tsx](src/components/Mailchimp.tsx). It validates name/email/message client-side, keeps a `_honey` honeypot and POSTs JSON to `/api/contact` ([src/app/api/contact/route.ts](src/app/api/contact/route.ts)), which validates again, rate-limits and sends through Resend. The `mailchimp.action` URL in config is NOT used for submission. `newsletter.display` toggles the whole block; `newsletter.title`/`description` are the form heading copy.
+The contact form in [src/components/Mailchimp.tsx](src/components/Mailchimp.tsx) is a 3-step booking widget (pick a service from `landing.booking.services` → name/email/message → confirmation); the chosen service is prefixed to the message. It validates name/email/message client-side, keeps a `_honey` honeypot and POSTs JSON to `/api/contact` ([src/app/api/contact/route.ts](src/app/api/contact/route.ts)), which validates again, rate-limits and sends through Resend. The `mailchimp.action` URL in config is NOT used for submission. `newsletter.display` toggles the whole block; `newsletter.title`/`description` are the form heading copy.
 
 ### Route gating
 

@@ -1,72 +1,37 @@
-import { Mailchimp } from "@/components";
+import { Mailchimp, Shell } from "@/components";
 import { Posts } from "@/components/blog/Posts";
-import { baseURL, getContent } from "@/resources";
-import { localeMeta } from "@/utils/seo";
-import { getPosts } from "@/utils/utils";
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
-import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
+import { Section, SectionHeader } from "@/components/ui/primitives";
+import { getContent } from "@/resources";
+import { buildMeta, JsonLd } from "@/utils/seo";
+import { setRequestLocale } from "next-intl/server";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const { blog } = getContent(locale);
-  return Meta.generate({
-    title: blog.title,
-    description: blog.description,
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(blog.title)}`,
-    ...localeMeta(locale, blog.path),
-  });
+  return buildMeta({ title: blog.title, description: blog.description, locale, path: blog.path });
 }
 
-export default async function Blog({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const { blog, person } = getContent(locale);
-  const t = await getTranslations("Blog");
-
-  const total = getPosts(["src", "posts", "blog"], await getLocale()).length;
+  const { blog } = getContent(locale);
 
   return (
-    <Column maxWidth="m" paddingTop="24" paddingX="l" gap="xl" horizontal="center">
-      <Schema
-        as="blogPosting"
-        baseURL={baseURL}
+    <Shell>
+      <JsonLd
+        type="WebPage"
+        locale={locale}
+        path={blog.path}
         title={blog.title}
         description={blog.description}
-        path={`/${locale}${blog.path}`}
-        image={`/api/og/generate?title=${encodeURIComponent(blog.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}/${locale}/blog`,
-          image: `${baseURL}${person.avatar}`,
-        }}
       />
-      <Heading variant="heading-strong-xl">
-        {blog.title}
-      </Heading>
-      <Column fillWidth gap="40">
-        <Posts range={[1, 1]} thumbnail />
-        {total > 1 && <Posts range={[2, 3]} columns="2" thumbnail direction="column" />}
-      </Column>
-
-      {total > 3 && (
-        <Column fillWidth gap="24">
-          <Heading as="h2" variant="heading-strong-xl">
-            {t("recentPosts")}
-          </Heading>
-          <Posts range={[4]} columns="2" />
-        </Column>
-      )}
-
-      <Mailchimp marginTop="l" marginBottom="l" />
-    </Column>
+      <Section className="pt-28 md:pt-36">
+        <SectionHeader as="h1" eyebrow={blog.label} title={blog.title} />
+        <Posts />
+      </Section>
+      <Section className="border-b-0">
+        <Mailchimp id="contact" />
+      </Section>
+    </Shell>
   );
 }
