@@ -8,7 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { LuFileText } from "react-icons/lu";
 
-export function Hero() {
+export function Hero({ cvHref }: { cvHref?: string }) {
   const { landing, home, person, about } = useContent();
   const locale = useLocale();
   const t = useTranslations("Nav");
@@ -50,7 +50,11 @@ export function Hero() {
         {home.subline}
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
-        <ButtonLink href={`/${locale}${about.path}`} variant="outline">
+        <ButtonLink
+          href={cvHref ?? `/${locale}${about.path}`}
+          variant="outline"
+          {...(cvHref ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
           <LuFileText className="size-4" />
           {landing.cta.cv}
         </ButtonLink>

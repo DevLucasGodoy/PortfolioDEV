@@ -56,7 +56,7 @@ const schema: SchemaConfig = {
   logo: "/images/avatar.jpeg",
   type: "Person",
   name: "Lucas Godoy",
-  email: "lucas.moraes.godoy@gmail.com",
+  email: "lucas.godoy@firstclassdev.com.br",
 };
 
 // social links

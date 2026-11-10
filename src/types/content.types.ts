@@ -123,7 +123,14 @@ export interface Landing {
     /** Sticky note card */
     note: { sticky: string; caption: string; surprise: React.ReactNode };
   };
-  works: { eyebrow: string; title: string; viewAll: string; caseStudy: string };
+  works: {
+    eyebrow: string;
+    title: string;
+    viewAll: string;
+    caseStudy: string;
+    /** Work slugs pinned on the home, in order (falls back to the newest 4) */
+    featured?: string[];
+  };
   experience: {
     eyebrow: string;
     title: string;

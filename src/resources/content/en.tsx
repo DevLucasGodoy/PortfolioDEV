@@ -18,7 +18,7 @@ const person: Person = {
   name: "Lucas Godoy",
   role: "Senior Developer · CEO & Founder",
   avatar: "/images/avatar.jpeg",
-  email: "lucas.moraes.godoy@gmail.com",
+  email: "lucas.godoy@firstclassdev.com.br",
   location: "America/Campo_Grande", // IANA — Dourados, Brazil
   languages: ["Portuguese", "English", "Spanish"],
 };
@@ -56,7 +56,7 @@ const social: Social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:lucas.moraes.godoy@gmail.com?subject=Portfolio%20-%20DevLucasGodoy",
+    link: "mailto:lucas.godoy@firstclassdev.com.br?subject=Portfolio%20-%20DevLucasGodoy",
     essential: true,
   },
 ];
@@ -115,8 +115,16 @@ const landing: Landing = {
       caption: "I have a surprise for you 🙃",
       surprise: (
         <>
-          The First Class Diagnosis for <strong>R$ 149</strong>, fully credited if you close the
-          project. Quotes answered within 4 business hours.
+          A <strong>free</strong> Speed X-Ray: find out in seconds whether your site is losing
+          customers to slow loading.{" "}
+          <a
+            href="https://www.firstclassdev.com.br/en/ferramentas/raio-x"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            Run the X-Ray
+          </a>
         </>
       ),
     },
@@ -125,6 +133,7 @@ const landing: Landing = {
     eyebrow: "Featured work",
     title: "The ones that taught me the most",
     viewAll: "View all projects",
+    featured: ["syncro", "fc-noivos"],
     caseStudy: "Read case study",
   },
   experience: {
@@ -182,7 +191,7 @@ const landing: Landing = {
   },
   hire: {
     eyebrow: "How it works",
-    title: "No middlemen — just me, fully in on your product",
+    title: "My team at First Class Dev handles your project end to end",
     location: "Dourados, MS · Brazil",
     stats: [
       { value: "20+", label: "Projects" },
@@ -192,8 +201,8 @@ const landing: Landing = {
     verified: "In business since 2021",
     motto: "I care about every detail to build things people actually enjoy using.",
     available: "Available",
-    heading: "Hire me today",
-    text: "I take on only a few projects at a time, so yours always gets my full focus.",
+    heading: "Hire First Class Dev",
+    text: "Fixed price before we start, a proposal within 5 business days and up to 12 installments.",
     plan: {
       name: "Essential Maintenance",
       tagline: "Your site live, fast and improving — every month.",

@@ -105,26 +105,24 @@ export function AboutBento() {
         </div>
 
         {/* Sticky note */}
-        <button
-          type="button"
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-          className={cn(
-            tile,
-            "group flex min-h-48 flex-col items-center justify-center gap-4 p-6 text-left",
-          )}
-        >
+        {/* The surprise may contain links, so it lives outside the toggle button */}
+        <div className={cn(tile, "flex min-h-48 flex-col items-center justify-center gap-4 p-6")}>
           {open ? (
             <p className="max-w-sm text-center text-base text-muted-foreground [&_strong]:text-foreground">
               {about.note.surprise}
             </p>
           ) : (
-            <span className="flex size-32 -rotate-6 items-center justify-center bg-yellow-200 p-4 text-center font-hand text-xl leading-tight text-neutral-800 shadow-md transition-transform duration-300 group-hover:rotate-0">
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-expanded={open}
+              className="group flex size-32 -rotate-6 items-center justify-center bg-yellow-200 p-4 text-center font-hand text-xl leading-tight text-neutral-800 shadow-md transition-transform duration-300 hover:rotate-0"
+            >
               {about.note.sticky}
-            </span>
+            </button>
           )}
           <span className="text-xl font-medium text-foreground">{about.note.caption}</span>
-        </button>
+        </div>
       </Reveal>
     </Section>
   );

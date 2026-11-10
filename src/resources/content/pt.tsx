@@ -18,7 +18,7 @@ const person: Person = {
   name: "Lucas Godoy",
   role: "Desenvolvedor Sênior · CEO & Fundador",
   avatar: "/images/avatar.jpeg",
-  email: "lucas.moraes.godoy@gmail.com",
+  email: "lucas.godoy@firstclassdev.com.br",
   location: "America/Campo_Grande", // IANA — Dourados, MS
   languages: ["Português", "Inglês", "Espanhol"],
 };
@@ -56,7 +56,7 @@ const social: Social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:lucas.moraes.godoy@gmail.com?subject=Portfolio%20-%20DevLucasGodoy",
+    link: "mailto:lucas.godoy@firstclassdev.com.br?subject=Portfolio%20-%20DevLucasGodoy",
     essential: true,
   },
 ];
@@ -115,8 +115,16 @@ const landing: Landing = {
       caption: "Tenho uma surpresa para você 🙃",
       surprise: (
         <>
-          Diagnóstico First Class por <strong>R$ 149</strong>, 100% abatido se você fechar o
-          projeto. Orçamento com resposta em até 4 horas úteis.
+          Raio-X de Velocidade <strong>grátis</strong>: descubra em segundos se o seu site está
+          perdendo clientes por lentidão.{" "}
+          <a
+            href="https://www.firstclassdev.com.br/pt/ferramentas/raio-x"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            Fazer o Raio-X
+          </a>
         </>
       ),
     },
@@ -125,6 +133,7 @@ const landing: Landing = {
     eyebrow: "Projetos em destaque",
     title: "Os que mais me ensinaram",
     viewAll: "Ver todos os projetos",
+    featured: ["syncro", "fc-noivos"],
     caseStudy: "Ler estudo de caso",
   },
   experience: {
@@ -183,7 +192,7 @@ const landing: Landing = {
   },
   hire: {
     eyebrow: "Como funciona",
-    title: "Sem intermediários — só eu, totalmente dentro do seu produto",
+    title: "Meu time na First Class Dev cuida do seu projeto de ponta a ponta",
     location: "Dourados, MS · Brasil",
     stats: [
       { value: "20+", label: "Projetos" },
@@ -193,8 +202,8 @@ const landing: Landing = {
     verified: "Empreendendo desde 2021",
     motto: "Cuido de cada detalhe para construir coisas que as pessoas gostam de usar.",
     available: "Disponível",
-    heading: "Contrate-me hoje",
-    text: "Pego poucos projetos por vez, para que o seu tenha sempre foco total.",
+    heading: "Contrate a First Class Dev",
+    text: "Preço fechado antes de começar, proposta em até 5 dias úteis e parcelamento em até 12x.",
     plan: {
       name: "Manutenção Essencial",
       tagline: "Seu site no ar, rápido e evoluindo — todo mês.",
