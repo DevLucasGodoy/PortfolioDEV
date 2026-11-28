@@ -77,3 +77,72 @@ export function assertSafeUrl(raw: string): URL {
 
   return url;
 }
+
+function isBlockedAddress(addr: string): boolean {
+  const v4 = parseIPv4(addr);
+  if (v4) return isPrivateIPv4(v4);
+  return isBlockedIPv6(addr.toLowerCase());
+}
+
+/**
+ * Fetch a user-supplied URL safely (server-only, Node runtime):
+ * - every hop passes assertSafeUrl AND its DNS answers are checked (no internal IPs);
+ * - redirects are followed manually (max 3), each re-validated;
+ * - hard timeout for the whole request.
+ *
+ * ponytail: DNS is checked before fetch, so a rebinding attack with a ~0 TTL can still race
+ * the lookup. Pin the resolved IP with a custom agent if these endpoints ever matter more.
+ */
+export async function safeFetch(
+  raw: string,
+  init: RequestInit = {},
+  { timeoutMs = 5000, maxRedirects = 3 } = {},
+): Promise<Response> {
+  const { lookup } = await import("node:dns/promises");
+  const signal = AbortSignal.timeout(timeoutMs);
+  let current = raw;
+  for (let hop = 0; hop <= maxRedirects; hop++) {
+    const url = assertSafeUrl(current);
+    const host = url.hostname.replace(/^\[|\]$/g, "");
+    const answers = await lookup(host, { all: true, verbatim: true });
+    if (!answers.length || answers.some((a) => isBlockedAddress(a.address))) {
+      throw new Error("Blocked host");
+    }
+    const res = await fetch(url, { ...init, redirect: "manual", signal });
+    if (res.status >= 300 && res.status < 400) {
+      const location = res.headers.get("location");
+      if (!location) return res;
+      current = new URL(location, url).toString();
+      continue;
+    }
+    return res;
+  }
+  throw new Error("Too many redirects");
+}
+
+/** Read a response body with a hard byte cap (stops downloading once exceeded). */
+export async function readCapped(res: Response, maxBytes: number): Promise<ArrayBuffer | null> {
+  const len = Number(res.headers.get("content-length") || 0);
+  if (len > maxBytes) return null;
+  if (!res.body) return new ArrayBuffer(0);
+  const reader = res.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > maxBytes) {
+      await reader.cancel();
+      return null;
+    }
+    chunks.push(value);
+  }
+  const out = new Uint8Array(total);
+  let off = 0;
+  for (const c of chunks) {
+    out.set(c, off);
+    off += c.byteLength;
+  }
+  return out.buffer;
+}

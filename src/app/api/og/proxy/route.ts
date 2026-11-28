@@ -1,5 +1,5 @@
 import { clientIp, rateLimit } from "@/utils/rateLimit";
-import { assertSafeUrl } from "@/utils/ssrf";
+import { assertSafeUrl, readCapped, safeFetch } from "@/utils/ssrf";
 import { type NextRequest, NextResponse } from "next/server";
 
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // 5 MB
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Fetch the image
-    const response = await fetch(safeUrl.toString(), {
+    const response = await safeFetch(safeUrl.toString(), {
       headers: {
         "User-Agent": "Mozilla/5.0 (compatible; ImageProxy/1.0)",
       },
@@ -45,8 +45,8 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Unsupported content type" }, { status: 415 });
     }
 
-    const imageData = await response.arrayBuffer();
-    if (imageData.byteLength > MAX_IMAGE_BYTES) {
+    const imageData = await readCapped(response, MAX_IMAGE_BYTES);
+    if (!imageData) {
       return NextResponse.json({ error: "Image too large" }, { status: 413 });
     }
 
@@ -54,6 +54,8 @@ export async function GET(request: NextRequest) {
     return new NextResponse(imageData, {
       headers: {
         "Content-Type": contentType,
+        "X-Content-Type-Options": "nosniff",
+        "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox",
         "Cache-Control": "public, max-age=86400",
       },
     });

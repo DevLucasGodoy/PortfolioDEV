@@ -1,5 +1,5 @@
 import { clientIp, rateLimit } from "@/utils/rateLimit";
-import { assertSafeUrl } from "@/utils/ssrf";
+import { assertSafeUrl, safeFetch } from "@/utils/ssrf";
 import { NextResponse } from "next/server";
 
 const MAX_HTML_BYTES = 512 * 1024; // cap response body to 512 KB
@@ -30,22 +30,7 @@ function decodeHTMLEntities(text: string): string {
 }
 
 async function fetchWithTimeout(url: string, timeout = 5000) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeout);
-
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        "User-Agent": "bot",
-      },
-    });
-    clearTimeout(timeoutId);
-    return response;
-  } catch (error) {
-    clearTimeout(timeoutId);
-    throw error;
-  }
+  return safeFetch(url, { headers: { "User-Agent": "bot" } }, { timeoutMs: timeout });
 }
 
 async function extractMetadata(html: string) {
